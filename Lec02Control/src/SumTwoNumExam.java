@@ -44,27 +44,27 @@ public class SumTwoNumExam {
 //			for (int j = numA; j < numB + 1; j++) {
 //				total += j;
 //			}
-//
-//			// *solution.2;
-//			sum = numA + numB;
-//			sub = numB - numA;
-//
-//			for (int j = 0; j < (sub / 2) + 1; j++) {
-//				total += sum;
-//			}
-//			if (sub % 2 == 0) {
-//				total -= sum / 2;
-//			}
 
-			// *solution.3;
-			tmp = 0;
-			for (int j = 0; j < numA; j++) {
-				tmp += j;
+			// *solution.2;
+			sum = numA + numB;
+			sub = numB - numA;
+
+			for (int j = 0; j < (sub / 2) + 1; j++) {
+				total += sum;
 			}
-			for (int j = 0; j < numB + 1; j++) {
-				total += j;
+			if (sub % 2 == 0) {
+				total -= sum / 2;
 			}
-			total -= tmp;
+
+//			// *solution.3;
+//			tmp = 0;
+//			for (int j = 0; j < numA; j++) {
+//				tmp += j;
+//			}
+//			for (int j = 0; j < numB + 1; j++) {
+//				total += j;
+//			}
+//			total -= tmp;
 
 			// print result
 			System.out.printf("%d ~ %d 합: %d\n", numA, numB, total);
