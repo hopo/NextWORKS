@@ -2,11 +2,11 @@
 public class Ex06ForStmtExam {
 	public static void main(String[] args) {
 
-		final String ST = "*";
-		final String LN = "\n";
+//		final String ST = "*";
+//		final String LN = "\n";
 		final String WS = " ";
 		int count = 10;
-		String ret = "";
+//		String ret = "";
 
 		// // Ex2
 		// System.out.println("========== Ex2 ==========");
