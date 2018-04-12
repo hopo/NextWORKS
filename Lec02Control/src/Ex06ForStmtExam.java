@@ -178,16 +178,15 @@ public class Ex06ForStmtExam {
 //		}
 
 		// Ex8
-		// ..ing
 		System.out.println("========== Ex8 ==========");
 		// uppper
 		for(int i = 0; i < count; i++) {
-			for(int j = 0; j < count-i-1; j++) {
+			for(int j = 0; j < i; j++) {
 				System.out.print(WS);
 			}
 			// left char
 			int k = 0;
-			for(k = 0; k < i+1; k++) {
+			for(k = 0; k < count-i ; k++) {
 				System.out.print((char)('A'+k));
 			}
 			// right char, depend on k value
@@ -198,11 +197,11 @@ public class Ex06ForStmtExam {
 		}
 		// lower
 		for(int i = 0; i < count; i++) {
-			for(int j = 0; j < i; j++) {
+			for(int j = 0; j < count-1-i; j++) {
 				System.out.print(WS);
 			}
 			int k = 0;
-			for(k = 0; k < count-i ; k++) {
+			for(k = 0; k < i+1 ; k++) {
 				System.out.print((char)('A'+k));
 			}
 			for(int n = k - 1; n >= 0; n--) {

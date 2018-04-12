@@ -91,7 +91,7 @@ select       : 5. 필요한 정보(컬럼, 계산된값, 상수)
 	having   : 4. 그루핑 조건을 명시
 	order by : 6. 결과를 정렬
 ;
--- */
+
 
 select * from employees;
 select employee_id, emp_name, salary from employees;
