@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Ex12Calendar {
+public class Ex12Calendar02 {
 	
 	public static void main(String[] args) throws IOException {
 
@@ -40,49 +40,53 @@ public class Ex12Calendar {
 		boolean bl1 = year%4 == 0;
 		boolean bl2 = year%100 == 0;
 		boolean bl3 = year%400 == 0;
-		boolean isNowLeapYear = (bl1 && !bl2 || bl3);
+		boolean isNowLeap = (bl1 && !bl2 || bl3);
+		
+		// month가 2월인가?
+		boolean isNowFeb = month == 2;
 
-        // month 이전 31일 달은 몇개? ex)4 -> [2]{1, 3}
-        int threeOne = 0; 
-        for(int m = 1; m < month; m++) {
-            if(m < 8) {
-                if(m%2 != 0) {
-                    threeOne++;
-                }
-            } else {
-                if(m%2 == 0) {
-                    threeOne++;
-                }
-            }
-        }
+        // month 이전 31일 달 
+		int mDay = 0;
+		int oChk = 1;
+		int sumMDays = 0;
+		for(int m = 1; m <= month; m++) {
+			sumMDays += mDay;
+			if(m == 8) {
+				oChk ^= 1;
+			}
+			switch(oChk) {
+			case 1:
+				mDay = 31;
+				break;
+			case 0:
+				mDay = 30;
+				break;
+			}
+			oChk ^= 1;
 
-        int thisYearDayCnt = (month-1) * 30 + threeOne + 1;
-        if(month > 2) {
-            if(isNowLeapYear) {
-                thisYearDayCnt -= 1;
-            } else {
-                thisYearDayCnt -= 2;
-            }
-        }
-        // System.out.printf(">>*isNowLeapYear : %b\n", isNowLeapYear);
-        // System.out.printf(">>*thisYearDayCnt : %d\n", thisYearDayCnt);
+		}
+
+        int thisYearDayCnt = sumMDays + 1;
+		if(month > 2) {
+			if(isNowLeap) {
+				thisYearDayCnt -= 1;
+			} else {
+				thisYearDayCnt -= 2;
+			}
+		}
+         System.out.printf(">>*isNowLeap : %b\n", isNowLeap);
+         System.out.printf(">>*thisYearDayCnt : %d\n", thisYearDayCnt);
 
         int weekNum  = ((year-1) + leapYearCnt + thisYearDayCnt) % 7;
-        // System.out.printf("[%d-%d] weekNum: %d\n", year, month, weekNum);
+         System.out.printf("[%d-%d] weekNum: %d\n", year, month, weekNum);
 
 
         // !!! 달력출력
-        int dEnd;
-        if(month < 8 ) {
-            dEnd = (month%2 == 0)? 30 : 31;  
-        } else {
-            dEnd = (month%2 != 0)? 30 : 31;  
-        }
-        if(month == 2) {
-            if(isNowLeapYear) {
-                dEnd -= 1;
+        if(isNowFeb) {
+            if(isNowLeap) {
+                mDay -= 1;
             } else {
-                dEnd -= 2;
+                mDay -= 2;
             }
         }
         int d = 1;
@@ -103,7 +107,7 @@ public class Ex12Calendar {
                 }
 
                 System.out.printf(" %2d\t", d++);
-                if(d > dEnd) { 
+                if(d > mDay) { 
                     next = false;
                     break;
                 }
