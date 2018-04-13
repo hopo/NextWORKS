@@ -39,7 +39,6 @@ public class Ex12Calendar03 {
 		// !! ;leapYearCnt
 		// 전년도 까지 윤년은 몇번이었는가?
 		int leapYearCnt = ((year - 1) / 4) - ((year - 1) / 100) + ((year - 1) / 400);
-		// System.out.printf(">>*leapYearCnt : %d\n", leapYearCnt);
 
 		// !! ;thisYearDayCnt
 		// 달력의 시작 일
@@ -57,6 +56,7 @@ public class Ex12Calendar03 {
 
 		// ;sumMDay
 		// 입력 받은 month 달 이전 30일과 31일
+		// ;mDay의 값은 month의 마지막 일이 된다.
 		int mDay = 0;
 		int oChk = 0;
 		int sumMDays = 0;
@@ -77,8 +77,6 @@ public class Ex12Calendar03 {
 				thisYearDayCnt -= 2;
 			}
 		}
-		// System.out.printf(">>*isNowLeap : %b\n", isNowLeap);
-		// System.out.printf(">>*thisYearDayCnt : %d\n", thisYearDayCnt);
 
 		int weekNum = ((year - 1) + leapYearCnt + thisYearDayCnt) % 7;
 		System.out.printf(">요일넘버: %d\n", weekNum);
