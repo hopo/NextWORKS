@@ -49,6 +49,7 @@ public class Ex02Array {
 				max = num[i];
 			}
 		}
+		 System.out.printf("min: %d, max: %d", min, max);
 
 	}
 
