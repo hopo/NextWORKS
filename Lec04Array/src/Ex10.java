@@ -6,36 +6,42 @@ public class Ex10 {
 
 	public static void main(String[] args) throws IOException {
 		// EXAM)
-		// "이름\t 나이\t 성별\t 체중\t 신장\t 결혼\t 전화\t\t 주소\n"		
+		// "이름\t 나이\t 성별\t 전화\t 주소\n"		
 		// 3명의 정보를 받아라
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-		System.out.println("[[ *입력하시오* ]]");
+        String[][] table = new String[5][3];
 
-		System.out.print("*이름: "); 
-		String name = reader.readLine(); // readLine()은 Enter(Line feed, \n) 기준으로 라인 읽기
+        for(int i = 0; i < table[0].length; i++) {
+            System.out.printf("[%d people]\n", i);
 
-		System.out.print("*나이: "); 
-		int age = Integer.parseInt(reader.readLine());
+            System.out.print("*이름: "); 
+            table[0][i] = reader.readLine();
 
-		System.out.print("*성별(m/f): "); 
-		char gender = (char)(reader.read()); // (char)"m\n", '\n'이 남게된다.
-		reader.readLine(); // 그래서 readLine()을 이용하여 '\n' 읽고 날려버리기. linux(\n) window(\n\r)
+            System.out.print("*나이: "); 
+            table[1][i] = reader.readLine();
 
-		System.out.print("*전화: "); 
-		String phone = reader.readLine();
+            System.out.print("*성별(m/f): "); 
+            table[2][i] = reader.readLine();
 
-		System.out.print("*주소: "); 
-		String address = reader.readLine();
+            System.out.print("*전화: "); 
+            table[3][i] = reader.readLine();
+
+            System.out.print("*주소: "); 
+            table[4][i] = reader.readLine();
+        }
 		
-		// data print
+
+		// print data
 		System.out.print("==================== Print Private Infomation ====================\n");
 		System.out.print("이름\t 나이\t 성별\t 전화\t\t 주소\n");
-		System.out.printf(
-			"%s\t %d\t %c\t %s\t %s\n",
-			name, age, gender, phone, address
-		);	
+        for(int i = 0; i < table[0].length; i++) {
+            for(int j = 0; j < table.length; j++) {
+                System.out.printf("%s\t ", table[j][i]);	
+            }
+            System.out.println();
+        }
 		System.out.print("==================================================================\n");
 		
 	}
