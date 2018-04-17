@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Ex10_2 {
+public class Ex10a {
 
 	public static void main(String[] args) throws IOException {
 		// EXAM)
@@ -11,29 +11,39 @@ public class Ex10_2 {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-	    String[] info = {"이름", "나이", "성별", "전화", "주소"};	
+        String[][] table = new String[5][3];
 
-        String[][] table = new String[3][info.length];
-
-        for(int i = 0; i < table.length; i++) {
+        for(int i = 0; i < table[0].length; i++) {
             System.out.printf("[%d people]\n", i);
-            for(int j = 0; j < info.length; j++) {
-                System.out.printf("*%s: ", info[j]); 
-                table[i][j] = reader.readLine();
-            }
+
+            System.out.print("*이름: "); 
+            table[0][i] = reader.readLine();
+
+            System.out.print("*나이: "); 
+            table[1][i] = reader.readLine();
+
+            System.out.print("*성별(m/f): "); 
+            table[2][i] = reader.readLine();
+
+            System.out.print("*전화: "); 
+            table[3][i] = reader.readLine();
+
+            System.out.print("*주소: "); 
+            table[4][i] = reader.readLine();
         }
 		
 
 		// print data
 		System.out.print("==================== Print Private Infomation ====================\n");
 		System.out.print("이름\t 나이\t 성별\t 전화\t\t 주소\n");
-        for(int i = 0; i < table.length; i++) {
-            for(int j = 0; j < table[i].length; j++) {
-                System.out.printf("%s\t ", table[i][j]);	
+        for(int i = 0; i < table[0].length; i++) {
+            for(int j = 0; j < table.length; j++) {
+                System.out.printf("%s\t ", table[j][i]);	
             }
             System.out.println();
         }
 		System.out.print("==================================================================\n");
 		
 	}
+
 }
