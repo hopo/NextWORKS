@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Ex10c {
+public class Ex10Array03 {
 
 	public static void main(String[] args) throws IOException {
 		// EXAM)
@@ -32,7 +32,8 @@ public class Ex10c {
             table[1][i] = Integer.parseInt(reader.readLine());
 
             System.out.print("*성별(m/f): "); 
-            table[2][i] = reader.readLine().toCharArray()[0];
+			table[2][i] = (char)(reader.read()); // (char)"m\n", '\n'이 남게된다.
+			reader.readLine(); // 그래서 readLine()을 이용하여 '\n' 읽고 날려버리기. linux(\n) window(\n\r)
 
             System.out.print("*전화: "); 
             table[3][i] = reader.readLine();

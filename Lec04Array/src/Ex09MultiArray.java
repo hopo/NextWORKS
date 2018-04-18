@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Ex09 {
+public class Ex09MultiArray {
 
 	public static void main(String[] args) throws IOException {
 
