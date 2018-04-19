@@ -1,3 +1,4 @@
+
 create tablespace study datafile '/oracdata/sudy.dbf'
 size 100M autoextend on next 10M;
 
