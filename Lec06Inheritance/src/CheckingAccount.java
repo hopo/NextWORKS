@@ -1,8 +1,10 @@
+/*
+ ;클래스 관계 명칭
+ child class - parent class
+ sub class - super class
+*/
 
 public class CheckingAccount extends Account {
-	// ;클래스 명칭
-	// child - parent
-	// sub - super
 
 	String cardNo; // Class CheckingAccount 의 field
 
