@@ -16,15 +16,15 @@ create table ex2_2(
 ```sql
 insert into ex2_2 values ('ab', 'ab', 'ab');
 ```
-### 테이블 ex2_2를 조회
+## 테이블 ex2_2를 조회
 ```sql
 select * from ex2_2;
 ```
-### 테이블 ex2_2에 INSERT
+## 테이블 ex2_2에 INSERT
 ```sql
 insert into ex2_2 values ('c', '동', '홍길동');
 ```
-### 테이블 ex2_2를 조회
+## 테이블 ex2_2를 조회
 ```sql
 select col1, length(col1), lengthb(col1),
        col2, length(col2), lengthb(col2),
