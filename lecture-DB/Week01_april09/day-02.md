@@ -1,9 +1,11 @@
 2일차
 =====
 
-```sql
-select * from departments;
+# CREATE TABLE
 
+****
+
+```sql
 create table ex2_2(
     col1 char(5),
     col2 varchar2(5),
