@@ -5,13 +5,13 @@ public class AppCDInfo extends CDInfo implements Lendable {
 	String checkOutDate;
 	byte state;
 	
-	AppCDInfo(String registerNo, String title, String borrower, String checkOutDate){
+	AppCDInfo(String registerNo, String title, String borrower,String checkOutDate){
 		super(registerNo, title);
-		this.borrower = borrower;
-		this.checkOutDate = checkOutDate;
+        this.borrower = borrower;
+        this.checkOutDate = checkOutDate;
 	}
-	
-	@Override
+
+    @Override
 	public void checkOut(String borrower, String checkOutDate) {
 		if(this.state == STATE_NORMAL) {
 			this.borrower = borrower;
@@ -19,7 +19,7 @@ public class AppCDInfo extends CDInfo implements Lendable {
 			this.state = STATE_BORROWED;
 			System.out.printf("AppCD %s is borrowed: %s [%s]\n", super.title, borrower, checkOutDate);
 		} else {
-			System.out.printf("The CD is DENIED CHECKOUT");
+			System.out.printf("CHECKOUT DENIED");
 		}
 	}
 	

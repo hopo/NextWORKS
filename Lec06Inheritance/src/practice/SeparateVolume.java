@@ -9,11 +9,12 @@ public class SeparateVolume implements Lendable {
 	byte state;
 	
 	
-	public SeparateVolume(String requestNo, String bookTitle, String borrower, String checkOutDate){
+	SeparateVolume(String requestNo, String bookTitle, String borrower, String checkOutDate) {
 		this.requestNo = requestNo;
 		this.bookTitle = bookTitle;
-		this.borrower = borrower;
-		this.checkOutDate = checkOutDate;
+        this.borrower = borrower;
+        this.checkOutDate = checkOutDate; 
+        }
 	}
 	
 	@Override
@@ -24,7 +25,7 @@ public class SeparateVolume implements Lendable {
 			this.state = STATE_BORROWED;
 			System.out.printf("Book %s is borrowed: %s [%s]\n", this.bookTitle, borrower, checkOutDate);
 		} else {
-			System.out.printf("The Book is DENIED CHECKOUT");
+			System.out.printf("CHECKOUT DENIED");
 		}
 	}
 	
