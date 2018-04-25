@@ -9,7 +9,7 @@ public class Ex05Array {
 		// 국, 영, 수 3과목 점수를 받아서 총점, 평균 구하기.
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-		// >>* sol1)
+		// !!! sol1)
 		// String[] subjName = new String[] { "국어", "영어", "수학" };
 		// int total = 0;
 		// int size = subjName.length;
@@ -38,7 +38,7 @@ public class Ex05Array {
 		// }
 		// System.out.printf("%d\t %.2f", total, avg);
 
-		// >>* sensei sol)
+		// !!! sensei sol)
 		String[] subject = { "국어", "영어", "수학" };
 		int[] score = new int[subject.length + 1];
 		for (int i = 0; i < subject.length; i++) {

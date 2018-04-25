@@ -5,7 +5,7 @@ public class Ex01Exception {
 	// args : command line parameter
 	public static void main(String[] args) {
 
-		// Unchecked Exception 1
+		// Unchecked(Runtime) Exception 1
 		// try { // exception watch
 		//
 		// System.out.println(args[0] + "! good to see you~");
@@ -34,7 +34,8 @@ public class Ex01Exception {
 		//
 		// }
 	
-		// Checked Exception
+
+		// Checked(Compile) Exception
 		try {
 			System.out.print("INPUT >> ");
 			int x = System.in.read();
