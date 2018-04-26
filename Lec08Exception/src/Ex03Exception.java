@@ -16,7 +16,6 @@ public class Ex03Exception {
 			case 4: throw new FileNotFoundException();
 			case 5: throw new ClassCastException("5.CCE");
 			case 6: throw new ArrayIndexOutOfBoundsException("6.AIOOBE");
-			case 7: throw new BizRuntimeException();
 			}
 
 		} catch (IOException e) {
