@@ -1,10 +1,8 @@
 
 public class BizRuntimeException extends Exception {
 
-	private static final long serialVersionUID = 1L;
-
 	public BizRuntimeException() {
-		super("E MESSAGE");
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
