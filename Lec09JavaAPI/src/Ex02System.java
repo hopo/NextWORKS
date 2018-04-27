@@ -4,7 +4,7 @@
 
 public class Ex02System {
 
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 
 		// BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		//
@@ -28,25 +28,23 @@ public class Ex02System {
 		// System.out.println(System.currentTimeMillis());
 
 		// long startTime = System.currentTimeMillis();
-//		long startTime = System.nanoTime();
-//
-//		long sum = 0;
-//		for (int i = 0; i < 10000; i++) { sum += i; }
-//		System.out.println(sum);
+		// long startTime = System.nanoTime();
+		//
+		// long sum = 0;
+		// for (int i = 0; i < 10000; i++) { sum += i; }
+		// System.out.println(sum);
 
 		// long duration = System.currentTimeMillis() - startTime;
-//		long duration = System.nanoTime() - startTime;
-//		System.out.println("경과시간 : " + duration + "ns");
-		
-		
+		// long duration = System.nanoTime() - startTime;
+		// System.out.println("경과시간 : " + duration + "ns");
+
 		// 시스템 프로퍼티(key=value) 정보 읽어오기
 		// ex) os.name=Linux
 		System.out.println("Operate System : " + System.getProperty("os.name"));
 		System.out.println("Java Version : " + System.getProperty("java.version"));
-		
+
 		// property 정보 보기
 		System.getProperties().list(System.out);
-		
 
 	}
 
