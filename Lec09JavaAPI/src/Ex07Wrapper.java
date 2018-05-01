@@ -11,11 +11,11 @@ public class Ex07Wrapper {
 		System.out.println("num2.hashCode() : " + num2.hashCode());
 		System.out.println("num3.hashCode() : " + num3.hashCode());
 
-		// ! Unboxing Ex.1
+		// ! Unboxing Ex1)
 		// num1.intValue() : Unboxing : 객체 -> 기본형
 		// int sum = num1.intValue() + num2.intValue();
 
-		// ! Unboxing Ex.2
+		// ! Unboxing Ex2)
 		int sum = num1 + num2; // 자바 1.5 버전 이후. Auto Unboxing 제공
 		System.out.println("sum = " + sum);
 		
