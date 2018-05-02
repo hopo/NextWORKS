@@ -1,7 +1,13 @@
-4일차
+DAY-4
 =====
+- - -
 
-## SELECT를 이용하여 조회
+* DML(INSERT, UPDATE, DELETE, SELECT) 
+* ALTER
+* CASCADE
+- - -
+
+### SELECT를 이용하여 조회
 ```sql
 select a.col, b.col1, b.col2. c.*
 	from a, b, c ;
@@ -9,7 +15,7 @@ select a.col, b.col1, b.col2. c.*
 * ex) a.col: 테이블a의 칼럼 col
 
 
-## AS를 이용하여 별칭을 사용한다
+### AS를 이용하여 별칭을 사용한다
 ```sql
 select emp_name as "사원 명칭", salary as 급여
 from employees
@@ -18,20 +24,17 @@ order by salary ;
 * select from 프로세서 끝이 난 후 order by가 실행
 * 프로세서가 한 번 더 사용 되니 속도가 떨어진다
 
-## DML
-### INSERT, UPDATE, DELETE, SELECT
+## DML(INSERT, UPDATE, DELETE, SELECT)
 
 ## INSERT (raw단위)
-
-## Example
-
-### 1건의 데이터 입력
+### EXAM)
+### exA) 1건의 데이터 입력
 ```sql
 insert into table_name (col1, col2, ...) values (val, val2, ...)
 insert into table_name values (val, val2, ...)
 ```
 
-### 조회된 건수만큼 입력
+### exB) 조회된 건수만큼 입력
 ```sql
 insert into table_name (col1, col2, ...) select ...
 insert into table_name select ...
@@ -58,14 +61,13 @@ insert into ex3_1 (col2) values (365) ;
 insert into ex3_1 values ('hong', 3600, sysdate) ; 
 ```
 
-### 1.급여가 10000이상인 사원만 조회
+### exA) 급여가 10000이상인 사원만 조회
 ```sql
 select employee_id, emp_name, salary
 from employees
 where salary >= 10000 ;
 ```
 
-## 2.조회된 정보를 INSERT
 ### TABLE ex3_2
 ```sql
 create table ex3_2 (
@@ -83,7 +85,6 @@ insert into ex3_2 (emp_id, emp_name, salary)
 	 where salary >= 10000 ;
 ```
 
-
 ## ALTER
 ### 외래키(FOREIGN KEY) 제약조건(CONSTRAINT) 설정 
 * p.65
@@ -95,11 +96,12 @@ alter table employees
     foreign key (department_id)
       references departments(department_id) ;
 ```
-### exam
+
+### EXAM)
+### exA)
 * EMPLOYEES table에 job_id column이 있습니다
 * JOBS table에 job_id column을 외래키로 설정을 하시오.
 * (JOBS를 references하여 JOBS.job_id를 foreign key를 constraint 한다)
-
 ```sql
 alter table EMPLOYEES
   add constraint fk_job_emp_job_id
@@ -112,8 +114,7 @@ alter table EMPLOYEES
 ```sql
 update employees
   set job_id = 'HONG'
-    where employee_id = 100
-; 
+    where employee_id = 100 ; 
 ```
 * error가 발생한다.
 * "parent key not found". 외래키 제약에 의하여
@@ -141,14 +142,13 @@ insert into ex2_6 (age, gender) values (45, '남') ;
 insert into ex2_6 (age, gender) values (25, '남자') ; -- error gender column
 ```
 
-
 ### using DROP
 ```sql
 drop table jobs ;
 ```
 * error:unique/primary keys in table referenced by foreign key
 
-### cascade constraints
+### CASCADE constraints
 ```sql
 drop table jobs cascade constraints ;
 ```

@@ -1,8 +1,8 @@
-2일차
+DAY-2
 =====
 - - -
 
-* CREATE TABLE \`table\`
+* CREATE TABLE `table`
 * INSERT INTO `table` VALUES (val1, val2, val3)
 * SELECT * FROM `table`
 - - -
