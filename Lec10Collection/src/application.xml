@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>JDBC Configuration</comment>
+<entry key="server.ip">192.168.20.14</entry>
+<entry key="user">java</entry>
+<entry key="url">jdbc:oracle:thin@127.0.0.1:1521:XE</entry>
+<entry key="password">oracle</entry>
+<entry key="profile.active">dev</entry>
+<entry key="common.hello">Hello {0}.</entry>
+<entry key="driver">oracle.jdbc.driver.OracleDriver</entry>
+</properties>

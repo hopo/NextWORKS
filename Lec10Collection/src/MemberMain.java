@@ -4,16 +4,18 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+// solution.01
 public class MemberMain {
 
 	public static void main(String[] args) throws IOException {
 
-		// !!! 입력 받을 준비
+		// ! 입력 받을 준비
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		List<Member> members = new ArrayList<Member>();
 		Member member = null;
 		char term;
 
+		// ! 입력
 		do {
 			member = new Member();
 
@@ -38,11 +40,14 @@ public class MemberMain {
 
 		} while (term == 'y');
 
-		// !!! 출력이요
+		// ! 출력이요
 		System.out.println("============= 회원목록 =============");
 		System.out.println("이름\t 나이\t 성별\t 전화번호");
 		for (Member m : members) {
-			System.out.printf("%s\t %d\t %c\t %s\n", m.getName(), m.getAge(), m.getGender(), m.getPhone());
+			System.out.printf(
+				"%s\t %d\t %c\t %s\n",
+				m.getName(), m.getAge(), m.getGender(), m.getPhone()
+			);
 		}
 		System.out.println("==================================");
 
