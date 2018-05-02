@@ -3,6 +3,12 @@
 --
 
 
+-- replace(), lpad()
+-- decode(), trunc()
+-- variance(), stddev()
+
+
+
 -- ## EXAM
 -- p150
 

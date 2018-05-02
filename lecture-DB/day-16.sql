@@ -2,6 +2,8 @@
 -- day-16 --
 -- ======
 
+-- Semi Join, Anti Join, Self Join, OUTER JOIN(외부)
+-- - - -
 
 
 -- ## foreign key 추가
