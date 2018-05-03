@@ -1,7 +1,9 @@
 DAY-07
 ======
 - - -
-...ing
+
+* EXIST
+* LIKE, ESCAPE
 - - -
 
 
@@ -105,7 +107,7 @@ order by employee_id ;
 ```
 
 
-## LIKE
+## LIKE 02
 * INDEX p75
 * 고객명이 'Ann'으로 시작하는 고객을 조회
 * LIKE 'A%': 인덱스 사용
