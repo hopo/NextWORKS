@@ -3,44 +3,41 @@ DAY-09
 - - -
 
 ...ing
-- - -S
+* LPAD(), RPAD()
+* REPLACE()
+- - -
 
 
--- LPAD, RPAD
--- p133
+### LPAD(), RPAD()
+* p133
+```sql
 select emp_name, salary, lpad(salary, 4, '*'), rpad(salary, 10, '-') from employees;
+```
 
+### REPLACE()
+```sql
+select replace('나는 너를 모르는데 너는 나를 알겠는가?', '나', '너') from dual;
 
--- REPLACE
-select replace('나는 너를 모르는데 너는 나를 알겠는가?', '나', '너')
-from dual;
+select emp_name, replace(emp_name, 'a', 'ee'), salary from employees;
+```
 
-select emp_name, replace(emp_name, 'a', 'ee'), salary
-from employees;
+### exA) 
+```sql
+select emp_name, replace(emp_name, 'abcde', '12345'), salary from employees;
+```
 
-
--- 
-select emp_name, replace(emp_name, 'abcde', '12345'), salary
-from employees;
-
+### TRANSLATE()
+* 보안상 위험 하여 잘 사용하지는 않음
+```sql
 create table ex4_1 (
     emp_name varchar(100),
     salary number
-;
+);
 
+insert into ex4_1 select translate(emp_name, 'aeiou', '12345'), salary from employees ;
 
--- TRANSLATE
--- 보안상 위험 하여 잘 사용하지 않음
-insert into ex4_1
-select translate(emp_name, 'aeiou', '12345'), salary
-from employees
-;
-
-select translate(emp_name, '12345', 'aeiou'), salary
-    from ex4_1
-;
-
-commit;
+select translate(emp_name, '12345', 'aeiou'), salary from ex4_1 ;
+```
 
 
 -- INSTR
@@ -131,12 +128,8 @@ select * from employees;
 
 select sysdate, systimestamp from dual;
 
-rollback;
 
 
-
-
---
+- - - 
 -- day-09 end line --
---
 
