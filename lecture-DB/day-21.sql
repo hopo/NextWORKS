@@ -65,11 +65,11 @@ CONNECT BY
 SELECT department_id,
        level,
        lpad(' ', (level - 1) * 3)
-       || department_name,
+       || department_name AS dep_name,
        parent_id,
        CONNECT_BY_ROOT department_name AS root_name,
-       CONNECT_BY_ISLEAF isleaf,
-       sys_connect_by_path(department_name, '|') path
+       sys_connect_by_path(department_name, '|') path,
+       CONNECT_BY_ISLEAF isleaf
   FROM departments START WITH
     parent_id IS NULL -- 시작노드
 CONNECT BY
@@ -96,38 +96,60 @@ CONNECT
 BY
     level <= 12000;
 -- create table 결과 보기
-select * from ex7_1;
+SELECT *
+  FROM ex7_1;
     
 -- ## EXAM)
 -- ### exA)
 -- * 월별계산을 하다보니 빠진 달이 있는 어떤 해가 있다
 -- * 이를 개선하고자 열 두달이 존재하는 인라인 뷰가 필요하다
 -- * 1부터 12까지 존재하는 뷰를 만들어라
-select rownum rn, level lv   from dual connect by level <= 12;
+SELECT ROWNUM rn,
+       level lv
+  FROM dual CONNECT BY
+    level <= 12;
 
 -- ## LISTAGG(expr, delimiter) WITHIN GROUP (ORDER BY ~)
 -- * raw를 column으로 변환
 -- ### exA)
 -- * 사원테이블에서 부서별, 사원수, 최대급여 평균급여를 조회
-select department_id, count(1), max(salary), round(avg(salary), 2) as avg,
-    listagg(employee_id, ',') within group (order by emp_name) e_names
-from employees 
-group by department_id
-order by 1;
+SELECT department_id,
+       COUNT(1),
+       MAX(salary),
+       round(AVG(salary), 2) AS avg,
+       LISTAGG(employee_id, ',') WITHIN  GROUP(
+     ORDER BY emp_name
+) e_names
+  FROM employees
+ GROUP BY department_id
+ ORDER BY 1;
 
 -- ## EXAM)
 -- ### exA)
 -- * 사원테이블에서 60번 부서의 입사월별 사원수, 최대급여, 평균급여를 조회
 -- * 단, 모든 월이 나와야 합니다. (hire_date)
 -- ing
-select rownum rn from dual connect by level <= 12;
-select to_char(hire_date, 'MM'), emp_name from employees where department_id = 60;
-
-select rownum rn from dual connect by level <= 12;
-select to_char(hire_date, 'MM'), count(1), max(salary), avg(salary)
-from employees
-where department_id = 60
-group by hire_date;
+SELECT ROWNUM rn
+  FROM dual CONNECT BY
+    level <= 12;
+SELECT TO_CHAR(hire_date, 'MM'),
+       emp_name
+  FROM employees
+ WHERE department_id = 60;
+ 
+--
+SELECT ROWNUM rn
+  FROM dual CONNECT BY
+    level <= 12;
+    
+--
+SELECT TO_CHAR(hire_date, 'MM'),
+       COUNT(1),
+       MAX(salary),
+       AVG(salary)
+  FROM employees
+ WHERE department_id = 60
+ GROUP BY hire_date;
 
 --
 -- - - -
