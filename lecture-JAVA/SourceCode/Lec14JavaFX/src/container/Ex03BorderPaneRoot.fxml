@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+
+<BorderPane prefHeight="416.0" prefWidth="582.0"
+	xmlns:fx="http://javafx.com/fxml/1"
+	xmlns="http://javafx.com/javafx/8.0.141">
+	<top>
+		<ToolBar prefHeight="40.0" prefWidth="830.0"
+			BorderPane.alignment="CENTER">
+			<items>
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+				<Button mnemonicParsing="false" text="Button" />
+			</items>
+		</ToolBar>
+	</top>
+	<center>
+		<TextArea prefHeight="200.0" prefWidth="200.0"
+			BorderPane.alignment="CENTER" />
+	</center>
+	<bottom>
+		<HBox alignment="CENTER" prefHeight="60.0" prefWidth="582.0"
+			spacing="5.0" BorderPane.alignment="CENTER">
+			<children>
+				<TextField prefHeight="27.0" prefWidth="418.0" />
+				<Button mnemonicParsing="false" text="보내기" />
+			</children>
+		</HBox>
+	</bottom>
+</BorderPane>

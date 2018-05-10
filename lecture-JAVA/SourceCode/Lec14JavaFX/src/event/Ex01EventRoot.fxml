@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+
+<HBox alignment="CENTER" spacing="10" prefWidth="300"
+	prefHeight="200" xmlns:fx="http://javafx.com/fxml/1">
+
+	<padding>
+		<Insets topRightBottomLeft="10" />
+	</padding>
+	
+	<children>
+		<Button text="A-btn1" />
+		<Button text="A-btn2" />
+	</children>
+
+</HBox>
