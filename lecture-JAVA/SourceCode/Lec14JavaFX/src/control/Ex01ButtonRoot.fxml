@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane fx:controller="control.Ex01ButtonRootController" prefHeight="312.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+	<children>
+
+		<Separator layoutX="195.0" layoutY="24.0" orientation="VERTICAL" prefHeight="200.0" />
+		<Separator layoutX="497.0" layoutY="24.0" orientation="VERTICAL" prefHeight="200.0" />
+
+
+		<CheckBox fx:id="chkNikon" userData="Nikon.png" selected="true" layoutX="21.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleChkAction" text="Nikon" />
+		<CheckBox fx:id="chkCanon" userData="Canon.png" layoutX="21.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleChkAction" text="Canon" />
+		<CheckBox fx:id="chkSony" userData="Sony.png" layoutX="21.0" layoutY="75.0" mnemonicParsing="false" onAction="#handleChkAction" text="Sony" />
+
+		<VBox fx:id="imageBox" layoutX="88.0" layoutY="26.0" prefHeight="136.0" prefWidth="95.0" />
+		<!-- <children> </children> </VBox> -->
+
+
+		<RadioButton fx:id="rdoNikon" selected="true" layoutX="220.0" layoutY="25.0" mnemonicParsing="false" text="Nikon" userData="Nikon.png" />
+		<RadioButton fx:id="rdoCanon" layoutX="220.0" layoutY="50.0" mnemonicParsing="false" text="Canon" userData="Canon.png" />
+		<RadioButton fx:id="rdoSony" layoutX="220.0" layoutY="75.0" mnemonicParsing="false" text="Sony" userData="Sony.png" />
+
+		<ImageView fx:id="rdoImageView" fitHeight="136.0" fitWidth="143.0" layoutX="300.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+		
+
+		<!-- FXML 파일 안에서 선언 -->
+		<fx:define>
+			<ToggleGroup fx:id="togGroup"></ToggleGroup>	
+		</fx:define>
+
+		<!-- id를 참조시 `$` -->
+		<ToggleButton toggleGroup="$togGroup" selected="true" layoutX="540.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Minor">
+			<userData><Color fx:constant="GREEN" /></userData>
+		</ToggleButton>
+		<ToggleButton toggleGroup="$togGroup" layoutX="610.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Major">
+			<userData><Color fx:constant="YELLOW" /></userData>
+		</ToggleButton>
+		<ToggleButton toggleGroup="$togGroup" layoutX="679.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="60.0" text="Critical">
+			<userData><Color fx:constant="RED" /></userData>
+		</ToggleButton>
+
+		<Rectangle fx:id="rectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="539.0" layoutY="63.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+
+
+		<!-- Controller에 있는 method를 바로 연결 onAction="#~" -->
+		<Button alignment="TOP_LEFT" layoutX="358.0" layoutY="260.0" mnemonicParsing="false" onAction="#handleClose" text="종료">
+
+			<tooltip>
+				<Tooltip text="화면종료" />
+			</tooltip>
+
+			<graphic>
+				<ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+					<image>
+						<Image url="@../res/images/x.png" />
+					</image>
+				</ImageView>
+			</graphic>
+
+		</Button>
+
+	</children>
+</AnchorPane>
