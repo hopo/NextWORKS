@@ -1,0 +1,22 @@
+
+
+#
+# Oracle DB dump export/import
+
+
+# help
+exp help=y
+
+
+# export db
+exp java/oracle file=dbdump.dmp full=y log=dbdump.log
+
+
+# export table
+exp java/oracle file=tabledump.dmp tables=ex2_10,ex2_11 log=dbdump.log
+
+
+# import command 
+imp system/oracle file=java2.dmp fromuser=java touser=java log=java2.log igonore=y
+
+
