@@ -26,7 +26,10 @@ public class Ex02InputRootController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObservableList<String> items;
-		items = FXCollections.observableArrayList( new String("공개"), "비공개" );
+		items = FXCollections.observableArrayList(
+					new String("공개"),
+					new String("비공개")
+				);
 				
 		cmbOpen.setItems(items);
 		

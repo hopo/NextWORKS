@@ -3,12 +3,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 class Hello {
-
 	public String name;
 
-	public Hello() {
-	}
-
+	public Hello() {}
 	public Hello(String name) {
 		this.name = name;
 	}
@@ -20,7 +17,6 @@ class Hello {
 	public void sayHello(String name) {
 		System.out.println(name + "Hello :)"); // parameter name
 	}
-
 }
 
 public class Ex03Class {
@@ -33,9 +29,10 @@ public class Ex03Class {
 		m.setName("Lee San");
 
 		// #2. Static Loads
-		Class cls = Member.class; // Class cls = m.getClass();
+		Class cls = Member.class; // (=) Class cls = m.getClass();
 
-		// ;InstantiationException -> 생성자 호출 e ;IllegalAccessException -> 생성자 접급 제어 e
+		// ;; InstantiationException -> 생성자 호출 e
+		// ;; IllegalAccessException -> 생성자 접급 제어 e
 		Object obj = cls.newInstance(); // new Member(); 와 같다,
 
 		Member m2 = (Member) obj;

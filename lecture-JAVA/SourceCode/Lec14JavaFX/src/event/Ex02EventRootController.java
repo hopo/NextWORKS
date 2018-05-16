@@ -10,12 +10,9 @@ import javafx.scene.control.Button;
 
 public class Ex02EventRootController implements Initializable {
 
-	@FXML
-	Button btn1; // ;Dependency Injenction => 제어의 역전(IoC)
-	@FXML
-	Button btn2;
-	@FXML
-	Button btn3;
+	@FXML Button btn1; // ;Dependency Injenction => 제어의 역전(IoC)
+	@FXML Button btn2;
+	@FXML Button btn3;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
