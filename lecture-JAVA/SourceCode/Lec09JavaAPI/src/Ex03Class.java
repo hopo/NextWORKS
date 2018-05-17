@@ -45,27 +45,27 @@ public class Ex03Class {
 		// ClassNotFoundException 없는 클래스 이름을 입력 e
 		Class clazz = Class.forName(className);
 
-		System.out.println("Class Name: " + clazz.getName()); // get full-name
-		System.out.println("Class Name: " + clazz.getSimpleName());
+		System.out.println("Class / getName(): " + clazz.getName()); // get full-name
+		System.out.println("Class / getSimpleName(): " + clazz.getSimpleName());
 
 		// !!! Reflection을 위하 클래스 예제
 
 		// Constructor Info
-		System.out.println("=== INFO Constructors ===");
+		System.out.println("\n=== INFO Constructors ===");
 		Constructor[] constructors = clazz.getConstructors();
 		for (int i = 0; i < constructors.length; i++) {
 			System.out.println(constructors[i]);
 		}
 
 		// ;Fields Info
-		System.out.println("=== INFO Fields ===");
+		System.out.println("\n=== INFO Fields ===");
 		Field[] fields = clazz.getFields();
 		for (int i = 0; i < fields.length; i++) {
 			System.out.println(fields[i]);
 		}
 
 		// ;Methods Info
-		System.out.println("=== INFO Methods ===");
+		System.out.println("\n=== INFO Methods ===");
 		Method[] methods = clazz.getMethods();
 		for (int i = 0; i < methods.length; i++) {
 			System.out.println(methods[i]);
