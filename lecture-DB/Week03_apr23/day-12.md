@@ -3,34 +3,36 @@ DAY-12
 ======
 - - -
 
-...ing
+* GROUP BY clause, HAVING clause
+* CASE(), DECODE()
+* UNION, UNION ALL, INTERSECT, MINUS
 - - -
 
 
 ## 집계함수 (계속)
+### exA)
+* 사원에서 최고급여(MAX salary), 최소급여(MIN salary), 가장 최근 입사일을 구하세요
+```sql
+SELECT MAX(salary), MIN(salary), MAX(hire_date) FROM employees ;
+SELECT MAX(salary), MIN(salary), SUM(salary) FROM employees ;
+```
 
--- 사원에서 최고급여(MAX salary), 최소급여(MIN salary), 가장 최근 입사일을 구하세요
-SELECT MAX(salary), MIN(salary), MAX(hire_date)
-FROM employees ;
+## GROUP BY clause, HAVING clause
+* p156
 
--- SUM salary
-SELECT MAX(salary), MIN(salary), SUM(salary)
-FROM employees ;
-
-
--- ## GROUP BY clause and HAVING clause
--- p156
-
-
--- 부서별(department_id) 최고급여, 최소급여, 총급여를 구하세요
+### exA)
+* 부서별(department_id) 최고급여, 최소급여, 총급여를 구하세요
+```sql
 SELECT department_id, MAX(salary), MIN(salary), SUM(salary)
 FROM employees
 GROUP BY department_id
 ORDER BY department_id ;
--- SELECT clause에서 표기를 위해서는 department_id를 같이 조회한다
+```
+* SELECT clause에서 표기를 위해서는 department_id를 같이 조회한다
 
-
--- 부셔별 사원수, 총급여 평균급여를 조회해 주세요
+### exB)
+* 부셔별 사원수, 총급여 평균급여를 조회해 주세요
+```sql
 SELECT department_id,
     COUNT(*), -- count(1), -- count(employee_id), SUM(1),
     SUM(salary),
@@ -38,9 +40,10 @@ SELECT department_id,
 FROM employees
 GROUP BY department_id
 ORDER BY department_id ;
+```
 
-
--- COUNT() SUM()의 parameter에 따라서의 값
+* COUNT() SUM()의 parameter에 따라서의 값
+```sql
 SELECT department_id,
     COUNT(employee_id), -- PK일 경우
     COUNT(1),
@@ -50,60 +53,71 @@ SELECT department_id,
 FROM employees
 GROUP BY department_id
 ORDER BY department_id ;
+```
 
 
--- Table kor_loan_status
--- 2013년 지역별, 총 대출잔액을 조회
+### exC)
+* Table kor_loan_status, 2013년 지역별, 총 대출잔액을 조회
+```sql
 SELECT region, period, SUM(loan_jan_amt)
 FROM kor_loan_status
 WHERE period LIKE '2013%'
 GROUP BY region, period
 ORDER BY region, period ;
--- GROUP 별로 집계할 때 표기를 위해 SELECT 에 column name을 쓴다
+```
 
 
--- 2013년 대출상태 별, 총 대출잔액, 평균 대출잔액을 조회해 주세요
+### exD)
+* 2013년 대출상태 별, 총 대출잔액, 평균 대출잔액을 조회해 주세요
+```sql
 SELECT gubun, SUM(loan_jan_amt), AVG(loan_jan_amt)
 FROM kor_loan_status
 WHERE period LIKE '2013%'
 GROUP BY gubun
 ORDER BY gubun ;
+```
 
 
--- ## 집계함수의 위치!
--- WHERE AND 위치
+### 집계함수에서의 위치!
+
+* WHERE clause의 위치
+```sql
 SELECT region, period, SUM(loan_jan_amt)
 FROM kor_loan_status
-WHERE period like '2013%'
-    AND SUM(loan_jan_amt) > 100000 -- Error
+WHERE period like '2013%' AND SUM(loan_jan_amt) > 100000 -- Error
 GROUP BY region, period
 ORDER BY region, period ;
+
 -- Error : "GROUP function is not allowed here"
+```
 
--- using HAVING clause
--- GROUP BY 다음
-SELECT region, period, SUM(loan_jan_amt)
+* HAVING clause의 위치
+```sql
+SELECT region, period, sum(loan_jan_amt)
 FROM kor_loan_status
 WHERE period like '2013%'
 GROUP BY region, period
-    having SUM(loan_jan_amt) > 100000
+	HAVING sum(loan_jan_amt) > 100000
 ORDER BY region, period ;
+-- GROUP BY 다음
+```
 
-
--- 부서별로 총급여, 사원수를 조회하세요
--- 단, 건수가 3건이상인고 평균급여가 5000이상이어야 한다
+### EXAM
+### exA)
+* 부서별로 총급여, 사원수를 조회하세요
+* 단, 건수가 3건이상인고 평균급여가 5000이상이어야 한다
+```sql
 SELECT department_id, SUM(salary), COUNT(*)
 FROM employees
 GROUP BY department_id
-    HAVING COUNT(*) > 3
-        AND AVG(salary) > 5000
+    HAVING COUNT(*) > 3 AND AVG(salary) > 5000
 ORDER BY department_id ;
+```
 
-
--- EXAM
--- 1)
--- 사원테이블에서 입사년도별 사원수, 최고급여, 최저급여 평균급여를 조회해 주세요
--- 입사일(hire_date)
+### exB)
+* 사원테이블에서 입사년도별 사원수, 최고급여, 최저급여 평균급여를 조회해 주세요
+* 입사일(hire_date)
+```sql
 select to_char(hire_date, 'YYYY'),
     count(*),
     max(salary),
@@ -113,22 +127,25 @@ from employees
 group by to_char(hire_date, 'YYYY')
 order by 1 ; -- to_char(hire_date, 'YYYY') ;
 -- ORDER BY 1 : select clause에서 첫번째
+```
 
 
--- 2)
--- 사원테이블에서 부서별, 입사 월별, 사원수 조회해 주세요
+### exC)
+* 사원테이블에서 부서별, 입사 월별, 사원수 조회해 주세요
+```sql
 select department_id,
     to_char(hire_date, 'MM'),
     count(*)
 from employees
 group by department_id, to_char(hire_date, 'MM')
 order by 1, 2 ;
+```
 
 
--- 3)
--- 사원테이블에서 입사년, 월별, 사원수를 조회해 주세요
--- 단, 월을 행단위로 출려기 아닌 열에 표현하도록
-
+### exD)
+* 사원테이블에서 입사년, 월별, 사원수를 조회해 주세요
+* 단, 월을 행단위로 출려기 아닌 열에 표현하도록
+```sql
 -- using DECODE()
 select department_id,
     sum(decode(to_char(hire_date, 'MM'), '01', 1, 0)) as jan,
@@ -147,7 +164,10 @@ select department_id,
 from employees
 group by department_id
 order by 1 ;
+```
 
+### exD2)
+```sql
 -- using CASE
 select department_id,
     sum(case to_char(hire_date, 'MM') when '01' then 1 else 0 end) as jan,
@@ -167,18 +187,20 @@ from employees
 group by department_id
 order by 1 ;
 
--- for test query
+-- 확인
 select department_id,
-    case to_char(hire_date, 'MM') when '01' then 1 else 0 end
+	case to_char(hire_date, 'MM') when '01' then 1 else 0 end
 from employees
 where department_id = 50 ;
+```
 
 
+## 집합연산자
+* p163
+* UNION, UNION ALL, INTERSECT, MINUS
 
--- ## 집합연산자
--- p163
--- UNION, UNION ALL, INTERSECT, MINUS
-
+### exA)
+```sql
 -- (A)사원테이블에서 job_id = 'IT_PROG'
 select employee_id, emp_name, salary
 from employees
@@ -189,42 +211,47 @@ select employee_id, emp_name, salary
 from employees
 where salary >= 9000 ; -- 27rows
 
--- A union B
+-- A UNION B
 select employee_id, emp_name, salary from employees where job_id = 'IT_PROG' --5rows
-union
+UNION
 select employee_id, emp_name, salary from employees where salary >= 9000 ; -- 27rows
 -- (5 + 27) - 1(;중복) = 36rows
 -- 정렬도 한다
+```
 
--- A union all B
+```sql
+-- A UNION all B
 select employee_id, emp_name, salary from employees where job_id = 'IT_PROG' --5rows
-union all
+UNION ALL
 select employee_id, emp_name, salary from employees where salary >= 9000 ; -- 27rows
 -- 때려 붙이기만 한다
 
--- A intersect B
+-- A INTERSECT B
 select employee_id, emp_name, salary from employees where job_id = 'IT_PROG' --5rows
-intersect
+INTERSECT
 select employee_id, emp_name, salary from employees where salary >= 9000 ; -- 27rows
 
--- A minus B
+-- A MINUS B
 select employee_id, emp_name, salary from employees where job_id = 'IT_PROG' --5rows
-minus
+MINUS
 select employee_id, emp_name, salary from employees where salary >= 9000 ; -- 27rows
 
--- B minus A
+-- B MINUS A
 select employee_id, emp_name, salary from employees where salary >= 9000 -- 27rows
-minus
+MINUS
 select employee_id, emp_name, salary from employees where job_id = 'IT_PROG' ; --5rows 
+```
 
 
--- ### 예제
+### exB)
+```sql
 select employee_id, emp_name as EMPLOYEE_FULL_NAME, salary from employees where job_id = 'IT_PROG'
-union all
+UNION ALL
 select employee_id, emp_name, null from employees where salary >= 9000
 order by 3 desc ;
--- coulumn 수를 맞춘다 (using null)
--- order by의 위치는 마지막
+```
+* coulumn 수를 맞춘다 (using null)
+* order by의 위치는 마지막
     
 
 - - -
