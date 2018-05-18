@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+
+
+<HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="250.0"
+	spacing="10.0" style="-fx-background-color: #181818; -fx-background-radius: 5;"
+	xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141">
+
+	<children>
+		<ImageView id="imageView" fitHeight="28.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@../res/images/warning.png" />
+			</image>
+		</ImageView>
+		<Label id="lblMessage" text="MESSAGE" textFill="#eeeeee" />
+	</children>
+
+	<padding>
+		<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+	</padding>
+
+</HBox>
