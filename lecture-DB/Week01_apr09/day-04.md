@@ -26,7 +26,7 @@ order by salary ;
 
 ## DML(INSERT, UPDATE, DELETE, SELECT)
 
-## INSERT (raw단위)
+## INSERT (row단위)
 ### EXAM)
 ### exA) 1건의 데이터 입력
 ```sql
