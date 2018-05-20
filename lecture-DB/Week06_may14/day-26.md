@@ -4,6 +4,8 @@ DAY-26
 
 * DECLARE, BEGIN, END
 * IF statement
+* CASE state
+* WHILE state
 - - -
 
 ## PL/SQL
@@ -60,8 +62,9 @@ end;
 /
 ```
 
--- ### exB)
--- * 100 사원의 이름, 급여를 변수에 담아 출력하는 익명블럭을 생성하라
+### exB)
+* 100 사원의 이름, 급여를 변수에 담아 출력하는 익명블럭을 생성하라
+```sql
 declare
     v_name employees.emp_name%type;
     v_sal employees.salary%type;
@@ -71,9 +74,12 @@ begin
     dbms_output.put_line('v_sal = ' || v_sal);
 end;
 /
+```
 
--- ### self-check. p272
--- ### 문제3)
+### self-check
+* p272
+### 문제3)
+```sql
 declare
     v_name employees.emp_name%type;
     v_sal employees.salary%type;
@@ -89,9 +95,11 @@ end;
 
 -- 인서트한 것을 조회
 select * from ex7_3;
+```
 
--- ### CASE state
--- ### exA)
+### CASE state
+### exA)
+```sql
 DECLARE
     v_num NUMBER := 77;
 BEGIN
@@ -105,10 +113,12 @@ BEGIN
     END CASE;
 END;
 /
+```
 
--- ### exB)
--- * 121번 사원의 salary를 조회 하여
--- * 10000 초과면 관리자, 10000~5000 일반관리자, 그 밖엔 사원을 출력
+### exB)
+* 121번 사원의 salary를 조회 하여
+* 10000 초과면 관리자, 10000~5000 일반관리자, 그 밖엔 사원을 출력
+```sql
 declare
     v_sal employees.salary%type;
 begin
@@ -120,9 +130,11 @@ begin
     end case;
 end;
 /
+```
 
--- ### WHILE state
--- ### exA)
+### WHILE state
+### exA)
+```sql
 DECLARE
     v_sum NUMBER := 0;
     v_var NUMBER := 1;
@@ -135,10 +147,11 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('1 부터 10 까지의 합 = ' || v_sum);
 END;
 /
+```
 
 
 
 
--- - - -
+- - -
 -- DAY-26 end line --
-COMMIT;
+
