@@ -9,7 +9,7 @@ create user java identified by oracle
 default tablespace study;
 
 grant connect to java;
-grant resource to java
+grant resource to java;
 
 
 

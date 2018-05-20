@@ -4,6 +4,7 @@ DAY-11
 
 * REPLACE(), LPAD()
 * DECODE(), TRUNC()
+* Aggregate function(집계함수)
 * COUNT(), MAX(), MIN(), SUM(), AVG()
 * ALL and DISTINCT
 * VARIANCE(), STDDEV()
@@ -17,13 +18,13 @@ DAY-11
 * 사원(employees)테이블에 전화번호(phone_number)에서
 * 처음 3자리 숫자 대신 '(02)'를 붙여서 조회해 주세요.
 ```sql
-select phone_number, replace( phone_number, substr(phone_number, 1, 4), '(02)' )
+select phone_number, replace(phone_number, substr(phone_number, 1, 4), '(02)' )
 from employees ;
 ```
 
 ### exA2)
 ```sql
-select phone_number, lpad( substr(phone_number, 5, 12), 12, '(02)' )
+select phone_number, lpad(substr(phone_number, 5, 12), 12, '(02)')
 from employees ;
 ```
 
@@ -112,7 +113,7 @@ from customers ;
 ```
 
 
-## 집계함수
+## Aggregate function(집계함수)
 * p152
 * 대표적 5개 집계함수
 * 건수(count), 최대(max), 최소(min), 합(sum), 평균(avg)

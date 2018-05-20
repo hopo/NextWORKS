@@ -2,9 +2,9 @@ DAY-2
 =====
 - - -
 
-* CREATE TABLE `table`
-* INSERT INTO `table` VALUES (val1, val2, val3)
-* SELECT * FROM `table`
+* CREATE TABLE 
+* INSERT INTO ~ VALUES (val1, val2, val3)
+* SELECT * FROM ~
 - - -
 
 ### 테이블 ex2_2 CREATE

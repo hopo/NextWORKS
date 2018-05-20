@@ -1,4 +1,4 @@
-DAY-6
+DAY-06
 =====
 - - -
 
@@ -198,5 +198,7 @@ SELECT employee_id, emp_name, salary, job_id
 FROM employees
 
 
+- - -
+-- DAY-06 end line -
 
 

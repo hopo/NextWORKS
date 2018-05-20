@@ -10,7 +10,7 @@ DAY-4
 ### SELECT를 이용하여 조회
 ```sql
 select a.col, b.col1, b.col2. c.*
-	from a, b, c ;
+from a, b, c ;
 ```
 * ex) a.col: 테이블a의 칼럼 col
 
@@ -27,7 +27,7 @@ order by salary ;
 ## DML(INSERT, UPDATE, DELETE, SELECT)
 
 ## INSERT (row단위)
-### EXAM)
+### EXAM
 ### exA) 1건의 데이터 입력
 ```sql
 insert into table_name (col1, col2, ...) values (val, val2, ...)
@@ -92,29 +92,29 @@ insert into ex3_2 (emp_id, emp_name, salary)
 ### using ALTER
 ```sql
 alter table employees
-  add constraint fk_dept_emp_department_id
-    foreign key (department_id)
-      references departments(department_id) ;
+add constraint fk_dept_emp_department_id
+foreign key (department_id)
+references departments(department_id) ;
 ```
 
-### EXAM)
+### EXAM
 ### exA)
 * EMPLOYEES table에 job_id column이 있습니다
 * JOBS table에 job_id column을 외래키로 설정을 하시오.
 * (JOBS를 references하여 JOBS.job_id를 foreign key를 constraint 한다)
 ```sql
 alter table EMPLOYEES
-  add constraint fk_job_emp_job_id
-	foreign key (job_id)
-	  references JOBS(job_id) ;
+add constraint fk_job_emp_job_id
+foreign key (job_id)
+references JOBS(job_id) ;
 ```
 
 
 ### using UPDATE
 ```sql
 update employees
-  set job_id = 'HONG'
-    where employee_id = 100 ; 
+set job_id = 'HONG'
+where employee_id = 100 ; 
 ```
 * error가 발생한다.
 * "parent key not found". 외래키 제약에 의하여

@@ -109,8 +109,8 @@ where employee_id = 198;
 
 ### ExC)
 ```sql
-create or replace view v_emp
-	(emp_id, emp_name, salary, dept_id)
+create or replace
+view v_emp (emp_id, emp_name, salary, dept_id)
 as
 select employee_id, emp_name, salary, department_id
 from employees
@@ -140,5 +140,5 @@ select sysdate, systimestamp from dual;
 ```
 
 - - - 
--- day-09 end line --
+-- DAY-09 end line --
 
