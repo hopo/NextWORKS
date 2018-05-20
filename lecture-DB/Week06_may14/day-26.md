@@ -2,7 +2,8 @@ DAY-26
 ======
 - - -
 
-* DECALRE, BEGIN, END
+* DECLARE, BEGIN, END
+* IF statement
 - - -
 
 ## PL/SQL
@@ -27,7 +28,8 @@ END;
 /
 ```
 
--- ### IF statement
+### IF statement
+```sql
 DECLARE
     v_num NUMBER := 77;
 BEGIN
@@ -43,11 +45,12 @@ BEGIN
     END IF;
 END;
 /
+```
 
-
--- ### EXAM)
--- ### exA)
--- * 사원의 평균급여를 변수에 담아 출력하는 익명블럭을 생성하라
+### EXAM
+### exA)
+* 사원의 평균급여를 변수에 담아 출력하는 익명블럭을 생성하라
+```sql
 declare
     v_avg number;
 begin
@@ -55,6 +58,7 @@ begin
     dbms_output.put_line('v_avg = ' || v_avg);
 end;
 /
+```
 
 -- ### exB)
 -- * 100 사원의 이름, 급여를 변수에 담아 출력하는 익명블럭을 생성하라

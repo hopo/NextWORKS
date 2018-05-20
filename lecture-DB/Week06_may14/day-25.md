@@ -158,6 +158,7 @@ order by hire_date ;
 ### 문제5)
 * 지역별, 대출종류별, 총 대출잔액과 지역별 파티션을 만들어
 * 대출 종류별 대출 잔액
+```sql
 with t1 as (
     		select region, gubun,
 				sum(case period when '201111' then loan_jan_amt else 0 end) as s1,
@@ -179,7 +180,7 @@ select region, gubun,
     s6 || '( ' || round(ratio_to_report(s6) over(partition by region) *100) || '% )' as d6,
     s7 || '( ' || round(ratio_to_report(s7) over(partition by region) *100) || '% )' as d7
 from t1;
-
+```
 
 
 -- - - -
