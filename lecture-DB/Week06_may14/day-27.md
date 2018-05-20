@@ -3,6 +3,9 @@ DAY-27
 - - -
 
 * WHILE statement
+* GOTO
+* EXIT
+* FOR statement
 - - -
 
 ## PL/SQL
@@ -23,32 +26,35 @@ END;
 ```
 
 ### exB) 별 출력2
+```sql
 DECLARE
     v_id NUMBER := 0;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('');
     WHILE v_id < 10 LOOP
-        DBMS_OUTPUT.PUT_LINE(RPAD(' ', 10-v_id) || RPAD( '*', (v_id*2)+1, '*' ));
+        DBMS_OUTPUT.PUT_LINE(rpad(' ', 10-v_id) || rpad( '*', (v_id*2)+1, '*' ));
         v_id := v_id + 1;
     END LOOP;
 END;
 /
+```
 
--- ### exB2) 별 출력2-2
+### exB2) 별 출력2-2
 DECLARE
     v_id NUMBER := 1;
     v_s number := 10;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('');
     WHILE v_id < 20 LOOP
-        DBMS_OUTPUT.PUT_LINE(LPAD(' ', v_s) || RPAD( '*', v_id, '*' ));
+        DBMS_OUTPUT.PUT_LINE(lpad(' ', v_s) || rpad( '*', v_id, '*' ));
         v_id := v_id + 2;
         v_s := v_s -1;
     END LOOP;
 END;
 /
 
--- ### exC) 3단
+### exC) 3단
+```sql
 declare
     v_dan number;
     v_i number;
@@ -61,15 +67,17 @@ begin
     end loop;
 end;
 /
+```
 
--- ### exD) 구구단
+### exD) 구구단
+```sql
 DECLARE
     v_dan NUMBER := 2;
     v_i NUMBER := 1;
 BEGIN
     WHILE v_dan < 10 LOOP
         WHILE v_i < 10 LOOP
-            DBMS_OUTPUT.PUT_LINE( v_dan || ' * ' || v_i || ' = ' || (v_dan * v_i) );
+            DBMS_OUTPUT.PUT_LINE(v_dan || ' * ' || v_i || ' = ' || (v_dan * v_i) );
             v_i := v_i + 1;
         END LOOP;
         v_i := 2;
@@ -77,9 +85,11 @@ BEGIN
     END LOOP;
 END;
 /
+```
 
--- ### GOTO
--- ### exA)
+### GOTO
+### exA)
+```sql
 DECLARE
     v_sum INT := 0;
     v_var INT := 1;
@@ -94,9 +104,11 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE(v_var);
 END;
 /
+```
 
--- ### LOOP statement
--- ### exA)
+### LOOP statement
+### exA)
+```sql
 DECLARE
     v_sum NUMBER := 0;
     v_var NUMBER := 1;
@@ -111,9 +123,11 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('LOOP: 1 부터 10 까지의 합 = ' || v_sum);
 END;
 /
+```
 
--- ### EXIT
--- ### exA)
+### EXIT
+### exA)
+```sql
 DECLARE
     v_sum NUMBER := 0;
     v_var NUMBER := 1;
@@ -126,17 +140,21 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('EXIT: 1 부터 10 까지의 합 = ' || v_sum);
 END;
 /
+```
 
--- ### FOR statement
--- ### exA)
+### FOR statement
+### exA)
+```sql
 BEGIN
     FOR i IN 1..10 LOOP
         DBMS_OUTPUT.PUT_LINE( 'i = ' || i );
     END LOOP;
 END;
 /
+```
 
--- ### exB) 구구단
+### exB) 구구단
+```sql
 BEGIN
     FOR v_dan IN 2..9 LOOP
         FOR v_i IN 1..9  LOOP
@@ -145,8 +163,9 @@ BEGIN
     END LOOP;
 END;
 /
+```
 
 
--- - - -
+- - -
 -- DAY-27 end line --
-commit ;
+
