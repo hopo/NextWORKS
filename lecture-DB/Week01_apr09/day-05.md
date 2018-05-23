@@ -36,7 +36,7 @@ insert into ex2_10 values ('Hello World', 'malja', sysdate) ;
 ```
  * 일부 size error
 
-### MODIFY 를 size이용하여 늘린다
+### MODIFY를 이용하여  size를 늘린다
 ```
 alter table ex2_10 modify col11 varchar(20);
 ```

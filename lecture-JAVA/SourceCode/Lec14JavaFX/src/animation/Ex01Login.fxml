@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane fx:id="login" style="-fx-background-color:#eaeaea" prefHeight="500" prefWidth="500" xmlns:fx="http://javafx.com/fxml/1"
+	xmlns="http://javafx.com/javafx/8.0.141" fx:controller="animation.Ex01LoginController">
+
+	<top>
+		<BorderPane prefHeight="57.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+
+			<left>
+				<Button fx:id="btnMain" mnemonicParsing="false" text="메인" BorderPane.alignment="CENTER" onAction="#handleMain" />
+			</left>
+			<center>
+				<Label text="로그인 화면" BorderPane.alignment="CENTER" />
+			</center>
+			<padding>
+				<Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+			</padding>
+
+		</BorderPane>
+	</top>
+
+	<center>
+		<AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+			<children>
+
+				<Label layoutX="105.0" layoutY="96.0" text="아이디" />
+				<TextField layoutX="162.0" layoutY="91.0" />
+
+				<Label layoutX="105.0" layoutY="126.0" text="패스워드" />
+				<PasswordField layoutX="162.0" layoutY="129.0" />
+
+				<Button layoutX="162.0" layoutY="222.0" mnemonicParsing="false" text=" 로그인" />
+				<Button layoutX="250.0" layoutY="222.0" mnemonicParsing="false" text="취소" />
+
+			</children>
+		</AnchorPane>
+	</center>
+
+</BorderPane>
