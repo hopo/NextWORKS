@@ -16,10 +16,8 @@ public class BankAccount {
 	public synchronized void deposit(int amount) {
 		int balance = getBalance();
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-		}
+		try { Thread.sleep(2000); }
+		catch (InterruptedException e) {}
 
 		setBalance(balance + amount); // 지역변수 balance에 파라미터 amount를 더한다
 	}
@@ -32,15 +30,12 @@ public class BankAccount {
 
 			int balance = getBalance();
 
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-			}
+			try { Thread.sleep(500); }
+			catch (InterruptedException e) {}
 
 			setBalance(balance - amount);
 			return amount;
 
 		}
 	}
-
 }
