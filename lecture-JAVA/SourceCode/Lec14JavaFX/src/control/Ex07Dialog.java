@@ -7,8 +7,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-// * 웹에서 Popup을 JavaFX에서는 Dialog(modal  성격)라고 부른다 *
-// * JavaFX에서 Popup(modeless 성격)을 작은 창들 *
+// * 웹에서 Popup을 JavaFX에서는 Dialog(modal 성격)라고 부른다 *
+// * JavaFX에서 Popup(modeless 성격)은 작은 창들 *
 public class Ex07Dialog extends Application {
 	
 	@Override
