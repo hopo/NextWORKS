@@ -1,0 +1,7 @@
+#edit file
+
+/etc/apache2/sites-enabled/000-default.conf
+    - Alias
+
+/etc/apache2/apache2.conf
+    - <Directory /> below
