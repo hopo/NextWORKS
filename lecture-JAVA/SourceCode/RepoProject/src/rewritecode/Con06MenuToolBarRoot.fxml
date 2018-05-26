@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.TextArea?>
+
+<BorderPane fx:controller="pc33.rewritecode.Con06MenuToolBarRootController" xmlns:fx="http://javafx.com/fxml/1">
+
+	<top>
+		<VBox>
+			<children>
+			
+				<!-- (1) MenuBar -->
+				<MenuBar>
+					<menus>
+
+						<!-- MenuBar/menus/Menu{File} -->
+						<Menu text="_File" mnemonicParsing="true">
+							<items>
+
+								<!-- MenuBar/menus/Menu{File}/MenuItem{New} -->
+								<MenuItem text="_New" mnemonicParsing="true" onAction="#handleNew">
+									<accelerator>
+										<KeyCodeCombination code="N" alt="UP" control="DOWN" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../../res/images/new.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</MenuItem>
+
+								<!-- MenuBar/menus/Menu{File}/MenuItem{Open} -->
+								<MenuItem text="Open" onAction="#handleOpen">
+									<accelerator>
+										<KeyCodeCombination code="O" alt="UP" control="DOWN" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../../res/images/open-folder.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</MenuItem>
+
+								<!-- MenuBar/menus/Menu{File}/MenuItem{Save} -->
+								<MenuItem text="Save" onAction="#handleSave">
+									<accelerator>
+										<KeyCodeCombination code="S" alt="UP" control="DOWN" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../../res/images/save.png" />
+											</image>
+										</ImageView>
+									</graphic>
+								</MenuItem>
+
+								<!-- MenuBar/menus/Menu{File}/SeparatorMenuItem -->
+								<SeparatorMenuItem />
+
+								<!-- MenuBar/menus/Menu{File}/MenuItem{Exit} -->
+								<MenuItem text="Exit" onAction="#handleExit">
+									<accelerator>
+										<KeyCodeCombination code="W" alt="UP" control="DOWN" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+
+							</items>
+						</Menu>
+
+						<!-- MenuBar/menus/Menu{Edit} -->
+						<Menu text="Edit" />
+
+						<!-- MenuBar/menus/Menu{Help} -->
+						<Menu text="Help" />
+
+					</menus>
+				</MenuBar>
+				
+				<!-- (2) ToolBar -->
+				<ToolBar>
+
+					<!-- ToolBar/items : Button{New} -->
+					<items>
+						<Button onAction="#handleNew">
+							<tooltip>
+								<Tooltip text="새로운파일" />
+							</tooltip>
+							<graphic>
+								<ImageView>
+								 	<image>
+								 		<Image url="@../../res/images/new.png" />
+								 	</image>
+								</ImageView>
+							</graphic>
+						</Button>
+					</items>
+
+					<!-- ToolBar/items : Button{Open} -->
+					<items>
+						<Button onAction="#handleOpen">
+							<tooltip>
+								<Tooltip text="파일열기" />
+							</tooltip>
+							<graphic>
+								<ImageView>
+									<image>
+										<Image url="@../../res/images/open-folder.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+					</items>
+
+					<!-- ToolBar/items : Button{Save} -->
+					<items>
+						<Button onAction="#handleSave">
+							<tooltip>
+								<Tooltip text="파일저장하기" />
+							</tooltip>
+							<graphic>
+								<ImageView>
+									<image>
+										<Image url="@../../res/images/save.png" />
+									</image>
+								</ImageView>
+							</graphic>
+						</Button>
+					</items>
+
+				</ToolBar>
+				
+			</children>
+		</VBox>
+	</top>
+	
+	<center>
+		<TextArea fx:id="textArea" />
+	</center>
+	
+</BorderPane>
+
