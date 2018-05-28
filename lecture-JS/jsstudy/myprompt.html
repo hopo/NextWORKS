@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myprompt.html</title>
+</head>
+
+<script>
+    "use strict"
+
+    function js_gugudan() {
+        // ! prompt()는 사용자의 입력을 기다림
+        var user_input = prompt("Q: 원하는 구구단 1~9 :", '2');
+        user_input = user_input - 0;
+        var js_gugu = "<table border='2'>";
+
+        // ! th 부분
+        js_gugu += "<tr>";
+        for (var n = 1; n <= user_input; n++) {
+            js_gugu += "<th>" + n + "단</th>";
+        }
+        js_gugu += "</tr>";
+
+        // ! td 부분
+        for (var i = 1; i <= 9; i++) {
+            js_gugu += "<tr>";
+            for (var n = 1; n <= user_input; n++) {
+                js_gugu += "<td>"
+                    + n + "x" + i + " = "
+                    + (n * i)
+                    + "</td>";
+            }
+            js_gugu += "</tr>";
+        }
+
+        js_gugu += "</table>";
+
+        // ; 확인용
+        alert("확인용: \n" + js_gugu);
+
+        var disp = document.getElementById("wrap");
+        disp.innerHTML = js_gugu;
+
+    }
+
+</script>
+
+<body>
+
+    <div id="wrap"></div>
+    <input type="button" value="값입력!" onclick="js_gugudan()">
+
+</body>
+
+</html>

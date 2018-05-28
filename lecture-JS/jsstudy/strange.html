@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>strange.html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    
+</head>
+
+<!-- 이벤트=이벤트 핸들러 -->
+<!--
+<body onload="js_minsung()">
+-->
+
+<body id="myBody">
+    <p>난 민성이염<br> 반갑ㅓㅓ!</p>
+
+    <script>
+            // ! function define
+            function js_minsung() {
+                myBody1 = document.getElementById("myBody");
+                // alert(myBody1.innerHTML);
+                myBody1.innerHTML = "<h1> 값이 바뀌었어요 </h1>";
+            }
+    
+            // ! function call
+            // js_minsung();    
+    
+            // ! js에서 핸들
+            window.onload=js_minsung();
+    
+        </script>
+    
+</body>
+
+</html>

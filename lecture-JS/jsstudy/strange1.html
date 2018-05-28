@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>strange1.html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+        "use strict"
+        /*
+        b = a++;
+            b = a;
+            a = a+1;
+        */
+
+        function ms_click() {
+            // 객체(요소) 접근
+            ms_yo = document.getElementById('js_ms');
+
+            // 객체(요소) 확인
+            alert(ms_yo.innerHTML);
+
+            // 객체(요소) 값 할당
+            ms_yo.innerHTML = ms_yo.innerHTML + "<br>추가내용";
+        }
+    </script>
+</head>
+
+
+<body id="myBody">
+    <div id='js_ms'>원래 값</div>
+    <input type="button" value="PUSH!" onClick="ms_click()">
+</body>
+
+</html>
