@@ -16,7 +16,7 @@
 
 
 <BorderPane prefHeight="300" prefWidth="504.0" xmlns:fx="http://javafx.com/fxml/1"
-	xmlns="http://javafx.com/javafx/8.0.141" fx:controller="fxgogo.Ex06MenuToolBarRootController">
+	xmlns="http://javafx.com/javafx/8.0.141" fx:controller="fxgogo.Pc33MenuToolBarRootController">
 
 	<top>
 		<VBox prefHeight="0.0" prefWidth="504.0" BorderPane.alignment="CENTER">
@@ -82,7 +82,7 @@
 					<items>
 						<Button onAction="#handleNew">
 							<tooltip>
-								<Tooltip text="새파일" />
+								<Tooltip text="tip-새파일" />
 							</tooltip>
 							<graphic>
 								<ImageView>
@@ -92,7 +92,7 @@
 						</Button>
 						<Button onAction="#handleOpen">
 							<tooltip>
-								<Tooltip text="파일열기" />
+								<Tooltip text="tip-파일열기" />
 							</tooltip>
 							<graphic>
 								<ImageView>
@@ -102,7 +102,7 @@
 						</Button>
 						<Button onAction="#handleSave">
 							<tooltip>
-								<Tooltip text="파일저장하기" />
+								<Tooltip text="tip-파일저장하기" />
 							</tooltip>
 							<graphic>
 								<ImageView>
