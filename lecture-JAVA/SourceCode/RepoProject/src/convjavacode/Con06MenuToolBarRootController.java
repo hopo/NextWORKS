@@ -1,4 +1,4 @@
-package conv.javacode;
+package convjavacode;
 
 import java.net.URL;
 import java.util.ResourceBundle;

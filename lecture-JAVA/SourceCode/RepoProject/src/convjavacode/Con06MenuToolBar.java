@@ -1,4 +1,4 @@
-package conv.javacode;
+package convjavacode;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

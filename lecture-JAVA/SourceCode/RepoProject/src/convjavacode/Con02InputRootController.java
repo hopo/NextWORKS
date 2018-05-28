@@ -1,4 +1,4 @@
-package conv.javacode;
+package convjavacode;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,7 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class Ex02InputRootController implements Initializable {
+public class Con02InputRootController implements Initializable {
 	
 	@FXML TextField txtTitle;
 	@FXML PasswordField txtPassword;
