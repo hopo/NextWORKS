@@ -1,4 +1,4 @@
-package fxgogo04;
+package notepadfx05;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -49,14 +49,14 @@ public class Pc33MenuToolBarRootController implements Initializable {
 
 		String text = ""; // ~~~ StringBuffer 생각해보자.
 		while (true) {
-			String str = reader.readLine();	// ;; readLine(): 라인 개행을 없애고 읽는다
+			String str = reader.readLine(); // ;; readLine(): 라인 개행을 없애고 읽는다
 			if (str == null) {
 				break;
 			}
 			text += str + "\n";
-			// writer.println(str); 	//;; consol출력시.
+			// writer.println(str); //;; console출력시.
 		}
-		// writer.flush();	// ;; 8kb차기 전 보내기
+		// writer.flush(); // ;; 8kb차기 전 보내기
 		textArea.appendText(text);
 
 		try {
@@ -73,6 +73,11 @@ public class Pc33MenuToolBarRootController implements Initializable {
 
 	public void handleSave(ActionEvent event) {
 		System.out.println("CLICK: save\n");
+
+		String savePath = handleSaveFile(event);
+
+		System.out.println(savePath);
+
 	}
 
 	public void handleClose(ActionEvent event) {
@@ -89,13 +94,23 @@ public class Pc33MenuToolBarRootController implements Initializable {
 
 		File openFile = fileChooser.showOpenDialog(primaryStage);
 
-		// if (openFile != null) { System.out.println("Open File Path: " +
-		// openFile.getPath());}
-
 		if (openFile == null) {
 			return null;
 		}
+
 		return openFile.getPath();
+	}
+
+	public String handleSaveFile(ActionEvent event) {
+		FileChooser fileChooser = new FileChooser();
+
+		File saveFile = fileChooser.showSaveDialog(primaryStage);
+
+		if (saveFile == null) {
+			return null;
+		}
+
+		return saveFile.getPath();
 	}
 
 	/*

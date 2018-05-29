@@ -1,4 +1,4 @@
-package fxgogo03;
+package notepadfx05;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

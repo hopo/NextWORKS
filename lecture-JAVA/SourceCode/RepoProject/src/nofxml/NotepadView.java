@@ -1,7 +1,5 @@
-package convjavacode;
+package nofxml;
 
-import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -17,16 +15,10 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
-public class Con06MenuToolBar extends Application {
+class NotepadView {
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-
-		/*
-		 * [[[ root ]]]
-		 */
+	static BorderPane load() {
 		BorderPane root = new BorderPane();
 
 		// /VBox
@@ -193,19 +185,6 @@ public class Con06MenuToolBar extends Application {
 		root.setTop(vBox);
 		root.setCenter(textArea);
 
-		/*
-		 * [[[ scene ]]]
-		 */
-		Scene scene = new Scene(root);
-
-		primaryStage.setScene(scene);
-		primaryStage.setTitle("Con06MenuToolBar");
-		primaryStage.show();
-
+		return root;
 	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
-
 }

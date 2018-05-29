@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import com.sun.javafx.scene.control.skin.NestedTableColumnHeader?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+
+<BorderPane fx:controller="notepadfx.FxNotepadRootController"
+	prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1">
+
+	<!-- BorderPane top -->
+	<top>
+		<VBox>
+			<children>
+
+				<!-- top VBox MenuBar -->
+				<MenuBar>
+					<menus>
+
+						<!-- Menu _File -->
+						<Menu text="_File">
+							<items>
+								<MenuItem text="New" onAction="#handleNew">
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../res/images/new.png" />
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="N" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+								<MenuItem text="Open" onAction="#handleOpen">
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../res/images/open-folder.png" />
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="O" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+								<MenuItem text="Save" onAction="#handleSave">
+									<graphic>
+										<ImageView>
+											<image>
+												<Image url="@../res/images/save.png" />
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="S" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+								<SeparatorMenuItem />
+								<MenuItem text="Exit" onAction="#handleExit">
+									<accelerator>
+										<KeyCodeCombination code="W" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+							</items>
+						</Menu>
+
+						<!-- Menu _Edit -->
+						<Menu text="_Edit">
+							<items>
+								<MenuItem text="Cut" onAction="#handleCut">
+									<graphic>
+										<ImageView>
+											<image>
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="X" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+								<MenuItem text="Copy" onAction="#handleCopy">
+									<graphic>
+										<ImageView>
+											<image>
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="C" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+								<MenuItem text="Paste" onAction="#handlePaste">
+									<graphic>
+										<ImageView>
+											<image>
+											</image>
+										</ImageView>
+									</graphic>
+									<accelerator>
+										<KeyCodeCombination code="P" control="DOWN" alt="UP" shift="UP" meta="UP" shortcut="UP" />
+									</accelerator>
+								</MenuItem>
+							</items>
+						</Menu>
+
+					</menus>
+				</MenuBar>
+
+				<!-- top VBox ToolBar -->
+				<ToolBar>
+					<items>
+						<Button onAction="#handleNew">
+							<graphic>
+								<ImageView>
+									<image>
+										<Image url="@../res/images/new.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<tooltip>
+								<Tooltip text="(tip)새로운파일" />
+							</tooltip>
+						</Button>
+						<Button onAction="#handleOpen">
+							<graphic>
+								<ImageView>
+									<image>
+										<Image url="@../res/images/open-folder.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<tooltip>
+								<Tooltip text="(tip)파일열기" />
+							</tooltip>
+						</Button>
+						<Button onAction="#handleSave">
+							<graphic>
+								<ImageView>
+									<image>
+										<Image url="@../res/images/save.png" />
+									</image>
+								</ImageView>
+							</graphic>
+							<tooltip>
+								<Tooltip text="(tip)파일저장" />
+							</tooltip>
+						</Button>
+					</items>
+				</ToolBar>
+
+			</children>
+		</VBox>
+	</top>
+
+	<!-- BorderPane center -->
+	<center>
+		<TextArea fx:id="txtDocument" />
+	</center>
+
+</BorderPane>
+
