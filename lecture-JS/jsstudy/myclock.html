@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myclock.html</title>
+</head>
+
+<body>
+    <div id="clock" style="background:gray; color: lightpink">
+    </div>
+
+    <script>
+        function myclock() {
+            var m_date = new Date(); // 프론트에서 하지 않는다
+            var m_hour = m_date.getHours();
+            var m_min = m_date.getMinutes();
+            var m_seconds = m_date.getSeconds();
+
+            // var TimeView = `${m_hour}h ${m_min}m ${m_seconds}s`;
+            var TimeView = m_hour+":"+m_min+":"+m_seconds;
+
+            document.getElementById('clock').innerHTML = "<h1>"+TimeView+"</h1>";
+            setTimeout("myclock()", 1000);
+        }
+        myclock();
+    </script>
+
+</body>
+
+</html>

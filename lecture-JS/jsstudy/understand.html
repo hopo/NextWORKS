@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>문자열더하기_understand.html</title>
+
+    <script>
+        "use strict"
+
+        function js_check() {
+            var my_con = document.getElementById("container");
+
+            // my_con.innerHTML = "<h2>덮어 쓰기</h2>";
+            var in_str = "<table border=2>";
+            in_str += "<tr>";
+
+            for (var i = 1; i <= 4; i++) {
+                in_str += "<td>data" + i + "</td>";
+            }
+
+            in_str += "</tr>";
+            in_str += "</table>";
+            my_con.innerHTML += in_str;
+            
+            console.log(my_con.innerHTML);
+        }
+
+    </script>
+</head>
+
+<body onload="js_check()">
+    <div id="container">
+        <h2>내용입니다</h2>
+    </div>
+    <input type="button" value="PUSH" onclick="js_check()">
+</body>
+
+</html>

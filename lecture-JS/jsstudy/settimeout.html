@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>settimeout.html</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        // // !! setTimeout, setInterval
+        // function autoCall() {
+        //     document.write("漢字");
+        //     document.write("Call Me?");
+        // }
+        // setTimeout(autoCall(), 10000);  // ;; 두번째 매개변수는 밀리세컨
+
+        // // !! Recusive call
+        // function selfsum(n) {
+        //     if (n === 1) { return 1; }
+        //     return n + selfsum(n - 1);
+        // }
+        // var sum = selfsum(10);
+        // document.write("1 ~ 100 total sum: ", sum);
+
+        function js_kkk(i) {
+            alert(i);
+        }
+
+        // ! exA)
+        // for (var i = 0; i < 3; i++) {
+        //     setTimeout(function() { // ;; 비동기화 function
+        //         alert(i);
+        //     }, 1000 * i);
+        // }
+
+        // ! exA2)
+        for (var i = 0; i < 3; i++) {
+            setTimeout(js_kkk(i), 1000 * i);
+        }
+
+    </script>
+</body>
+
+</html>
