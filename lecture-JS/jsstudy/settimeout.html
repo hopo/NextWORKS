@@ -40,7 +40,9 @@
 
         // ! exA2)
         for (var i = 0; i < 3; i++) {
-            setTimeout(js_kkk(i), 1000 * i);
+            // setTimeout(js_kkk(i), 1000 * i);
+            // setTimeout("js_kkk("+ i+ ")", 1000 * i);
+            setTimeout(js_kkk(i), 1000 * i, i);
         }
 
     </script>

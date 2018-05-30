@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homework0530.html</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict"
+
+        var inpt = prompt("number: ", 10);
+        inpt = parseInt(inpt);
+
+        // exA)
+        // var primes = [2];
+        // var k = 1;
+        // for(var i = 2; i <= inpt; i++) {
+        //     for(var j = 2; j < i; j++) {
+        //         if(i%j == 0) {
+        //             break;
+        //         }
+        //         if(i == j+1) {
+        //             primes[k] = i;
+        //             k++;
+        //         }
+        //     }
+        // }
+        // document.write("primes: " + primes);
+
+        // exA2)
+        function is_prime(i, primes) {
+            for (var p of primes) {
+                if (i % p == 0) {
+                    return null;
+                }
+            }
+            return i;
+        }
+
+        var primes = [];
+        for (var i = 2; i < inpt; i++) {
+            var x = is_prime(i, primes);
+            if (x != null) {
+                primes.push(x);
+            }
+        }
+        document.write("<br>primes: " + primes);
+
+    </script>
+
+</body>
+
+</html>

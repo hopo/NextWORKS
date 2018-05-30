@@ -11,6 +11,7 @@ public class Notepad extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		Parent root = NotepadView.load();
+		System.out.println("root: " + root);
 
 		Scene scene = new Scene(root);
 
