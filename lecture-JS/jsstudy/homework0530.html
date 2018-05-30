@@ -15,6 +15,7 @@
 
         var inpt = prompt("number: ", 10);
         inpt = parseInt(inpt);
+        var primes = [];
 
         // exA)
         // var primes = [2];
@@ -30,23 +31,37 @@
         //         }
         //     }
         // }
-        // document.write("primes: " + primes);
 
         // exA2)
-        function is_prime(i, primes) {
-            for (var p of primes) {
-                if (i % p == 0) {
-                    return null;
+        // function is_prime(i, primes) {
+        //     for (var p of primes) {
+        //         if (i % p == 0) {
+        //             return null;
+        //         }
+        //     }
+        //     return i;
+        // }
+
+        // for (var i = 2; i < inpt; i++) {
+        //     var x = is_prime(i, primes);
+        //     if (x != null) {
+        //         primes.push(x);
+        //     }
+        // }
+
+        // exA3)
+        function is_prime(num) {
+            for (var i = 2; i < num; i++) {
+                if (num % i == 0) {
+                    return false;
                 }
             }
-            return i;
+            return true;
         }
 
-        var primes = [];
-        for (var i = 2; i < inpt; i++) {
-            var x = is_prime(i, primes);
-            if (x != null) {
-                primes.push(x);
+        for (var i = 3; i < inpt; i++) {
+            if (is_prime(i)) {
+                primes.push(i);
             }
         }
         document.write("<br>primes: " + primes);
