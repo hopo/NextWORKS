@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		chgImages.html
+	</title>
+</head>
+<body>
+	<div>
+	<img id="img01" src='image/save.png'>
+	</img>
+	</div>
+	<script>
+		"use strict"
+
+		var imgUrl = [];
+		imgUrl[0] = 'image/Canon.png';
+		imgUrl[1] = 'image/new.png';
+		imgUrl[2] = 'image/open-folder.png';
+		imgUrl[3] = 'image/save.png';
+
+		console.log(imgUrl);
+
+		var myImg = document.getElementById("img01"); 
+
+		function myRandom(n) {
+			console.log("!", 2);
+			return Math.floor(Math.random() * (n+1));
+		}
+
+
+		function chgImages() {
+
+			var ransu = myRandom(imgUrl.length-1);
+			myImg.src = imgUrl[ransu];
+
+			setTimeout(chgImages, 500);
+		}
+		chgImages();
+
+	</script>
+</body>
+</html>

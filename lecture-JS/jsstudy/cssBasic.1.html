@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Casading Style Sheet(css)</title>
+</head>
+
+
+<body>
+	<!-- 이미지 반복문제즌 repeat, 사이즈 붐제는 size -->
+	<div id="wrap" style="width:300px;height:300px;background:lawngreen;border: 2px dotted black"></div>
+
+	<script>
+		"use strict"
+		
+		var myDiv = document.getElementById("wrap");
+		// ! exA)
+		// function divExp() {
+		// 	if (parseInt(myDiv.style.height) == 100 ){
+		// 		myDiv.innerHTML = "<h1>Now Stop!!</h1>";
+		// 		return;
+		// 	}
+
+		// 	myDiv.style.width = (parseInt(myDiv.style.width) - 10) + "px";
+		// 	myDiv.style.height = (parseInt(myDiv.style.height) - 10) + "px";
+		// 	setTimeout(divExp, 100);
+		// }
+		// divExp();
+
+		// myDiv.style.background="grey"; // (-)하이픈이 들어간 속성은 하이픈을 빼고
+
+		// ! exB)
+		// for(var i = 0; i < 20; i++) {
+		// 	document.write(myRandom(10)+" "); // 0~10 사이ㅇ 숫자 발생여부 확인
+		// }
+
+		// ! exC) ...ing
+		function myRandom(n) {
+			return Math.floor(Math.random() * (n+1));
+		}
+
+		var myColors = ["magenta", "yellow", "red", "blues", "grey", "orange"];
+
+
+		function chgColor() {
+			var ransu = myRandom(myColors.length-1);
+			myDiv.style.backgroundColor = myColors[ransu];
+			setTimeout(chgColor, 500);
+		}
+		chgColor();
+
+
+
+	</script>
+
+</body>
+
+</html>

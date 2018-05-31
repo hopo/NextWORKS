@@ -1,10 +1,17 @@
 package nofxml;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 
-public class NotepadRootController {
+public class NotepadRootController implements Initializable {
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {}
 	
 	TextArea textArea;
 	

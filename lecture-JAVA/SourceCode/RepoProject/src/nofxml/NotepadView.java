@@ -1,5 +1,8 @@
 package nofxml;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -96,6 +99,14 @@ class NotepadView {
 		// /VBox/MenuBar/Menu{File}/MenuItem{Save}/KCC
 		KeyCodeCombination kccExit = new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN);
 		menuItemExit.setAccelerator(kccExit);
+
+		menuItemExit.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				System.out.println("close!");
+				Platform.exit();
+			}
+		});
 
 		//
 		// /VBox/MenuBar/Menu{File}/ : MenuItem들의 추가

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>code5-13.html</title>
+</head>
+
+<body>
+
+    <script>
+        "use strict"
+
+        // ; 매개변수 갯수가 불확정적일때 사용하면 좋지만,
+        // ; 실제적으로 문제의 소지가 많아 비추
+        // function sumAll() {
+        //     alert(arguments + ":" + arguments.length);
+        //     for(var i = 0; i < arguments.length; i++) {
+        //         alert(arguments[i]);
+        //     }
+        // }
+
+        // sumAll(1,2,3,4,5,6,7,8,9)
+
+        function closure() {
+            var innerval = "444";
+            return innerval;
+        }
+
+        alert(closure());
+
+    </script>
+
+</body>
+
+</html>
