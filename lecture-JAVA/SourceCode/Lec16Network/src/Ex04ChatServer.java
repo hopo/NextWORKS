@@ -15,7 +15,6 @@ public class Ex04ChatServer {
 
 			// ! 클라이어트 요청 대기
 			Socket soc = server.accept();
-
 			System.out.println("Client 요청 수락" + soc.getRemoteSocketAddress());
 
 			SenderThread sender = new SenderThread(soc);

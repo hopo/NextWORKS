@@ -7,10 +7,15 @@ import java.net.Socket;
 public class SenderThread extends Thread {
 
 	Socket soc;
+	String nickName;
 
-	public SenderThread(Socket soc) {
+	SenderThread(Socket soc) {
 		this.soc = soc;
+	}
 
+	SenderThread(Socket soc, String nickName) {
+		this.soc = soc;
+		this.nickName = nickName;
 	}
 
 	@Override
@@ -21,6 +26,11 @@ public class SenderThread extends Thread {
 			// ! 키보드로 부터 메시지 입력
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 			PrintWriter writer = new PrintWriter(soc.getOutputStream());
+			
+			if(nickName != null) {
+				writer.println(nickName);
+				writer.flush();
+			}
 
 			while (true) {
 
@@ -31,6 +41,7 @@ public class SenderThread extends Thread {
 				}
 				writer.println(msg);
 				writer.flush();
+
 			}
 
 		} catch (IOException e) {
