@@ -1,31 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>homework0601.html</title>
 </head>
+
 <body style="text-align: center">
 
 	<script>
 		"use strict"
 
-/*		// 1)
-		var text= 'I am Programmer!';
-		var ret = '';
-		var six = 6;
+		/*
+				// 1)
+				var text = 'I am Programmer!';
+				var ret = '';
+		
+				for (var i = 0; i < 6; i++) {
+					var r = 6 - i;
+					var open = "<h" + r + ">";
+					var close = "</h" + r + ">";
+					ret = ret + (open + text + close);
+					if (r != 6) {
+						ret = (open + text + close) + ret;
+					}
+				}
+				document.write(ret);
+		*/
 
-		for (var i = 0; i < six; i++) {
-			var j = six-i;
-			var open = "<h"+ j + ">"; 
-			var close = "</h" + j + ">";
-			ret = (open + text + close) + ret;
-			if(j != six) {
-				ret += (open + text + close);
+		// 2)
+		var text = 'I am Programmer!';
+		var ret = '';
+
+		for (var i = 0; i < 6; i++) {
+			var r = 6 - i;
+			var line = "<h" + r + ">" + text + "</h" + r + ">";
+			if (r == 6) {
+				ret = line;
+			} else {
+				ret = line + ret + line;
 			}
 		}
 		document.write(ret);
-*/		
-/*		// 2)
+
+/*
+		// 3)
 		var text= 'I am Programmer!';
 		var ret = '';
 		var j = 0;
@@ -40,8 +59,10 @@
 			ret += (open + text + close);
 		}
 		document.write(ret);
-*/		
-		// 3)
+*/
+
+/*
+		// 4)
 		var text= 'I am Programmer!';
 		var ret = '';
 		var direction = false;
@@ -56,10 +77,11 @@
 			ret += (open + text + close);
 		}
 		document.write(ret);
-
+*/
 
 
 	</script>
 
 </body>
+
 </html>
