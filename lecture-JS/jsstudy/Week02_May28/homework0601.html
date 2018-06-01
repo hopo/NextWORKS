@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework0601.html</title>
+</head>
+<body style="text-align: center">
+
+	<script>
+		"use strict"
+
+/*		// 1)
+		var text= 'I am Programmer!';
+		var ret = '';
+		var six = 6;
+
+		for (var i = 0; i < six; i++) {
+			var j = six-i;
+			var open = "<h"+ j + ">"; 
+			var close = "</h" + j + ">";
+			ret = (open + text + close) + ret;
+			if(j != six) {
+				ret += (open + text + close);
+			}
+		}
+		document.write(ret);
+*/		
+/*		// 2)
+		var text= 'I am Programmer!';
+		var ret = '';
+		var j = 0;
+
+		for (var i = 1; i <= 11; i++) {
+			j = i;
+			if(i > 6) {
+				j = 12-i;
+			}
+			var open = "<h"+ j + ">"; 
+			var close = "</h" + j + ">";
+			ret += (open + text + close);
+		}
+		document.write(ret);
+*/		
+		// 3)
+		var text= 'I am Programmer!';
+		var ret = '';
+		var direction = false;
+		var j = 0;
+
+		for (var i = 1; i <= 11; i++) {
+			j = i;
+			if(i == 6) { direction = true; }
+			if(direction) { j = 12 - i;}
+			var open = "<h"+ j + ">"; 
+			var close = "</h" + j + ">";
+			ret += (open + text + close);
+		}
+		document.write(ret);
+
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Casading Style Sheet(css) 3</title>
+
+	<!-- document.stylesSheets[0] -->
+	<style>
+		/* cssRules[0] */
+		#wrap {
+			width: 300px;
+			height: 300px;
+			border: 2px dotted black;
+			background: lawngreen;
+			background-size: 400px 400px;
+			background-repeat: no-repeat;
+			background-image: url('image/new.png');
+		}
+
+		/* cssRules[1] */
+		#wrap2 {
+			width: 555px;
+			height: 555px;
+		}
+	</style>
+
+	<script>
+		"use strict"
+
+		var images = [];
+		images[0] = 'image/new.png';
+		images[1] = 'image/open-folder.png';
+		images[2] = 'image/save.png';
+		
+		function myRandom(n) {
+			return Math.floor(Math.random() * (n+1));
+		}
+
+		var myStyle0 = document.styleSheets[0];
+		console.log(myStyle0.cssRules[0].style.width);
+		console.log(myStyle0.cssRules[1].style.width);
+
+	</script>
+</head>
+
+<body>
+	<div id="wrap"></div>
+</body>
+
+</html>

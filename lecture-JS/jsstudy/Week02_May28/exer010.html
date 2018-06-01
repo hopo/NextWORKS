@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Casading Style Sheet(css) 3</title>
+	
+	<style>
+		/* ! Comprehension about layout position */
+        /* 
+        	;; 부모요소 기준으로 자식요소 좌표를 잡으려면,
+        	부모요소에 position:relative, 자식요소에 position:absolute 준다.
+         	position을 지정하지 않으면 기본값이 static이 적용되는데,
+        	그냥 body태그 안에서 쌓이는 방식!
+        */
+		#wrap0 {
+			position: relative;
+			left: 50px;
+			top: 50px;
+			border: 1px solid red;
+			width: 200px;
+			height: 200px;
+		}			
+
+		#wrap1 {
+			position: absolute;
+			left: 30px;
+			top: 30px;
+			border: 1px solid blue;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+
+<body>
+	<div>
+		NULL<br>	
+		NULL<br>	
+		NULL<br>	
+	</div>
+
+	<div id="wrap0">
+		HELL0<br>
+		HELL0<br>
+		HELL0<br>
+		<div id="wrap1">
+			HELL1<br>
+			HELL1<br>
+			HELL1<br>
+		</div>
+	</div>
+
+	<script>
+		"use strict"
+
+	</script>
+</body>
+
+</html>

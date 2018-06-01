@@ -20,9 +20,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 class NotepadView {
-
+	
+	static BorderPane root;
+	
 	static BorderPane load() {
-		BorderPane root = new BorderPane();
+		makeRoot();
+		return root;
+	}
+
+	static void makeRoot() {
+		root = new BorderPane();
 
 		// /VBox
 		VBox vBox = new VBox();
@@ -195,7 +202,5 @@ class NotepadView {
 		// / : Top & Center 세팅
 		root.setTop(vBox);
 		root.setCenter(textArea);
-
-		return root;
 	}
 }
