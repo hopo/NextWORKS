@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework0604</title>
+</head>
+
+<body>
+	<input type="button" name="PUSH" onclick="lotto()">
+
+	<script>
+		"use strict"
+
+		function myRandom() {
+			return Math.floor(Math.random()*7 + 1);
+		}
+
+		var i = 0;
+		while(i < 6) {
+			var line = '<div>' + myRandom() +'</div>';
+			var list = document.getElementsByTagName("div");
+			document.write(line);
+			// document.write(list.item(i));
+			i++;
+		}
+
+
+		for(var i = 0; i < list.length; i++) {
+			console.log(list.item(i));
+		}
+
+
+	</script>
+</body>
+</html>
