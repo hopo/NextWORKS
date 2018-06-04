@@ -1,4 +1,4 @@
-package nofxml;
+package nofxml04;
 
 import java.net.URL;
 import java.util.ResourceBundle;

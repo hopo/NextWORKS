@@ -1,4 +1,4 @@
-package nofxml;
+package nofxml04;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -110,8 +110,8 @@ class NotepadView {
 		menuItemExit.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				NotepadController cont = new NotepadController();
-				cont.handleExit();
+				System.out.println("close!");
+				Platform.exit();
 			}
 		});
 
