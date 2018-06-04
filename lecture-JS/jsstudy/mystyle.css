@@ -1,0 +1,27 @@
+/* pseudo-class */
+a:link {
+	text-decoration: none;
+	color: blue;
+	background-color: white;
+}
+a:visited {
+	text-decoration: none;
+	color: green;
+	background-color: silver;
+}
+a:hover {
+	text-decoration: none;
+	color: white;
+	background-color: blue;
+}
+h1[title] {
+	color: magenta;
+}
+p[class=example] {
+	background-color: gray;
+}
+/* same code up & below */
+p.example {
+	/*background-color: gray;*/
+	color: yellow;
+}
