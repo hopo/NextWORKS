@@ -11,24 +11,31 @@
 	<script>
 		"use strict"
 
-		function myRandom() {
-			return Math.floor(Math.random()*7 + 1);
+		function rand_num() {
+			return Math.floor(Math.random()*45 + 1);
 		}
 
-		var i = 0;
+		function is_member(n, list) {
+			for(var e of list) {
+				if(e == n) {
+					return true;
+				}
+			}
+			return false;
+		}
+
+		var i = 1;
+		var r = rand_num();
+		var list = [r];
 		while(i < 6) {
-			var line = '<div>' + myRandom() +'</div>';
-			var list = document.getElementsByTagName("div");
-			document.write(line);
-			// document.write(list.item(i));
+			r = rand_num();
+			if(is_member(r, list)) {
+				continue;	
+			}
+			list[i] = r;
 			i++;
 		}
-
-
-		for(var i = 0; i < list.length; i++) {
-			console.log(list.item(i));
-		}
-
+		console.log(list);
 
 	</script>
 </body>
