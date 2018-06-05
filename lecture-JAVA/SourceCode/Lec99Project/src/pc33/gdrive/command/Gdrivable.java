@@ -1,4 +1,4 @@
-package nofxml;
+package pc33.gdrive.command;
 
 interface Gdrivable {
 	
@@ -9,7 +9,5 @@ interface Gdrivable {
 	public void list();
 	public void download();
 	public void upload();
-	public void mkdir();
-	public void delete();
 
 }
