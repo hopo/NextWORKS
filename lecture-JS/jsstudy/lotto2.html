@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>로또번호 발생기!</title>
+    <style>
+        * {
+            margin: 0;
+            border: 0;
+            padding: 0
+        }
+
+        #wrap {
+            position: relative;
+            left: 100px;
+            border: 1px solid blue;
+            width: 500px;
+            height: 500px;
+        }
+
+        #btn1 {
+            position: absolute;
+            color: blue;
+            font-size: 2em;
+            width: 400px;
+            height: 50px;
+            left: 40px;
+            bottom: 20px;
+        }
+
+        .num {
+            position: absolute;
+            top: 100px;
+            font-size: 2.5em;
+            line-height: 60px;
+            text-align: center;
+            border: 1px solid black;
+            width: 60px;
+            height: 60px;
+            color: gold;
+            background-color: black
+        }
+
+        .num1 {
+            left: 35px;
+        }
+
+        .num2 {
+            left: 105px;
+        }
+
+        .num3 {
+            left: 175px;
+        }
+
+        .num4 {
+            left: 245px;
+        }
+
+        .num5 {
+            left: 315px;
+        }
+
+        .num6 {
+            left: 385px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="num1" class="num num1">?</div>
+        <div id="num2" class="num num2">?</div>
+        <div id="num3" class="num num3">?</div>
+        <div id="num4" class="num num4">?</div>
+        <div id="num5" class="num num5">?</div>
+        <div id="num6" class="num num6">?</div>
+        <input id=btn1 type=button value="로또번호발생" onclick="lotto()">
+    </div>
+    <script>
+        //랜덤 함수 1~45까지 발생
+        function myRandom(n) {
+            return Math.ceil(Math.random() * 45);  //1~45까지 발생
+        }
+
+        //6개 넘버 출력할 DIV 태그(요소)들
+        var lotoNum1 = document.getElementById("num1");
+        var lotoNum2 = document.getElementById("num2");
+        var lotoNum3 = document.getElementById("num3");
+        var lotoNum4 = document.getElementById("num4");
+        var lotoNum5 = document.getElementById("num5");
+        var lotoNum6 = document.getElementById("num6");
+
+        function lotto() {
+            for (var i = 1; i <= 6; i++) {
+                var divStr = "lotoNum" + i;
+                if (window[divStr].style.top) window[divStr].style.top = null;
+            }
+
+            var lottoNums = [];
+            while (true) {
+                var isIn = false;                // 없으면 false, 있으면 true
+                if (lottoNums.length == 6) {
+                    break;
+                }
+                var tempNum = myRandom(45);
+                for (var i = 0; i <= lottoNums.length; i++) {
+                    if (lottoNums[i] == tempNum) {
+                        isIn = true;
+                        break;
+                    }
+                }
+                if (!isIn) {
+                    lottoNums[lottoNums.length] = tempNum;
+                }
+            }
+
+            lottoNums = lottoNums.sort(function (a, b) { return b - a; });
+            for (var i = 0; i < lottoNums.length; i++) {
+                var numStr = "num" + (i + 1);
+                var divStr = "lotoNum" + (i + 1);
+                document.getElementById(numStr).innerHTML = lottoNums[i];  //문자열 트릭!
+                move(window[divStr], 1000 * i);
+            }
+        }
+
+        // 움직임 구현
+        function move(divItem, timeNum) {
+            if (!divItem.style.top) {
+                divItem.style.top = "-100px";
+            }
+            if (parseInt(divItem.style.top) >= 200) {
+                return;
+            }
+            divItem.style.top = parseInt(divItem.style.top) + 5 + "px";
+            setTimeout(move, timeNum, divItem);
+        }
+
+    </script>
+</body>
+
+</html>
