@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
-public class DialogCtrl {
+public class DialogController {
 
 	static void openDialog(File selectedFile, TextArea txtDocument) {
 		// !! file 읽어오는 Thread (work thread)

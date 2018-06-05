@@ -75,6 +75,13 @@ class NotepadView {
 		img = new Image("@../../res/images/open-folder.png");
 		imgView.setImage(img);
 		menuItemOpen.setGraphic(imgView);
+		menuItemOpen.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				NotepadController cont = new NotepadController();
+				cont.handleExit();
+			}
+		});
 
 		//
 		// ^분기 MenuItem{Save}

@@ -2,10 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
 
+import kr.or.nextit.conn.ConnectionPool;
 import kr.or.nextit.member.dao.MemberDao;
 import kr.or.nextit.member.model.Member;
 
@@ -16,28 +15,17 @@ public class JDBCExam2 {
 		// MemberDao memberDao = new MemberDao();
 		MemberDao memberDao = MemberDao.getInstance(); // ;; Singleton Pattern instance
 
-		// ! #1 oracle 드라이버 로딩
-		try {
-
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			System.out.println("드라이버 로딩 성공.");
-
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		ConnectionPool connectionPool = ConnectionPool.getInstance();
 
 		// ! #2 데이터베이스 연결
 		Connection conn = null;
 
-		// ex) “jdbc:oracle:thin:@127.0.0.1:1521:SID“
-		String url = "jdbc:oracle:thin:@localhost:1521:XE";
-		String user = "java";
-		String password = "oracle";
+		// String query = null;
 
 		try {
 
 			// ! 커넥션 객체 생성(BD connecting)
-			conn = DriverManager.getConnection(url, user, password);
+			conn = connectionPool.getConnection();
 			System.out.println("커넥션 성공.");
 
 			// ! #3 쿼리 실행
@@ -74,16 +62,17 @@ public class JDBCExam2 {
 						m.getMem_phone(), m.getMem_email(), m.getReg_date());
 			}
 
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 
 			// ! #4 연결 종료
 			try {
 				if (conn != null) {
-					conn.close();
+					// conn.close(); // ;; 풀을 이용하면 no close()
+					connectionPool.releaseConnection(conn);
 				}
-			} catch (SQLException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
