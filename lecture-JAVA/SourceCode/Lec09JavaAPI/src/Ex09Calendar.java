@@ -44,8 +44,9 @@ public class Ex09Calendar {
 		// 작년까지 평년 횟수 + 작년까지 윤년 횟수 + 해당년 해당월의 1일 까지의 일수
 		// int week = (lastYear + leapYearCnt + dayOfYear) % 7;
 
-		cal.set(year, month - 1, 1);	// setting, month는 -1
-		int week = cal.get(Calendar.DAY_OF_WEEK);	// 요일 number
+		cal.set(year, month - 1, 1); 	// setting, month는 -1
+		int week = cal.get(Calendar.DAY_OF_WEEK)-1;	// 요일 number
+		System.out.println("week"+week);
 
 		System.out.printf("		[%d년 %2d월]\n", year, month);
 		System.out.println("일\t 월\t 화\t 수\t 목\t 금\t 토");
