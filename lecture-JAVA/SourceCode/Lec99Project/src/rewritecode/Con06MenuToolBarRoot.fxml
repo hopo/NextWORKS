@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.TextArea?>
 
-<BorderPane fx:controller="pc33.rewritecode.Con06MenuToolBarRootController" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="rewritecode.Con06MenuToolBarRootController" xmlns:fx="http://javafx.com/fxml/1">
 
 	<top>
 		<VBox>

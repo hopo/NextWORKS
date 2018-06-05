@@ -12,6 +12,9 @@ public class Notepad extends Application {
 
 		Parent root = NotepadView.load();
 		System.out.println("root: " + root);
+		
+		NotepadController controller = new NotepadController();
+		controller.setPrimaryStage(primaryStage);
 
 		Scene scene = new Scene(root);
 

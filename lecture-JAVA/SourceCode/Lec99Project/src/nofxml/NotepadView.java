@@ -1,6 +1,5 @@
 package nofxml;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -20,9 +19,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 
 class NotepadView {
-	
+
 	static BorderPane root;
-	
+
 	static BorderPane load() {
 		makeRoot();
 		return root;
@@ -30,6 +29,10 @@ class NotepadView {
 
 	static void makeRoot() {
 		root = new BorderPane();
+
+		// ^
+		// /TextArea
+		TextArea textArea = new TextArea();
 
 		// /VBox
 		VBox vBox = new VBox();
@@ -75,11 +78,12 @@ class NotepadView {
 		img = new Image("@../../res/images/open-folder.png");
 		imgView.setImage(img);
 		menuItemOpen.setGraphic(imgView);
+
 		menuItemOpen.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				NotepadController cont = new NotepadController();
-				cont.handleExit();
+				cont.handleOpen(textArea);
 			}
 		});
 
@@ -201,9 +205,6 @@ class NotepadView {
 		vBox.getChildren().add(menuBar);
 		vBox.getChildren().add(toolBar);
 
-		// ^
-		// /TextArea
-		TextArea textArea = new TextArea();
 
 		//
 		// / : Top & Center 세팅

@@ -1,6 +1,6 @@
 package nofxml;
 
-interface gdrivable {
+interface Gdrivable {
 	
 	/*
 	 *  using gdrive command
