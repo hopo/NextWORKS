@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive04;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -10,10 +10,10 @@ public class Gdrive extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		Parent root = new GdriveView().load();
-
 		GdriveController gdController = GdriveController.getInstance();
 		gdController.setPrimaryStage(primaryStage);
+		
+		Parent root = new GdriveView().load();
 
 		Scene scene = new Scene(root);
 

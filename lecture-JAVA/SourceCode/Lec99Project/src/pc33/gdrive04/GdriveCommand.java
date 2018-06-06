@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive04;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -29,20 +29,21 @@ public class GdriveCommand implements Gdrivable {
 			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			writer = new PrintWriter("/Users/hp/.gdrive/info/list.txt");
+			writer = new PrintWriter("/Users/hp/.gdrive/info/list.txt"); // ;; 일단은 콘솔출력.
 
 			String line = "";
-
+			StringBuffer sbuf = new StringBuffer();
+			
 			textArea.clear();
 			while (true) {
-				line = reader.readLine();
-				if (line == null) {
+				if ((line = reader.readLine()) == null) {
 					break;
 				}
-				writer.println(line);
+				sbuf.append(line + "\n");
 				textArea.appendText(line + "\n"); // ;; 훗날 수정.
 			}
 
+			writer.println(sbuf);
 			writer.flush();
 			System.out.println(">>> list print");
 
@@ -58,10 +59,16 @@ public class GdriveCommand implements Gdrivable {
 
 	}
 
+	@Override
+	public void download() {
+		// ! gdrive download ID --path ./
+
+	}
 
 	@Override
 	public void upload(String filePath) {
 		// ! gdrive upload ./
+
 		try {
 
 			// ;; create a new array of 2 strings
@@ -87,37 +94,6 @@ public class GdriveCommand implements Gdrivable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	@Override
-	public void download(String Id, String downloadDirectory) {
-		// ! gdrive download ID --path ./
-		try {
-
-			// ;; create a new array of strings
-			String[] cmdArray = new String[5];
-
-			// ;; first argument is the program we want to open
-			cmdArray[0] = "/usr/local/bin/gdrive";
-			cmdArray[1] = "download";
-			cmdArray[2] = Id;
-			cmdArray[3] = "--path";
-			cmdArray[4] = downloadDirectory;
-
-			// ;; print a message
-			System.out.println("$ gdrive download {Id} --path {path}");
-
-			// ;; create a process and execute cmdArray
-			Process process = Runtime.getRuntime().exec(cmdArray);
-			process.waitFor();
-
-			// ;; print another message
-			System.out.println(">>>  download complete: " + downloadDirectory);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
 	}
 
 }

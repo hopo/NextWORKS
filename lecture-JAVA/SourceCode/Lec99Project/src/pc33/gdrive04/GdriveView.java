@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive04;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,9 +29,10 @@ public class GdriveView {
 
 	GdriveController gdController = GdriveController.getInstance();
 
+
 	private void makeRoot() {
 		
-		root.setPrefWidth(700);
+		root.setPrefHeight(500);
 		root.setPrefHeight(300);
 
 		VBox vBox = new VBox();
@@ -64,18 +65,6 @@ public class GdriveView {
 			@Override
 			public void handle(ActionEvent event) {
 				gdController.handleUpload();
-				gdController.handleList();
-			}
-		});
-
-		// /VBox/MenuBar/Menu{FILE}/MenuItem{download}
-		MenuItem menuItemDownload = new MenuItem("Download");
-//		KeyCodeCombination kccDownload = new KeyCodeCombination(KeyCode.D, KeyCombination.CONTROL_DOWN); 
-//		menuItemUpload.setAccelerator(kccDownload);
-		menuItemDownload.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				gdController.handleDownload();
 			}
 		});
 		
@@ -96,7 +85,6 @@ public class GdriveView {
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemList);
 		menuFile.getItems().add(menuItemUpload);
-		menuFile.getItems().add(menuItemDownload);
 		menuFile.getItems().add(separator);
 		menuFile.getItems().add(menuItemExit);
 
