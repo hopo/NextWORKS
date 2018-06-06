@@ -27,10 +27,8 @@ public class GdriveView {
 	}
 
 	GdriveController gdController = GdriveController.getInstance();
-	GdriveCommand gdCommand = new GdriveCommand();
 
 	private void makeRoot() {
-		gdCommand.list();
 
 		VBox vBox = new VBox();
 

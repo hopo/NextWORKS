@@ -12,8 +12,7 @@ public class GdriveCommand implements Gdrivable {
 		// ! gdrive list
 		BufferedReader reader = null;
 		PrintWriter writer = null;
-		
-		
+
 		try {
 
 			// ;; create a new array strings
@@ -31,28 +30,27 @@ public class GdriveCommand implements Gdrivable {
 			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			writer = new PrintWriter(System.out);
+			writer = new PrintWriter(System.out); // ;; 일단은 콘솔출력.
 
-			String line;
-			StringBuffer strbuf = new StringBuffer();
-			while ((line = reader.readLine()) != null) {
-				strbuf.append(line + "\n");
+			String line = "";
+			StringBuffer sbuf = new StringBuffer();
+			while (true) {
+				if ((line = reader.readLine()) == null) {
+					break;
+				}
+
+				sbuf.append(line + "\n");
 			}
-			writer.println(strbuf);
+			writer.println(sbuf);
 			writer.flush();
-
 			System.out.println(">>> list make");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if (reader != null) {
-					reader.close();
-				}
-				if (writer != null) {
-					writer.close();
-				}
+				reader.close();
+				writer.close();
 			} catch (IOException e) {
 			}
 		}

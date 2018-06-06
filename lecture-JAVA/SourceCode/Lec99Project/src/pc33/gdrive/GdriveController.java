@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 
 public class GdriveController {
 
-	private GdriveController() {}
+	private GdriveController() {
+	}
 
 	private static GdriveController instance = new GdriveController();
 
@@ -35,9 +36,8 @@ public class GdriveController {
 
 		if (file != null) {
 			System.out.println("File Path: " + file.getPath());
-			gdCommand.upload(file.getPath());
-
 		}
+		gdCommand.upload(file.getPath());
 
 	}
 
