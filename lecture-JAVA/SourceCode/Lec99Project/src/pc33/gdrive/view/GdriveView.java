@@ -1,5 +1,7 @@
 package pc33.gdrive.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -11,17 +13,23 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import pc33.gdrive.controller.GdriveController;
 
 public class GdriveView {
-
-	public static Parent load() {
+	
+	public GdriveView() {
 		makeRoot();
-		return root;
 	}
 
 	private static BorderPane root = new BorderPane();
+	
+	public Parent load() {
+		return root;
+	}
 
-	private static void makeRoot() {
+	GdriveController gdController = GdriveController.getInstance();
+
+	private void makeRoot() {
 
 		VBox vBox = new VBox();
 
@@ -37,6 +45,12 @@ public class GdriveView {
 		MenuItem menuItemUpload = new MenuItem("upload");
 		KeyCodeCombination kccUpload = null; // ;; have to make shortcut
 		menuItemUpload.setAccelerator(kccUpload);
+		menuItemUpload.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				gdController.handleUpload();
+			}
+		});
 		
 		// /VBox/MenuBar/Menu{FILE}/SepatatorMenuItem
 		SeparatorMenuItem separator = new SeparatorMenuItem();
@@ -45,6 +59,12 @@ public class GdriveView {
 		MenuItem menuItemExit = new MenuItem("exit");
 		KeyCodeCombination kccExit = new KeyCodeCombination(KeyCode.W, KeyCombination.CONTROL_DOWN);
 		menuItemExit.setAccelerator(kccExit);
+		menuItemExit.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				gdController.handleExit();
+			}
+		});
 
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemUpload);
