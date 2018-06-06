@@ -1,4 +1,4 @@
-package pc33.gdrive.view;
+package pc33.gdrive03;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,7 +13,6 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import pc33.gdrive.controller.GdriveController;
 
 public class GdriveView {
 	
@@ -28,8 +27,10 @@ public class GdriveView {
 	}
 
 	GdriveController gdController = GdriveController.getInstance();
+	GdriveCommand gdCommand = new GdriveCommand();
 
 	private void makeRoot() {
+		gdCommand.list();
 
 		VBox vBox = new VBox();
 

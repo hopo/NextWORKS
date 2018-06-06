@@ -1,4 +1,4 @@
-package pc33.gdrive.controller;
+package pc33.gdrive03;
 
 import java.io.File;
 
@@ -23,6 +23,7 @@ public class GdriveController {
 	}
 
 	// Dialog dialog = new Dialog();
+	GdriveCommand gdCommand = new GdriveCommand();
 
 	public void handleUpload() {
 		System.out.println(">>> upload");
@@ -34,6 +35,8 @@ public class GdriveController {
 
 		if (file != null) {
 			System.out.println("File Path: " + file.getPath());
+			gdCommand.upload(file.getPath());
+
 		}
 
 	}

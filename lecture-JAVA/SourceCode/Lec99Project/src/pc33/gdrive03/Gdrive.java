@@ -1,13 +1,11 @@
-package pc33.gdrive;
+package pc33.gdrive03;
 
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import pc33.gdrive.controller.GdriveController;
-import pc33.gdrive.view.GdriveView;
 
-public class GdriveMain extends Application {
+public class Gdrive extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {

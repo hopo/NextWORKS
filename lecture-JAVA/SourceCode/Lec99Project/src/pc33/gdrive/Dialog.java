@@ -1,4 +1,4 @@
-package pc33.gdrive.controller;
+package pc33.gdrive;
 
 import java.io.BufferedReader;
 import java.io.File;
