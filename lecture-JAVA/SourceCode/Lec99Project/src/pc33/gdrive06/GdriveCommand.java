@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive06;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 // 할일: gdrive 로케이션
 // list 출력할 폴더
 public class GdriveCommand implements Gdrivable {
-
+	
 	String gdrive = "/home/pc33/.golang/bin/gdrive";
 
 	@Override
@@ -33,8 +33,7 @@ public class GdriveCommand implements Gdrivable {
 			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-			// writer = new PrintWriter("/Users/hp/.gdrive/info/list.txt");
-
+//			writer = new PrintWriter("/Users/hp/.gdrive/info/list.txt");
 			writer = new PrintWriter("/home/pc33/.gdrive/info/list.txt");
 
 			String line = "";
@@ -63,6 +62,7 @@ public class GdriveCommand implements Gdrivable {
 		}
 
 	}
+
 
 	@Override
 	public void upload(String filePath) {
@@ -123,35 +123,6 @@ public class GdriveCommand implements Gdrivable {
 			e.printStackTrace();
 		}
 
-	}
-	
-	@Override
-	public void delete(String id) {
-		
-		try {
-
-			// ;; create a new array of strings
-			String[] cmdArray = new String[3];
-
-			// ;; first argument is the program we want to open
-			cmdArray[0] = gdrive;
-			cmdArray[1] = "delete";
-			cmdArray[2] = id;
-
-			// ;; print a message
-			System.out.println("$ gdrive delete {Id}");
-
-			// ;; create a process and execute cmdArray
-			Process process = Runtime.getRuntime().exec(cmdArray);
-			process.waitFor();
-
-			// ;; print another message
-			System.out.println(">>>  delete complete!!");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 }

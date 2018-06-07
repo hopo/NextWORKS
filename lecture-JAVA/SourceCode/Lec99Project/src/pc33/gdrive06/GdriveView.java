@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive06;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -131,28 +131,15 @@ public class GdriveView {
 		// /HBox/TextField
 		// | 다운로드할 아이디를 넣는 박스
 		TextField textField = new TextField();
-		textField.setPrefWidth(400);
 		gdController.setTextCon(textArea, textField);
 
-		// /HBox/Button{Download}
+		// /HBox/Button
 		// | 다운로할 아이디를 넘겨줄 버튼
 		Button btnDownload = new Button("Download");
 		btnDownload.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				gdController.handleDownload();
-				gdController.handleList();
-			}
-		});
-
-		// /HBox/Button{Download}
-		// | 다운로할 아이디를 넘겨줄 버튼
-		Button btnDelete = new Button("Delete");
-		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				gdController.handleDelete();
-				gdController.handleList();
 			}
 		});
 
@@ -183,10 +170,9 @@ public class GdriveView {
 		// [set] /HBox/
 		hBox.getChildren().add(textField);
 		hBox.getChildren().add(btnDownload);
-		hBox.getChildren().add(btnDelete);
 
 		// [set] /
-		root.setPrefWidth(750);
+		root.setPrefWidth(700);
 		root.setPrefHeight(300);
 		root.setTop(vBox);
 		root.setCenter(textArea);

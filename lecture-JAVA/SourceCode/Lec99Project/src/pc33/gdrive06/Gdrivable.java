@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive06;
 
 import javafx.scene.control.TextArea;
 
@@ -9,8 +9,7 @@ interface Gdrivable {
 	 */
 
 	public void list(TextArea textArea);
-	public void download(String id, String downloadPath);
+	public void download(String Id, String downloadPath);
 	public void upload(String filePath);
-	public void delete(String id);
 
 }

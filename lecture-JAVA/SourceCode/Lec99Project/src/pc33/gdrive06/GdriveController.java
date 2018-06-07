@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive06;
 
 import java.io.File;
 
@@ -62,27 +62,16 @@ public class GdriveController {
 
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		File directory = directoryChooser.showDialog(primaryStage);
-		textField.clear();
 
 		if (directory != null) {
 			System.out.println("Download Directory: " + directory.getPath());
 			gdCommand.download(downId, directory.getPath());
 		} else {
 			System.out.println("Download Directory: default Directory");
-			// gdCommand.download(downId, "/Users/hp/Downloads");
+//			gdCommand.download(downId, "/Users/hp/Downloads");
 			gdCommand.download(downId, "/home/pc33/Downloads");
 
 		}
-	}
-
-	public void handleDelete() {
-		System.out.println(">>> Action 'delete'");
-
-		String deleteId = textField.getText();
-		textField.clear();
-		
-		gdCommand.delete(deleteId);
-
 	}
 
 	public void handleExit() {
