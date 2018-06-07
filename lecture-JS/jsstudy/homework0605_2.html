@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>숫자 맞추기 게임</title>
+</head>
+
+<body>
+    <div id="express" style="height:300px;
+                            font-size: 2em;
+                            color:gold;
+                            background-color: black;
+                            line-height:300px"></div>
+    <input type="button" value="숫자 맟추기 게임" onclick="numGame()">
+    <script>
+        //먼저 흐름에 맞게 주석 달아놓고 , 주석밑에 해당 코딩하는 습관도 좋아요!
+        // - code - 랜덤 숫자 발생  100~200
+        //랜덤함수 조금더 범용적으로 시작도 ....
+        function myRan(start, end) {          //
+            return Math.floor(Math.random() * (end + 1 - start) + start);   //start~end까지 랜덤 넘버 
+        }
+
+        /* 원론적인 방식
+        function getId(strId){
+            return document.getElementById(strId);
+        }
+        */
+        //요즘 선호되는 방식
+        var objMy;
+        var $ = function (strId) {
+            return document.getElementById(strId);
+            alert("난 뭐니?");     // 위에서 return을 만났기 때문에 실행 안됨!
+        }
+
+        function numGame() {
+            $("express");
+            var quesNum = myRan(100, 200);  // 랜덤 넘버 생성
+            var sidoCnt = 0;              //몇번 만에 맞추었는지;
+            alert("답은" + quesNum + "<br>");
+            //- code  시도횟수를 위한 카운트 변수 선언 전역? 로컬? 
+            while (true) {
+                //- code - 사용자 입력 prompt 사용
+                var userInput = parseInt(prompt("예상 숫자를 입력하세요", 100));
+                sidoCnt++;      //시도 횟수 증가
+                //- code - 비교  맞으면 메세지 출력(count)후 종료 조건!
+                if (quesNum == userInput) {           // 사용자가 랜덤숫자를 맞추었을 때
+                    if (sidoCnt <= 5) {
+
+                        $("express").innerHTML = sidoCnt + "만에 맞추다니 훌륭해!!";
+                        //                        objMy.innerHTML= sidoCnt+ "만에 맞추다니 훌륭해!!";
+                    } else {
+                        $("express").innerHTML = sidoCnt + "만에 맞추다니 별로얌!!";
+                        //                        objMy.innerHTML= sidoCnt+ "만에 맞추다니 훌륭해!!";
+                    }
+                    break;                      //  while 문을 벗어나기
+                }
+
+                //힌트 주기
+                //- code - 틀리면 더 작은 수를 입력해야 하는지 더 큰수를 입력해야 하는지 alert로 알려 줌
+                //여기까지 오면 무한루핑이라 다시 사용자 입력으로 올라감 
+                if (userInput > quesNum) {
+                    alert("답은 좀더 작은 숫자 입니다!");
+                } else {
+                    alert("답은 좀더 큰 숫자 입니다!");
+                }
+            }
+        }
+        alert(myRan(1, 10));
+    </script>
+</body>
+
+</html>

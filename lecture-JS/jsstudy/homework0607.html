@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homework0607.html</title>
+</head>
+
+<body id="myBack">
+    <script>
+        "use strict"
+        /*
+        // 숫자 문자열로 바꾸기 -> 진법 
+        var mynum = 255;
+        var mystr = mynum.toString(2);
+
+        alert(mystr);
+        */
+
+        // 리턴 형식이 #000000 ~ #ffffff 범위의 문자열
+
+        /*
+        // 1)
+        function myRan(start, end) {
+            return Math.floor(Math.random() * (end + 1 - start) + start);
+        }
+
+        function ranHexaNum() {
+            var mystr = '';
+            for (var i = 0; i < 6; i++) {
+                var mynum = myRan(0, 15);
+                mystr += mynum.toString(16);
+            }
+            console.log(`ranHexaNum return: #${mystr}`);
+            return "#" + mystr;
+        }
+
+        function chgBack() {
+            document.getElementById("myBack").style.backgroundColor = ranHexaNum();
+            setTimeout(chgBack, 1000);
+        }
+        */
+
+        // 2)
+        function myRan(start, end) {
+            return Math.floor(Math.random() * (end - start) + start);
+        }
+
+        function ranHexaNum() {
+            var mystr = '';
+            for (var i = 0; i < 3; i++) {
+                var mynum = myRan(0, 256);
+                if (mynum < 16) {
+                    mystr = "0" + mystr;
+                }
+                mystr += mynum.toString(16);
+            }
+            return mystr;
+        }
+
+        function chgBack() {
+            var hexadecimal = ranHexaNum();
+            document.getElementById("myBack").style.backgroundColor = "#" + hexadecimal;
+            console.log(`color code: #${hexadecimal}`);
+            setTimeout(chgBack, 500);
+        }
+
+        function main() {
+            chgBack();
+        }
+
+        main();
+
+    </script>
+
+</body>
+
+</html>

@@ -45,6 +45,7 @@
         document.write("userNum: [" + list + "]");
         */
 
+        /*
         // 2)
         function myRan(start, end) {
             return Math.floor(Math.random() * start + 1 + (end - start));
@@ -61,11 +62,11 @@
             do {
                 userNum = prompt("100 ~ 200 사이의 수를 입력하라 ");
             }
-            while(userNum < 100 || userNum > 200);
-                list[i] = userNum;
+            while (userNum < 100 || userNum > 200);
+            list[i] = userNum;
 
             if (ranNum == userNum) {
-                document.write("GOOD!!! " + "<br>");
+                document.write("정답입니다!!! " + "<br>");
                 break;
             }
             if (ranNum > userNum) {
@@ -77,27 +78,51 @@
         }
 
         if (i == 5) {
-            document.write("멍청이!!! " + "<br>");
+            document.write("실패입니다!!! " + "<br>");
         }
 
         document.write("ranNum: " + ranNum + "<br>");
         document.write("userNum: [" + list + "]");
+        */
+
+        // 3) sensei sol
+        function myRan(start, end) {
+            return Math.floor(Math.random() * (end + 1 - start) + start);
+        }
+
+        function numGame() {
+            var quesNum = myRan(100, 200);
+            var sidoCnt = 0;
+
+            alert("답은" + quesNum + "<br>");
+
+            while (true) {
+                var userInput = parseInt(prompt("예상 숫자를 입력하세요", 100));
+                sidoCnt++;
+
+                if (quesNum == userInput) {
+                    if (sidoCnt <= 5) {
+                        document.getElementById("express").innerHTML = sidoCnt + "만에 맞추다니 훌륭해!!";
+                    } else {
+                        document.getElementById("express").innerHTML = sidoCnt + "만에 맞추다니 별로얌!!";
+                    }
+                    break;
+                }
+
+                if (userInput > quesNum) {
+                    alert("답은 좀더 작은 숫자 입니다!");
+                } else {
+                    alert("답은 좀더 큰 숫자 입니다!");
+                }
+            }
+        }
 
     </script>
 </head>
 
 <body>
+    <div id="express" style="height:300px;font-size: 2em;color:gold;background-color: black;line-height:300px"></div>
+    <input type="button" value="숫자 맟추기 게임" onclick="numGame()">
 </body>
 
 </html>
-
-<!--
-    100 ~200 랜수 발생
-    사용자 입력을 받는다 숫자
-    랜덤숫자 비교
-    맞으면 몇번만에 맞추었는지
-    5번 이하 굳
-    초과 바보 라고 메시지 출력
-    틀리면 랜수 사용자수 비교해서 더 큰수를 입력하고 알려준다
-
--->
