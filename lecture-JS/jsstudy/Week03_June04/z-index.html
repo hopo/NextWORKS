@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>z-INDEX</title>
+    <!-- document.styleSheets[0]-->
+    <style>
+        /* document.styleSheets[0].cssRules[0]   */
+        #box1 {
+            position: absolute;
+            top: 0px;
+            left: 300px;
+            width: 100px;
+            height: 100px;
+            background: blue;
+            z-index: 200;
+        }
+    </style>
+    <!-- document.styleSheets[1]-->
+    <style>
+        /* document.styleSheets[1].cssRules[0]   */
+        #box2 {
+            position: absolute;
+            top: 30px;
+            left: 330px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            z-index: 100;
+        }
+    </style>
+    <!-- document.styleSheets[2]-->
+    <style>
+        /* document.styleSheets[2].cssRules[0]   */
+        #box3 {
+            position: absolute;
+            top: 60px;
+            left: 360px;
+            width: 100px;
+            height: 100px;
+            background: green;
+            z-index: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="난 버튼이얌" onclick="chgZindex()" />
+    <div id="box1">box #1 </div>
+    <div id="box2">box #2 </div>
+    <div id="box3">box #3 </div>
+
+    <script>
+        function chgZindex() {
+            /*
+            bx1 = document.styleSheets[0].cssRules[0];
+            bx1.style["z-index"] -= 100;
+            */
+
+            bx1 = document.getElementById("box1");
+            var num = bx1.style.zIndex || -100  // 많이 사용
+            bx1.style.zIndex = num; // 강제 할당
+        }
+    </script>
+</body>
+
+</html>

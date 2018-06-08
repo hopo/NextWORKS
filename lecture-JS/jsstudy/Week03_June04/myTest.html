@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta author="석용건" />
+    <meta charset="utf-8" />
+    <title>테스트</title>
+    <style>
+        #bFrame {
+            position: relative;
+            left: 15px;
+            top: 0px;
+            padding: 0;
+            width: 1000px;
+            height: 800px;
+            border: 2px solid blue;
+            background-color: aquamarine;
+            background-image: url("tiger0.jpg");
+            background-size: 1000px 700px;
+            background-repeat: no-repeat;
+        }
+
+        #rowBar {
+            position: absolute;
+            line-height: 50px;
+            left: 15px;
+            bottom: 100px;
+            width: 150px;
+            height: 50px;
+            border: 1px solid black;
+            background-color: rgba(0, 0, 0, 0.3);
+            background-image: url("stone.jpg");
+            background-size: 150px 50px;
+            background-repeat: no-repeat;
+        }
+
+        #tingBall {
+            position: absolute;
+            left: 100px;
+            top: -100px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            border: 1px solid black;
+            background-color: cadetblue;
+            background-image: url("logo.png");
+            background-size: 100px 100px;
+            background-repeat: no-repeat;
+        }
+
+        #bottomBlock {
+            position: absolute;
+            z-index: 999;
+            text-align: center;
+            left: 0px;
+            bottom: 0px;
+            width: 1000px;
+            height: 100px;
+            border: 0px;
+            background-color: rgba(89, 21, 135, 0.7);
+        }
+
+        body {
+            margin: 0
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bFrame">
+        <div id="tingBall"></div>
+        <div id="rowBar">
+            &nbsp;&nbsp;&nbsp;좌우 화살표이용
+        </div>
+        <div id="bottomBlock"></div>
+    </div>
+    <script>
+        var my_imgs =[];
+        for(var i=0;i<=10; i++){
+            my_imgs[i]="tiger"+i+".jpg";
+        }
+        var b_frame = document.getElementById("bFrame1");
+        var row_bar = document.getElementById("rowBar");
+        var row_bar_style = document.styleSheets[0].cssRules[1].style;
+
+        var ting_ball = document.getElementById("tingBall");
+        var ting_ball_style = document.styleSheets[0].cssRules[2].style;
+
+        window.onkeydown = function moveBar(evt) {
+            evt = evt || window.event;
+            //      alert(evt.keyCode || eve.which)
+            var keyValue = evt.keyCode || eve.which;
+
+            switch (keyValue) {
+                case 37:
+                    if (parseInt(row_bar_style.left) <= 0) row_bar_style.left = "7px";
+                    row_bar_style.left = (parseInt(row_bar_style.left) - 20) + "px";
+                    break;
+                case 39:
+                    if (parseInt(row_bar_style.left) >= 845) row_bar_style.left = "840px";
+                    row_bar_style.left = (parseInt(row_bar_style.left) + 20) + "px";
+                    break;
+            }
+        }
+
+        window.onload = function initStart() {
+            var ran_left = Math.ceil(Math.random() * 800 + 50);
+            ting_ball_style.left = ran_left + "px";
+            ting_ball_style.top = "11px";
+            moveBall();
+            collisionBall();
+        }
+
+        var moveHor = 10;
+        var moveVer = 10;
+        var moveAngle = 0;
+        var seconds_cnt = 0;
+        function moveBall() {
+            seconds_cnt++;
+            if(seconds_cnt == 200){
+                seconds_cnt=0;
+                var rand = Math.floor(Math.random() * 11);
+                document.styleSheets[0].cssRules[0].style.backgroundImage = "url("+my_imgs[rand]+")";
+            }
+            /*  중요 transform은 테스트결과 한 함수내에서만 동작!!!
+                if(parseInt(ting_ball_style.left) >= 895 || parseInt(ting_ball_style.left) <=0 ){
+                    moveAngle = (moveAngle % 360) + 10;    
+                    ting_ball_style.transform= ting_ball_style.transform + "rotate("+moveAngle+"deg) skew(30deg)";
+                            console.log("ckk",moveAngle);
+                     moveHor=-moveHor;
+                }
+                if(parseInt(ting_ball_style.top) <= 10 ){
+                    moveAngle = (moveAngle % 360) + 10;    
+                    ting_ball_style.transform=ting_ball_style.transform + "rotate("+moveAngle+"deg) skew(30deg)";
+                    moveVer=-moveVer;
+                }
+            */
+            if (parseInt(ting_ball_style.top) > 700) {
+                ting_ball_style.top = "-150px";
+                document.styleSheets[0].cssRules[3].style.backgroundColor = "red";
+                bottomBlock.innerHTML = "<h1>너무 못하시네요!!~~</h1>"
+                clearTimeout(collT);
+            } else {
+                //        moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg)";
+                ting_ball_style.left = (parseInt(ting_ball_style.left) + moveHor) + "px";
+                ting_ball_style.top = (parseInt(ting_ball_style.top) + moveVer) + "px";
+                setTimeout(moveBall, 50);
+            }
+        }
+        //충돌체크
+        var collT;
+        function collisionBall() {
+            if (parseInt(ting_ball_style.left) >= 895 || parseInt(ting_ball_style.left) <= 0) {
+                moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                moveHor = -moveHor;
+            }
+            if (parseInt(ting_ball_style.top) <= 10) {
+                moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                moveVer = -moveVer;
+            }
+
+            var ballVerticalPos = parseInt(ting_ball_style.top) + 100;
+            var ballHorizonPos = parseInt(ting_ball_style.left);
+            var barHorizonPos = parseInt(row_bar_style.left);
+
+            if (ballVerticalPos > 650) {
+                if ((ballHorizonPos > barHorizonPos - 100) && (ballHorizonPos < barHorizonPos + 100)) {
+                    ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                    moveVer = -moveVer;
+                }
+            }
+            collT = setTimeout(collisionBall, 50);
+        }
+    </script>
+</body>
+
+</html>

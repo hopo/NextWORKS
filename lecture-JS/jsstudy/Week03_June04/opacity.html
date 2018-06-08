@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        img {
+            opacity: 0.5;
+            /* 0은 완전 투명 값은 0.0 ~ 1.0 사이 */
+        }
+
+        img:hover {
+            opacity: 1.0;
+            /* 1은 완전 불투명 */
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Opacity 속성</h1>
+    <img id="myImg" src="image/Canon.png" width="150" height="120" alt="이미지가 안보일때 보여요">
+    <img src="image/aiyu.jpg" width="150" height="120" alt="이미지가 안보일때 보이는 글">
+
+    <script>
+        "use strict"
+        var who = document.getElementById("myImg");
+
+        var timeVar = 500;
+        var opVar = 0.0;
+
+        var direction = true;
+        function slowOp() {
+            if (opVar > 1) {
+                direction = false;
+            } else if (opVar < 0) {
+                direction = true;
+            }
+            if(direction) {
+                opVar += 0.1;
+            } else {
+                opVar -= 0.1;
+            }
+            who.style.opacity = opVar;
+            setTimeout(slowOp, timeVar);  // recursion
+        }
+
+        function main() {
+            slowOp();
+        }
+        main();
+
+    </script>
+</body>
+
+</html>

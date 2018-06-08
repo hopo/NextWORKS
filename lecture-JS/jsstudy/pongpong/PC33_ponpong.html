@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta author="PC33" />
+    <meta charset="utf-8" />
+    <title>PC33_pongpong</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="bFrame">
+        <div id="tingBall"></div>
+        <div id="rowBar">&And;</div>
+        <div id="bottomBlock"></div>
+    </div>
+
+    <script>
+        "use strict"
+
+        var my_imgs = [];
+        for (var i = 0; i <= 10; i++) {
+            my_imgs[i] = "tiger" + i + ".jpg";
+        }
+        var b_frame = document.getElementById("bFrame1");
+        var row_bar = document.getElementById("rowBar");
+        var row_bar_style = document.styleSheets[0].cssRules[1].style;
+
+        var ting_ball = document.getElementById("tingBall");
+        var ting_ball_style = document.styleSheets[0].cssRules[2].style;
+
+        window.onkeydown = function moveBar(evt) {
+            evt = evt || window.event;
+            //      alert(evt.keyCode || eve.which)
+            var keyValue = evt.keyCode || eve.which;
+
+            switch (keyValue) {
+                case 37:
+                    if (parseInt(row_bar_style.left) <= 0) row_bar_style.left = "7px";
+                    row_bar_style.left = (parseInt(row_bar_style.left) - 20) + "px";
+                    break;
+                case 39:
+                    if (parseInt(row_bar_style.left) >= 845) row_bar_style.left = "840px";
+                    row_bar_style.left = (parseInt(row_bar_style.left) + 20) + "px";
+                    break;
+            }
+        }
+
+        window.onload = function initStart() {
+            var ran_left = Math.ceil(Math.random() * 800 + 50);
+            ting_ball_style.left = ran_left + "px";
+            ting_ball_style.top = "11px";
+            moveBall();
+            collisionBall();
+        }
+
+        var moveHor = 10;
+        var moveVer = 10;
+        var moveAngle = 0;
+        var seconds_cnt = 0;
+
+        function moveBall() {
+            seconds_cnt++;
+            if (seconds_cnt == 200) {
+                seconds_cnt = 0;
+                var rand = Math.floor(Math.random() * 11);
+                document.styleSheets[0].cssRules[0].style.backgroundImage = "url(" + my_imgs[rand] + ")";
+            }
+            /*  중요 transform은 테스트결과 한 함수내에서만 동작!!!
+                if(parseInt(ting_ball_style.left) >= 895 || parseInt(ting_ball_style.left) <=0 ){
+                    moveAngle = (moveAngle % 360) + 10;    
+                    ting_ball_style.transform= ting_ball_style.transform + "rotate("+moveAngle+"deg) skew(30deg)";
+                            console.log("ckk",moveAngle);
+                     moveHor=-moveHor;
+                }
+                if(parseInt(ting_ball_style.top) <= 10 ){
+                    moveAngle = (moveAngle % 360) + 10;    
+                    ting_ball_style.transform=ting_ball_style.transform + "rotate("+moveAngle+"deg) skew(30deg)";
+                    moveVer=-moveVer;
+                }
+            */
+            if (parseInt(ting_ball_style.top) > 700) {
+                ting_ball_style.top = "-150px";
+                document.styleSheets[0].cssRules[3].style.backgroundColor = "red";
+                bottomBlock.innerHTML = "<h1> &rtri;&rtri; FAILED &ltri;&ltri; </h1>"
+                clearTimeout(collT);
+            } else {
+                //        moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg)";
+                ting_ball_style.left = (parseInt(ting_ball_style.left) + moveHor) + "px";
+                ting_ball_style.top = (parseInt(ting_ball_style.top) + moveVer) + "px";
+                setTimeout(moveBall, 50);
+            }
+        }
+
+        //충돌체크
+        var collT;
+        function collisionBall() {
+            if (parseInt(ting_ball_style.left) >= 895 || parseInt(ting_ball_style.left) <= 0) {
+                moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                moveHor = -moveHor;
+            }
+            if (parseInt(ting_ball_style.top) <= 10) {
+                moveAngle = (moveAngle % 360) + 10;
+                ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                moveVer = -moveVer;
+            }
+
+            var ballVerticalPos = parseInt(ting_ball_style.top) + 100;
+            var ballHorizonPos = parseInt(ting_ball_style.left);
+            var barHorizonPos = parseInt(row_bar_style.left);
+
+            if (ballVerticalPos > 650) {
+                if ((ballHorizonPos > barHorizonPos - 100) && (ballHorizonPos < barHorizonPos + 100)) {
+                    ting_ball_style.transform = "rotate(" + moveAngle + "deg) skew(30deg)";
+                    moveVer = -moveVer;
+                }
+            }
+            collT = setTimeout(collisionBall, 50);
+        }
+
+    </script>
+</body>
+
+</html>

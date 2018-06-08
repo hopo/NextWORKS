@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <style>
+        #a {
+            /*visibility: hidden;*/
+            /* 안 보이지만 영역은 차지, 안보이면서 영역 안차지는 display:none*/
+            display: none;
+            border: 1px dotted red;
+        }
+
+        #b {
+            visibility: visible;
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Visibility 속성</h1>
+    <img id="a" src="image/aiyu.jpg" width="150" height="120" alt="아이유">
+    <img id="b" src="image/who.jpg" width="150" height="120" alt="누구냥?">
+</body>
+
+</html>
