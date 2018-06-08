@@ -17,8 +17,6 @@ public class Ex02File {
 		if (parent.exists()) {
 			System.out.println(parent.getPath() + "가 존재 합니다.");
 		} else {
-			System.out.println(parent.getPath() + "가 NOT 존재 합니다.");
-
 			// ! 디렉토리 생성
 			if (parent.mkdirs()) {
 				System.out.println(parent.getPath() + " Make Directory Success.");
@@ -33,7 +31,7 @@ public class Ex02File {
 				System.out.println(parent.getPath() + " 파일 생성 Success.");
 			}
 		} else {
-			if(file.setReadOnly()) { // ;; RO file
+			if(file.setReadOnly()) {	// ;; RO file
 				System.out.println(parent.getPath() + " Change Mode Read Only.");
 			}
 		}

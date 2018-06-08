@@ -27,7 +27,7 @@ public class Ex05FileReaderWriter {
 				}
 				// writer.write(x); // ;; 1)char
 				writer.write(buff, 0, x); // ;; 2)char[]
-			} 
+			}
 
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -36,17 +36,14 @@ public class Ex05FileReaderWriter {
 		} finally {
 
 			// #3. Stream Close
-			if (reader != null) {
-				try {
-					reader.close(); 
-				} catch (IOException e) {
+			try {
+				if (reader != null) {
+					reader.close();
 				}
-			}
-			if (writer != null) {
-				try {
+				if (writer != null) {
 					writer.close();
-				} catch (IOException e) {
 				}
+			} catch (IOException e) {
 			}
 		}
 	}
