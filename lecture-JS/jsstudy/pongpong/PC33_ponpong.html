@@ -1,26 +1,23 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta author="PC33" />
     <meta charset="utf-8" />
     <title>PC33_pongpong</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div id="bFrame">
         <div id="tingBall"></div>
         <div id="rowBar">&And;</div>
         <div id="bottomBlock"></div>
     </div>
-
     <script>
         "use strict"
 
         var my_imgs = [];
         for (var i = 0; i <= 10; i++) {
-            my_imgs[i] = "tiger" + i + ".jpg";
+            my_imgs[i] = "image/tiger" + i + ".jpg";
         }
         var b_frame = document.getElementById("bFrame1");
         var row_bar = document.getElementById("rowBar");
@@ -119,8 +116,6 @@
             }
             collT = setTimeout(collisionBall, 50);
         }
-
     </script>
 </body>
-
 </html>
