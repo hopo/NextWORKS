@@ -19,51 +19,36 @@ import javafx.scene.layout.VBox;
 
 public class GdriveView {
 
-	/*
-	 * GdriveView 클래스의 컨스트럭터 컨스트럭터가 호출되면 root를 만든다;
-	 * 
-	 */
+	// ! GdriveView 클래스의 컨스트럭터 컨스트럭터가 호출되면 root를 만든다;
 	public GdriveView() {
 		makeRoot();
 	}
 
-	/*
-	 * root는 BorderPane으로 만든다;
-	 */
+	// ! root는 BorderPane으로 만든다;
 	private static BorderPane root = new BorderPane();
 
-	/*
-	 * 뷰에서 컨트롤러를 이용할 수 있게 GdriveController 오브젝트를 생성한다; (싱글톤 방식이다);
-	 */
+	// ! 뷰에서 컨트롤러를 이용할 수 있게 GdriveController 오브젝트를 생성한다; (싱글톤 방식이다);
 	GdriveController gdController = GdriveController.getInstance();
 
-	/*
-	 * 외부에서 load()를 호출하면 Parent를 리턴해준다; 컨트롤러 인스턴스의 handleList()를 콜 해주면서 리스트를 뿌려준다;
-	 */
+	// ! 외부에서 load()를 호출하면 Parent를 리턴해준다; 컨트롤러 인스턴스의 handleList()를 콜 해주면서 리스트를 뿌려준다;
 	public Parent load() {
 		gdController.handleList();
 		return root;
 	}
 
-	/*
-	 * 뷰의 실체 root를 만든다; makeRoot();
-	 */
+	// ! 뷰의 실체 root를 만든다
 	private void makeRoot() {
 
 		// /VBox
-		// | 보더페인의 탑영역
+		// | 보더페인의 top영역
 		VBox vBox = new VBox();
 
-		/*
-		 * ! 컨트롤러에서 TextArea를 사용할 수 있게 넘겨준다;
-		 */
-
 		// /TextArea
-		// | 보더페인의 센터영역
+		// | 보더페인의 center영역
 		TextArea textArea = new TextArea();
 		
-		// /TextArea
-		// | 보더페인의 보텀영역
+		// /HBox
+		// | 보더페인의 bottom영역
 		HBox hBox = new HBox();
 
 		// /VBox/MenuBar
@@ -103,9 +88,6 @@ public class GdriveView {
 		// /VBox/MenuBar/Menu{FILE}/MenuItem{Download}
 		// | 메뉴바에서 메뉴 FILE 아래 메뉴아이템 Download
 		MenuItem menuItemDownload = new MenuItem("Download");
-		// KeyCodeCombination kccDownload = new KeyCodeCombination(KeyCode.D,
-		// KeyCombination.CONTROL_DOWN);
-		// menuItemUpload.setAccelerator(kccDownload);
 		menuItemDownload.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -155,6 +137,9 @@ public class GdriveView {
 				gdController.handleList();
 			}
 		});
+
+		
+		/* setting */
 
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemList);

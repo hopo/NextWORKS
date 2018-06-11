@@ -22,14 +22,14 @@ public class ReaderWriterDemo {
 
 		reader = new BufferedReader(new InputStreamReader(proc2.getInputStream()));
 
-		PrintWriter writer = new PrintWriter(new FileWriter("/home/pc33/io/test0608.txt"));
+		PrintWriter writer = new PrintWriter(new FileWriter("/home/pc33/io/test0609.txt"));
 
 		try {
 
 			while (true) {
 				String line = reader.readLine();
 				if (line == null) {
-					System.out.println(" >>> QUIT");
+					System.out.println(" >>> 파일 쓰기 완료!");
 					break;
 				}
 				writer.println(line);

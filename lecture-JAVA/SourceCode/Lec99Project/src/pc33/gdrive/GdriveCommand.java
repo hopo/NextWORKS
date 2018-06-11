@@ -10,27 +10,39 @@ import javafx.scene.control.TextArea;
 // 할일: gdrive 로케이션
 // list 출력할 폴더
 public class GdriveCommand implements Gdrivable {
+	BufferedReader reader = null;
+	PrintWriter writer = null;
+	String gdrive = null; // ;; 훗날 수정 프로그램 초기화 문제
 
-	String gdrive = "/home/pc33/.golang/bin/gdrive";
+	public GdriveCommand() {
+		String[] cmdArr = { "which", "gdrive" };
+
+		try {
+
+			Process proc = Runtime.getRuntime().exec(cmdArr);
+			reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+
+			gdrive = reader.readLine();
+
+		} catch (IOException e) {
+			// e.printStackTrace();
+			System.out.println("Not install!!");
+		}
+	}
 
 	@Override
 	public void list(TextArea textArea) {
 		// ! gdrive list
-		BufferedReader reader = null;
-		PrintWriter writer = null;
 
 		try {
-			// ;; create a new array strings
-			String[] cmdArray = new String[2];
 
-			// ;; first argument is the program we want to open
-			cmdArray[0] = gdrive;
-			cmdArray[1] = "list";
+			String[] cmdArray = { gdrive, "list" };
 
-			// ;; print a message
+			// cmdArray[0] = gdrive;
+			// cmdArray[1] = "list";
+
 			System.out.println("$ gdrive list");
 
-			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			// writer = new PrintWriter("/Users/hp/.gdrive/info/list.txt");
@@ -69,24 +81,17 @@ public class GdriveCommand implements Gdrivable {
 		// ! gdrive upload ./
 		try {
 
-			// ;; create a new array of 2 strings
-			String[] cmdArray = new String[3];
+			String[] cmdArray = { gdrive, "upload", filePath };
 
-			// ;; first argument is the program we want to open
-			cmdArray[0] = gdrive;
-			cmdArray[1] = "upload";
+			// cmdArray[0] = gdrive;
+			// cmdArray[1] = "upload";
+			// cmdArray[2] = filePath;
 
-			// ;; second argument is a txt file we want to open with notepad
-			cmdArray[2] = filePath;
-
-			// ;; print a message
 			System.out.println("$ gdrive upload {path}");
 
-			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			// ;; print another message
 			System.out.println(">>> " + filePath + " upload complete");
 
 		} catch (Exception e) {
@@ -99,24 +104,19 @@ public class GdriveCommand implements Gdrivable {
 		// ! gdrive download ID --path ./
 		try {
 
-			// ;; create a new array of strings
-			String[] cmdArray = new String[5];
+			String[] cmdArray = { gdrive, "download", id, "--path", downloadDirectory };
 
-			// ;; first argument is the program we want to open
-			cmdArray[0] = gdrive;
-			cmdArray[1] = "download";
-			cmdArray[2] = id;
-			cmdArray[3] = "--path";
-			cmdArray[4] = downloadDirectory;
+			// cmdArray[0] = gdrive;
+			// cmdArray[1] = "download";
+			// cmdArray[2] = id;
+			// cmdArray[3] = "--path";
+			// cmdArray[4] = downloadDirectory;
 
-			// ;; print a message
 			System.out.println("$ gdrive download {Id} --path {path}");
 
-			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			// ;; print another message
 			System.out.println(">>>  download complete: " + downloadDirectory);
 
 		} catch (Exception e) {
@@ -124,34 +124,29 @@ public class GdriveCommand implements Gdrivable {
 		}
 
 	}
-	
+
 	@Override
 	public void delete(String id) {
-		
+
 		try {
 
-			// ;; create a new array of strings
-			String[] cmdArray = new String[3];
+			String[] cmdArray = { gdrive, "delete", id };
 
-			// ;; first argument is the program we want to open
-			cmdArray[0] = gdrive;
-			cmdArray[1] = "delete";
-			cmdArray[2] = id;
+			// cmdArray[0] = gdrive;
+			// cmdArray[1] = "delete";
+			// cmdArray[2] = id;
 
-			// ;; print a message
 			System.out.println("$ gdrive delete {Id}");
 
-			// ;; create a process and execute cmdArray
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			// ;; print another message
 			System.out.println(">>>  delete complete!!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }

@@ -5,28 +5,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/*
- * (non-Javadoc)
- * 
- * @see javafx.application.Application#start(javafx.stage.Stage)
- * 
- * 
- * [Class] 
- * 
- * public class Gdrive
- * 
- * [Methods]
- * 
- * public void start(Stage primaryStage);
- * public static void main(String[] args); 
- * 
- * [Description]
- * 
- * Application 클래스를 익스텐즈한다;
- * 
- * 
- */
-
 public class Gdrive extends Application {
 
 	@Override
@@ -36,7 +14,6 @@ public class Gdrive extends Application {
 		Parent root = new GdriveView().load();
 
 		// ! GdriveController의 오브젝트 생성;
-		// (싱글톤 방식으로 되어있다.);
 		// 컨트롤러에서 사용할 수 있게 Stage primaryStage를 셋 해준다;
 		GdriveController gdController = GdriveController.getInstance();
 		gdController.setPrimaryStage(primaryStage);
