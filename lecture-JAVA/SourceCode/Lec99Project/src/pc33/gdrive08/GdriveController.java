@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive08;
 
 import java.io.File;
 import java.io.IOException;
@@ -67,6 +67,7 @@ public class GdriveController {
 	public void handleDownload() {
 		System.out.println(">>> Action 'download'");
 
+		// String id = "19vYy3YYYhEPzo6R6CXe7Df0Sg245QnoL"; // ;; 다운로드할 파일 선택하기.
 		String downId = textField.getText();
 
 		DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -78,8 +79,8 @@ public class GdriveController {
 			gdCommand.download(downId, directory.getPath());
 		} else {
 			System.out.println("Download Directory: default Directory");
-			 gdCommand.download(downId, "/Users/hp/Downloads");
-//			gdCommand.download(downId, "/home/pc33/Downloads");
+			// gdCommand.download(downId, "/Users/hp/Downloads");
+			gdCommand.download(downId, "/home/pc33/Downloads");
 
 		}
 	}
@@ -99,7 +100,7 @@ public class GdriveController {
 		Platform.exit();
 	}
 	
-	// !!! popup 사용할것인가?
+	// !!!
 	public void handlePopup() throws IOException {
 		Popup popup = new Popup();
 		
