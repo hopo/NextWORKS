@@ -11,7 +11,7 @@ public class GdriveCommand implements Gdrivable {
 
 	BufferedReader reader = null;
 	PrintWriter writer = null;
-	String gdrive = "/usr/local/bin/gdrive"; // ;; 훗날 수정 프로그램 초기화 문제
+	String gdrive = Gpath.getGdriveFile();
 
 	@Override
 	public void list(TextArea textArea) {

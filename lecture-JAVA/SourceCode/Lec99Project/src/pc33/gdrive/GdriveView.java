@@ -19,37 +19,41 @@ import javafx.scene.layout.VBox;
 
 public class GdriveView {
 
-	// ! GdriveView 클래스의 컨스트럭터 컨스트럭터가 호출되면 root를 만든다;
+	// ! GdriveView 클래스의 컨스트럭터가 호출되면 root를 만든다;
 	public GdriveView() {
 		makeRoot();
 	}
 
-	// ! root는 BorderPane으로 만든다;
+	// ! / 'root'는 BorderPane으로 만든다
 	private static BorderPane root = new BorderPane();
+
+	// /VBox
+	// | 보더페인의 top영역
+	private VBox vBox = new VBox();
+
+	// /TextArea
+	// | 보더페인의 center영역
+	private TextArea textArea = new TextArea();
+
+	// /HBox
+	// | 보더페인의 bottom영역
+	private HBox hBox = new HBox();
 
 	// ! 뷰에서 컨트롤러를 이용할 수 있게 GdriveController 오브젝트를 생성한다; (싱글톤 방식이다);
 	GdriveController gdController = GdriveController.getInstance();
 
 	// ! 외부에서 load()를 호출하면 Parent를 리턴해준다; 컨트롤러 인스턴스의 handleList()를 콜 해주면서 리스트를 뿌려준다;
 	public Parent load() {
-		gdController.handleList();
+		if (Gpath.getGdriveFile() == null) {
+			textArea.appendText("제대로 작동 하지 않습니다.");
+		} else {
+			gdController.handleList();
+		}
 		return root;
 	}
 
 	// ! 뷰의 실체 root를 만든다
 	private void makeRoot() {
-
-		// /VBox
-		// | 보더페인의 top영역
-		VBox vBox = new VBox();
-
-		// /TextArea
-		// | 보더페인의 center영역
-		TextArea textArea = new TextArea();
-		
-		// /HBox
-		// | 보더페인의 bottom영역
-		HBox hBox = new HBox();
 
 		// /VBox/MenuBar
 		// | 탑영역에 들어가는 메뉴바
@@ -138,7 +142,6 @@ public class GdriveView {
 			}
 		});
 
-		
 		/* setting */
 
 		// [set] /VBox/MenuBar/Menu{FILE}/
