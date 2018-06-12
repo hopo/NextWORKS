@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>inputtype.html</title>
+</head>
+
+<body>
+    <form action="">
+        <!-- disabled 속성은 input 대부분의 가지고 있다  -->
+        <input type="text" id="t1" name="t1" value="텍스트샂아제보여" disabled>
+        <input type="password" id="pw" name="pass" size=10>
+        <br>
+
+        <input type="radio" name="gender" value="male"> A01
+        <input type="radio" name="gender" value="female"> A02
+        <input type="radio" name="gender" value="middler" checked> A03
+        <br>
+
+        <input type="checkbox" name="gender" value="male"> B01
+        <input type="checkbox" name="gender" value="female"> B02
+        <input type="checkbox" name="gender" value="middler" checked> B03
+        <br>
+
+        <input type="button" value="텍스트박스활성화" onclick="t1live()">
+    </form>
+
+    <script>
+        "use strict"
+
+        function t1live() {
+            var t1 = document.getElementById("t1");
+            t1.disabled = false;
+
+            var pw = document.getElementById("pw");
+            t1.value = pw.value;
+        }
+    </script>
+</body>
+
+</html>
