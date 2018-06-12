@@ -11,7 +11,9 @@ public class GdriveCommand implements Gdrivable {
 
 	BufferedReader reader = null;
 	PrintWriter writer = null;
+
 	String gdrive = Gpath.getGdriveFile();
+	String gdrivePath = Gpath.getGdrivePath();
 
 	@Override
 	public void list(TextArea textArea) {
@@ -26,8 +28,7 @@ public class GdriveCommand implements Gdrivable {
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-			writer = new PrintWriter("/Users/hp/.gdrive/list.txt");
-			// writer = new PrintWriter("/home/pc33/.gdrive/list.txt");
+			writer = new PrintWriter(gdrivePath + "/list.txt");
 
 			String line = "";
 
@@ -99,7 +100,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void delete(String id) {
-		
+
 		// ! gdrive delete {Id}
 		try {
 

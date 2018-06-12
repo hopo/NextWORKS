@@ -89,6 +89,7 @@ public class GdriveView {
 			}
 		});
 
+		/*
 		// /VBox/MenuBar/Menu{FILE}/MenuItem{Download}
 		// | 메뉴바에서 메뉴 FILE 아래 메뉴아이템 Download
 		MenuItem menuItemDownload = new MenuItem("Download");
@@ -98,6 +99,7 @@ public class GdriveView {
 				gdController.handleDownload();
 			}
 		});
+		*/
 
 		// /VBox/MenuBar/Menu{FILE}/SepatatorMenuItem
 		SeparatorMenuItem separator = new SeparatorMenuItem();
@@ -147,7 +149,7 @@ public class GdriveView {
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemList);
 		menuFile.getItems().add(menuItemUpload);
-		menuFile.getItems().add(menuItemDownload);
+//		menuFile.getItems().add(menuItemDownload);
 		menuFile.getItems().add(separator);
 		menuFile.getItems().add(menuItemExit);
 

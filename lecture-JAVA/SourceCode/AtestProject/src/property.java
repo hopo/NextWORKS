@@ -9,10 +9,8 @@ public class property {
 
 		Properties prop = new Properties();
 
-		// ! properies.load()
 		String homePath = System.getenv("HOME");
 		prop.load(new FileInputStream(homePath+"/.gdrive/config.properties"));
-		// Class.forName(driverClass);
 
 		System.out.println("homePath=" + prop.getProperty("homePath"));
 		System.out.println("gdrivePath=" + prop.getProperty("gdrivePath"));
