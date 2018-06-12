@@ -1,5 +1,11 @@
-#!/bin/bash
+# /bin/bash
 
-mkdir .temp/
-wget 192.168.20.14/repository/setup.py -P .temp/
-python3 .temp/setup.py
+gdrivePath=$HOME/.gdrive
+
+mkdir $gdrivePath
+
+wget 192.168.20.14/repository/gdrive -P $gdrivePath
+
+chmod +x $gdrivePath/gdrive
+
+$gdrivePath/gdrive about
