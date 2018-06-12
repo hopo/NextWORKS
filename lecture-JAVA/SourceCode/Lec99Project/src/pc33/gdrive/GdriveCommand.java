@@ -26,6 +26,7 @@ public class GdriveCommand implements Gdrivable {
 			System.out.println("$ gdrive list");
 
 			Process process = Runtime.getRuntime().exec(cmdArray);
+			process.waitFor();
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
 			String line = "";
@@ -111,6 +112,43 @@ public class GdriveCommand implements Gdrivable {
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void about(TextArea textArea) {
+		try {
+
+			String[] cmdArray = { gdrive, "about" };
+
+			System.out.println("$ gdrive about");
+
+			Process process = Runtime.getRuntime().exec(cmdArray);
+			process.waitFor();
+			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+			String line = "";
+
+			textArea.clear();
+			while (true) {
+				line = reader.readLine();
+				if (line == null) {
+					break;
+				}
+				textArea.appendText(line + "\n");
+			}
+
+			System.out.println(">>> show about");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (reader != null) {
+					reader.close();
+				}
+			} catch (Exception e2) {
+			}
 		}
 	}
 

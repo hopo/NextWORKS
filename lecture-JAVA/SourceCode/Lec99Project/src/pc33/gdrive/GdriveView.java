@@ -10,6 +10,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -58,6 +62,7 @@ public class GdriveView {
 		// /VBox/MenuBar
 		// | 탑영역에 들어가는 메뉴바
 		MenuBar menuBar = new MenuBar();
+		
 
 		// /VBox/MenuBar/Menu{FILE}
 		// | 메뉴바에서 메뉴 FILE
@@ -113,6 +118,42 @@ public class GdriveView {
 			}
 		});
 
+		// /VBox/MenuBar/Menu{HELP}
+		Menu menuHelp = new Menu("_HELP");
+		menuFile.setMnemonicParsing(true);
+
+		// /VBox/MenuBar/Menu{HELP}/MenuItem{about}
+		MenuItem menuItemAbout = new MenuItem("about");
+		menuItemAbout.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				gdController.handleAbout();
+			}
+		});
+
+		// /VBox/ToolBar
+		// | 탑영역에 들어가는 툴바
+		ToolBar toolBar = new ToolBar();
+
+		// ^
+		// /VBox/ToolBar/Button{List}
+		Button btnList = new Button();
+
+		// /VBox/ToolBar/Button{List}/Tooltip
+		Tooltip tipList = new Tooltip("LIST: Ctrl+L");
+		btnList.setTooltip(tipList);
+		btnList.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				gdController.handleList();
+			}
+		});
+
+		ImageView imgView = new ImageView();
+		Image img = new Image("@../../res/images/new.png");
+		imgView.setImage(img);
+		btnList.setGraphic(imgView);
+
 		// /HBox/TextField
 		// | 다운로드할 아이디를 넣는 박스
 		TextField textField = new TextField();
@@ -147,16 +188,10 @@ public class GdriveView {
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemList);
 		menuFile.getItems().add(menuItemUpload);
-		// menuFile.getItems().add(menuItemDownload);
+		// menuFile.getItems().add(menuItemDownload); // ;;메뉴바에서 일단 없앰.
 		menuFile.getItems().add(separator);
 		menuFile.getItems().add(menuItemExit);
 
-		// /VBox/MenuBar/Menu{HELP}
-		Menu menuHelp = new Menu("_HELP");
-		menuFile.setMnemonicParsing(true);
-
-		// /VBox/MenuBar/Menu{HELP}/MenuItem{about}
-		MenuItem menuItemAbout = new MenuItem("about");
 
 		// [set] /VBox/MenuBar/Menu{HELP}/
 		menuHelp.getItems().add(menuItemAbout);
@@ -165,8 +200,12 @@ public class GdriveView {
 		menuBar.getMenus().add(menuFile);
 		menuBar.getMenus().add(menuHelp);
 
+		// [set] /VBox/ToolBar/
+		toolBar.getItems().add(btnList);
+
 		// [set] /VBox/
 		vBox.getChildren().add(menuBar);
+		vBox.getChildren().add(toolBar);
 
 		// [set] /HBox/
 		hBox.getChildren().add(textField);

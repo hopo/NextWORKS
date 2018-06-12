@@ -100,4 +100,9 @@ public class GdriveController {
 		Platform.exit();
 	}
 
+	public void handleAbout() {
+		System.out.println(">>> Action 'about' ");
+		gdCommand.about(textArea);
+	}
+
 }
