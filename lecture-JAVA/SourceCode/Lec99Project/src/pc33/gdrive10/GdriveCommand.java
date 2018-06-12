@@ -1,10 +1,9 @@
-package pc33.gdrive;
+package pc33.gdrive10;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javafx.scene.control.TextArea;
 
@@ -18,6 +17,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void list(TextArea textArea) {
+
 		// ! gdrive list
 		try {
 
@@ -28,8 +28,9 @@ public class GdriveCommand implements Gdrivable {
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
+			writer = new PrintWriter(gdrivePath + "/list.txt");
+
 			String line = "";
-			ArrayList<String> lines = new ArrayList<>();
 
 			textArea.clear();
 			while (true) {
@@ -37,19 +38,19 @@ public class GdriveCommand implements Gdrivable {
 				if (line == null) {
 					break;
 				}
-				lines.add(line);
-				textArea.appendText(line + "\n");
+				writer.println(line);
+				textArea.appendText(line + "\n"); // ;; 훗날 수정.
 			}
 
+			writer.flush();
 			System.out.println(">>> list print");
 
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				reader.close();
+				writer.close();
 			} catch (IOException e) {
 			}
 		}
@@ -58,6 +59,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void upload(String filePath) {
+
 		// ! gdrive upload {path}
 		try {
 
@@ -77,6 +79,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void download(String id, String downloadDirectory) {
+
 		// ! gdrive download {Id} --path {path}
 		try {
 
@@ -97,6 +100,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void delete(String id) {
+
 		// ! gdrive delete {Id}
 		try {
 
@@ -112,6 +116,7 @@ public class GdriveCommand implements Gdrivable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }

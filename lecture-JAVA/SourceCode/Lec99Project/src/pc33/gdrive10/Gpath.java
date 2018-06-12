@@ -1,13 +1,12 @@
-package pc33.gdrive;
+package pc33.gdrive10;
 
 import java.io.File;
 
 public class Gpath {
 
 	private static String homePath = System.getenv("HOME");
-	private static String gdrivePath = homePath + "/.gdrive";	// ;디렉토리.
-	private static String gdrive = gdrivePath + "/gdrive";		// ;파일.
-	private static String downloadPath = homePath + "/Desktop";
+	private static String gdrivePath = homePath + "/.gdrive"; // ;디렉토리.
+	private static String gdrive = gdrivePath + "/gdrive"; // ;파일.
 
 	public static String getHomePath() {
 		return homePath;
@@ -25,11 +24,9 @@ public class Gpath {
 		if (!new File(gdrive).exists()) {
 			return null;
 		}
+
+System.out.println("!" + gdrive);
 		return gdrive;
-	}
-	
-	public static String getDownloadPath() {
-		return downloadPath;
 	}
 
 }

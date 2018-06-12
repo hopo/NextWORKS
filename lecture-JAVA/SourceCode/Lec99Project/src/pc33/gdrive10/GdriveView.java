@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive10;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -44,7 +44,7 @@ public class GdriveView {
 
 	// ! 외부에서 load()를 호출하면 Parent를 리턴해준다; 컨트롤러 인스턴스의 handleList()를 콜 해주면서 리스트를 뿌려준다;
 	public Parent load() {
-		if (Gpath.getGdrivePath() == null) {
+		if (Gpath.getGdrive() == null) {
 			textArea.appendText("제대로 작동 하지 않습니다.");
 		} else {
 			gdController.handleList();
@@ -90,13 +90,16 @@ public class GdriveView {
 		});
 
 		/*
-		 * // /VBox/MenuBar/Menu{FILE}/MenuItem{Download} // | 메뉴바에서 메뉴 FILE 아래 메뉴아이템
-		 * Download MenuItem menuItemDownload = new MenuItem("Download");
-		 * menuItemDownload.setOnAction(new EventHandler<ActionEvent>() {
-		 * 
-		 * @Override public void handle(ActionEvent event) {
-		 * gdController.handleDownload(); } });
-		 */
+		// /VBox/MenuBar/Menu{FILE}/MenuItem{Download}
+		// | 메뉴바에서 메뉴 FILE 아래 메뉴아이템 Download
+		MenuItem menuItemDownload = new MenuItem("Download");
+		menuItemDownload.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				gdController.handleDownload();
+			}
+		});
+		*/
 
 		// /VBox/MenuBar/Menu{FILE}/SepatatorMenuItem
 		SeparatorMenuItem separator = new SeparatorMenuItem();
@@ -117,7 +120,6 @@ public class GdriveView {
 		// | 다운로드할 아이디를 넣는 박스
 		TextField textField = new TextField();
 		textField.setPrefWidth(400);
-		textField.setPromptText("Insert Id");
 		gdController.setTextCon(textArea, textField);
 
 		// /HBox/Button{Download}
@@ -147,7 +149,7 @@ public class GdriveView {
 		// [set] /VBox/MenuBar/Menu{FILE}/
 		menuFile.getItems().add(menuItemList);
 		menuFile.getItems().add(menuItemUpload);
-		// menuFile.getItems().add(menuItemDownload);
+//		menuFile.getItems().add(menuItemDownload);
 		menuFile.getItems().add(separator);
 		menuFile.getItems().add(menuItemExit);
 

@@ -1,12 +1,17 @@
-package pc33.gdrive;
+package pc33.gdrive10;
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.application.Platform;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Paint;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 public class GdriveController {
@@ -44,13 +49,10 @@ public class GdriveController {
 	public void handleList() {
 		System.out.println(">>> Action 'list' ");
 		gdCommand.list(textArea);
-		textField.clear();
 	}
 
 	public void handleUpload() {
 		System.out.println(">>> Action 'upload'");
-		textArea.clear();
-		textArea.appendText(">>> UPLOAD PROCESS <<<");
 
 		FileChooser fileChooser = new FileChooser();
 		File file = fileChooser.showOpenDialog(primaryStage);
@@ -64,40 +66,58 @@ public class GdriveController {
 
 	public void handleDownload() {
 		System.out.println(">>> Action 'download'");
-		textArea.clear();
-		textArea.appendText(">>> DOWNLOAD PROCESS <<<");
 
 		String downId = textField.getText();
-		if (!downId.isEmpty()) {
-			DirectoryChooser directoryChooser = new DirectoryChooser();
-			File directory = directoryChooser.showDialog(primaryStage);
 
-			if (directory != null) {
-				System.out.println("Download Directory: " + directory.getPath());
-				gdCommand.download(downId, directory.getPath());
-			} else {
-				System.out.println("Download Directory: default Directory");
-				gdCommand.download(downId, Gpath.getDownloadPath());
-			}
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		File directory = directoryChooser.showDialog(primaryStage);
+		textField.clear();
+
+		if (directory != null) {
+			System.out.println("Download Directory: " + directory.getPath());
+			gdCommand.download(downId, directory.getPath());
+		} else {
+			System.out.println("Download Directory: default Directory");
+			 gdCommand.download(downId, "/Users/hp/Downloads");
+//			gdCommand.download(downId, "/home/pc33/Downloads");
+
 		}
 	}
 
 	public void handleDelete() {
 		System.out.println(">>> Action 'delete'");
-		textArea.clear();
-		textArea.appendText(">>> DELETE PROCESS <<<");
 
 		String deleteId = textField.getText();
+		textField.clear();
 
-		if (!deleteId.isEmpty()) {
-			gdCommand.delete(deleteId);
-		}
+		gdCommand.delete(deleteId);
 
 	}
 
 	public void handleExit() {
 		System.out.println(">>> Program TERMINATED.");
 		Platform.exit();
+	}
+	
+	// !!! popup 사용할것인가?
+	public void handlePopup() throws IOException {
+		Popup popup = new Popup();
+		
+		HBox root = new HBox();
+		root.prefHeight(30.0);
+		root.prefWidth(250.0);
+		
+		Label lblMessage = new Label("MESSAGE");
+		lblMessage.setTextFill(Paint.valueOf("#eeeeee"));
+		
+		root.getChildren().add(lblMessage);
+
+		lblMessage.setText("1개의 메시지가 도착.");
+		
+		popup.getContent().add(root);
+		popup.setAutoHide(true); // ;; 포커스 이동시 자동 닫기
+		popup.show(primaryStage);
+		
 	}
 
 }

@@ -1,10 +1,11 @@
-package pc33.gdrive;
+package pc33.gdrive11;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javafx.scene.control.TextArea;
 
@@ -15,6 +16,8 @@ public class GdriveCommand implements Gdrivable {
 
 	String gdrive = Gpath.getGdrive();
 	String gdrivePath = Gpath.getGdrivePath();
+
+	HashMap<String, String> hmap = new HashMap<>();
 
 	@Override
 	public void list(TextArea textArea) {
@@ -38,7 +41,13 @@ public class GdriveCommand implements Gdrivable {
 					break;
 				}
 				lines.add(line);
-				textArea.appendText(line + "\n");
+				textArea.appendText(line + "\n"); // ;; 훗날 수정.
+			}
+
+			// !! HashMap <Name, Id>
+			for (int idx = 1; idx < lines.size(); idx++) {
+				String[] sp = lines.get(idx).split(" ");
+				hmap.put(sp[3], sp[0]); // ;; name=id
 			}
 
 			System.out.println(">>> list print");
@@ -58,6 +67,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void upload(String filePath) {
+
 		// ! gdrive upload {path}
 		try {
 
@@ -77,6 +87,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void download(String id, String downloadDirectory) {
+
 		// ! gdrive download {Id} --path {path}
 		try {
 
@@ -97,6 +108,7 @@ public class GdriveCommand implements Gdrivable {
 
 	@Override
 	public void delete(String id) {
+
 		// ! gdrive delete {Id}
 		try {
 
@@ -112,6 +124,7 @@ public class GdriveCommand implements Gdrivable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
