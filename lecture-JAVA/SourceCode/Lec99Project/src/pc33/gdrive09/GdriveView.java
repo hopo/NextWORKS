@@ -44,11 +44,11 @@ public class GdriveView {
 
 	// ! 외부에서 load()를 호출하면 Parent를 리턴해준다; 컨트롤러 인스턴스의 handleList()를 콜 해주면서 리스트를 뿌려준다;
 	public Parent load() {
-		if (Gpath.getGdriveFile() == null) {
-			textArea.appendText("제대로 작동 하지 않습니다.");
-		} else {
+//		if (Gpath.getGdriveFile() == null) {
+//			textArea.appendText("제대로 작동 하지 않습니다.");
+//		} else {
 			gdController.handleList();
-		}
+//		}
 		return root;
 	}
 
