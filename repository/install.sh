@@ -1,11 +1,11 @@
-# /bin/bash
+# !/bin/bash
 
-gdrivePath=$HOME/.gdrive
 
-mkdir $gdrivePath
+mkdir $HOME/.temp/
 
-wget 192.168.20.14/repository/gdrive -P $gdrivePath
+# Test)
+cp /home/hp/NextWORKS/repository/setup.py $HOME/.temp/
 
-chmod +x $gdrivePath/gdrive
+#wget 192.168.20.14/repository/setup.py -P $HOME/.temp/
 
-$gdrivePath/gdrive about
+python3 $HOME/.temp/setup.py
