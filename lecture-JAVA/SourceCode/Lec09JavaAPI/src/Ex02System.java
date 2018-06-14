@@ -2,23 +2,23 @@ public class Ex02System {
 
 	public static void main(String[] args) {
 
-//		// !! ex) System.exit()
-//		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//		while (true) {
-//			System.out.print("Command : ");
-//			String str = "";
-//			try {
-//				str = reader.readLine();
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//			if ("exit".equals(str)) {
-//				System.out.println(" >>> Program terminate. <<<");
-//				// ;; Process terminate. exit()
-//				System.exit(0); // ;; 0: 정상종료, 0 이외는 비정상 종료.
-//			}
-//			System.out.println("str : " + str);
-//		}
+		// // !! ex) System.exit()
+		// BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		// while (true) {
+		// System.out.print("Command : ");
+		// String str = "";
+		// try {
+		// str = reader.readLine();
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
+		// if ("exit".equals(str)) {
+		// System.out.println(" >>> Program terminate. <<<");
+		// // ;; Process terminate. exit()
+		// System.exit(0); // ;; 0: 정상종료, 0 이외는 비정상 종료.
+		// }
+		// System.out.println("str : " + str);
+		// }
 
 		// !! ex) 1970년 1월 1일 00시 ~ 지금까지 밀리세컨 시간.
 		System.out.println("System.currentTimeMillis(): " + System.currentTimeMillis());
@@ -36,8 +36,10 @@ public class Ex02System {
 
 		// !!! 시스템 프로퍼티(key=value) 정보 읽어오기
 		// ex) os.name=Linux
-		System.out.println("\nOperate System : " + System.getProperty("os.name"));
-		System.out.println("Java Version : " + System.getProperty("java.version"));
+		// System.out.println(System.getProperties());
+		// System.out.println("\nOperate System : " + System.getProperty("os.name"));
+		// System.out.println("Java Version : " + System.getProperty("java.version"));
+		System.out.println(System.getProperty("user.dir"));
 
 		// !!! property 전체 정보 보기
 		// System.getProperties().list(System.out);
