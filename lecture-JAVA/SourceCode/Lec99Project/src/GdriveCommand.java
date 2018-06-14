@@ -1,4 +1,4 @@
-package pc33.gdrive;
+
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,8 +22,6 @@ public class GdriveCommand implements Gdrivable {
 
 			String[] cmdArray = { gdrive, "list" };
 
-			System.out.println("$ gdrive list");
-
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 			reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -31,7 +29,7 @@ public class GdriveCommand implements Gdrivable {
 			String line = "";
 			ArrayList<String> lines = new ArrayList<>();
 
-			textArea.clear();
+//			textArea.clear();
 			while (true) {
 				line = reader.readLine();
 				if (line == null) {
@@ -41,7 +39,7 @@ public class GdriveCommand implements Gdrivable {
 				textArea.appendText(line + "\n");
 			}
 
-			System.out.println(">>> list print");
+			System.out.println(">>> List Print");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,12 +57,10 @@ public class GdriveCommand implements Gdrivable {
 
 			String[] cmdArray = { gdrive, "upload", filePath };
 
-			System.out.println("$ gdrive upload {path}");
-
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			System.out.println(">>> " + filePath + " upload complete");
+			System.out.println(">>> " + filePath + " Upload Complete");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,12 +73,10 @@ public class GdriveCommand implements Gdrivable {
 
 			String[] cmdArray = { gdrive, "download", id, "--path", downloadDirectory };
 
-			System.out.println("$ gdrive download {Id} --path {path}");
-
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			System.out.println(">>>  download complete: " + downloadDirectory);
+			System.out.println(">>>  Download Complete: " + downloadDirectory);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -96,12 +90,10 @@ public class GdriveCommand implements Gdrivable {
 
 			String[] cmdArray = { gdrive, "delete", id };
 
-			System.out.println("$ gdrive delete {Id}");
-
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
 
-			System.out.println(">>>  delete complete!!");
+			System.out.println(">>>  Delete Complete!!");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,8 +105,6 @@ public class GdriveCommand implements Gdrivable {
 		try {
 
 			String[] cmdArray = { gdrive, "about" };
-
-			System.out.println("$ gdrive about");
 
 			Process process = Runtime.getRuntime().exec(cmdArray);
 			process.waitFor();
@@ -131,7 +121,7 @@ public class GdriveCommand implements Gdrivable {
 				textArea.appendText(line + "\n");
 			}
 
-			System.out.println(">>> show about");
+			System.out.println(">>> Show About");
 
 		} catch (Exception e) {
 			e.printStackTrace();

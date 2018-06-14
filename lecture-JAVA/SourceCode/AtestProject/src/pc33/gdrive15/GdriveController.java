@@ -1,4 +1,4 @@
-package pc33.gdrive;
+package pc33.gdrive15;
 
 import java.io.File;
 
@@ -42,6 +42,7 @@ public class GdriveController {
 
 	public void handleList() {
 		System.out.println(">>> Action 'list' ");
+		textArea.clear();
 		gdCommand.list(textArea);
 		textField.clear();
 	}
@@ -67,6 +68,7 @@ public class GdriveController {
 		textArea.appendText(">>> DOWNLOAD PROCESS <<<");
 
 		String downId = textField.getText();
+
 		if (!downId.isEmpty()) {
 			DirectoryChooser directoryChooser = new DirectoryChooser();
 			File directory = directoryChooser.showDialog(primaryStage);
@@ -84,9 +86,9 @@ public class GdriveController {
 	public void handleDelete() {
 		System.out.println(">>> Action 'delete'");
 		textArea.clear();
-		textArea.appendText(">>> DELETE PROCESS <<<");
 
 		String deleteId = textField.getText();
+		textArea.appendText(">>> DELETE PROCESS <<<");
 
 		if (!deleteId.isEmpty()) {
 			gdCommand.delete(deleteId);
@@ -100,7 +102,7 @@ public class GdriveController {
 	}
 
 	public void handleAbout() {
-		System.out.println(">>> Action 'about' ");
+		System.out.println(">>> Action 'about'");
 		gdCommand.about(textArea);
 	}
 
