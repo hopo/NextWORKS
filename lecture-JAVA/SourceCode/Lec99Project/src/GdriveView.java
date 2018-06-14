@@ -181,7 +181,7 @@ public class GdriveView {
 			}
 		});
 		imgView = new ImageView();
-		img = new Image("res/images/new.png"); //;;change img
+		img = new Image("res/images/list.png");
 		imgView.setImage(img);
 		btnList.setGraphic(imgView);
 
@@ -196,7 +196,7 @@ public class GdriveView {
 			}
 		});
 		imgView = new ImageView();
-		img = new Image("res/images/save.png");	//;;change img
+		img = new Image("res/images/upload.png");
 		imgView.setImage(img);
 		btnUpload.setGraphic(imgView);
 
@@ -210,7 +210,7 @@ public class GdriveView {
 			}
 		});
 		imgView = new ImageView();
-		img = new Image("res/images/open-folder.png");	// ;;change img
+		img = new Image("res/images/about.png");	
 		imgView.setImage(img);
 		btnAbout.setGraphic(imgView);
 		
@@ -224,13 +224,15 @@ public class GdriveView {
 		// /HBox/TextField
 		// ;; 다운로드할 아이디를 넣는 박스
 		TextField textField = new TextField();
-		textField.setPrefWidth(400);
+		textField.setPrefWidth(800);
+		textField.setMinWidth(300);;
 		textField.setPromptText("Insert Id");
 		gdController.setTextCon(textArea, textField);
 
 		// /HBox/Button{Download}
 		// ;; 다운로할 아이디를 넘겨줄 버튼
 		Button btnDownload = new Button("Download");
+		btnDownload.setMinWidth(100);
 		btnDownload.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -242,6 +244,7 @@ public class GdriveView {
 		// /HBox/Button{Download}
 		// ;; 다운로할 아이디를 넘겨줄 버튼
 		Button btnDelete = new Button("Delete");
+		btnDelete.setMinWidth(70);
 		btnDelete.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
