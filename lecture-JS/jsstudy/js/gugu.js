@@ -1,3 +1,4 @@
+
 "use strict"
 
 
@@ -21,22 +22,23 @@ function gugu(numA, numB) {
 }
 
 function fun01() {
-    document.getElementById("div01").innerHTML = gugu(2, 9);
+    document.getElementById("div1").innerHTML = gugu(2, 9);
 }
 
 function fun02() {
-    var extNum = prompt("extNum: ");
-    document.getElementById("div02").innerHTML = gugu(2, extNum-1);
-    document.getElementById("div02").innerHTML += gugu(extNum+1, 9);
+    var extNum = parseInt(prompt("extNum: "));
+    var ret = gugu(2, extNum - 1);
+    ret += gugu(extNum + 1, 9);
+    document.getElementById("div2").innerHTML = ret;
 }
 
 function fun03() {
-    var endNum = prompt("endNum: ");
-    document.getElementById("div03").innerHTML = gugu(2, endNum);
+    var endNum = parseInt(prompt("endNum: "));
+    document.getElementById("div3").innerHTML = gugu(2, endNum);
 }
 
 function fun04() {
-    var startNum = prompt("startNum: ");
+    var startNum = parseInt(prompt("startNum: "));
     var endNum = prompt("endNum: ");
-    document.getElementById("div04").innerHTML = gugu(startNum, endNum);
+    document.getElementById("div4").innerHTML = gugu(startNum, endNum);
 }

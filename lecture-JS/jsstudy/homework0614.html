@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>homework0614.html</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        function quizSelect() {
+            for (var n = 1; n <= 10; n++) {
+                document.write("[ QUIZ: "+n+" ]<br>");
+                for (var i = 1; i <= 4; i++) {
+                    document.write("0" + i + "");
+                    var inputNode = document.createElement("input");
+                    inputNode.setAttribute("type", "radio");
+                    inputNode.setAttribute("name", "mun" + n);
+                    inputNode.setAttribute("value", i + "");
+                    document.body.appendChild(inputNode);
+                    if(i == 1) {
+                        inputNode.setAttribute("checked", "true");
+                    }
+                }
+                document.write("<br><br>");
+            }
+        }
+
+        // test
+
+        function main() {
+            quizSelect();
+        }
+
+        main();
+
+    </script>
+</body>
+
+</html>
