@@ -1,0 +1,35 @@
+<meta charset="utf-8" />
+<form name=f1 action="">
+    <select name="cars" onchange="chselect()">
+        <option value="bmw">BMW</option>
+        <option value="benz">Benz</option>
+        <option value="hyundai" selected>현대자동차</option>
+        <option value="kia">기아자동차</option>
+    </select>
+</form>
+<script>
+    "use strict"
+
+    // getElementByName에 의한 접근법
+    function chselect() {
+        var selcars = document.getElementsByName("cars")[0]; // Array return
+        for (var i = 0; i < selcars.options.length; i++) {
+            if (selcars.options.selectedIndex == i) {
+                alert("선택한 값은" + selcars.options[i].value);
+                selcars.options.selectedIndex = 2; // 강제 선택!
+            }
+        }
+    }
+
+    // function chselect02() {
+    //     var selcars = document.f1.cars; // getElementByName은 추가 확인?
+    //     // alert(selcars)
+    //     for (var i = 0; i < selcars.options.length; i++) {
+    //         if (selcars.options.selectedIndex == i) {
+    //             alert("선택한 값은" + selcars.options[i].value);
+    //             selcars.options.selectedIndex = 2; // 강제 선택!
+    //         }
+    //         // console.log(selcars.options[i].value);
+    //     }
+    // }
+</script>
