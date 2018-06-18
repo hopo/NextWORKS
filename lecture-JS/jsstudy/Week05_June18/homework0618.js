@@ -1,33 +1,35 @@
 "use strict"
 
 
-var num = 9;
+var rNum = 3;
+var cNum = 3;
 
-var nodeInput = null;
-var nodeTd = null;
-var nodeTr = null;
-var nodeTbody = null;
 var nodeTable = null;
+var nodeTbody = null;
+var nodeTr = null;
+var nodeTd = null;
+var nodeInput = null;
 
-nodeTbody = document.createElement("tbody");
 nodeTable = document.createElement("table");
-nodeTr = document.createElement("tr");
+nodeTbody = document.createElement("tbody");
 
-for (let i = 1; i <= num; i++) {
-    nodeTd = document.createElement("td");
-    nodeInput = document.createElement("input");
+var n = 1;
+for (let i = 0; i < rNum; i++) {
+    nodeTr = document.createElement("tr");
 
-    nodeInput.setAttribute("type", "button");
-    nodeInput.setAttribute("value", `${i}`);
+    for (let j = 0; j < cNum; j++) {
+        nodeTd = document.createElement("td");
+        nodeInput = document.createElement("input");
 
-    nodeTd.appendChild(nodeInput);
-    nodeTbody.appendChild(nodeTd);
+        nodeInput.setAttribute("type", "button");
+        nodeInput.setAttribute("value", `${n++}`);
 
-    // if (!(i % 3)) {
-    //     nodeTbody.appendChild(nodeTr);
-    // }
+        nodeTd.appendChild(nodeInput);
+        nodeTr.appendChild(nodeTd);
+    }
+
+    nodeTbody.appendChild(nodeTr);
 }
 
-nodeTr.appendChild(nodeTd)
 nodeTable.appendChild(nodeTbody);
 document.body.appendChild(nodeTable);
