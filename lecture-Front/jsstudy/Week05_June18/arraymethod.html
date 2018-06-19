@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arraymethod.html</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        const BR = "<br>";
+
+        var arr1 = ["Apache", "Nginx", "IIS", "Tomcat", "NodeJS-Express"];
+        var arr2 = ["JSP", "PHP", "ASP"];
+        var arr3 = ["Sqlite", "Oracle", "MariaDB", "MongoDB"];
+
+
+        // display array
+        function arrDisp(arr) {
+            for (var e of arr) {
+                document.write(e + BR);
+            }
+        }
+
+
+        // ! concat()
+        var arrConcat = arr1.concat(arr2); // ; 배열더하기;
+
+
+        // like concat()
+        function arrHap(arrA, arrB) {
+            var newArr = [];
+            var idx = 0;
+            for (var a of arrA) {
+                newArr[idx++] = a;
+            }
+            for (var b of arrB) {
+                newArr[idx++] = b;
+            }
+            return newArr;
+        }
+
+
+        // ! indexOf()
+        var exam1 = arr1.indexOf("Tomcat");
+        document.write("index: " + exam1 + " 값은 " + arr1[exam1] + BR);
+
+        var exam2 = arr1.lastIndexOf("Tomcat");
+        document.write("last index:  " + exam2 + " 값은 " + arr1[exam1] + BR);
+
+
+        // ! isArray()
+        document.write("isArray(): " + Array.isArray(arr2) + BR);
+
+
+        // ! join()
+        document.write("join(): " + arr2.join("/") + BR);
+
+
+        // like join()
+        function arrJoin(arr, sp) {
+            if (sp == null) {
+                sp = ',';
+            }
+            var ret = '';
+            for (var s of arr) {
+                ret += s + sp;
+            }
+
+            return ret.slice(0, ret.length - 1);
+        }
+
+        document.write("arrJoin(): " + arrJoin(arr3, "+") + BR);
+    </script>
+</body>
+
+</html>
