@@ -1,5 +1,20 @@
 "use strict"
 
+// ! write document
+var nodeInput = document.createElement("input");
+nodeInput.setAttribute("type", "button");
+nodeInput.setAttribute("onclick", "handleGugudan()");
+nodeInput.setAttribute("value", "makeGugudan");
+document.body.appendChild(nodeInput);
+
+nodeInput = document.createElement("input");
+nodeInput.setAttribute("type", "button");
+nodeInput.setAttribute("onclick", "handleReset()");
+nodeInput.setAttribute("value", "reset");
+document.body.appendChild(nodeInput);
+
+
+// ! functions
 function inner(n) {
     for (var i = 1; i <= 9; i++) {
         var nodeDiv = document.createElement("div");
@@ -14,8 +29,11 @@ function outer() {
     }
 }
 
-function gugudan() {
+// ! handle functions
+function handleGugudan() {
     outer();
 }
 
-window.onload = gugudan();
+function handleReset() {
+    location.replace(window.location);
+}

@@ -46,7 +46,7 @@ function quiz2() {
 }
 
 // main()
-window.onload =  function main() {
+window.onload = function main() {
     var select = prompt("이름입력1 / 숫자입력2: ");
     if (select == "1") {
         quiz1();
