@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>imgclick.html</title>
+</head>
+
+<body>
+    <form name="f1">
+        <img src="who.jpg" id="silverstar" width="300px" height="300px" onclick="chgImg()">
+    </form>
+
+    <script>
+        "use strict"
+
+        var toggle = 1;
+
+        function chgImg() {
+            var myImg = document.querySelector("#silverstar");
+
+            if (toggle) {
+                myImg.src = "aiyu.jpg"
+            } else {
+                myImg.src = "who.jpg"
+            }
+            toggle ^= 1;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>selmultiple.html</title>
+</head>
+
+<body>
+    <form name="f1">
+        <select id="lang" multiple>
+            <option selected>JAVA</option>
+            <option>DataBase</option>
+            <option>JavaScript</option>
+            <option>JSP</option>
+        </select>
+
+        <input type="button" value="selct" onclick="gogo()">
+    </form>
+
+    <script>
+        "use strict"
+        
+        function gogo() {
+            var sel = document.querySelector("#lang");
+            var sltIdx = sel.options.selectedIndex;
+
+            console.log(sel[sltIdx].value);
+        }
+    </script>
+
+</body>
+
+</html>

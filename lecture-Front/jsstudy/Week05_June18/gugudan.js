@@ -1,30 +1,34 @@
 "use strict"
 
-// ! write document
-var nodeInput = document.createElement("input");
-nodeInput.setAttribute("type", "button");
-nodeInput.setAttribute("onclick", "handleGugudan()");
-nodeInput.setAttribute("value", "makeGugudan");
-document.body.appendChild(nodeInput);
+// DOM {{{
+var input = document.createElement("input");
+input.setAttribute("type", "button");
+input.setAttribute("onclick", "handleGugudan()");
+input.setAttribute("value", "gugudan");
+document.body.appendChild(input);
 
-nodeInput = document.createElement("input");
-nodeInput.setAttribute("type", "button");
-nodeInput.setAttribute("onclick", "handleReset()");
-nodeInput.setAttribute("value", "reset");
-document.body.appendChild(nodeInput);
+input = document.createElement("input");
+input.setAttribute("type", "button");
+input.setAttribute("onclick", "handleReset()");
+input.setAttribute("value", "reset");
+document.body.appendChild(input);
+// ! }}}
 
 
 // ! functions
 function inner(n) {
     for (var i = 1; i <= 9; i++) {
-        var nodeDiv = document.createElement("div");
-        nodeDiv.textContent = (n + " x " + i + " = " + (n * i));
-        document.body.appendChild(nodeDiv);
+        var div = document.createElement("div");
+        div.textContent = `${n} x ${i} = ${n * i}`;
+        document.body.appendChild(div);
     }
 }
 
 function outer() {
     for (var n = 2; n <= 9; n++) {
+        var div = document.createElement("div");
+        div.textContent = `${n}단`;
+        document.body.appendChild(div);
         inner(n);
     }
 }
