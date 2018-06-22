@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>onclick_exam.html</title>
+</head>
+
+<body>
+    <input type="text" id="xx">
+    <input type="text" id="yy">
+
+    <input type="button" value="ADD" onclick="add()">
+    <input type="button" value="ADD2" onclick="add2(5, 7)">
+    <input type="button" value="ADD3" onclick="add3('Hello', 'World')">
+    <div id="myDiv"></div>
+
+    <script>
+        var x = document.querySelector("#xx");
+        var y = document.querySelector("#yy");
+        var div = document.querySelector("#myDiv");
+
+        function add() {
+            var z = parseInt(x.value) + parseInt(y.value);
+            div.innerHTML = z;
+        }
+        
+        function add2(a, b) {
+            div.innerHTML = a + b;
+        }
+
+        function add3(a, b) {
+            div.innerHTML = a + b;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>childNode_exam.html</title>
+</head>
+<body>
+    <table id="myTab">
+        <tbody>
+            <tr>
+                <td>data01</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>data02</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>data03</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>data04</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="myDiv"><p id="myP">tes<em>tt</em>est</p></div>
+
+    <script>
+        "use strict"
+        var myTab = document.querySelector("#myTab");
+        var myDiv = document.querySelector("#myDiv");
+        var myP = document.querySelector("#myP");
+
+        console.log(myDiv.children);
+        myDiv.removeChild(myP);
+        console.log(myDiv.children);
+    </script>
+    
+</body>
+</html>

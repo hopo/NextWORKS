@@ -3,6 +3,9 @@
 function examSelect() {
     var sel = document.querySelector("#examSel");
     var selIdx = sel.options.selectedIndex;
+
+    var myDiv = document.querySelector("#myDiv");
+
     switch (selIdx) {
         case 0:
             exam1();
@@ -11,7 +14,8 @@ function examSelect() {
             exam2();
             break;
         case 2:
-            exam3();
+            // exam3();
+            myDiv.textContent = "Empty";
             break;
         case 3:
             exam4();
