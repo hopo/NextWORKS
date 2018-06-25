@@ -14,8 +14,7 @@ function examSelect() {
             exam2();
             break;
         case 2:
-            // exam3();
-            myDiv.textContent = "Empty";
+            exam3();
             break;
         case 3:
             exam4();

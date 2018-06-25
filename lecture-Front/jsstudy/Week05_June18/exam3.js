@@ -1,29 +1,105 @@
 "use strict"
-var txt = document.querySelector("#txt");
-var sel01 = document.querySelector("#sel01");
-var sel02 = document.querySelector("#sel02");
+
+var myTxt = null
+var mySel01 = null;
+var mySel02 = null;
+
+// document {{{
+function exam3() {
+    var nodeH3 = document.createElement("h3");
+    nodeH3.textContent = "Exam3";
+
+    var nodeSelect = document.createElement("select");
+
+    var sel01 = nodeSelect.cloneNode();
+    sel01.setAttribute("id", "sel01");
+    sel01.setAttribute("size", "9");
+
+    var sel02 = nodeSelect.cloneNode();
+    sel02.setAttribute("id", "sel02");
+    sel02.setAttribute("size", "9");
+
+    var nodeInput = document.createElement("input");
+
+    var toRBtn = nodeInput.cloneNode();
+    toRBtn.setAttribute("type", "button");
+    toRBtn.setAttribute("value", ">");
+    toRBtn.setAttribute("onclick", "handleToR()");
+
+    var toLBtn = nodeInput.cloneNode();
+    toLBtn.setAttribute("type", "button");
+    toLBtn.setAttribute("value", "<");
+    toLBtn.setAttribute("onclick", "handleToL()");
+
+    var allToRBtn = nodeInput.cloneNode();
+    allToRBtn.setAttribute("type", "button");
+    allToRBtn.setAttribute("value", ">>");
+    allToRBtn.setAttribute("onclick", "handleToR()");
+
+    var allToLBtn = nodeInput.cloneNode();
+    allToLBtn.setAttribute("type", "button");
+    allToLBtn.setAttribute("value", "<<");
+    allToLBtn.setAttribute("onclick", "handleToL()");
+
+    var btnsDiv = document.createElement("div");
+    var btns = [toRBtn, toLBtn, allToRBtn, allToLBtn];
+    for (var b of btns) {
+        btnsDiv.appendChild(b);
+    }
+
+    var appendBtn = nodeInput.cloneNode();
+    appendBtn.setAttribute("type", "button");
+    appendBtn.setAttribute("value", "Append");
+    appendBtn.setAttribute("onclick", "handleAppend()");
+
+    var boxesDiv = document.createElement("div");
+    boxesDiv.appendChild(sel01);
+    boxesDiv.appendChild(btnsDiv);
+    boxesDiv.appendChild(sel02);
+
+    var txtDiv = document.createElement("div");
+    txtDiv.textContent = "InputTxt";
+
+    var txt = document.createElement("input");
+    txt.setAttribute("id", "txt");
+    txt.setAttribute("value", "testtext");
+
+
+    // ! append
+    var children = [nodeH3, boxesDiv, txtDiv, txt, appendBtn];
+    for (var c of children) {
+        document.body.appendChild(c);
+    }
+
+    myTxt = document.querySelector("#txt");
+    mySel01 = document.querySelector("#sel01");
+    mySel02 = document.querySelector("#sel02");
+}
+// }}}
+
+
 
 function handleAppend() {
     var nodeOption = document.createElement("option");
-    nodeOption.textContent = txt.value;
-    txt.value = "";
-    sel01.appendChild(nodeOption);
+    nodeOption.textContent = myTxt.value;
+    myTxt.value = "";
+    mySel01.appendChild(nodeOption);
 }
 
 function handleToR() {
-    handleTo(sel01, sel02);
-}
-
-function handleToAllR() {
-    handleTo(sel01, sel02, true);
+    handleTo(mySel01, mySel02);
 }
 
 function handleToL() {
-    handleTo(sel02, sel01);
+    handleTo(mySel02, mySel01);
 }
 
-function handleToAllL() {
-    handleTo(sel02, sel01, true);
+function handleAllToR() {
+    handleTo(mySel01, mySel02, true);
+}
+
+function handleAllToL() {
+    handleTo(mySel02, mySel01, true);
 }
 
 function handleTo(from, to, all) {
