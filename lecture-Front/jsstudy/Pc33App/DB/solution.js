@@ -14,8 +14,9 @@ var s0 = Object.create(solution);
 s0.s_id = "q0s0";
 s0.reg_id = "Hillary";
 s0.code = `
-    function mySum(x, y) {
-    }
+    function HelloWorld(x, y) {<br>
+        return null;<br>
+    }<br>
 `;
 s0.reg_date = "18/06/29";
 db_solution.push(s0);
@@ -28,7 +29,6 @@ s1.code = `
     function mySum(x, y) {
         return x + y;
     }
-    mySum(2, 3);
 `;
 s1.reg_date = "18/06/25";
 db_solution.push(s1);
@@ -38,10 +38,9 @@ var s2 = Object.create(solution);
 s2.s_id = "q1s2";
 s2.reg_id = "Hillary";
 s2.code = `
-    function mySum(x, y) {
-        return x + y;
+    function mySum(a, b) {
+        return a + b;
     }
-    mySum(2, 3);
 `;
 s2.reg_date = "18/06/27";
 db_solution.push(s2);
@@ -51,10 +50,9 @@ var s3 = Object.create(solution);
 s3.s_id = "q2s3";
 s3.reg_id = "Trump";
 s3.code = `
-    function mySum(x, y) {
+    function myConcat(x, y) {
         return x + y;
     }
-    mySum(2, 3);
 `;
 s3.reg_date = "18/07/01";
 db_solution.push(s3);
@@ -64,10 +62,10 @@ var s4 = Object.create(solution);
 s4.s_id = "q2s4";
 s4.reg_id = "Xi";
 s4.code = `
-    function mySum(x, y) {
-        return x + y;
+    function myConcat(x, y) {
+        var ret = x.push(y)
+        return ret;
     }
-    mySum(2, 3);
 `;
 s4.reg_date = "18/06/25";
 db_solution.push(s4);
@@ -77,10 +75,9 @@ var s5 = Object.create(solution);
 s5.s_id = "q3s5";
 s5.reg_id = "Hillary";
 s5.code = `
-    function mySum(x, y) {
-        return x + y;
+    function myGugudan(x, y) {
+        return 3*3;
     }
-    mySum(2, 3);
 `;
 s5.reg_date = "18/06/27";
 db_solution.push(s5);
@@ -90,10 +87,13 @@ var s6 = Object.create(solution);
 s6.s_id = "q3s6";
 s6.reg_id = "Abe";
 s6.code = `
-    function mySum(x, y) {
-        return x + y;
+    function myGugudan(x, y) {
+        var ret = '';
+        for (var i = 0; i <= 9) {
+            ret += 9*1 + ", ";
+        }
+        return retsss;
     }
-    mySum(2, 3);
 `;
 s6.reg_date = "18/06/30";
 db_solution.push(s6);
