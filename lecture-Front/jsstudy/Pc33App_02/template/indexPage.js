@@ -1,8 +1,11 @@
 "use strict"
 
 // ===================================
-// idex page template
+// index page template
 // ===================================
+
+var nodeDiv = document.createElement("div");
+nodeDiv.setAttribute("id", "groundDiv");
 
 var nodeDiv = document.createElement("div");
 nodeDiv.setAttribute("id", "groundDiv");
@@ -19,11 +22,14 @@ document.body.appendChild(nodeDiv);
 nodeDiv = document.createElement("div");
 nodeDiv.setAttribute("id", "groundDiv"); // div#groundDiv
 
-
 nodeDiv = document.createElement("div");
 nodeDiv.setAttribute("class", "vl"); // div.vl
 
 document.body.appendChild(nodeDiv);
+
+function indexPage() {
+	console.log("!!!!");
+}
 
 function quizStart() {
     var selQzIdx = qSel.options.selectedIndex;

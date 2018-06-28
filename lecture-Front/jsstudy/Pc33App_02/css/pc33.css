@@ -18,10 +18,6 @@ a:hover {
     text-decoration: underline;
 }
 
-/*
- *  classes
- */
-
 .solDiv {
     padding: 30px;
     border: 2px solid brown;
@@ -45,9 +41,6 @@ a:hover {
 }
 
 
-/*
- *  ids
- */
 
 
 /*
@@ -88,14 +81,16 @@ div#menubar {
 }
 
 
-#opening {
-    font-size: 100px;
-    background-color: #aaccaa;
-    align-items: center;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+
+
+
+/*
+#main {
+    position: absolute;
+
+    top: 110;
 }
+*/
 
 #qSel {
     top: 150;

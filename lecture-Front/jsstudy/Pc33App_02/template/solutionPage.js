@@ -1,12 +1,5 @@
 "use strict"
 
-var x = 42;
-function xy () {
-    return x*2;
-}
-
-console.log('sol x: ', x)
-console.log('sol xy: ', xy())
 
 function solutionPage() {
     removeEditor(); // when load solution page, remoce Editior
@@ -98,7 +91,6 @@ function replyDocu(chk) {
 }
 
 function handleReplyReg(s_id) {
-    // ! push relply data at db_reply
     var rep = Object.create(reply);
 
     var replyText = document.querySelector("#replyText");
@@ -112,9 +104,7 @@ function handleReplyReg(s_id) {
 
     var lnth = db_reply.length;
     var nodeDiv = replyDivMaker(lnth-1);
-
-    var groundDiv = document.querySelector("#groundDiv");
-    groundDiv.appendChild(nodeDiv)  ;
+    groundDiv.insertBefore(nodeDiv, groundDiv.childNodes[3]); // ;;is it dynamic? ;; edit!
 }
 
 function replyDivMaker(idx) {
