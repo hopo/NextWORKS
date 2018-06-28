@@ -1,14 +1,12 @@
 "use strict"
 
-var x = 42;
-function xy () {
-    return x*2;
-}
 
-console.log('sol x: ', x)
-console.log('sol xy: ', xy())
+// ===================================
+// template/solutionView.js
+// ===================================
 
-function solutionPage() {
+
+function solutionView() {
     removeEditor(); // when load solution page, remoce Editior
     solutionDocu(); // call solutionDocu (make solution document)
 }
@@ -41,7 +39,7 @@ function solutionDocu() {
     for (var i = 0; i < lnth; i++) {
         r = lnth - 1 - i;
         var tar = db_solution[r].s_id;
-        if (idFilter(tar, "00q0")) { // ;앞 아이디를 받아와야 한다.
+        if (idFilter(tar, "00q" + g_selQzId)) { // ;앞 아이디를 받아와야 한다.
             nodeDiv = document.createElement("div");
             nodeDiv.setAttribute("class", "solDiv");
             nodeDiv.setAttribute("id", db_solution[r].s_id); // quiz 아이디 체크
@@ -111,15 +109,15 @@ function handleReplyReg(s_id) {
     // upper data wait...
 
     var lnth = db_reply.length;
-    var nodeDiv = replyDivMaker(lnth-1);
+    var nodeDiv = replyDivMaker(lnth - 1);
 
     var groundDiv = document.querySelector("#groundDiv");
-    groundDiv.appendChild(nodeDiv)  ;
+    groundDiv.appendChild(nodeDiv); // ;; sol_id .before
 }
 
 function replyDivMaker(idx) {
-
     var nodeDiv = document.createElement("div");
+
     nodeDiv.setAttribute("class", "repDiv");
     nodeDiv.setAttribute("id", db_reply[idx].r_id);
     nodeDiv.innerHTML = db_reply[idx].repl;

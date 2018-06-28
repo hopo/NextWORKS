@@ -1,3 +1,7 @@
+/*
+ * a tag
+ */
+
 a:link {
     color: #ccffff;
     text-decoration: none;
@@ -17,6 +21,7 @@ a:hover {
     color: #ccffcc;
     text-decoration: underline;
 }
+
 
 /*
  *  classes
@@ -45,6 +50,8 @@ a:hover {
 }
 
 
+
+
 /*
  *  ids
  */
@@ -52,10 +59,10 @@ a:hover {
 
 /*
 #header {
-	position: fixed;
-	z-index: 999;
+    position: fixed;
+    z-index: 999;
 
-	align-content: center;
+    align-content: center;
 }
 */
 
@@ -106,4 +113,16 @@ div#menubar {
 
     top: 150;
     font-size: 15px;
+}
+
+#qzTitle {
+    color: red;
+}
+
+#qzDesc {
+    color: blue;
+}
+
+#qzContents {
+    color: black;
 }

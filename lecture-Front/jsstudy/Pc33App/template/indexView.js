@@ -1,16 +1,46 @@
 "use strict"
 
 // ===================================
-// index view
+// template/indexView.js
 // ===================================
 
-var x = 42;
-function xy () {
-	return x*2;
-}
-console.log('indexView x: ', x)
-console.log('indexView xy: ', xy())
+// ! global variable
+var g_selQzId = null; // ;; selectedIndex
+var g_selSolId = null;
 
-var nodeDiv = document.createElement("div");
-nodeDiv.setAttribute("class", "vl");	// div.vl
+// ! using node
+var nodeDiv = null;
+var nodeSelect = null;
+var nodeOption = null;
+var nodeInput = null;
+
+// ! using class, id
+var groundDiv = null;
+var opening = null;
+var qSel = null;
+
+// ! screen decoration
+nodeDiv = document.createElement("div");
+nodeDiv.setAttribute("class", "vl"); // div.vl
 document.body.appendChild(nodeDiv);
+
+
+// ! global functions
+function groundInit() {
+    /*
+    // ! clear div#groundDiv
+    groundDiv = document.querySelector("#groundDiv");
+    var chil = groundDiv.children;
+    var lnth = chil.lenth;
+    while (chil != null) {
+        groundDiv.removeChild(chil[0]);
+    }
+    */
+
+    groundDiv = document.querySelector("#groundDiv");
+    document.body.removeChild(groundDiv);
+
+	nodeDiv = document.createElement("div"); 
+	nodeDiv.setAttribute("id", "groundDiv");
+	document.body.appendChild(nodeDiv);
+}

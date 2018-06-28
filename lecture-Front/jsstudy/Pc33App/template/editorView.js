@@ -1,26 +1,21 @@
 "use strict"
 
 // ===================================
-// editor page template
+// template/editorView.js
 // ===================================
 
 
-function editorPage(selQzIdx) {
-
-    var groundDiv = document.querySelector("#groundDiv");
-    document.body.removeChild(groundDiv);
-
-    var nodeDiv = document.createElement("div");
-    nodeDiv.setAttribute("id", "groundDiv");
-    document.body.appendChild(nodeDiv);
+/*
+ * editor view
+ */
+function editorView() {
+    groundInit();
 
     groundDiv = document.querySelector("#groundDiv");
-
     nodeDiv = document.createElement("div");
-    nodeDiv.innerHTML = db_quiz[selQzIdx].title + "<br>";
-    nodeDiv.innerHTML += db_quiz[selQzIdx].desc + "<br>";
-    nodeDiv.innerHTML += db_quiz[selQzIdx].contents + "<br>";
-    // document.body.appendChild(nodeDiv);
+
+    nodeDiv.appendChild(quizComboDiv());
+
     groundDiv.appendChild(nodeDiv);
 
     // != write code area
@@ -40,8 +35,8 @@ function editorPage(selQzIdx) {
     var nodeInput = document.createElement("input");
 
     nodeInput.setAttribute("type", "button");
-    nodeInput.setAttribute("value", "Save");
-    nodeInput.setAttribute("onclick", `handleSave(${selQzIdx})`);
+    nodeInput.setAttribute("value", "HwanIn");
+    nodeInput.setAttribute("onclick", "handleSave()");
 
     // document.body.appendChild(nodeInput);
     groundDiv.appendChild(nodeInput);
@@ -57,13 +52,15 @@ function editorPage(selQzIdx) {
     groundDiv.appendChild(nodeInput);
 }
 
-// ! handle save button
-function handleSave(selQzIdx) {
+/*
+* Handle save button
+*/
+function handleSave() {
     var tArea = document.querySelector("#tArea");
 
     if (!isEmptyTarea()) {
         var sol = Object.create(solution);
-        sol.s_id = "q" + (selQzIdx) + "s" + (db_solution.length);
+        sol.s_id = "q" + g_selQzId + "s" + db_solution.length;
         sol.reg_id = "Lee";
         sol.code = tArea.value;
         sol.reg_date = "18/18/18";
@@ -71,22 +68,42 @@ function handleSave(selQzIdx) {
 
         tArea.value = '';
 
-        solutionPage(); // ; call solution page
+        solutionView(); // ; call solution page
     }
 }
 
+
+/*
+* Check is empty text area
+*/
 function isEmptyTarea() {
-    if (!tArea.value || tArea.value == "코드를 입력 하세요~") {
-        tArea.value = "코드를 입력 하세요~";
+    var emptyMsg = "코드를 입력 하세요...";
+    if (!tArea.value || tArea.value == emptyMsg) {
+        tArea.value = emptyMsg;
         return true;
     } else {
         return false;
     }
 }
 
-// ! handle reset button
+
+/*
+* Handle reset button
+*/
 function handleReset() {
     var tArea = document.querySelector("#tArea");
     tArea.value = '';
 }
 
+
+/*
+ * Quiz Combo Make
+ */
+function quizComboDiv() {
+    nodeDiv = document.createElement("div");
+    nodeDiv.innerHTML = "<div id='qzTitle'>" + db_quiz[g_selQzId].title + "</div>";
+    nodeDiv.innerHTML += "<div id='qzDesc'>" + db_quiz[g_selQzId].desc + "</div>";
+    nodeDiv.innerHTML += "<div id='qzContents'>" + db_quiz[g_selQzId].contents + "</div>";
+
+    return nodeDiv;
+}

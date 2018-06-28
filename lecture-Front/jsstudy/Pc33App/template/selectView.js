@@ -1,19 +1,21 @@
 "use strict"
 
 // ===================================
-// select view
+// template/selectView.js
 // ===================================
 
-function selectView() {
-    var groundDiv = document.querySelector("#groundDiv");
-    
-    // ! opening remove
-    // ! clear div#groundDiv children
-    var opening = document.querySelector("#opening");
-    groundDiv.removeChild(opening);
 
-    var nodeDiv = document.createElement("div");
-    var nodeSelect = document.createElement("select");
+/*
+ * Select view
+ */
+function selectView() {
+    groundInit();
+
+    groundDiv = document.querySelector("#groundDiv");
+
+    // ! quiz select make
+    nodeDiv = document.createElement("div");
+    nodeSelect = document.createElement("select");
 
     nodeSelect.setAttribute("name", "quizSelect");
     nodeSelect.setAttribute("id", "qSel"); // select#qSel
@@ -23,20 +25,30 @@ function selectView() {
     nodeDiv.appendChild(nodeSelect);
     groundDiv.appendChild(nodeDiv);
 
+    // ! call quizList
     quizList();
 }
 
+
+/* 
+ * Selected quiz start
+ */
 function quizStart() {
-    var selQzIdx = qSel.options.selectedIndex;
-    editorPage(selQzIdx); // call template/editorPage.js
+    g_selQzId = qSel.options.selectedIndex;
+
+    // ! call template/editorPage.js
+    editorView(); 
 }
 
+/* 
+ * Show quiz list
+ */
 function quizList() {
-    var qSel = document.querySelector("#qSel");
+    // ! quiz view template
+    qSel = document.querySelector("#qSel");
 
-    // quiz view template
     for (var e of db_quiz) {
-        var nodeOption = document.createElement("option");
+        nodeOption = document.createElement("option");
         nodeOption.setAttribute("value", e.q_id);
         nodeOption.textContent = e.title;
         qSel.appendChild(nodeOption);
