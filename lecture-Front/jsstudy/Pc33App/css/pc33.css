@@ -1,3 +1,23 @@
+a:link {
+    color: #ccffff;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #ccffff;
+    text-decoration: none;
+}
+
+a:active {
+    color: #ccffff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ccffcc;
+    text-decoration: underline;
+}
+
 .solDiv {
     padding: 30px;
     border: 2px solid brown;
@@ -6,4 +26,79 @@
 .repDiv {
     padding: 20px;
     border: 1px solid lightblue;
+}
+
+.rpltextDiv {
+    padding: 4px;
+}
+
+.vl {
+    border-left: 5px solid green;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0;
+}
+
+
+
+
+/*
+#header {
+	position: fixed;
+	z-index: 999;
+
+	align-content: center;
+}
+*/
+
+#title {
+    background-color: #ccffff;
+    color: #181818;
+
+    /*border-radius: 10px;*/
+    font-size: 30px;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+
+    align-content: true;
+    width: 100%;
+}
+
+div#menubar {
+    position: -webkit-sticky;
+    position: sticky;
+
+    background-color: #3344ff;
+    color: #ccffff;
+    top: 0;
+    padding: 10px;
+    font-size: 15px;
+    width: 100%;
+
+    z-index: 999;
+}
+
+
+
+
+
+/*
+#main {
+    position: absolute;
+
+    top: 110;
+}
+*/
+
+#qSel {
+    top: 150;
+}
+
+#groundDiv {
+    position: absolute;
+
+    top: 150;
+    font-size: 15px;
 }

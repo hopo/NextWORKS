@@ -5,41 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>index.html</title>
-
     <link rel="stylesheet" href="css/pc33.css">
 </head>
 
 <body>
     <header>
-        <div>
-            <h2>)) pc33_nextit ((</h2>
-        </div>
+        <div id="title">pc33_nextit</div>
     </header>
-
-    <!-- quiz select-->
-    <select name="quizSelect" id="qSel" onclick="quizStart()" multiple>
-    </select>
-
-    <div id="groundDiv"></div>
-
+    <div id="menubar">
+        <a id="main" href="/jsstudy/Pc33App/index.html">MAIN</a> &nbsp; &nbsp; &nbsp;
+        <a id="main" href="/jsstudy/Pc33App/index.html">CONTACT</a>
+    </div>
+    
     <!-- import DB -->
     <script type="text/javascript" src="DB/quiz.js"></script>
     <script type="text/javascript" src="DB/solution.js"></script>
     <script type="text/javascript" src="DB/reply.js"></script>
-
     <!-- import template -->
+    <script type="text/javascript" src="template/indexPage.js"></script>
     <script type="text/javascript" src="template/quizSelectPage.js"></script>
     <script type="text/javascript" src="template/editorPage.js"></script>
     <script type="text/javascript" src="template/solutionPage.js"></script>
-
-    <script>
-        "use strict"
-
-        function quizStart() {
-            var selQzIdx = qSel.options.selectedIndex;
-            editorPage(selQzIdx); // template/editorPage.js
-        }
-    </script>
 </body>
 
 </html>

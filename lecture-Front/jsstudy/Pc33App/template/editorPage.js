@@ -6,12 +6,14 @@
 
 
 function editorPage(selQzIdx) {
+
     var groundDiv = document.querySelector("#groundDiv");
     document.body.removeChild(groundDiv);
 
     var nodeDiv = document.createElement("div");
     nodeDiv.setAttribute("id", "groundDiv");
     document.body.appendChild(nodeDiv);
+
     groundDiv = document.querySelector("#groundDiv");
 
     nodeDiv = document.createElement("div");
@@ -87,3 +89,4 @@ function handleReset() {
     var tArea = document.querySelector("#tArea");
     tArea.value = '';
 }
+
