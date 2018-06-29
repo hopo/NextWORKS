@@ -18,7 +18,7 @@ function selectView() {
     nodeSelect = document.createElement("select");
 
     nodeSelect.setAttribute("name", "quizSelect");
-    nodeSelect.setAttribute("id", "qSel");  // select#qSel
+    nodeSelect.setAttribute("id", "qSel"); // select#qSel
     nodeSelect.setAttribute("onclick", "quizStart()");
     nodeSelect.setAttribute("multiple", "true");
 

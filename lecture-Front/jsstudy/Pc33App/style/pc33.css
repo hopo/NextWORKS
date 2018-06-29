@@ -1,4 +1,3 @@
-
 /*
  * a tag
  */
@@ -9,7 +8,7 @@ a:link {
 }
 
 a:visited {
-    color: #181818;
+    color: #1521a5;
     text-decoration: none;
 }
 
@@ -19,9 +18,10 @@ a:active {
 }
 
 a:hover {
-    color: #181818;
+    color: #151515;
     text-decoration: none;
 }
+
 
 
 
@@ -31,17 +31,25 @@ a:hover {
 
 .solDiv {
     border: 2px solid brown;
+    font-size: 18px;
     padding: 30px;
 }
 
 .repDiv {
+    left: 7%;
     border: 1px solid lightblue;
     padding: 20px;
+    position: relative;
+}
+
+.replCombo {
+    padding: 10px;
 }
 
 .rpltextDiv {
     padding: 4px;
 }
+
 
 .vl {
     border-left: 5px solid green;
@@ -53,6 +61,7 @@ a:hover {
 
 
 
+
 /*
  *  ids
  */
@@ -60,7 +69,7 @@ a:hover {
 #title {
     align-content: true;
     background-color: #ccffff;
-    color: #181818;
+    /* color: #2244ff; */
     font-size: 30px;
     margin: auto;
     padding: 30px;
@@ -75,22 +84,10 @@ div#menubar {
     padding: 10px;
     position: -webkit-sticky;
     position: sticky;
+    text-align: center;
     top: 0;
     width: 100%;
     z-index: 999;
-}
-
-
-#opening {
-    background-color: #aaccaa;
-    font-size: 100px;
-    margin: auto;
-    text-align: center;
-    width: 100%;
-}
-
-#qSel {
-    top: 150;
 }
 
 #groundDiv {
@@ -100,14 +97,34 @@ div#menubar {
     width: 100%;
 }
 
+#qSel {
+    top: 150;
+    font-size: 30px;
+}
+
+#opening {
+    background-color: #ebd61a;
+    font-size: 100px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
 #qzTitle {
     color: red;
+    font-size: 20px;
+    text-decoration: underline overline;
 }
 
 #qzDesc {
     color: blue;
+    font-size: 15px;
 }
 
 #qzContents {
     color: black;
+    font-size: 20px;
+    background-color: #eeeeee;
+    width : 600px;
 }

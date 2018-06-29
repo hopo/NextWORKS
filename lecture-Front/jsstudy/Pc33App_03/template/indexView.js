@@ -10,7 +10,6 @@ var nodeDiv = null;
 var nodeSelect = null;
 var nodeOption = null;
 var nodeInput = null;
-var nodeTextarea = null;
 
 // ! using class, id
 var groundDiv = null;
@@ -23,19 +22,27 @@ nodeDiv = document.createElement("div");
 nodeDiv.setAttribute("class", "vl"); // div.vl
 document.body.appendChild(nodeDiv);
 
+
 // ! global variable
 var g_selQzId = null; // ;; selectedIndex
+var g_selSolId = null;
 
 // ! global functions
 function groundInit() {
-	groundDiv = document.querySelector("#groundDiv");
-	document.body.removeChild(groundDiv);
+    /*
+    // ! clear div#groundDiv
+    groundDiv = document.querySelector("#groundDiv");
+    var chil = groundDiv.children;
+    var lnth = chil.lenth;
+    while (chil != null) {
+        groundDiv.removeChild(chil[0]);
+    }
+    */
 
-	nodeDiv = document.createElement("div");
+    groundDiv = document.querySelector("#groundDiv");
+    document.body.removeChild(groundDiv);
+
+	nodeDiv = document.createElement("div"); 
 	nodeDiv.setAttribute("id", "groundDiv");
 	document.body.appendChild(nodeDiv);
-}
-
-function goMain() {
-	location.reload("Pc33App/app.html");
 }
