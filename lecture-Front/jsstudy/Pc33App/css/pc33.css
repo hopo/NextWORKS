@@ -1,26 +1,28 @@
+
 /*
  * a tag
  */
 
 a:link {
-    color: #ccffff;
+    color: #181818;
     text-decoration: none;
 }
 
 a:visited {
-    color: #ccffff;
+    color: #181818;
     text-decoration: none;
 }
 
 a:active {
-    color: #ccffff;
+    color: #181818;
     text-decoration: none;
 }
 
 a:hover {
-    color: #ccffcc;
-    text-decoration: underline;
+    color: #181818;
+    text-decoration: none;
 }
+
 
 
 /*
@@ -28,13 +30,13 @@ a:hover {
  */
 
 .solDiv {
-    padding: 30px;
     border: 2px solid brown;
+    padding: 30px;
 }
 
 .repDiv {
-    padding: 20px;
     border: 1px solid lightblue;
+    padding: 20px;
 }
 
 .rpltextDiv {
@@ -44,11 +46,10 @@ a:hover {
 .vl {
     border-left: 5px solid green;
     height: 100%;
-    position: absolute;
     left: 0%;
-    top: 0;
+    position: absolute;
+    top: 5;
 }
-
 
 
 
@@ -56,52 +57,36 @@ a:hover {
  *  ids
  */
 
-
-/*
-#header {
-    position: fixed;
-    z-index: 999;
-
-    align-content: center;
-}
-*/
-
 #title {
+    align-content: true;
     background-color: #ccffff;
     color: #181818;
-
-    /*border-radius: 10px;*/
     font-size: 30px;
     margin: auto;
     padding: 30px;
     text-align: center;
-
-    align-content: true;
     width: 100%;
 }
 
 div#menubar {
-    position: -webkit-sticky;
-    position: sticky;
-
     background-color: #3344ff;
     color: #ccffff;
-    top: 0;
-    padding: 10px;
     font-size: 15px;
+    padding: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
     width: 100%;
-
     z-index: 999;
 }
 
 
 #opening {
-    font-size: 100px;
     background-color: #aaccaa;
-    align-items: center;
+    font-size: 100px;
     margin: auto;
-    padding: 20px;
     text-align: center;
+    width: 100%;
 }
 
 #qSel {
@@ -109,10 +94,10 @@ div#menubar {
 }
 
 #groundDiv {
-    position: absolute;
-
-    top: 150;
     font-size: 15px;
+    position: absolute;
+    top: 150;
+    width: 100%;
 }
 
 #qzTitle {
