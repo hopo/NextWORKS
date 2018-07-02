@@ -14,7 +14,7 @@
 
     #mat {
         position: relative;
-        top: 300px;
+        top: 200px;
     }
 
     #content01 {
@@ -36,8 +36,7 @@
 </head>
 
 <body>
-    <input type="button" value="UP" onclick="goUp()">
-    <input type="button" value="DOWN" onclick="goDown()">
+    <input type="button" value="SLIDE" onclick="slide()">
     <div id="frame">
         <div id="mat">
             <div id="content01">
@@ -57,20 +56,27 @@
     <script>
     "use strict"
 
-    function goUp() {
-        var topVal = document.styleSheets[0].cssRules[1].style.top;
-        var topNum = parseInt(topVal.slice(0, 3));
-        
-        document.styleSheets[0].cssRules[1].style.top = (topNum - 10) + "px";
-        setTimeout(goUp, 10);
-    }
+    var direct = 1;
+    var cRule = document.styleSheets[0].cssRules[1];
 
-    function goDown() {
-        var topVal = document.styleSheets[0].cssRules[1].style.top;
-        var topNum = parseInt(topVal.slice(0, 3));
+    function slide() {
+        var topValStr = cRule.style.top;
+        var matls = topValStr.match(/.\d+/g);
+        var val = matls ? parseInt(matls[0]) : 0;
 
-        document.styleSheets[0].cssRules[1].style.top = (topNum + 10) + "px";
-        setTimeout(goDown, 10);
+        if (val < -1800 || val > 250) {
+            direct *= -1;
+        }
+
+        if (direct > 0) {
+            val -= 10;
+        } else {
+            val += 10;
+        }
+
+        cRule.style.top = val + "px";
+
+        setTimeout(slide, 70);
     }
     </script>
 </body>
