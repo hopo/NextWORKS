@@ -43,7 +43,3 @@ function handlePrint4() {
 
     resultDiv.innerHTML = gugudan(sel.value, "<br>");
 }
-
-// exam4();
-
-
