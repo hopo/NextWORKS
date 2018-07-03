@@ -4,39 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <title>hw0702.html</title>
+    <link rel="icon" type="image/png" href="Pc33App/image/favicon.png">
     <style>
     #frame {
-        background-color: gray;
+        position: absolute;
+        background-color: #eeeeee;
         width: 300px;
         height: 200px;
+        top: 60px;
+        left: 20px;
         overflow: auto;
+        overflow-y: hidden;
     }
 
     #mat {
         position: relative;
-        top: 200px;
+        top: 210px;
+        text-align: center;
+    }
+
+    #btn {
+        position: absolute;
+        font-size: 30px;
+        left: 20px;
     }
 
     #content01 {
         color: black;
+        /* background-image: url('Week01_May21/image/aiyu.jpg'); */
     }
 
     #content02 {
         color: red;
+        /* background-image: url('Week01_May21/image/Canon.png'); */
     }
 
     #content03 {
         color: green;
+        /* background-image: url('Week01_May21/image/aiyu.jpg'); */
     }
 
     #content04 {
         color: blue;
+        /* background-image: url('Week01_May21/image/who.jpg'); */
     }
     </style>
 </head>
 
 <body>
-    <input type="button" value="SLIDE" onclick="slide()">
+    <input type="button" id="btn" value="SLIDE" onclick="handleSlide()">
     <div id="frame">
         <div id="mat">
             <div id="content01">
@@ -56,19 +72,19 @@
     <script>
     "use strict"
 
-    var direct = 1;
+    var direction = 1;
     var cRule = document.styleSheets[0].cssRules[1];
 
-    function slide() {
+    function movemove() {
         var topValStr = cRule.style.top;
-        var matls = topValStr.match(/.\d+/g);
+        var matls = topValStr.match(/.\d+/g); // ;;숫자만 가져온다
         var val = matls ? parseInt(matls[0]) : 0;
 
-        if (val < -1800 || val > 250) {
-            direct *= -1;
+        if (val < -1820 || val > 220) {
+            direction *= -1;
         }
 
-        if (direct > 0) {
+        if (direction > 0) {
             val -= 10;
         } else {
             val += 10;
@@ -76,8 +92,19 @@
 
         cRule.style.top = val + "px";
 
-        setTimeout(slide, 70);
+        setTimeout(movemove, 70);
     }
+
+    var flag = false;
+
+    function handleSlide() {
+        if (!flag) {
+            movemove();
+            flag = true;
+        }
+        direction *= -1;
+    }
+
     </script>
 </body>
 

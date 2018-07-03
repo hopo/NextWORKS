@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>regexp.html</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    // var regExp1 = new RegExp('script');
+    var string = "Javascript JQuery Ajax";
+
+    var regExp = /script/;
+    var output = regExp.test(string);
+    console.log("test(): ", output);
+
+    regExp = /\W/;
+    output = string.split(regExp);
+    console.log("split(): ", output);
+
+    regExp = /a/g;
+    output = string.replace(regExp, "+$&+");
+    console.log("replace() 01: ", output);
+
+    regExp = /(a)(v)(a)/g;
+    output = string.replace(regExp, "$1=$2=$3+");
+    console.log("replace() 02: ", output);
+
+    regExp = /(a)(v)(a)/g;
+    output = string.replace(regExp, "+$&+");
+    console.log("replace() 03: ", output);
+
+    string = "Javascript\nJQuery\nAjax";
+    regExp = /^ja/gim;
+    output = string.match(regExp);
+    console.log("match(): ", output);
+    </script>
+</body>
+
+</html>
