@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>AJAX가 뭔가요?</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+h1 {
+    color: tomato;
+}
+#js_ajax {
+    width: 50vw;
+    height: 30vh;
+    background-color: #eeffee;
+}
+</style>
+
+<body>
+    <input type=button value="눌러" onclick="">
+    <select id="sel" onchange="handleSel()">
+        <option value="0">HTML</option>
+        <option value="1">CSS</option>
+        <option value="2">JS</option>
+    </select>
+    <div id=js_ajax></div>
+    <script>
+    "use strict"
+
+    // ! Request obj
+    var request = new XMLHttpRequest();
+    var url = '/jsstudy/AJAXJ/'
+
+    // ;read .json
+    request.open('POST', 'data.json', true);
+    request.send();
+
+    function handleSel() {
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+                var json = JSON.parse(request.responseText);
+                var cont = json[sel.options.selectedIndex].content.point;
+                document.getElementById("js_ajax").textContent += cont;
+            }
+        }
+    }
+
+    /*
+    // ! processing...
+    request.onreadystatechange = function(event) {
+        if (request.readyState == 4) {
+            if (request.status == 200) {
+
+                var json = JSON.parse(request.responseText); // if XML: request.responseXML;
+                // console.log(json[idx].content.point)
+                console.log(json[1].content.point)
+
+                // document.getElementById("js_ajax").innerHTML += request.responseText;
+            }
+        }
+    }
+
+    function ajax_ck() {
+        request.open('GET', url + 'data.txt', true);
+
+        request.send();
+    }
+    */
+    </script>
+</body>
+
+</html>

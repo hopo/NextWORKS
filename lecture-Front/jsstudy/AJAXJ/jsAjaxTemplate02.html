@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>AJAX가 뭔가요?</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+h1 {
+    color: tomato;
+}
+</style>
+
+<body>
+    <input type=button value="눌러" onclick="ajax_ck()">
+    <select id="sel" multiple>
+        <option value="0">HTML</option>
+        <option value="1">CSS</option>
+        <option value="2">JS</option>
+    </select>
+    <div id=js_ajax></div>
+    <script>
+    "use strict"
+
+    // ! Request obj
+    var request = new XMLHttpRequest();
+    var url = '/jsstudy/AJAXJ/'
+
+    // // ;;exA) read .txt
+    // request.open('POST', url + 'data.txt', true);
+
+    // ;;exB) read .json
+    request.open('POST', 'data.json', true);
+
+    request.send();
+
+    // ! processing...
+    request.onreadystatechange = function(event) {
+        if (request.readyState == 4) {
+
+            /*
+            // ;;;number info
+             0 : open 안됨
+             1 : send 안됨
+             2 : send후 아직 못받음.
+             3 : 일부만 받음
+             4 : 다 받음
+            */
+
+            // (구글에서 http 상태코드 검색!)
+            if (request.status == 200) {
+
+                // // ;;exA) txt 텍스트 받기
+                // var json = request.responseText;
+                // console.log(json.split("\n")[1]);
+
+                // ;;exB) JSON 형식 텍스트 받기
+                var json = JSON.parse(request.responseText); // if XML: request.responseXML;
+                console.log(sel.options.selectedIndex);
+                // console.log(json[sel.options.selectIndex].content.point)
+
+                docurequest.ment.getElementById("js_ajax").innerHTML += request.responseText;
+            }
+        }
+    }
+
+    function ajax_ck() {
+        request.open('GET', url + 'data.txt', true);
+        //request.open('GET','/js/AJAX/data.json',true);
+
+        request.send();
+    }
+    </script>
+</body>
+
+</html>

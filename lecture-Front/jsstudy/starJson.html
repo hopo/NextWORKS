@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>starJson.html</title>
+</head>
+
+<body>
+    <script>
+    // JavaScript Object Notation
+    // ;exA
+    var silObj = {
+        name: "Zhou Xingchi",
+        age: 56,
+        msg: function(ggg) {
+            console.log("msg fun(): " + ggg);
+        }
+    };
+
+    silObj.msg("exA: ");
+    console.log("name: ", silObj.name);
+    console.log("age: ", silObj.age);
+
+
+    // ;exB
+    function saram(nm, age) {
+        this.name = nm;
+        this.age = age;
+        this.msg = function(ggg) {
+            console.log("saram fun(): " + ggg);
+        }
+    }
+    var x = saram('Joo', 26);
+
+    // ;exC
+    var silObj2 = {
+    	name: "Kim",
+    	age: {
+    		kk: "hhh",
+    		ll: "mmm",
+    		hhh: ["kkk", "lll", "rrr"]
+    	}
+    }
+
+    var str = JSON.stringify(silObj2); // obj -> str
+    console.log(str);
+
+    var star = JSON.parse(str);	// str -> obj
+    console.log(star.age);
+
+    </script>
+</body>
+
+</html>

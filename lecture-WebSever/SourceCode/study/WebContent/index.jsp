@@ -10,7 +10,7 @@
 	<h4>(( main page ))</h4>
 	<h2>Hello World!</h2>
 
-	<h3>/01</h3>
+	<div>/01</div>
 	<a href="<%=request.getContextPath()%>/01/testIndex.jsp">testIndex</a>
 	<br>
 	<a href="<%=request.getContextPath()%>/01/viewForm.jsp">viewForm</a>
@@ -19,13 +19,22 @@
 	<br>
 	<a href="<%=request.getContextPath()%>/01/htmlForm.jsp">htmlForm</a>
 
-	<h3>/02</h3>
+	<div>/02</div>
 	<a href="<%=request.getContextPath()%>/02/sessionForm.jsp">sessionForm</a>
 
-	<h3>/03</h3>
+	<div>/03</div>
 	<a href="<%=request.getContextPath()%>/03/importForm.jsp">importForm</a>
 
-	<h3>/04</h3>
+	<div>/04</div>
 	<a href="<%=request.getContextPath()%>/04/noticeForm.jsp">noticeForm</a>
+
+	<div>/05</div>
+	<a href="<%=request.getContextPath()%>/05/sessionForm.jsp">sessionForm</a>
+
+	<div>/06</div>
+	<a href="<%=request.getContextPath()%>/06/gameForm.jsp">gameForm</a>
+
+	<div>/06</div>
+	<a href="<%=request.getContextPath()%>/07/elForm.jsp">elForm</a>
 </body>
 </html>
