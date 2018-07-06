@@ -11,7 +11,8 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<c:url value="/09/bufferTest.jsp" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<h3>[[[ /studyjstl/index.jsp ]]]</h3>
+		<c:url value="/session/loginForm.jsp" var="loginForm" />
+		<a href="${loginForm}">/session/loginForm.jsp</a>
 	</body>
 </html>

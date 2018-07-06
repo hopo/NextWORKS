@@ -15,6 +15,8 @@ public class MemberVo implements Serializable {
 	
 	
 	/* Constructor */
+	public MemberVo() {
+	}
 	public MemberVo(String memId) {
 		this.memId = memId;
 	}

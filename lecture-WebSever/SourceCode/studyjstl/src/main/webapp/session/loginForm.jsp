@@ -29,10 +29,18 @@
 <title>loginForm.jsp</title>
 </head>
 <body>
+	<h4>로그인 화면</h4>
+	<div>접속자: ${memberInfo.memId}</div>
+	<c:if test="${memberInfo != null}">
+			 ( <a href="<%=request.getContextPath()%>/session/logOutProc.jsp">LogOut</a> )
+	<br>
+	<br>
+	<a href="<%=request.getContextPath()%>/member/memberList.jsp">멤버리스트보기</a>
+	</c:if>
 
 	<c:if test="${meberInfo == null}">
 		<form action="<%=request.getContextPath()%>/session/loginProc.jsp" method="post">
-			<table>
+			<table border="3px">
 				<tr>
 					<td>ID</td>
 					<td><input type="text" name="id" value="<%=idSave%>"></td>
@@ -45,24 +53,16 @@
 					<td>저장여부</td>
 					<td><input type="checkbox" name="idSave" value="Y" <%=idCheck%>></td>
 				</tr>
-				<tr colspan="2">
-					<td><input type="submit" value="LogIn"></td>
+				<tr>
+					<td colspan="2"><input type="submit" value="LogIn"></td>
 				</tr>
 			</table>
 		</form>
-		
-		<a href="<%=request.getContextPath()%>/member/memberForm.jsp">SignUp</a>
 
+		<!-- !가입은 접속자가 없을 때.  -->
+		<br>
+		<a href="<%=request.getContextPath()%>/member/memberForm.jsp">가입하기</a>
 	</c:if>
 
-
-	<h4> ))접속자(( </h4>
-	<%-- <c:if test="${meberInfo != null}"> --%>
-	<c:out value="${memberInfo.memId }" />
-	<br>
-	<a href="<%=request.getContextPath()%>/session/logOutProc.jsp">LogOut</a>
-	<%-- </c:if> --%>
-	
-	
 </body>
 </html>

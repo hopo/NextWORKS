@@ -89,7 +89,7 @@
 
 			MemberVo memberInfo = null;
 
-			// ;rs 출력
+			// ;rs 출력 (memberVo obj에 담기)
 			if (rs.next()) {
 				// Login성공
 				memberInfo = new MemberVo(rs.getString("mem_id"), rs.getString("mem_name"));
