@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>AJAX가 뭔가요?</title>
+    <meta charset="utf-8" />
+</head>
+<style>
+h1 {
+    color: tomato;
+}
+</style>
+
+<body>
+    <input type=button value="눌러" onclick="selAjax()">
+    <div id=js_ajax>출력하세용 요기에!</div>
+    <script>
+    function selAjax() {
+        var request = new XMLHttpRequest();
+        var myDiv = document.querySelector("#js_ajax")
+
+        request.open('POST', '/jsstudy/AJAXJ/data02.xml', true); // ;;Async
+        request.send();
+
+        request.onreadystatechange = function(event) {
+            var xmlD = null;
+            if (request.readyState == 4) {
+                if (request.status == 200) {
+                    xmlD = request.responseXML; //XML 형식 텍스트 받기
+                    console.log(xmlD.getElementsByTagName("이름"));
+                }
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
