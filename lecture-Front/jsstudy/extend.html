@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>extend.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    $.noConflict(); // do not use '$'
+
+    var $ = function(msg) {
+        console.log(msg)
+    }
+
+    $('Merong~!');
+
+    // - - - - -
+    jQuery(function() {
+        var obj = { 'name': 'Sterling' };
+
+        // extend!!!
+        jQuery.extend(obj, { 'region': 'Liverfool', 'part': 'Manchester' });
+        var output = '';
+
+        jQuery.each(obj, function(key, item) {
+            output += key + ':' + item + '\n';
+        });
+        console.log(output);
+    });
+    </script>
+</body>
+
+</html>
