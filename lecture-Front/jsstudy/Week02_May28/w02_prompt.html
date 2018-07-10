@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>prompt</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    var inp = prompt("+ 0 -? odd even?", 0);
+
+    // 1
+    var ret1 = "0"
+    if (inp != 0) {
+        if (inp > 0) {
+            ret1 = "양";
+        } else { ret1 = "음"; }
+    }
+    console.log("ret1: ", ret1);
+
+    // 2
+    var ret2 = "0"
+    if (inp != 0) {
+        if (inp & 1) {
+            ret2 = "Odd";
+        } else {
+            ret2 = "Even";
+        }
+    }
+    console.log("ret2: ", ret2);
+
+    // 3
+
+    var kor = prompt("kor", 0);
+    kor = parseInt(kor);
+    var eng = prompt("eng", 0);
+    eng = parseInt(eng);
+    var math = prompt("math", 0);
+    math = parseInt(math);
+
+    var sum = (kor + eng + math);
+    console.log("sum: ", sum);
+
+    var average = sum / 3;
+    console.log("average: ", average);
+
+    var ret3 = '';
+
+    if (average >= 90) {
+        ret3 = 'soo';
+    } else if (average >= 80) {
+        ret3 = 'woo'
+    } else if (average >= 70) {
+        ret3 = 'mi'
+    } else if (average >= 60) {
+        ret3 = 'yang'
+    } else {
+        ret3 = 'ga'
+    }
+    console.log("ret3: ", ret3);
+    </script>
+</body>
+
+</html>

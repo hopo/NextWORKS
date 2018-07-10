@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    var js_arr = ['babo', 1, true, 3432];
+    console.log('A', js_arr.length); //4
+
+    js_arr[js_arr.length] = 'append';
+    console.log('B', js_arr.length); // 5
+
+    js_arr[9] = 'what9';
+
+    // var i = 0;
+    // while (i < js_arr.length) {
+    //     document.write(i + ": " + js_arr[i] + "<br>");
+    //     i++;
+    // }
+
+    // ! 홀수 더하기
+    var sum = 0;
+    for (let i = 1; i <= 10; i++) {
+        if (i & 1) {
+            sum += i;
+        }
+    }
+    console.log('odd sum1: ', sum);
+
+    sum = 0;
+    for (let i = 1; i <= 10; i++) {
+        sum += i;
+        i++;
+    }
+    console.log('odd sum2: ', sum);
+
+    sum = 0;
+    for (let i = 1; i <= 10; i = i + 2) {
+        sum += i;
+    }
+    console.log('odd sum3: ', sum);
+
+    // ! for each
+    // for(var idx in js_arr) {
+    //     console.log("idx: ", idx);
+    // }
+
+    // for(var val of js_arr) {
+    //     console.log("val: ", val);
+    // }
+
+    for (var obj in document) { // document: object
+        document.write(obj + "<br>");
+    }
+    </script>
+</body>
+
+</html>

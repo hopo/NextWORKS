@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sortingArray</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    // 1
+    var arr = [52, 273, 103, 32, 57, 103, 31, 2];
+    var max, min;
+    max = min = arr[0];
+
+    for (var i = 0; i < arr.length; i++) {
+        if (max < arr[i]) { max = arr[i]; }
+        if (min > arr[i]) { min = arr[i]; }
+    }
+    document.write("[" + arr + "]" + "<br>");
+    document.write("max: " + max + " / min: " + min);
+
+    // 2
+    for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+            if (arr[i] < arr[j]) {
+                document.write("<br>sorting.. : " + "[" + arr + "]");
+                var temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+
+            }
+        }
+    }
+    document.write("<br>sorted: " + "[" + arr + "]");
+    document.write("<br>max: " + arr[0] + " / min: " + arr[arr.length - 1]);
+    </script>
+</body>
+
+</html>
