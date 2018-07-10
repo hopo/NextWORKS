@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>variable</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    // 변수 선언법 var만 붙이면 OK, type 신경안씀
+    var js_num = 100; // 숫자 선언
+    var js_str = "Hello I am JaeSeok." // 문자열 선언
+    var js_bool = true; // 불리언 선언
+    var js_null = null; // 널
+    var js_undef; // 선언만..
+    var js_obj = {}; // 오브젝트
+    var js_arr = [1, 2, 3]; // 배열
+
+    document.write(this + "<br>"); // this는 window - 곧 브라우저 객체
+    document.write(js_num + "<br>");
+    document.write(window.js_num + "<br>"); // 선언ㅇ한 변수가 window 속성이 되어 있다
+
+    // 반복문
+    var js_max = 10;
+    var js_sum = 0; // 초기값은 항상 주는 습관
+    for (var i = 1; i < js_max; i++) {
+        js_sum += i;
+    }
+    document.write("js_sum = " + js_sum);
+    </script>
+</body>
+
+</html>
