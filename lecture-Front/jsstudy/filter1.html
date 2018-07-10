@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>filter.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h3 class="select">Header-0</h3>
+    <h2>Header-1</h2>
+    <h3 class="select">Header-2</h3>
+    <h3>Header-3</h3>
+    <h2>Header-4</h2>
+    <h3>Header-5</h3>
+    <script>
+    "use strict"
+    /*
+    // ! Method Chaining
+    jQuery(function() {
+        $('h3').css('background', 'orange').filter(':even').css('color', 'red').end().filter(':odd').css('color', 'blue');
+    })
+    */
+
+    /*
+    // ! eq()
+    jQuery(function() {
+    	$('h3').eq(0).css('background', 'orange');
+    	$('h3').eq(-2).css('background', 'orange');
+    })
+    */
+
+    /*
+    // ! eq()
+    jQuery(function() {
+    	$('h3').css('background', 'orange').add('h2').css('float', 'left');
+    })
+    */
+
+    /*
+    // ! each()
+    jQuery('h3').each(function() {
+        if ($(this).is('.select')) {
+            $(this).css('background', 'skyblue')
+        }
+    })
+    */
+
+    // ! find(
+    jQuery('body').find('h3').each(function() {
+        if ($(this).is('.select')) {
+            $(this).css('background', 'red')
+        }
+    })
+    </script>
+</body>
+
+</html>
