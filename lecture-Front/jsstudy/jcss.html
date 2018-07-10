@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jcss.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Header-0</h1>
+        <h3>Header-1</h3>
+        <h3>Header-2</h3>
+        <h1>Header-3</h1>
+        <h1>Header-4</h1>
+        <h3>Header-5</h3>
+    </div>
+    <script>
+    "use strict"
+    jQuery(function() {
+        /*
+        // using callback
+        var color =['red', 'gold', 'purple'];
+
+        $('h1').css('color', function(index) {
+            return color[index];
+        })
+        */
+
+        /*
+        // html()
+        var html = $('h1').html('Changed Header');
+        console.log(html);
+        */
+
+        /*
+        // text()
+        var text = $('h1').text();
+        console.log(text);
+        */
+
+        /*
+        // remove()
+        $('h1').first().remove();
+        */
+
+        // empty()
+        $('div').empty();
+
+    })
+    </script>
+</body>
+
+</html>

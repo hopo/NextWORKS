@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>filter.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h3>Header-0</h3>
+    <h3>Header-1</h3>
+    <h3>Header-2</h3>
+    <h3>Header-3</h3>
+    <h3>Header-4</h3>
+    <h3>Header-5</h3>
+    <script>
+    "use strict"
+    /*
+    // !css()
+    jQuery(function() {
+        $('h3:even').css({
+            backgroundColor: 'black',
+            color: 'white'
+        })
+    })
+    */
+
+    // !filter()
+    jQuery(function() {
+    	$('h3').filter(function(index){
+    		return index % 3 == 0;
+    	}).css({
+    		backgroundColor: 'black',
+    		color: 'white'
+    	})
+    })
+    </script>
+</body>
+
+</html>

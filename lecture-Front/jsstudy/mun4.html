@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jqueryEach.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+    "use strict"
+        var array = ['SweetPotato', 'Potato', 'BaeChoo', 'Pepper'];
+
+        $.each(array, function(idx) {
+            var output = '';
+
+            output += '<h1>' + array[idx] + '</h1>';
+
+            document.body.innerHTML += output;
+        });
+    </script>
+</body>
+
+</html>

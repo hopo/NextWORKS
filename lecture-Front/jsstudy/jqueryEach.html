@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jqueryEach.html</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+    "use strict"
+    $(function() {
+        var array = [
+            { 'name': 'NextIT', 'link': 'http://nextit.or.kr' },
+            { 'name': 'NaverSports', 'link': 'http://sports.naver.com' },
+            { 'name': 'jsstudy', 'link': 'http://localhost/jsstudy' },
+        ];
+
+        $.each(array, function(index, item) {
+            var output = '';
+
+            output += "<a href='" + item.link + "'>";
+            output += "<h1>" + item.name + "</h1>";
+            output += "</a>";
+
+            document.body.innerHTML += output;
+        });
+    });
+    </script>
+</body>
+
+</html>
