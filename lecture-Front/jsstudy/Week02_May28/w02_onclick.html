@@ -7,27 +7,26 @@
     <title>onclick</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script>
-        "use strict"
-        /*
-		// ;postfix
-        b = a++;
-            b = a;
-            a = a+1;
-        */
+    "use strict"
+    /*
+    // ;postfix
+    b = a++;
+        b = a;
+        a = a+1;
+    */
 
-        function js_click() {
-            // 객체(요소) 접근
-            jss_yo = document.getElementById('js_jss');
+    function js_click() {
+        // 객체(요소) 접근
+        jss_yo = document.getElementById('js_jss');
 
-            // 객체(요소) 확인
-            alert(jss_yo.innerHTML);
+        // 객체(요소) 확인
+        alert(jss_yo.innerHTML);
 
-            // 객체(요소) 값 할당
-            jss_yo.innerHTML = jss_yo.innerHTML + "<br>추가내용";
-        }
+        // 객체(요소) 값 할당
+        jss_yo.innerHTML = jss_yo.innerHTML + "<br>추가내용";
+    }
     </script>
 </head>
-
 
 <body id="myBody">
     <div id='js_jss'>원래 값</div>

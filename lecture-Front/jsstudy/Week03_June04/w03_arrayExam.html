@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>arrayExam</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    function br() {
+        document.write("<br>");
+    }
+
+    var HappyBirthday1 = "ㅊㅋㅊㅋㅊㅋㅋ1";
+    var HappyBirthday2 = "ㅊㅋㅊㅋㅊㅋㅋ2";
+    var HappyBirthday3 = "ㅊㅋㅊㅋㅊㅋㅋ3";
+    var HappyBirthday4 = "ㅊㅋㅊㅋㅊㅋㅋ4";
+    // 일반적 접근법, 보통 이렇개 씀 window 생략
+    document.write(window.HappyBirthday1);
+    br();
+
+    /*
+    // 배열 접근법
+    for (var i = 1; i <= 4; i++) {
+        var strD = "HappyBirthday" + i;
+        document.write(window[strD]);
+        br();
+    }
+    */
+
+    // eval()
+    // 문자열 내용을 자바스크립트 엔진으로 해석해준다
+    // 악성스크립트 제작에 사용될 가능성이 높아 권장하지 않음
+    for (var i = 1; i <= 4; i++) {
+        var strI = "window." + "HappyBirthday" + i;
+        document.write(strI + " ");
+        var strI2 = eval("window." + "HappyBirthday" + i);
+        document.write(strI2);
+        br();
+    }
+    </script>
+</body>
+
+</html>

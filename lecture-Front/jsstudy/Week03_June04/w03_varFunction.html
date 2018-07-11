@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>varFunction</title>
+</head>
+
+<body>
+    <script>
+    // ;함수 선언, 함수는 그냥 실행 안되고 이름을 불러줘야 실행됨
+    // ;반복적인 작업이 있을 경우나 , 코드가 길 때 보기좋게 영역을 쪼개서 씀!
+    // ;return을 만나면 함수종료, function없는 return은 의미 없음!
+
+    /*
+    // exA)
+    function fName(N){
+        document.write("날 불렀니?<br>");
+        return N;
+    }
+    */
+
+    // exB)
+    var fName = function(N) {
+        document.write("날 불렀니?<br>");
+        return N;
+    }
+
+    /*
+    // ;어떤 코드 블락을 반복적으로 실행시키기에 유리하다!
+    for(var i=0; i< 10; i++){
+        fName();     // 함수 부르기
+    }
+    */
+
+    /*
+    var returnValue = fName(3);
+    alert(returnValue);
+    returnValue = fName(5);
+    alert(returnValue);
+    */
+
+    // exM)
+    var myCal = function(op) {
+        var add = function(val1, val2) {
+            return val1 + val2;
+        }
+        var minus = function(val1, val2) {
+            return val1 - val2;
+        }
+
+        if (op == "+") { return add; }
+        if (op == "-") { return minus; }
+    }
+
+    var myAdd = myCal("+");
+    console.log(myAdd(3, 4));
+    </script>
+</body>
+
+</html>

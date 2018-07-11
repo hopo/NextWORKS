@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>cssOnresize</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    /*
+    #check {
+        height:95vh;
+        background-color: orange;
+    }
+    */
+    </style>
+</head>
+
+<body>
+    <div id="check">div id="check"</div>
+    <script>
+    var ck = document.getElementById("check");
+    ck.style.width = parseInt(window.innerWidth * 0.9) + "px";
+    ck.style.height = parseInt(window.innerHeight * 0.9) + "px";
+    ck.style.backgroundColor = "orange";
+
+    // !브라우져 사이즈가 변할때 마다 실행!
+    window.onresize = function() {
+        ck.style.width = parseInt(window.innerWidth * 0.9) + "px";
+        ck.style.height = parseInt(window.innerHeight * 0.9) + "px";
+        ck.style.backgroundColor = "orange";
+    }
+    </script>
+</body>
+
+</html>

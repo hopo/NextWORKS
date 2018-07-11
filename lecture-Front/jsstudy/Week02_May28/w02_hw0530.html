@@ -10,63 +10,63 @@
 
 <body>
     <script>
-        "use strict"
-        /*
-         * 소수prime
-         */
+    "use strict"
+    /*
+     * 소수prime
+     */
 
-        var inpt = prompt("number: ", 10);
-        inpt = parseInt(inpt);
-        var primes = [];
+    var inpt = prompt("number: ", 10);
+    inpt = parseInt(inpt);
+    var primes = [];
 
-        // exA)
-        // var k = 1;
-        // for(var i = 2; i <= inpt; i++) {
-        //     for(var j = 2; j < i; j++) {
-        //         if(i%j == 0) {
-        //             break;
-        //         }
-        //         if(i == j+1) {
-        //             primes[k] = i;
-        //             k++;
-        //         }
-        //     }
-        // }
+    // exA)
+    // var k = 1;
+    // for(var i = 2; i <= inpt; i++) {
+    //     for(var j = 2; j < i; j++) {
+    //         if(i%j == 0) {
+    //             break;
+    //         }
+    //         if(i == j+1) {
+    //             primes[k] = i;
+    //             k++;
+    //         }
+    //     }
+    // }
 
-        // exA2)
-        // function is_prime(i, primes) {
-        //     for (var p of primes) {
-        //         if (i % p == 0) {
-        //             return null;
-        //         }
-        //     }
-        //     return i;
-        // }
+    // exA2)
+    // function is_prime(i, primes) {
+    //     for (var p of primes) {
+    //         if (i % p == 0) {
+    //             return null;
+    //         }
+    //     }
+    //     return i;
+    // }
 
-        // for (var i = 2; i < inpt; i++) {
-        //     var x = is_prime(i, primes);
-        //     if (x != null) {
-        //         primes.push(x);
-        //     }
-        // }
+    // for (var i = 2; i < inpt; i++) {
+    //     var x = is_prime(i, primes);
+    //     if (x != null) {
+    //         primes.push(x);
+    //     }
+    // }
 
-        // exA3)
-        function is_prime(num) {
-            for (var i = 2; i < num; i++) {
-                if (num % i == 0) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        for (var i = 2; i < inpt; i++) {
-            if (is_prime(i)) {
-                primes.push(i);
+    // exA3)
+    function is_prime(num) {
+        for (var i = 2; i < num; i++) {
+            if (num % i == 0) {
+                return false;
             }
         }
+        return true;
+    }
 
-        document.write("<br>primes: [" + primes + "]");
+    for (var i = 2; i < inpt; i++) {
+        if (is_prime(i)) {
+            primes.push(i);
+        }
+    }
+
+    document.write("<br>primes: [" + primes + "]");
     </script>
 </body>
 

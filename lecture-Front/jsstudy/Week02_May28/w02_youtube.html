@@ -9,26 +9,24 @@
 </head>
 
 <body>
-    <iframe width="640" height="480" src="https://www.youtube.com/embed/TSNF2T9oMlk" frameborder="0" allow="autoplay; encrypted-media"
-        allowfullscreen></iframe>
+    <iframe width="640" height="480" src="https://www.youtube.com/embed/TSNF2T9oMlk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     <br>
     <br>
     <input type="button" value="NEXT Video" onclick="utube_next()">
-
     <script>
-        var utube_list = [];
-        utube_list[0] = "https://www.youtube.com/embed/bwD-MgDChIo";
-        utube_list[1] = "https://www.youtube.com/embed/JL51h56KdDg";
-        utube_list[2] = "https://www.youtube.com/embed/4p5iFkFhPJs";
+    var utube_list = [];
+    utube_list[0] = "https://www.youtube.com/embed/bwD-MgDChIo";
+    utube_list[1] = "https://www.youtube.com/embed/JL51h56KdDg";
+    utube_list[2] = "https://www.youtube.com/embed/4p5iFkFhPJs";
 
-        var list_index = 0;
-        function utube_next() {
-            list_index += 1;
-            if (list_index >= utube_list.length) { list_index = 0; }
-            document.getElementsByTagName('iframe')[0].src = utube_list[list_index];
-        }
+    var list_index = 0;
+
+    function utube_next() {
+        list_index += 1;
+        if (list_index >= utube_list.length) { list_index = 0; }
+        document.getElementsByTagName('iframe')[0].src = utube_list[list_index];
+    }
     </script>
-
 </body>
 
 </html>

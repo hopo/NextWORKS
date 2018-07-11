@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>num-string</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+
 <body>
     <script>
-        "use strict"
-        var js_string = "1234";
-        var js_num = 1234;
-        
-        // string + string
-        var js_sumstr = js_string + js_string;
-        document.write("string + string: " + js_sumstr);
-        document.write("<br/>");
-        
+    "use strict"
+    var js_string = "1234";
+    var js_num = 1234;
 
-        // string + num
-        var js_sumstrnum = js_string + js_num;
-        document.write("string + num: " + js_sumstrnum);
-        document.write("<br/>");
-        
+    // string + string
+    var js_sumstr = js_string + js_string;
+    document.write("string + string: " + js_sumstr);
+    document.write("<br/>");
 
-        // no using casting fuction
-        var js_strtrans = js_num + '';
-        document.write(typeof(js_strtrans) + ": " + js_strtrans);
-        document.write("<br/>");
 
-        var js_numtrans = js_string - 0;
-        document.write(typeof(js_numtrans) + ": " + js_numtrans);
-        document.write("<br/>");
+    // string + num
+    var js_sumstrnum = js_string + js_num;
+    document.write("string + num: " + js_sumstrnum);
+    document.write("<br/>");
 
-    
+
+    // no using casting fuction
+    var js_strtrans = js_num + '';
+    document.write(typeof(js_strtrans) + ": " + js_strtrans);
+    document.write("<br/>");
+
+    var js_numtrans = js_string - 0;
+    document.write(typeof(js_numtrans) + ": " + js_numtrans);
+    document.write("<br/>");
     </script>
 </body>
+
 </html>

@@ -6,28 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>addString</title>
-
     <script>
-        "use strict"
+    "use strict"
 
-        function js_check() {
-            var my_con = document.getElementById("container");
+    function js_check() {
+        var my_con = document.getElementById("container");
 
-            // my_con.innerHTML = "<h2>덮어 쓰기</h2>";
-            var in_str = "<table border=2>";
-            in_str += "<tr>";
+        // my_con.innerHTML = "<h2>덮어 쓰기</h2>";
+        var in_str = "<table border=2>";
+        in_str += "<tr>";
 
-            for (var i = 1; i <= 4; i++) {
-                in_str += "<td>data" + i + "</td>";
-            }
-
-            in_str += "</tr>";
-            in_str += "</table>";
-            my_con.innerHTML += in_str;
-            
-            console.log(my_con.innerHTML);
+        for (var i = 1; i <= 4; i++) {
+            in_str += "<td>data" + i + "</td>";
         }
 
+        in_str += "</tr>";
+        in_str += "</table>";
+        my_con.innerHTML += in_str;
+
+        console.log(my_con.innerHTML);
+    }
     </script>
 </head>
 

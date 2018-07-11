@@ -7,7 +7,9 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
+%>
 
+<%
 	// 리퀘스트로부터 BoardVo 리스트를 만들어온다
 	BoardService board = new BoardServiceImpl();
 

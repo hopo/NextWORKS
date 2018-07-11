@@ -10,24 +10,23 @@
 
 <body>
     <div id="clock" style="background:gray; color: lightpink"></div>
-
     <script>
-		"use strict"
-        function myclock() {
-            var m_date = new Date();	// ;;프론트에서 하지 않는다
-            var m_hour = m_date.getHours();
-            var m_min = m_date.getMinutes();
-            var m_seconds = m_date.getSeconds();
+    "use strict"
 
-            // var TimeView = `${m_hour}h ${m_min}m ${m_seconds}s`;
-            var TimeView = m_hour+":"+m_min+":"+m_seconds;
+    function myclock() {
+        var m_date = new Date(); // ;;프론트에서 하지 않는다
+        var m_hour = m_date.getHours();
+        var m_min = m_date.getMinutes();
+        var m_seconds = m_date.getSeconds();
 
-            document.getElementById('clock').innerHTML = "<h1>" + TimeView + "</h1>";
-            setTimeout("myclock()", 1000);
-        }
-        myclock();
+        // var TimeView = `${m_hour}h ${m_min}m ${m_seconds}s`;
+        var TimeView = m_hour + ":" + m_min + ":" + m_seconds;
+
+        document.getElementById('clock').innerHTML = "<h1>" + TimeView + "</h1>";
+        setTimeout("myclock()", 1000);
+    }
+    myclock();
     </script>
-
 </body>
 
 </html>

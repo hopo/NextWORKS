@@ -8,101 +8,102 @@
 
 <body>
     <script>
-        "use strict"
+    "use strict"
 
-        /*
-         * for 활용
-         */
+    /*
+     * for 활용
+     */
 
-        /*
-        // sol 1)
-        var text = 'i am programmer!'; var ret = '';
+    /*
+    // sol 1)
+    var text = 'i am programmer!'; var ret = '';
 
-        for (var i = 0; i < 6; i++) {
-        	var r = 6 - i;
-        	var open = "<h" + r + ">";
-        	var close = "</h" + r + ">";
-        	ret = ret + (open + text + close);
-        	if (r != 6) {
-        		ret = (open + text + close) + ret;
-        	}
+    for (var i = 0; i < 6; i++) {
+        var r = 6 - i;
+        var open = "<h" + r + ">";
+        var close = "</h" + r + ">";
+        ret = ret + (open + text + close);
+        if (r != 6) {
+            ret = (open + text + close) + ret;
+        }
+    }
+    document.write(ret);
+    */
+
+    /*
+    // sol 2)
+    var text = 'I am Programmer!';
+    var ret = '';
+
+    for (var i = 0; i < 6; i++) {
+        var r = 6 - i;
+        var line = "<h" + r + ">" + text + "</h" + r + ">";
+        if (r == 6) {
+            ret = line;
+        } else {
+            ret = line + ret + line;
+        }
+    }
+    document.write(ret);
+    */
+
+    /*
+    // sol 3)
+    var text= 'I am Programmer!';
+    var ret = '';
+    var j = 0;
+
+    for (var i = 1; i <= 11; i++) {
+        j = i;
+        if(i > 6) {
+            j = 12-i;
+        }
+        var open = "<h"+ j + ">"; 
+        var close = "</h" + j + ">";
+        ret += (open + text + close);
+    }
+    document.write(ret);
+    */
+
+    /*
+    // sol 4)
+    var text= 'I am Programmer!';
+    var ret = '';
+    var direction = false;
+    var j = 0;
+
+    for (var i = 1; i <= 11; i++) {
+        j = i;
+        if(i == 6) { direction = true; }
+        if(direction) { j = 12 - i;}
+        var open = "<h"+ j + ">"; 
+        var close = "</h" + j + ">";
+        ret += (open + text + close);
+    }
+    document.write(ret);
+    */
+
+    // 5) sensei sol
+    var text = 'I am Programmer!';
+    var ret = '';
+    var direction = true;
+    var i = 1;
+
+    while (i > 0) {
+        if (i == 6) {
+            direction = false;
+        }
+        var open = "<h" + i + ">";
+        var close = "</h" + i + ">";
+        ret = open + text + close;
+        if (direction) {
+            i++;
+        } else {
+            i--;
         }
         document.write(ret);
-        */
-
-        /*
-        // sol 2)
-        var text = 'I am Programmer!';
-        var ret = '';
-
-        for (var i = 0; i < 6; i++) {
-        	var r = 6 - i;
-        	var line = "<h" + r + ">" + text + "</h" + r + ">";
-        	if (r == 6) {
-        		ret = line;
-        	} else {
-        		ret = line + ret + line;
-        	}
-        }
-        document.write(ret);
-        */
-
-        /*
-        // sol 3)
-        var text= 'I am Programmer!';
-        var ret = '';
-        var j = 0;
-
-        for (var i = 1; i <= 11; i++) {
-        	j = i;
-        	if(i > 6) {
-        		j = 12-i;
-        	}
-        	var open = "<h"+ j + ">"; 
-        	var close = "</h" + j + ">";
-        	ret += (open + text + close);
-        }
-        document.write(ret);
-        */
-
-        /*
-        // sol 4)
-        var text= 'I am Programmer!';
-        var ret = '';
-        var direction = false;
-        var j = 0;
-
-        for (var i = 1; i <= 11; i++) {
-        	j = i;
-        	if(i == 6) { direction = true; }
-        	if(direction) { j = 12 - i;}
-        	var open = "<h"+ j + ">"; 
-        	var close = "</h" + j + ">";
-        	ret += (open + text + close);
-        }
-        document.write(ret);
-        */
-
-        // 5) sensei sol
-        var text = 'I am Programmer!';
-        var ret = '';
-        var direction = true;
-        var i = 1;
-
-        while (i > 0) {
-            if (i == 6) {
-                direction = false;
-            }
-            var open = "<h" + i + ">";
-            var close = "</h" + i + ">";
-            ret = open + text + close;
-            if (direction) {
-                i++;
-            } else {
-                i--;
-            }
-            document.write(ret);
-        }
+    }
     </script>
 </body>
+
 </html>
