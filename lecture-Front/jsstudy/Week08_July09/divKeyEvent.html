@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>divKeyEvent(tabindex)</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+    div {
+        width: 300px;
+        height: 200px;
+        background-color: tomato;
+    }
+    </style>
+</head>
+<!-- REFERENCE -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes -->
+
+<body>
+    <input type="text" value="text1" tabindex="1">
+    <br>
+    <input type="text" value="text2" tabindex="2">
+    <br>
+    <input type="text" value="text3" tabindex="3">
+    <br>
+    <!-- ;tabindex: Access as Tab key -->
+    <!-- ;contenteditable: edit contents in div tag -->
+    <div tabindex="4" contenteditable="true">Here is div tag world</div>
+    <script>
+    "use strict"
+
+    jQuery(function() {
+        $('div').on('keydown', function() {
+            console.log('div!!!');
+            console.log(event.keyCode); // ;;check
+            // div는 기존으로는 포커스를 받을 수는 없다
+            // -> using 'tabindex'
+        })
+    })
+    </script>
+</body>
+
+</html>

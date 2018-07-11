@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>varScope</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <script>
+        "use strict"
+
+        var global_var = "global variable";
+        var global_var = "re decalration";
+
+        var PI = 3.14;
+
+        {
+            let block_var = "337" // block scope
+        }
+
+        // console.log("D", block_var);
+
+        function var_check() {
+            var var_local = "local variable";
+        }
+
+        console.log("A", global_var);
+
+        var_check();
+        console.log("B", var_local);
+
+        var var_local; // hoisting
+        for (var var_local = 1; var_local < 10; var_local++) {
+            document.write(var_local); // 형식적
+        }
+        console.log("C", var_local);
+    </script>
+
+</body>
+
+</html>

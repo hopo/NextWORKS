@@ -29,26 +29,26 @@
                     //console.log(event.button); // ;;mouse botton check
 
                     var position = $(this).offset();
-                    var x = event.pageX - position.left; // ;;;clientX, pageX = ë³´ì´ëŠ” ë·°, ë„íë¨¼íŠ¸ ì „ì²´
+                    var x = event.pageX - position.left; // ;;;clientX, pageX = º¸ÀÌ´Â ºä, µµÅ¥¸ÕÆ® ÀüÃ¼
                     var y = event.pageY - position.top;
 
-                    context.beginPath(); // ;;;íŒ¨ìŠ¤ ê·¸ë¦´ ì¤€ë¹„ë¥¼ í•´ë¼
-                    context.moveTo(x, y); // ;;;(x, y)ë¡œ ì´ë™í•˜ì‹œì˜¤
+                    context.beginPath(); // ;;;ÆĞ½º ±×¸± ÁØºñ¸¦ ÇØ¶ó
+                    context.moveTo(x, y); // ;;;(x, y)·Î ÀÌµ¿ÇÏ½Ã¿À
                 },
                 mouseup: function (event) {
                     var position = $(this).offset();
                     var x = event.pageX - position.left;
                     var y = event.pageY - position.top;
 
-                    context.lineTo(x, y); // ;;;(x, y)ê¹Œì§€ ë¼ì¸ì„ ê·¸ë¦´ ê²ƒì´ë‹¤
-                    context.stroke(); // ;;;ë¶“ì§ˆ
+                    context.lineTo(x, y); // ;;;(x, y)±îÁö ¶óÀÎÀ» ±×¸± °ÍÀÌ´Ù
+                    context.stroke(); // ;;;º×Áú
                 },
                 contextmenu: function (event) {
                     return false;
                 }
             })
 
-        })
+        }) 
     </script>
 </body>
 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>confirm</title>
+</head>
+<body>
+    <script>
+        "use strict"
+
+		/*
+		// exA)
+        var yesno = confirm("맞습니까?"); // return: boolean
+        console.log(yesno);
+
+        var my_string = "1234px";
+        var my_num = parseInt(my_string); // 앞 넘버만 가져온다
+        console.log(my_string, typeof(my_string));
+        console.log(my_num, typeof(my_num));
+		*/
+
+		// exB)
+        console.log("1234" == 1234); // 자동 형변환
+        console.log("1234" === 1234);
+
+        var temp_str = "난 중간값";
+        var temp_str2 = "Front " + temp_str + " End";
+        var temp_str3 = `Front ${temp_str} End`; // SAME temp_str2
+
+        console.log("temp_str2 value: ", temp_str2); 
+        console.log("temp_str3 value: ", temp_str3); 
+
+        // ***
+        // MS: typeScript.
+        // Google: traceur
+
+    </script>
+    
+</body>
+</html>

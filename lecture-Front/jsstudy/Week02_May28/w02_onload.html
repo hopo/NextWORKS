@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>onload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!-- <body onload="js_ing()"> -->
+<body id="myBody">
+    <p>자바스크립트<br>에이치티엠엘!</p>
+
+    <script>
+	"use strict"
+	// ! function define
+	function js_ing() {
+		myBody1 = document.getElementById("myBody");
+		// alert(myBody1.innerHTML);
+		myBody1.innerHTML = "<h1> 값이 바뀌었어요 </h1>";
+	}
+
+	// ! function call
+	// js_ing();    
+
+	// ! js에서 핸들
+	window.onload = js_ing();
+    
+	</script>
+</body>
+</html>
