@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Casading Style Sheet(css)04</title>
+</head>
+
+<body>
+    <div id="wrap" style="position: absolute; left: 50px; top: 50px; width: 50px; height: 50px; border: 2px dotted black; border-radius: 50px; background: #ff9933; background-size: 400px 400px;"></div>
+    <script>
+    "use strict"
+
+    /*
+    // ex1)
+    var myDiv = document.getElementById("wrap");
+    var myStyle = myDiv.style;
+
+    var docWidth = window.innerWidth;
+    var moveWidth = 20;
+
+    function moveDiv() {
+    	myStyle.left = (parseInt(myStyle.left) + moveWidth) + "px";
+    	console.log("myStyle.left: ", myStyle.left);
+
+    	if((parseInt(myStyle.left))+44 > docWidth) {
+    		moveWidth =- moveWidth;
+    	}
+    	if((parseInt(myStyle.left)) <= 0) {
+    		moveWidth = -moveWidth;
+    	}
+    	setTimeout(moveDiv, 100);
+    }
+    moveDiv();
+    */
+
+    /*
+    // ex2)
+    var myDiv = document.getElementById("wrap");
+    var myStyle = myDiv.style;
+
+    var docHeight= window.innerHeight;
+    var moveHeight= 20;
+
+    function moveDiv() {
+    	myStyle.top = (parseInt(myStyle.top) + moveHeight) + "px";
+    	console.log("myStyle.top: ", myStyle.top);
+
+    	if(parseInt(myStyle.top)+44 > docHeight) {
+    		moveHeight=- moveHeight;
+    	}
+    	if(parseInt(myStyle.top) <= 0) {
+    		moveHeight= -moveHeight;
+    	}
+    	setTimeout(moveDiv, 100);
+    }
+    moveDiv();
+    */
+
+    // ex3)
+    var myDiv = document.getElementById("wrap");
+    var myStyle = myDiv.style;
+
+    var docHeight = window.innerHeight;	// Browser window height sizes
+    var docWidth = window.innerWidth;
+    var moveHeight = 20;
+    var moveWidth = 20;
+
+    function moveDiv() {
+        console.log("myStyle.left, myStyle.top: ( ", myStyle.left, ":", myStyle.top, " )");
+        
+        myStyle.top = (parseInt(myStyle.top) + moveHeight) + "px";
+        myStyle.left = (parseInt(myStyle.left) + moveWidth) + "px";
+
+        if ((parseInt(myStyle.left)) + 30 > docWidth) {
+            moveWidth = -moveWidth;
+        }
+        if ((parseInt(myStyle.left)) <= 0) {
+            moveWidth = -moveWidth;
+        }
+        if (parseInt(myStyle.top) + 30 > docHeight) {
+            moveHeight = -moveHeight;
+        }
+        if (parseInt(myStyle.top) <= 0) {
+            moveHeight = -moveHeight;
+        }
+        setTimeout(moveDiv, 50);
+    }
+    moveDiv();
+    </script>
+</body>
+
+</html>

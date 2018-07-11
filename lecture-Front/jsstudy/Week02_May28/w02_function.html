@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    // !함수 정의
+    /*
+    // exA
+    function myout(msg) {
+        document.write(msg);
+    }
+    */
+
+    // exB
+    var myout = function(msg) {
+        document.write(msg);
+    }
+
+    var anotherFunc = function(fc) {
+        fc("Is it possibble?<br>")
+    }
+
+    anotherFunc(myout);
+    // - 매개변수로 함수를 넘김.
+    // - 이런게 되는 언어롤 'firstclass'라 부름
+    // - 이런 방법으로 사용하는 걸 call back 함수로고 한다
+
+    function reout() {
+        return "Hello";
+        document.write("HERE???");
+    }
+
+    // !함수 콜
+    myout("Hello I am <br>");
+    myout("Who are you? <br>");
+    alert(reout());
+    </script>
+</body>
+
+</html>

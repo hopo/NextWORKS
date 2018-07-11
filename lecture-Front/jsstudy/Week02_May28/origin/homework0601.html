@@ -81,14 +81,16 @@
 		*/
 
 		// 5) sensei sol
-		var text= 'I am Programmer!';
+		var text = 'I am Programmer!';
 		var ret = '';
 		var direction = true;
 		var i = 1;
 
-		while(i > 0) {
-			if(i == 6) { direction = false; }	
-			var open = "<h"+ i + ">"; 
+		while (i > 0) {
+			if (i == 6) {
+				direction = false;
+			}
+			var open = "<h" + i + ">";
 			var close = "</h" + i + ">";
 			ret = open + text + close;
 			if (direction) {
@@ -98,8 +100,6 @@
 			}
 			document.write(ret);
 		}
-
-
 	</script>
 
 </body>
