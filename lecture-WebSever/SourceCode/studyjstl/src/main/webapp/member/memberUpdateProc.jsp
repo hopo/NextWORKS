@@ -50,6 +50,7 @@
 			sql.append(" 	, mem_phone = ? ");
 			sql.append(" 	, mem_email = ? ");
 			sql.append(" 	, mem_ip = ? ");
+			sql.append(" 	, reg_date = SYSDATE ");
 			sql.append(" WHERE mem_id = ? ");
 
 			// ========================================================

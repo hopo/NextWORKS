@@ -33,9 +33,6 @@
 	<div>접속자: ${memberInfo.memId}</div>
 	<c:if test="${memberInfo != null}">
 			 ( <a href="<%=request.getContextPath()%>/session/logOutProc.jsp">LogOut</a> )
-	<br>
-	<br>
-	<a href="<%=request.getContextPath()%>/member/memberList.jsp">멤버리스트보기</a>
 	</c:if>
 
 	<c:if test="${meberInfo == null}">
@@ -63,6 +60,11 @@
 		<br>
 		<a href="<%=request.getContextPath()%>/member/memberForm.jsp">가입하기</a>
 	</c:if>
+	<br>
+	<br>
+	<a href="<%=request.getContextPath()%>/member/memberList.jsp">멤버리스트보기</a>
+	<br>
+	<a href="<%=request.getContextPath()%>/index.jsp">GoIndex</a>
 
 </body>
 </html>

@@ -21,15 +21,18 @@
 	<h3>Member리스트 출력</h3>
 
 	<%
+	
 		// 1.드라이버 로딩
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+
 		long startTime = System.currentTimeMillis();
 
 		try {
 
 			String memId = request.getParameter("memId"); // ;;파라미터로 넘어온 값으로 db를 조회
+			String findId = request.getParameter("findId");	
 
 			Class.forName("oracle.jdbc.driver.OracleDriver"); // ;import 오라클 드라이버
 
@@ -40,23 +43,34 @@
 			// String sql = " SELECT mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip  FROM tab_member ORDER BY reg_date ASC ";
 			StringBuilder sql = new StringBuilder();
 			sql.append(" SELECT ");
-			sql.append(" mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip ");
-			sql.append(" FROM tab_member ");
-			sql.append(" ORDER BY reg_date ");
+			sql.append(" 	mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip ");
+			sql.append(" FROM ");
+			sql.append(" 	tab_member ");
+			sql.append(" WHERE ");
+			sql.append(" 	del_at = 'Y' ");
+			sql.append(" AND ");
+			sql.append(" 	mem_id LIKE '%' || ? || '%' "); // ;;sql에서 문자열 더하기가 포인트
+			sql.append(" ORDER BY ");
+			sql.append(" 	reg_date ");
 			sql.append(" ASC  ");
 
 			// 3.구문객체 생성
 			pstmt = conn.prepareStatement(sql.toString()); // ;쿼리 객체 생성
+			pstmt.setString(1, findId);
 
 			// 4.구문객체 실행
 			rs = pstmt.executeQuery(); // ;결과가 ResultSet에 담긴다
 	%>
 
+	<form action="<%=request.getContextPath()%>/member/memberList.jsp">
 	<table class="table" border="3" style="border-color: red;">
 		<thead>
 			<tr>
-				<th colspan="7"></th>
-				<th><a href="<%=request.getContextPath()%>/member/memberForm.jsp">뢰원등록</a></th>
+				<th colspan="7">
+					<input name="findId" value="<%=(findId != null ? findId : "")%>" >
+					<button type="submit">search</button>
+				</th>
+				<th><a href="<%=request.getContextPath()%>/member/memberForm.jsp">회원등록</a></th>
 			</tr>
 			<tr>
 				<th>아이디</th>
@@ -78,7 +92,7 @@
 			%>
 
 			<tr>
-				<td><%=rs.getString("mem_id")%></td>
+				<td><a href='/member/memberUpdateForm.jsp?memId=<%=rs.getString("mem_id")%>'><%=rs.getString("mem_id")%></a></td>
 				<td><%=rs.getString("mem_name")%></td>
 				<td><%=rs.getString("mem_phone")%></td>
 				<td><%=rs.getString("mem_email")%></td>
@@ -94,6 +108,7 @@
 
 		</tbody>
 	</table>
+	</form>
 
 	<%
 		} catch (SQLException ex) {
@@ -126,7 +141,9 @@
 
 		}
 	%>
-
+	
+	<br>
+	<br>
 	_껄린시간 :
 	<%=System.currentTimeMillis() - startTime%>ms
 

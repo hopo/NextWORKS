@@ -31,6 +31,7 @@
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int result = -1;
 
 		try {
 
@@ -43,8 +44,19 @@
 			// ;query 작성 (INSERT)
 			StringBuilder sql = new StringBuilder();
 
+			/*
+			// ;실제 삭제시
 			sql.append(" DELETE tab_member ");
-			sql.append(" WHERE mem_id = ? ");
+			sql.append(" WHERE ");
+			sql.append(" 	mem_id = ? ");
+			*/
+
+			sql.append(" UPDATE tab_member ");
+			sql.append(" SET ");
+			sql.append(" 	del_at = 'N' ");
+			sql.append(" WHERE ");
+			sql.append(" 	mem_id = ? ");
+
 
 			// ========================================================
 			// 3.구문객체 생성
@@ -55,12 +67,12 @@
 
 			// ========================================================
 			// 4.구문객체 실행
-			boolean result = pstmt.execute();
+			result = pstmt.executeUpdate();
 
-			if (result) {
-				out.print(" Success!! ");
+			if (result != 0) {
+				out.print(String.format("%d 개가 삭제 되스미니다", result));
 			} else {
-				out.print(" Fail!! ");
+				out.print("삭제 오작동");
 			}
 
 			out.println(sql.toString());

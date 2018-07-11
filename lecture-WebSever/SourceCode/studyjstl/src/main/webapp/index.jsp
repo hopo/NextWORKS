@@ -14,5 +14,8 @@
 		<h3>[[[ /studyjstl/index.jsp ]]]</h3>
 		<c:url value="/session/loginForm.jsp" var="loginForm" />
 		<a href="${loginForm}">/session/loginForm.jsp</a>
+		<br>
+		<c:url value="/board/boardList.jsp" var="boardList" />
+		<a href="${boardList}">/board/boardList.jsp</a>
 	</body>
 </html>
