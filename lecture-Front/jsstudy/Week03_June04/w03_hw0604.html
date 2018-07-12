@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+	<title>hw0604</title>
+
+<head>
+    <meta charset="UTF-8">
+    <title>homework0604</title>
+    <style>
+    * {
+        margin: 0;
+        border: 0;
+        padding: 0
+    }
+
+    #wrap {
+        position: relative;
+        left: 100px;
+        border: 1px solid blue;
+        width: 500px;
+        height: 500px;
+    }
+
+    #btn1 {
+        position: absolute;
+        color: blue;
+        font-size: 2em;
+        width: 400px;
+        height: 50px;
+        left: 40px;
+        bottom: 20px;
+    }
+
+    .num {
+        position: absolute;
+        top: 100px;
+        font-size: 2.5em;
+        line-height: 60px;
+        text-align: center;
+        border: 1px solid black;
+        width: 60px;
+        height: 60px;
+        color: gold;
+        background-color: grey
+    }
+
+    .num1 {
+        left: 35px;
+    }
+
+    .num2 {
+        left: 105px;
+    }
+
+    .num3 {
+        left: 175px;
+    }
+
+    .num4 {
+        left: 245px;
+    }
+
+    .num5 {
+        left: 315px;
+    }
+
+    .num6 {
+        left: 385px;
+    }
+    </style>
+    <script>
+    "use strict"
+
+    /*
+    // sol1)
+    function rand_num() {
+        return Math.floor(Math.random() * 45 + 1);
+    }
+
+    function is_member(n, list) {
+        for (var e of list) {
+            if (e == n) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    var i = 1;
+    var r = rand_num();
+    var list = [r];
+    while (i < 6) {
+        r = rand_num();
+        if (is_member(r, list)) {
+            continue;
+        }
+        list[i] = r;
+        i++;
+    }
+    console.log(list);
+    */
+
+    // sensei sol)
+    function myRan(start, end) {
+        return Math.floor(Math.random() * end + start); // start~n까지 랜덤 넘버
+    }
+
+    /*
+    // ; 확인
+    for(var i = 1; i <= 6; i++) {
+    	document.write(myRan(1, 25) + "<br>");
+    }
+    */
+
+    // while statement
+    var loto_result = [];
+    while (true) {
+        if (loto_result.length == 6) {
+            break;
+        }
+        var temp_num = myRan(1, 45);
+        var isIn = false;
+        for (var i = 0; i <= loto_result.length; i++) {
+            if (loto_result[i] == temp_num) {
+                isIn = true;
+                break;
+            }
+        }
+        if (!isIn) {
+            loto_result[loto_result.length] = temp_num;
+        }
+    }
+
+    // ; 결과 확인
+    for (var i = 0; i < loto_result.length; i++) {
+        // document.write(loto_result[i]+'<br>');
+    }
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div id="num1" class="num num1"></div>
+        <div id="num2" class="num num2"></div>
+        <div id="num3" class="num num3"></div>
+        <div id="num4" class="num num4"></div>
+        <div id="num5" class="num num5"></div>
+        <div id="num6" class="num num6"></div>
+        <input id="btn1" type="button" value="로또번호발생" onclick="lotto()">
+    </div>
+</body>
+
+</html>

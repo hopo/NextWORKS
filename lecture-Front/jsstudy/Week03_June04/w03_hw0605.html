@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hw0605</title>
+    <script>
+    "use strict"
+
+    /*
+    // 1)
+    function myRan(start, end) {
+        return Math.floor(Math.random() * start + 1 + (end-start)); // start~n까지 랜덤 넘버
+    }
+
+    var i = 0;
+    var ranNum = myRan(100, 200);
+    var list = [];
+    console.log(ranNum); // console에 답 찍기
+
+    while (i < 5) {
+        var userNum = prompt("100~200 ??? ");
+        list[i] = userNum;
+        if (ranNum == userNum) {
+            document.write("GOOD!!! " + "<br>");
+            break;
+        }
+        if (ranNum > userNum) {
+
+            alert("more");
+        } else {
+
+            alert("less");
+        }
+        i++;
+    }
+    if (i == 5) {
+        document.write("BAD!!! " + "<br>");
+    }
+
+    document.write("ranNum: " + ranNum + "<br>");
+    document.write("userNum: [" + list + "]");
+    */
+
+    /*
+    // 2)
+    function myRan(start, end) {
+        return Math.floor(Math.random() * start + 1 + (end - start));
+    }
+
+    var i = 0;
+    var ranNum = myRan(100, 200);
+    console.log(ranNum); // console에 답 찍기
+    var list = [];
+    var userNum = 0;
+
+    while (i < 5) {
+
+        do {
+            userNum = prompt("100 ~ 200 사이의 수를 입력하라 ");
+        }
+        while (userNum < 100 || userNum > 200);
+        list[i] = userNum;
+
+        if (ranNum == userNum) {
+            document.write("정답입니다!!! " + "<br>");
+            break;
+        }
+        if (ranNum > userNum) {
+            alert(userNum + "보다 큰 수");
+        } else {
+            alert(userNum + "보다 작은 수");
+        }
+        i++;
+    }
+
+    if (i == 5) {
+        document.write("실패입니다!!! " + "<br>");
+    }
+
+    document.write("ranNum: " + ranNum + "<br>");
+    document.write("userNum: [" + list + "]");
+    */
+
+    // 3) sensei sol
+    function myRan(start, end) {
+        return Math.floor(Math.random() * (end + 1 - start) + start);
+    }
+
+    function numGame() {
+        var quesNum = myRan(100, 200);
+        var sidoCnt = 0;
+
+        alert("답은" + quesNum + "<br>");
+
+        while (true) {
+            var userInput = parseInt(prompt("예상 숫자를 입력하세요", 100));
+            sidoCnt++;
+
+            if (quesNum == userInput) {
+                if (sidoCnt <= 5) {
+                    document.getElementById("express").innerHTML = sidoCnt + "만에 맞추다니 훌륭해!!";
+                } else {
+                    document.getElementById("express").innerHTML = sidoCnt + "만에 맞추다니 별로얌!!";
+                }
+                break;
+            }
+
+            if (userInput > quesNum) {
+                alert("답은 좀더 작은 숫자 입니다!");
+            } else {
+                alert("답은 좀더 큰 숫자 입니다!");
+            }
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="express" style="height:300px;font-size: 2em;color:gold;background-color: black;line-height:300px"></div>
+    <input type="button" value="숫자 맟추기 게임" onclick="numGame()">
+</body>
+
+</html>
