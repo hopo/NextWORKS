@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sujung</title>
+    <script src="../../jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form>
+        이름:
+        <input type="text" id="sil_writer">
+        <br> 내용:
+        <br>
+        <textarea id="sil_cont" rows=2 cols=80></textarea>
+        <input type="button" id="sil_sujung" value="SUJUNG">
+    </form>
+    <script>
+    $(function() {
+        var silBoard = localStorage;
+        var strURL = location.href; // ;current url
+        strURL = strURL.split("=")[1]; // ;get 'code*'
+
+        var sujungD = JSON.parse(silBoard[strURL]);
+        $('#sil_writer').val(sujungD.writer); // ;to edit obj.writer
+        $('#sil_cont').val(sujungD.content); // ;to edit obj.content
+
+        $('#sil_sujung').on("click", function() {
+            var rowData = Object();
+            rowData.writer = $("#sil_writer").val();
+            rowData.content = $("#sil_cont").val();
+            rowData.date = new Date().toLocaleDateString();
+            silBoard.setItem(strURL, JSON.stringify(rowData));
+
+            location.replace("list.html");
+        })
+    })
+    </script>
+</body>
+
+</html>

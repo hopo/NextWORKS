@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../../jQuery/jquery-3.3.1.min.js"></script>
+    <style>
+    table {
+        width: 450px;
+        border: 2px solid pink;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>스크립트 게시판</h1>
+    <table id="sil_list">
+        <tr>
+            <th>넘버</th>
+            <th>글쓴이</th>
+            <th>내용</th>
+            <th>날짜</th>
+            <th>수정</th>
+            <th>삭제</th>
+        </tr>
+    </table>
+    <input type="button" id="kf_pan" value="글쓰기">
+    <script>
+    $(function() {
+        var bdData = localStorage;
+        var tb = document.getElementById('sil_list');
+
+        for (var i = 0; i < bdData.length; i++) {
+            var key = bdData.key(i);
+            var rwData = JSON.parse(bdData[key]);
+            var upBtn = "<input type='button' value='수정' onclick='sujung(\"" + key + "\")'>";
+            var delBtn = "<input type='button' value='지우기' onclick='rowdel(\"" + key + "\")'>";
+            var imsiS = "<tr>" +
+                "<th>" + (i + 1) + "</th>" +
+                "<th>" + rwData.writer + "</th>" +
+                "<th>" + rwData.content + "</th>" +
+                "<th>" + rwData.date + "</th>" +
+                "<th>" + upBtn + "</th>" +
+                "<th>" + delBtn + "</th>" +
+                "</tr>";
+            tb.innerHTML += imsiS;
+        }
+
+        $('#kf_pan').on("click", function() {
+            location.href = "sil_write.html";
+        })
+
+    })
+
+    function rowdel(strKey) {
+        var bdData = localStorage;
+        bdData.removeItem(strKey); // 키값으로 삭제!
+        location.replace("list.html");
+    }
+
+    function sujung(strKey) {
+        location.href = 'sujung.html?' + 'strkey=' + strKey;
+    }
+    </script>
+</body>
+
+</html>

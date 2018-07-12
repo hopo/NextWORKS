@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>sil_write</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../../jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form>
+        이름:
+        <input type="text" id="sil_writer" value="">
+        <br> 내용:
+        <br>
+        <textarea id="sil_cont" rows=2 cols=80></textarea>
+        <input type="button" id="sil_reg" value="등록">
+    </form>
+    <script>
+    $(function() {
+        var silBoard = localStorage;
+        $('#sil_reg').on("click", function() {
+            var rowData = {};
+            rowData.writer = $("#sil_writer").val();
+            rowData.content = $("#sil_cont").val();
+            rowData.date = new Date().toLocaleDateString();
+            var strKey = silBoard.key(silBoard.length - 1);
+            strKey = "code" + (parseInt(strKey.split("code")[1]) + 1);
+            silBoard.setItem(strKey, JSON.stringify(rowData));
+
+            location.replace("list.html");
+        })
+    })
+    </script>
+</body>
+
+</html>

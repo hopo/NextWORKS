@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jsubmit</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form id="my-form">
+        <table>
+            <tr>
+                <td>Name: </td>
+                <td>
+                    <input type="text" name="name" id='name'>
+                </td>
+            </tr>
+            <tr>
+                <td>Password: </td>
+                <td>
+                    <input type='password' name='password' id='password'>
+                </td>
+            </tr>
+            <button type='submit'>SUBMIT</button>
+        </table>
+    </form>
+    <script>
+    "use strict"
+    jQuery(function() {
+        $('#my-form').on('submit', function() {
+            var name = $('#name').val();
+            var password = $('#password').val();
+
+            console.log(name + ' : ' + password);
+            event.preventDefault();
+        })
+    })
+    </script>
+</body>
+
+</html>

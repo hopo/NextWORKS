@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>initData</title>
+    <script type="text/javascript" src="../../jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    "use strict"
+    localStorage.clear();
+    var silBoard = localStorage;
+    var writers = ['Obama', 'Oracle', 'Okane', 'Orion'];
+    var gesiWords = ['obamacare', 'oracleshit', 'okanemoney', 'goraebob'];
+
+    for (var i = 0; i < writers.length; i++) {
+        var rowData = {};
+        rowData.writer = writers[i];
+        rowData.content = gesiWords[i];
+        rowData.date = new Date().toLocaleDateString();
+
+        silBoard.setItem('code' + i, JSON.stringify(rowData));
+    }
+
+    location.href = 'list.html';
+    </script>
+</body>
+
+</html>
