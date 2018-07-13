@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>selectorDesc-child</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <ol>
+            <li>Apple</li>
+            <li>Bag</li>
+            <li>Cat</li>
+            <li>Dog</li>
+            <li>Elephant</li>
+        </ol>
+    </div>
+    <input type="text" name="text" class="c1">
+    <input type="text" name="text" class="c2">
+    <input type="password" name="password" id="">
+    <input type="radio" name="radio" id="">
+    <input type="checkbox" name="checkbox" id="">
+    <input type="file" name="file" id="">
+
+    <br>
+    <br>
+    <select id="sel">
+        <option>Apple</option>
+        <option>Bag</option>
+        <option>Cat</option>
+        <option>Dog</option>
+        <option>Elephant</option>
+    </select>
+    <script>
+    /*
+    // ;children
+    $(function() {
+        $('body > *').css('color', 'blue');
+    });
+
+    // ;descendants
+    $(function() {
+        $('body li').css('color', 'red');
+    });
+    */
+
+    /*
+    // ;class accept
+    // ;; exA
+    $(function() {
+        $('ul > li').css('color', 'red');
+        $('input[type="text"][class="c1"]').val('Hello jQuery');
+    });
+    // ;; exB
+    $(function() {
+        $('ul > li').css('color', 'red');
+        $('.c1').val('Hello jQuery');
+    });
+    */
+
+    // ; event handle
+    $('#sel').on('change', function() {
+        var selValue = $('select > option:selected').val();
+        console.log('selValue: ', selValue);
+    });
+    </script>
+</body>
+
+</html>

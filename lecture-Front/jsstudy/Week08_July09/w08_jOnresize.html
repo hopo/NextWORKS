@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jOnresize</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <style type="text/css">
+    img {
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <img src="image/tiger2.jpg" width="200" height="300" alt="tiger10">
+    <script type="text/javascript">
+    jQuery(function() {
+        $(window).on('resize', function() {
+            // ! dynamic position by window size
+            var imgWidth = $('img').attr('width')
+            var winWidth = window.innerWidth;
+            var cenWidth = (winWidth - imgWidth) / 2;
+            console.log('imgWidth winWidth cenWidth : ', imgWidth, winWidth, cenWidth);
+            $('img').css('left', cenWidth);
+
+            // ! fit window size
+            $('img').attr('width', window.innerWidth);
+            $('img').attr('height', window.innerHeight);
+        })
+    })
+    </script>
+</body>
+
+</html>

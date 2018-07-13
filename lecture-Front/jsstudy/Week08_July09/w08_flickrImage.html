@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>flickrImage</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Flickr Image Album</h1>
+    <form id="search-form">
+        <input type="text" name="tags">
+        <input type="hidden" name="format" value="json">
+        <input type="submit" value="Search">
+    </form>
+    <div id="images">
+    </div>
+    <script>
+    "use strict"
+    $(function() {
+        $('#search-form').submit(function(event) {
+            var url = '';
+            url += 'http://api.flickr.com/services/feeds/photos_public.gne';
+            url += '?jsoncallback=?';
+
+            // ; below code, complete get data
+            $.getJSON(url, $(this).serialize(), function(data) {
+                console.log(data); // ;; What is flickr throw to me?
+                $('#images').empty();
+
+                $.each(data.items, function(i, item) {
+                    var $image = $('<img />').attr({ 'src': item.media.m });
+
+                    $('<a></a>').attr({
+                        'class': 'flickr-image',
+                        'href': item.media.m,
+                        'rel': 'colorbox'
+                    }).html($image).appendTo('#images'); // ;; like innerHTML
+
+                });
+
+            });
+            return false; // ;; only get ajax. 'false' do not submit.
+        });
+    });
+    </script>
+</body>
+
+</html>

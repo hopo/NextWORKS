@@ -84,7 +84,7 @@
     <div class="tajaControl">
         <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()">
         <input type=button id="tajaStop" value="Stop" onclick="tajaStop()">
-        <input type=text id="tajaTyping" onkeydown="wordsCheck()">
+        <input type=text id="tajaTyping" onkeydown="wordsCheck()" value="">
     </div>
     <!-- <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영어에 Rule Of Thumb 이란 말이 있디용?</h1> -->
     <h3>[score]<div id="scoreBoard">0</div></h3>
@@ -93,14 +93,15 @@
 "use strict"
 var movTime = 900; //글자Div 움직이게 부르는 간격
 var makeTime = 1700; //글자Div 화면에 나타나게 추가하는 시간
-var tajaStart = null,
-    tajaTyping = null;
+var tajaStart = null;
+var tajaTyping = null;
 
 var score = 1;
 var scoreBoardDiv = document.getElementById("scoreBoard");
 
 // 자바 공부!
-var javaStudy = ["abstract", "else", "instanceof", "super", "boolean",
+var javaStudy = [
+    "abstract", "else", "instanceof", "super", "boolean",
     "enum", "int", "switch", "break", "export",
     "interface", "synchronized", "byte", "extends", "let",
     "this", "case", "false", "long", "throw",
@@ -120,7 +121,7 @@ var onDiv = []; // 현재 화면에서 움직이는 div만 담을 배열
 function wordsManufacture() {
 
     var wordRanId = Math.round(Math.random() * (javaStudy.length - 1));
-    var wordRanX = Math.round(Math.random() * 500)
+    var wordRanX = Math.round(Math.random() * 500);
     var newDiv = document.getElementById("word" + wordRanId);
     var wordWidth = newDiv.innerHTML.length * 11;
 
@@ -168,6 +169,7 @@ function tajaGoGo() {
 
 /** 엔터키 입력하면 처리~ **/
 function wordsCheck() {
+    var tajaTyping = document.getElementById("tajaTyping");
     var wordAnswer = tajaTyping.value;
     if (event.keyCode == 13) {
         for (var i = 0; i < onDiv.length; i++) {

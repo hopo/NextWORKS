@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jEventCanvas</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <style>
+        .reverse {
+            background-color: black;
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Header-0</h1>
+    <h1>Header-1</h1>
+    <h1>Header-2</h1>
+    <canvas id='canvas' width='700' height='400' style='border:3px solid black'>
+    </canvas>
+    <script>
+        jQuery(function () {
+            var canvas = document.getElementById('canvas');
+            var context = canvas.getContext('2d');
+
+            $(canvas).on({
+                mousedown: function (event) {
+                    //console.log(event.button); // ;;mouse botton check
+
+                    var position = $(this).offset();
+                    var x = event.pageX - position.left; // ;;;clientX, pageX = 보이는 뷰, 도큐먼트 전체
+                    var y = event.pageY - position.top;
+
+                    context.beginPath(); // ;;;패스 그릴 준비를 해라
+                    context.moveTo(x, y); // ;;;(x, y)로 이동하시오
+                },
+                mouseup: function (event) {
+                    var position = $(this).offset();
+                    var x = event.pageX - position.left;
+                    var y = event.pageY - position.top;
+
+                    context.lineTo(x, y); // ;;;(x, y)까지 라인을 그릴 것이다
+                    context.stroke(); // ;;;붓질
+                },
+                contextmenu: function (event) {
+                    return false;
+                }
+            })
+
+        }) 
+    </script>
+</body>
+
+</html>

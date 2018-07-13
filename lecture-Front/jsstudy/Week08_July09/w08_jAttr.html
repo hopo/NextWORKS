@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jAttr</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <img src="image/tiger0.jpg" alt="">
+    <img src="image/tiger1.jpg" alt="">
+    <img src="image/tiger2.jpg" alt="">
+    <script>
+    "use strict"
+    jQuery(function() {
+        /*
+    	// attr(para)
+        $('img').each(function() {
+            console.log($(this).attr('src'))
+        })
+        */
+
+        /*
+        // attr(para1, para2) 2
+        $('img').attr('width', 200)
+        */
+
+        /*
+        // attr(para, func) 3
+        $('img').attr('width', function(index) {
+            return (index + 1) * 100;
+        })
+        */
+
+        // attr(obj) 4
+        $('img').attr({
+            width: function(index) {
+                return (index + 1) * 100;
+            },
+            height: 100
+        })
+
+    })
+    </script>
+</body>
+
+</html>

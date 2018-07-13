@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>callback</title>
+</head>
+
+<body>
+    <div id="jss">
+    </div>
+    <script type="text/javascript">
+    var jss = ['angular', 'express', 'react', 'vue', 'phantom'];
+    /*
+    for (var k in js) {
+    	console.log(k, ":", js[k]);
+    }
+    */
+
+    function arrList(arr, callfunc) {
+        for (var k in arr) {
+            callfunc(k, arr[k]); // ;;callback function
+        }
+    }
+
+    arrList(jss, function(index, value) {
+        var dis = document.getElementById('jss');
+        dis.innerHTML += '<h1>' + index + ': ' + value + '</h1>'
+    })
+    </script>
+</body>
+
+</html>

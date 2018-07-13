@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>infinityScroll</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    "use strict"
+    // ! document와 scroll의 위치에 반응하여  body에 컨텐츠 추가 (무한) 
+    jQuery(function() {
+        for (var i = 0; i < 20; i++) {
+            $('<h1>무한 스크롤</h1>').appendTo('body');
+        }
+
+        $(window).on("scroll", function() {
+            var scrollHeight = $(window).scrollTop() + $(window).height();
+            var documentHeight = $(document).height();
+
+            console.log("scrollHeight", scrollHeight, "documentHeight", documentHeight);
+            if (parseInt(scrollHeight) == documentHeight) {
+                for (var i = 0; i < 10; i++) {
+                    $('<h1>무한 스크롤!!</h1>').appendTo('body');
+                }
+            }
+        })
+    })
+    </script>
+</body>
+
+</html>

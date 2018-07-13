@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jAppend</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+    "use strict"
+    jQuery(function() {
+        /*
+        // appendTo()
+        $('<h1></h1>').html('PinkPants').appendTo('body');
+        */
+
+        // append()
+        var h1 = '<h1>Black Mamba1<h1>';
+        var h2 = '<h2>Black Mamba2<h2>';
+
+        $('body').append(h1, h2, h1, h2, h2);
+    })
+    </script>
+</body>
+
+</html>
