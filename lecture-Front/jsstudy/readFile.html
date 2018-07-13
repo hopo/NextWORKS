@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>readFile</title>
+</head>
+
+<body>
+    <div id="textSection"></div>
+    <script type="text/javascript">
+    "use strict"
+
+    function readTextFile(file) {
+        var rawFile = new XMLHttpRequest();
+        rawFile.open("GET", file, true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4) {
+                var allText = rawFile.responseText;
+                document.getElementById("textSection").innerHTML = allText;
+            }
+        }
+        rawFile.send();
+    }
+
+    readTextFile('testing.txt');
+    </script>
+</body>
+
+</html>
