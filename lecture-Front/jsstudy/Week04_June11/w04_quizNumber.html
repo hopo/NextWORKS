@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>quizNumber(테스트)</title>
+</head>
+
+<body>
+    <script>
+    var munjesu = 5;
+    var selectsu = 4;
+
+    document.write("<form name=f1>"); // input type들은 항상 form에 넣어준다!
+    for (var i = 1; i <= munjesu; i++) {
+        document.write("<h1>문제 " + i + "번</h1>");
+        for (var j = 1; j <= selectsu; j++) {
+            document.write(j + "<input type=radio name=mun" + i + " value=" + i + ">");
+        }
+        document.write("<input type=text name=dap" + i + " value='답은 ' >");
+    }
+    document.write("</form");
+
+    function jumsu() {
+        var count = 0; //맞은 갯수 초기치 0
+        var answer = []; //가짜 답 
+        for (var i = 0; i < munjesu; i++) { //문제 수  만큼
+            answer[i] = Math.floor(Math.random() * selectsu); // 라디오 버튼 수 범위에서
+        }
+
+        for (var i = 1; i <= munjesu; i++) { //만든 답과 체크한 라디오 비교;
+            //var mun = document.forms[0]["mun"+i];                //개별 문제 라디오 버튼그룹에 접근
+            var mun = document.f1["mun" + i]; //개별 문제 라디오 버튼그룹에 접근
+            //alert(document.forms[0]["dap1"]);                  //form은 자동 배열이므로 첫번째 1개
+            document.forms[0]["dap" + i].value = "답은 : " + (answer[i - 1] + 1);
+            for (var j = 1; j <= selectsu; j++) {
+                if (mun[j - 1].checked == true) { //라디오버튼이 체크 되어 있다면
+                    if ((j - 1) == answer[i - 1]) { // 답 배열과 같다면 정답
+                        count++; // 맞은 갯수 증가
+                        break;
+                    }
+                }
+            }
+        }
+        //document.forms[1].t1.value = (count*10) + "점";
+        document.f2.t1.value = (count * 10) + "점";
+    }
+    </script>
+    <br/>
+    <form name=f2>
+        당신의 점수는:
+        <input type=text name=t1 value="">
+        <br>
+        <input type=button value="채점하기" onclick="jumsu()">
+    </form>
+</body>
+
+</html>

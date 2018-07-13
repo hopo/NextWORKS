@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hw0614_B</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    var quizLen = 5;
+    var ansLen = 4;
+
+    // ! 문제 도큐먼트
+    function quizShow() {
+        for (var n = 1; n <= quizLen; n++) {
+            document.write("[[ QUIZ: " + n + " ]]<br>");
+            for (var i = 1; i <= ansLen; i++) {
+                document.write("0" + i + "&nbsp;");
+
+                var inputNode = document.createElement("input");
+                inputNode.setAttribute("type", "radio");
+                inputNode.setAttribute("name", "mun" + n);
+                // inputNode.setAttribute("value", i + "");
+                if (i == 1) {
+                    inputNode.setAttribute("checked", "true");
+                }
+
+                document.body.appendChild(inputNode);
+            }
+            document.write("<br><br>");
+        }
+    }
+    quizShow();
+
+
+    // ! 점수 체크 도큐먼트
+    document.write("<h3>점수</h3>");
+    document.write("<input type=button value='Measure!' onclick='measure()'>");
+    document.write("<div id='board'></div>");
+
+
+    // ! 문제 답안 만들기
+    var ranNums = [];
+    for (var i = 0; i < quizLen; i++) {
+        ranNums[i] = Math.floor(Math.random() * ansLen);
+
+    }
+    console.log(ranNums);
+
+    // ! 체크드 값 알아보기
+    function measure() {
+        var correctCnt = 0;
+        for (var n = 1; n <= quizLen; n++) {
+            var eachMun = document.getElementsByName("mun" + n);
+            // console.log("01", eachMun[0]);
+            for (var i = 0; i < ansLen; i++) {
+                if (eachMun[i].checked) {
+                    if (ranNums[n - 1] == i) {
+                        correctCnt++;
+                    }
+                    break;
+                }
+            }
+        }
+        document.getElementById("board").innerHTML = `[ ${correctCnt} ]`;
+    }
+    </script>
+</body>
+
+</html>

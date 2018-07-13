@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>radio</title>
+</head>
+
+<body>
+    <!-- no name, id on form tag -->
+    <form>
+        1번
+        <input type=radio name=mun1 value="1"> 2번
+        <input type=radio name=mun1 value="2"> 3번
+        <input type=radio name=mun1 value="3" checked> 4번
+        <input type=radio name=mun1 value="4">
+    </form>
+    <input type=button value="라디오확인" onclick="ckradio1()">
+    <script>
+    "use strict"
+
+    function chradio1() {
+        var myform = document.forms[0]; // ;form 접근 ;form태그는 기본저긍로 배열로 처리
+        // alert(myform.mun1[0].value);
+    }
+
+    function ckradio() {
+        // ! 라디오 그룹 접근법
+        var muns = document.getElementsByName("mun1"); // ;이름이 같은 것이 있어서 배열로 리턴
+        // mun[1].checked = true; // ;두번째 강제로 체크
+        for (var i = 0; i < muns.length; i++) {
+            if (muns[i].checked == true) {
+                alert((i + 1) + "번째 라디오가 체크 되어있음");
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>
