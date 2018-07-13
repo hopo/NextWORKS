@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>windowOpen</title>
+</head>
+
+<body>
+    <div id="disp"></div>
+    <input type="button" value="NewWindowOpen" onclick="newOpen()">
+    <script>
+    "use strict"
+
+    function newOpen() {
+        // window.open(url, target, features, replace);
+        // ;var newWin이 새 창을 의미
+        var newWin = window.open("w05_popup.html", "Zoro", "width=300, height=300, left=2-, top=400");
+
+        // ;;창이 열리는 속도와 펑션 로직이 돌아가는 속도 차이가 나서
+        // ;;창이 열리기 전 프로세스가 끝이 나서 null을 반환한다
+        // newWin.document.getElementById("pdisp").innerHTML = "나는뜬창";
+
+    }
+
+    function newWrite() {
+        newWin.document.getElementById("pdisp").innerHTML = "나는뜬창";
+    }
+    </script>
+</body>
+
+</html>

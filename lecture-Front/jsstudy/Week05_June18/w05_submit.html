@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>submit</title>
+</head>
+
+<body>
+    <h2>Send Email</h2>
+    <!-- onsubmit 이벤트는 전송직전에 발생하는 이벤트 -->
+    <!-- 서버에 전송전에 체크가 필요한 경우 사용! 중요! -->
+    <form action="" name="f1" onsubmit="return check()">
+        Name
+        <input type="text" name="myname" value="" placeholder="Obama?"> Email
+        <input type="email" name="myemail" value="" placeholder="Obama@whitehouse.kr" required>
+        <br> Text
+        <br>
+        <textarea name="mytext" cols="40"></textarea>
+        <br>
+        <input type="submit" value="SEND">
+        <input type="reset" value="REWRITE">
+    </form>
+    <input type="button" value="fake Sumbit" onclick="mysubmit()">
+    <script>
+    "use strict"
+
+    // !submit 버튼 안쓰고 일반 버튼으로 전송버트 만들기!
+    function mysubmit() {
+        var myform = document.f1; // ;form의 이름으로 접근
+        if (myform.myname.value == "") {
+            alert("WRITE YOUR NAME!!")
+            myform.myname.focus();
+            return;
+        }
+
+        document.f1.submit(); // ;전송 펑션
+    }
+
+    function check() {
+        var myform = document.f1;
+        if (myform.myname.value == "") {
+            alert("WRITE YOUR NAME!!")
+            myform.myname.focus();
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+</body>
+
+</html>

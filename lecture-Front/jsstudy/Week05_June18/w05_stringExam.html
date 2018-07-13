@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>stringExam</title>
+</head>
+
+<body>
+    <div>idNum</div>
+    <input type="text" id="frt" value="921204" maxlength="6">-
+    <input type="text" id="end" value="2321132" maxlength="7">
+    <br>
+    <input type="button" value="check1" onclick="check1()">
+    <input type="button" value="check2" onclick="check2()">
+    <script>
+    "use strict"
+
+    // ! check1
+    function check1() {
+        var frt = document.getElementById("frt").value;
+        var end = document.getElementById("end").value;
+
+        var chfrt = frt.match(/\d{6}/g) + "";
+        var chend = end.match(/\d{7}/g) + "";
+
+        if (chfrt != 'null') {
+            var year = chfrt.substr(0, 2);
+            var month = chfrt.substr(2, 2);
+            var day = chfrt.substr(4, 2);
+            console.log(`19${year}/${month}/${day}`);
+        }
+
+        if (chend != 'null') {
+            switch (end[0]) {
+                case "1":
+                case "3":
+                    console.log("M");
+                    break;
+                case "2":
+                case "4":
+                    console.log("F");
+                    break;
+                default:
+                    console.log("undefined");
+            }
+        }
+    }
+
+
+    // ! check2()
+    // 주민등록번호를 입력 받아 주민등록번호의 유효성을 검사하는 프로그램을 작성하시오.
+    // (ABCDEF-GHIJKLM)
+    // 1. A * 2 + B * 3 + ...+H * 9 + I * 2 + ...+L * 5 의 총합을 구한다.
+    // 2. 1 번의 합을 11 로 나눈 나머지를 구한다.
+    // 3. 11 에서 2 번의 결과를 뺀다.
+    // 4. 3 번의 결과가 0~9 이면 값 그대로, 10 이면 0, 11 이면 1 로 변환
+    // 5. 4 번의 결과와 M자리의 값이 같으면 맞는 번호이다.
+    function check2() {
+        var frt = document.getElementById("frt").value;
+        var end = document.getElementById("end").value;
+
+        var chfrt = frt.match(/\d{6}/g) + "";
+        var chend = end.match(/\d{7}/g) + "";
+
+        var idnum = "" + frt + end;
+        console.log(idnum);
+
+        if (chfrt == 'null' || chend == 'null') {
+            console.log("check2 coding....")
+            return;
+        }
+    }
+    </script>
+</body>
+
+</html>

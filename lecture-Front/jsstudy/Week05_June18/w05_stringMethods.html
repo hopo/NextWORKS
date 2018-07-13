@@ -1,0 +1,56 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>stringMethods</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    var strVar = "Hello! Zukerberg! Are YOU bug?";
+
+    // ! charAt()
+    console.log("charAt(): ", strVar.charAt(7)); // index 7 char
+
+    // ! charCodeAt()
+    console.log("charCodeAt(): ", strVar.charCodeAt(0)); // ascii code
+
+    // ! indexOf()
+    console.log("indexOf(): ", strVar.indexOf("bug", 13));
+    console.log("indexOf() ex2: ", strVar.indexOf("bag")); // no find -> -1
+
+    // ! trim()
+    var strVar2 = "     white space white hacker     ";
+    console.log("trim(): ", "FRONT>" + strVar2.trim() + "<END"); // tag hwalyong possible
+
+    // ! toUpperCase(); toLowerCase()
+    console.log("toUpperCase(): ");
+    console.log("toLowerCase(): ");
+
+    // ! replace()
+    console.log("replace(): ", strVar.replace("bug", "flower"));
+
+    // ! search()
+    console.log("search(): ", strVar.search("bug")); // like indexOf()
+
+    // ! match() ;; regular expression
+    var chk = strVar.match(/[A-Z]{3}/g);
+    console.log("match(): ", chk);
+
+    // ! substr()
+    console.log("substr(): ", strVar.substr(3, 12)); // second param -> length
+
+    // ! substring()
+    console.log("substring(): ", strVar.substring(3, 12)); // second param -> end idx
+
+    // ! split()
+    var arr = strVar.split(" ");
+    console.log("split(): ", arr);
+    </script>
+</body>
+
+</html>
