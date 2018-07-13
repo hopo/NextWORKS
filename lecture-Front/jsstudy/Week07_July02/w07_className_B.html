@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>className_B</title>
+    <style>
+    .mySty1 {
+        width: 200px;
+        height: 100px;
+        background-color: gray;
+        color: cyan;
+    }
+
+    .hisSty2 {
+        width: 200px;
+        height: 100px;
+        background-color: orange;
+        font-size: 1em;
+    }
+
+    .herSty3 {
+        width: 200px;
+        height: 100px;
+        background-color: green;
+        color: pink;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="test" class="mySty0">
+        Binggle Banggle
+    </div>
+    <input type="button" value="mySty1" onclick="grpCSS(this.value)">
+    <input type="button" value="hisSty2" onclick="grpCSS(this.value)">
+    <input type="button" value="herSty3" onclick="grpCSS(this.value)">
+    <script>
+    "use strict"
+
+    var ori_str = document.getElementById("test").className;
+
+    function grpCSS(my_sty) {
+        var ori_str = document.getElementById("test").className;
+        document.getElementById("test").className = ori_str + " " + my_sty;
+    }
+    </script>
+</body>
+
+</html>

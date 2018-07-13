@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>regexp_C</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    var i = 1;
+
+    function addComma(number) {
+        console.log("addComma() start");
+        var regExp = /(^[+-]?\d+)(\d{3})/; // ;? is 0 or 1 ;+ is 1~
+        var string = String(number);
+
+        while (regExp.test(string)) {
+            string = string.replace(regExp, '$1,$2');
+            console.log(i++, string);
+        }
+
+        return string;
+    }
+
+    console.log("return: ", addComma('-1000000000000'));
+    </script>
+</body>
+
+</html>

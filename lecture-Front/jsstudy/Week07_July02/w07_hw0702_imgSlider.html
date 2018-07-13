@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>hw0702_imgSlider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ************************************************* -->
+    <!-- style section -->
+    <style>
+    #acja {
+        position: relative;
+        left: 40vw;
+        /* Relative to 1% of the width of the viewport* */
+        top: 150px;
+        width: 300px;
+        height: 300px;
+        border: 4px dotted black;
+        overflow: hidden;
+    }
+
+    #imgs1 {
+        position: absolute;
+        left: 0;
+        width: 1300px;
+        height: 300px;
+    }
+
+    #imgs2 {
+        position: absolute;
+        left: 1300px;
+        width: 1300px;
+        height: 300px;
+    }
+
+    input[type=button] {
+        position: absolute;
+        left: 43vw;
+        top: 500px;
+    }
+
+    input[type=button][id=btn1] {
+        position: absolute;
+        left: 50vw;
+        top: 500px;
+    }
+
+    input[type=button][id=btn2] {
+        position: absolute;
+        left: 50vw;
+        top: 600px;
+    }
+
+    input[type=image] {
+        width: 300px;
+        height: 300px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="acja">
+        <div id="imgs1">
+            <input type=image src="image/tiger0.jpg">
+            <input type=image src="image/tiger1.jpg">
+            <input type=image src="image/tiger2.jpg">
+            <input type=image src="image/tiger3.jpg">
+        </div>
+        <div id="imgs2">
+            <input type=image src="image/tiger4.jpg">
+            <input type=image src="image/tiger5.jpg">
+            <input type=image src="image/tiger6.jpg">
+            <input type=image src="image/tiger7.jpg">
+        </div>
+    </div>
+    <hr>
+    <input type=button value="슬라이딩" onclick="handleSlide()">
+    <input type=button id="btn1" value="오버플로우" onclick="ovfw()">
+    <input type=button id="btn2" value="STOP" onclick="handleStop()">
+    <!-- ************************************************* -->
+    <!-- script section -->
+    <script>
+    "use strict"
+
+    // ! botton slide
+    var running = false;
+
+    function handleSlide() {
+        if (!running) {
+            slide();
+            running = true;
+        }
+    }
+
+    // ! botton stop
+    var myTT = null;
+
+    function handleStop() {
+        clearTimeout(myTT); // ;; to stop setTimeout()
+        running = false;
+    }
+
+
+    // ! move images
+    var rotateDeg = 0;
+    var scaleVar = null;
+    var mvWidth = 30; // ;초기 움직이는 값
+
+    function slide() {
+        var imgs1 = document.getElementById("imgs1");
+        var imgs2 = document.getElementById("imgs2");
+        var realImgs = document.querySelectorAll("input[type=image]") // ;; low frequency use
+
+        rotateDeg += 10;
+        scaleVar = Math.ceil(Math.random() * 2 + 1);
+        for (var i = 0; i < realImgs.length; i++) {
+            realImgs[i].style.transform = "scale(" + scaleVar + ")";
+            realImgs[i].style.transform += "rotate(" + rotateDeg + "deg)";
+        }
+
+
+        if (!imgs1.style.left) {
+            imgs1.style.left = "0px";
+        }
+        if (!imgs2.style.left) {
+            imgs2.style.left = "1220px";
+        }
+
+        imgs1.style.left = parseInt(imgs1.style.left) - mvWidth + "px";
+        imgs2.style.left = parseInt(imgs2.style.left) - mvWidth + "px";
+
+        if (parseInt(imgs1.style.left) < -1300) {
+            imgs1.style.left = parseInt(imgs2.style.left) + 1220 + "px";
+        }
+        if (parseInt(imgs2.style.left) < -1300) {
+            imgs2.style.left = parseInt(imgs1.style.left) + 1220 + "px";
+        }
+
+        myTT = setTimeout(slide, 200);
+    }
+
+    // ! overflow toggle
+    function ovfw() {
+        var css1 = document.styleSheets[0].cssRules[0];
+        if (css1.style.overflow == "hidden") {
+            css1.style.overflow = "visible";
+        } else {
+            css1.style.overflow = "hidden";
+        }
+    }
+    </script>
+</body>
+
+</html>

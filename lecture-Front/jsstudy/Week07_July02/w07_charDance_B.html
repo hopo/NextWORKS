@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>charDance_B</title>
+    <style>
+    .star {
+        position: absolute;
+        color: gray;
+    }
+
+    #wrap {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background-color: #DCFFFF;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" onmousemove="xyCheck()"></div>
+    <script>
+    "use strict"
+
+    var my_message = "All work and no play makes Jack a dull boy";
+
+    var node = null;
+    var wrapDiv = document.querySelector("#wrap");
+    for (var i in my_message) {
+        node = document.createElement("div");
+        node.setAttribute("id", `silver${i}`)
+        node.setAttribute("class", "star")
+        node.setAttribute("style", "background: black; width:70px; height:70px; border-radius: 50%;");
+        // node.innerHTML = "O";
+
+        wrapDiv.appendChild(node);
+    }
+
+    var colors = ["orange", "red", "blue", "magenta", "yellow", "pink", "tomato", "green"];
+
+    var xpos = new Array();
+    var ypos = new Array();
+    var xdist = 20; // char distance
+    var x, y;
+
+    for (var i = 0; i < my_message.length; i++) {
+        xpos[i] = -100;
+        ypos[i] = -100;
+    }
+
+
+    function xyCheck() {
+        x = event.clientX;
+        y = event.clientY;
+        // console.log("position: ", x, y);
+        mvMouse();
+    }
+
+    function mvMouse() {
+        xpos[0] = x + xdist;
+        ypos[0] = y;
+
+        for (var i = my_message.length - 1; i >= 1; i--) {
+            xpos[i] = xpos[i - 1] + xdist;
+            ypos[i] = ypos[i - 1];
+        }
+
+        for (var i = 0; i < my_message.length; i++) {
+            var silver = document.getElementById("silver" + i);
+            silver.style.left = xpos[i] + "px";
+            silver.style.top = ypos[i] + "px";
+            silver.style.background = colors[Math.floor(Math.random() * colors.length)];
+            var size = Math.floor(Math.random() * 30 + 30) + "px";
+            silver.style.width = size;
+            silver.style.height = size;
+        }
+        // setTimeout(mvMouse, 500);
+    }
+    </script>
+</body>
+
+</html>

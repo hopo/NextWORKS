@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>keyevent.html</title>
+</head>
+
+<body>
+    <input type="text" id="tb" onkeypress="key_check()" placeholder="onkeypress...">
+    <input type="text" id="tb1" onkeydown="key_check1()" placeholder="onkeydown...">
+    <script type="text/javascript">
+    "use strict"
+
+    /*
+    // exA
+    function key_check() {
+        console.log("[You Key Pressed Keycode is '" + event.keyCode + "' ]");
+    }
+
+    function key_check1() {
+        console.log("[You Key Down Keycode is '" + event.keyCode + "' ]");
+    }
+    */
+
+    // exB
+    function key_check(evt) {
+        console.log("[You Key Pressed Keycode is '" + evt.keyCode + "' ]");
+    }
+
+    function key_check1() {
+        console.log("[You Key Down Keycode is '" + event.keyCode + "' ]");
+    }
+
+    // !! Accept event function
+    // ;; function rear. No ()
+    document.getElementById("tb").onkeypress = key_check1;
+    </script>
+</body>
+
+</html>

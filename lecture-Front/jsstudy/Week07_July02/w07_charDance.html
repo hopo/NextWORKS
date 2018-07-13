@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>charDance</title>
+    <style>
+    .star {
+        position: absolute;
+        font-size: 1.2em;
+        color: #31353E;
+        font-weight: bold;
+        z-index: 100;
+    }
+
+    #wrap {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        background-color: #DCFFFF;
+        z-index: 10;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrap" onmousemove="xyCheck()"></div>
+    <script>
+    "use strict"
+
+    var my_message = "All work and no play makes Jack a dull boy";
+    var msgs = my_message.split("");
+
+    var colors = ["black", "red", "blue", "magenta", "yellow", "pink", "tomato", "gree"];
+
+    var xpos = new Array();
+    var ypos = new Array();
+    var xdist = 20; // char distance
+    var x, y;
+
+    for (var i = 0; i < msgs.length; i++) {
+        xpos[i] = -100;
+        ypos[i] = -100;
+    }
+
+    var nodeDiv = null;
+    var i = 0;
+
+    var wrapDiv = document.querySelector("#wrap");
+    for (var e of msgs) {
+        nodeDiv = document.createElement("div");
+        nodeDiv.setAttribute("id", `silver${i++}`)
+        nodeDiv.setAttribute("class", "star")
+        nodeDiv.textContent = e;
+        wrapDiv.appendChild(nodeDiv);
+    }
+
+    function xyCheck() {
+        x = event.clientX;
+        y = event.clientY;
+        mvMouse();
+    }
+
+    function mvMouse() {
+        xpos[0] = x + xdist;
+        ypos[0] = y;
+
+        for (var i = msgs.length - 1; i >= 1; i--) {
+            xpos[i] = xpos[i - 1] + xdist;
+            ypos[i] = ypos[i - 1];
+        }
+
+        for (var i = 0; i < msgs.length; i++) {
+            var silver = document.getElementById("silver" + i);
+            silver.style.left = xpos[i] + "px";
+            silver.style.top = ypos[i] + "px";
+            silver.style.color = colors[Math.floor(Math.random() * colors.length)];
+            silver.style.fontSize = Math.floor(Math.random() * 2 + 1) + "em";
+        }
+    }
+    </script>
+</body>
+
+</html>

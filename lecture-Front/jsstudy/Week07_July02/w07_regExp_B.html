@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>regexp_B</title>
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    function isKoreanName(string) {
+        var regExp = /([가-힇])/g;
+        var replaceString = string.replace(regExp, '');
+        console.log("AAA: ". replaceString);
+
+        if (replaceString.length == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var test = '깁복남';
+
+    if (isKoreanName(test)) {
+        console.log(test, " : Korean!");
+    } else {
+        console.log(test, " : Not Korean!!!");
+    }
+    </script>
+</body>
+
+</html>
