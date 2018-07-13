@@ -7,148 +7,159 @@
 <%@ page import="java.sql.SQLException"%>
 <%@ page import="java.sql.Statement"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <%
 	request.setCharacterEncoding("UTF-8");
+	String cPath = request.getContextPath();
 %>
+
+<c:if test="${memberInfo == null}">
+	<%
+		response.sendRedirect(String.format("%s/", cPath));
+	%>
+</c:if>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>member/memberList.jsp</title>
+<c:import url="/inc/headLib.jsp" />
 </head>
 <body>
-	<h3>Member리스트 출력</h3>
 
-	<%
-	
-		// 1.드라이버 로딩
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+	<!-- ;jsp:include 사용할 경우 -->
+	<jsp:include page="/inc/menuBar.jsp" />
 
-		long startTime = System.currentTimeMillis();
+	<table class="table" border="3" style="border-color: black; width: 100%">
+		<tr>
+			<td height="250px" width="300px"><c:import url="/inc/menuLeft.jsp" /></td>
+			<td>
+				<!-- ---------- center 테이블 우측(내용) 영역 시작 ------------------------- -->
+				<h3>Member리스트 출력</h3> <%
+ 	// 1.드라이버 로딩
+ 	Connection conn = null;
+ 	PreparedStatement pstmt = null;
+ 	ResultSet rs = null;
 
-		try {
+ 	long startTime = System.currentTimeMillis();
 
-			String memId = request.getParameter("memId"); // ;;파라미터로 넘어온 값으로 db를 조회
-			String findId = request.getParameter("findId");	
+ 	try {
 
-			Class.forName("oracle.jdbc.driver.OracleDriver"); // ;import 오라클 드라이버
+ 		String memId = request.getParameter("memId"); // ;;파라미터로 넘어온 값으로 db를 조회
+ 		String findId = request.getParameter("findId");
 
-			// 2.연결설정
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java", "oracle");
+ 		Class.forName("oracle.jdbc.driver.OracleDriver"); // ;import 오라클 드라이버
 
-			// ;query 작성
-			// String sql = " SELECT mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip  FROM tab_member ORDER BY reg_date ASC ";
-			StringBuilder sql = new StringBuilder();
-			sql.append(" SELECT ");
-			sql.append(" 	mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip ");
-			sql.append(" FROM ");
-			sql.append(" 	tab_member ");
-			sql.append(" WHERE ");
-			sql.append(" 	del_at = 'Y' ");
-			sql.append(" AND ");
-			sql.append(" 	mem_id LIKE '%' || ? || '%' "); // ;;sql에서 문자열 더하기가 포인트
-			sql.append(" ORDER BY ");
-			sql.append(" 	reg_date ");
-			sql.append(" ASC  ");
+ 		// 2.연결설정
+ 		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java", "oracle");
 
-			// 3.구문객체 생성
-			pstmt = conn.prepareStatement(sql.toString()); // ;쿼리 객체 생성
-			pstmt.setString(1, findId);
+ 		// ;query 작성
+ 		// String sql = " SELECT mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip  FROM tab_member ORDER BY reg_date ASC ";
+ 		StringBuilder sql = new StringBuilder();
+ 		sql.append(" SELECT ");
+ 		sql.append(" 	mem_id, mem_name, mem_phone, mem_email, reg_date, mem_ip ");
+ 		sql.append(" FROM ");
+ 		sql.append(" 	tab_member ");
+ 		sql.append(" WHERE ");
+ 		sql.append(" 	del_at = 'Y' ");
+ 		sql.append(" AND ");
+ 		sql.append(" 	mem_id LIKE '%' || ? || '%' "); // ;;sql에서 문자열 더하기가 포인트
+ 		sql.append(" ORDER BY ");
+ 		sql.append(" 	reg_date ");
+ 		sql.append(" ASC  ");
 
-			// 4.구문객체 실행
-			rs = pstmt.executeQuery(); // ;결과가 ResultSet에 담긴다
-	%>
+ 		// 3.구문객체 생성
+ 		pstmt = conn.prepareStatement(sql.toString()); // ;쿼리 객체 생성
+ 		pstmt.setString(1, findId);
 
-	<form action="<%=request.getContextPath()%>/member/memberList.jsp">
-	<table class="table" border="3" style="border-color: red;">
-		<thead>
-			<tr>
-				<th colspan="7">
-					<input name="findId" value="<%=(findId != null ? findId : "")%>" >
-					<button type="submit">search</button>
-				</th>
-				<th><a href="<%=request.getContextPath()%>/member/memberForm.jsp">회원등록</a></th>
-			</tr>
-			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>폰번호</th>
-				<th>이메일</th>
-				<th>등록일</th>
-				<th>접속아이피</th>
-				<th>수정</th>
-				<th>삭제</th>
-			</tr>
-		</thead>
-		<tbody>
+ 		// 4.구문객체 실행
+ 		rs = pstmt.executeQuery(); // ;결과가 ResultSet에 담긴다
+ %>
 
-			<%
-				// ;rs 출력
-					out.println(sql.toString());
-					while (rs.next()) {
-			%>
+				<form action="<%=request.getContextPath()%>/member/memberList.jsp">
+					<table class="table" border="3" style="border-color: red;">
+						<thead>
+							<tr>
+								<th colspan="7"><input name="findId" value="<%=(findId != null ? findId : "")%>">
+									<button type="submit">search</button></th>
+								<th><a href="<%=request.getContextPath()%>/member/memberForm.jsp">회원등록</a></th>
+							</tr>
+							<tr>
+								<th>아이디</th>
+								<th>이름</th>
+								<th>폰번호</th>
+								<th>이메일</th>
+								<th>등록일</th>
+								<th>접속아이피</th>
+								<th>수정</th>
+								<th>삭제</th>
+							</tr>
+						</thead>
+						<tbody>
 
-			<tr>
-				<td><a href='/member/memberUpdateForm.jsp?memId=<%=rs.getString("mem_id")%>'><%=rs.getString("mem_id")%></a></td>
-				<td><%=rs.getString("mem_name")%></td>
-				<td><%=rs.getString("mem_phone")%></td>
-				<td><%=rs.getString("mem_email")%></td>
-				<td><%=rs.getString("reg_date")%></td>
-				<td><%=rs.getString("mem_ip")%></td>
-				<td><a href='/member/memberUpdateForm.jsp?memId=<%=rs.getString("mem_id")%>'>수정하기</a></td>
- 				<td><a href='/member/memberDeleteProc.jsp?memId=<%=rs.getString("mem_id")%>'>삭제하기</a></td>
-			</tr>
+							<%
+								// ;rs 출력
+									out.println(sql.toString());
+									while (rs.next()) {
+							%>
 
-			<%
-				}
-			%>
+							<tr>
+								<td><a href='/member/memberUpdateForm.jsp?memId=<%=rs.getString("mem_id")%>'><%=rs.getString("mem_id")%></a></td>
+								<td><%=rs.getString("mem_name")%></td>
+								<td><%=rs.getString("mem_phone")%></td>
+								<td><%=rs.getString("mem_email")%></td>
+								<td><%=rs.getString("reg_date")%></td>
+								<td><%=rs.getString("mem_ip")%></td>
+								<td><a href='/member/memberUpdateForm.jsp?memId=<%=rs.getString("mem_id")%>'>수정하기</a></td>
+								<td><a href='/member/memberDeleteProc.jsp?memId=<%=rs.getString("mem_id")%>'>삭제하기</a></td>
+							</tr>
 
-		</tbody>
+							<%
+								}
+							%>
+
+						</tbody>
+					</table>
+				</form> <%
+ 	} catch (SQLException ex) {
+ 		out.println(ex.getMessage());
+ 		ex.printStackTrace();
+
+ 	} finally {
+ 		// 6. 자원해제
+ 		if (rs != null) {
+ 			try {
+ 				rs.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
+
+ 		if (pstmt != null) {
+ 			try {
+ 				pstmt.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
+
+ 		// 7. db 연결 종료
+ 		if (conn != null) {
+ 			try {
+ 				conn.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
+
+ 	}
+ %> <br> _껄린시간 : <%=System.currentTimeMillis() - startTime%>ms <!-- ---------- center 테이블 우측(내용) 영역 끝 ------------------------- -->
+			</td>
+		</tr>
 	</table>
-	</form>
 
-	<%
-		} catch (SQLException ex) {
-			out.println(ex.getMessage());
-			ex.printStackTrace();
-
-		} finally {
-			// 6. 자원해제
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			}
-
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			}
-
-			// 7. db 연결 종료
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-			}
-
-		}
-	%>
-	
-	<br>
-	<br>
-	_껄린시간 :
-	<%=System.currentTimeMillis() - startTime%>ms
-
-	<br>
-	<a href="<%=request.getContextPath()%>/session/loginForm.jsp">첫화면</a>
+	<!-- ;c:import 사용할 경우 -->
+	<c:import url="/inc/menuDown.jsp" charEncoding="utf-8" />
 
 </body>
 </html>

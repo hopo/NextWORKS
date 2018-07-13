@@ -11,6 +11,9 @@
 <%@ page import="kr.or.nextit.nextit.member.service.*"%>
 <%@ page import="kr.or.nextit.comm.utils.*"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -52,126 +55,132 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>loginProc.jsp</title>
+<c:import url="/inc/headLib.jsp" />
 </head>
 <body>
-	<div>======= LogIn Info ========</div>
 
-	<%
-		// ========================================================
-		// 1.드라이버 로딩
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		long startTime = System.currentTimeMillis();
+	<jsp:include page="/inc/menuBar.jsp" />
 
-		try {
+	<table class="table" border="3" style="border-color: black; width: 100%">
+		<tr>
+			<td height="250px" width="300px"><c:import url="/inc/menuLeft.jsp" /></td>
+			<td>
+				<div>======= LogIn Info ========</div> <%
+ 	// --------------------------------------------------------
+ 	// 1.드라이버 로딩
+ 	// --------------------------------------------------------
+ 	Connection conn = null;
+ 	PreparedStatement pstmt = null;
+ 	ResultSet rs = null;
+ 	long startTime = System.currentTimeMillis();
 
-			//String memId = request.getParameter("memId"); // ;;파라미터로 넘어온 값으로 db를 조회
+ 	try {
 
-			Class.forName("oracle.jdbc.driver.OracleDriver"); // ;import 오라클 드라이버
+ 		//String memId = request.getParameter("memId"); // ;;파라미터로 넘어온 값으로 db를 조회
 
-			// ========================================================
-			// 2.연결설정
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java", "oracle");
+ 		Class.forName("oracle.jdbc.driver.OracleDriver"); // ;import 오라클 드라이버
 
-			// ;query 작성
-			String sql = " select * from TAB_member where mem_id = ? and mem_pwd = ? ";
+ 		// --------------------------------------------------------
+ 		// 2.연결설정
+ 		// --------------------------------------------------------
+ 		conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "java", "oracle");
 
-			// ========================================================
-			// 3.구문객체 생성
-			pstmt = conn.prepareStatement(sql); // ;쿼리 객체 생성
-			pstmt.setString(1, id); // ;첫번째 물음표에 값을 입력
-			pstmt.setString(2, pw); // ;첫번째 물음표에 값을 입력
+ 		// ;query 작성
+ 		String sql = " select * from TAB_member where mem_id = ? and mem_pwd = ? ";
 
-			// ========================================================
-			// 4.구문객체 실행
-			rs = pstmt.executeQuery(); // ;결과가 ResultSet에 담긴다
+ 		// --------------------------------------------------------
+ 		// 3.구문객체 생성
+ 		// --------------------------------------------------------
+ 		pstmt = conn.prepareStatement(sql); // ;쿼리 객체 생성
+ 		pstmt.setString(1, id); // ;첫번째 물음표에 값을 입력
+ 		pstmt.setString(2, pw); // ;첫번째 물음표에 값을 입력
 
-			MemberVo memberInfo = null;
+ 		// --------------------------------------------------------
+ 		// 4.구문객체 실행
+ 		// --------------------------------------------------------
+ 		rs = pstmt.executeQuery(); // ;결과가 ResultSet에 담긴다
 
-			// ;rs 출력 (memberVo obj에 담기)
-			if (rs.next()) {
-				// Login성공
-				memberInfo = new MemberVo(rs.getString("mem_id"), rs.getString("mem_name"));
-				memberInfo.setMemPhone(rs.getString("mem_phone"));
-				memberInfo.setMemIp(request.getRemoteAddr());
+ 		MemberVo memberInfo = null;
 
-				session.setAttribute("memberInfo", memberInfo);
-				/*
-					out.println(rs.getString("mem_id") + " / ");
-					out.println(rs.getString("mem_pwd") + " / ");
-					out.println(rs.getString("mem_name") + " / ");
-					out.println(rs.getString("mem_phone") + " <br> ");
-				*/
-	%>
+ 		// ;rs 출력 (memberVo obj에 담기)
+ 		if (rs.next()) {
+ 			// Login성공
+ 			memberInfo = new MemberVo(rs.getString("mem_id"), rs.getString("mem_name"));
+ 			memberInfo.setMemPhone(rs.getString("mem_phone"));
+ 			memberInfo.setMemIp(request.getRemoteAddr());
 
-	<br> 로그인에 성공하였습니다.
-	<br>
-	<a href="<%=request.getContextPath()%>/session/loginForm.jsp">로그인 홈</a>
+ 			session.setAttribute("memberInfo", memberInfo);
+ 			/*
+ 				out.println(rs.getString("mem_id") + " / ");
+ 				out.println(rs.getString("mem_pwd") + " / ");
+ 				out.println(rs.getString("mem_name") + " / ");
+ 				out.println(rs.getString("mem_phone") + " <br> ");
+ 			*/
+ %> 로그인에 성공하였습니다. <%
+ 	} else {
+ 			// Login실패
+ %> 로그인에 실패하였습니다. <%
+ 	}
+ 	} catch (SQLException ex) {
+ 		out.println(ex.getMessage());
+ 		ex.printStackTrace();
 
-	<%
-		} else {
-				// Login실패
-	%>
+ 	} finally {
+ 		// --------------------------------------------------------
+ 		// 6. 자원해제
+ 		// --------------------------------------------------------
+ 		if (rs != null) {
+ 			try {
+ 				rs.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
 
-	<br> 로그인에 실패하였습니다.
-	<br>
-	<a href="<%=request.getContextPath()%>/session/loginForm.jsp">로그인 홈</a>
-	<%
-		}
-		} catch (SQLException ex) {
-			out.println(ex.getMessage());
-			ex.printStackTrace();
+ 		if (pstmt != null) {
+ 			try {
+ 				pstmt.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
 
-		} finally {
-			// ========================================================
-			// 6. 자원해제
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException ex) {
-				}
-			}
+ 		// --------------------------------------------------------
+ 		// 7. db 연결 종료
+ 		// --------------------------------------------------------
+ 		if (conn != null) {
+ 			try {
+ 				conn.close();
+ 			} catch (SQLException ex) {
+ 			}
+ 		}
 
-			if (pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (SQLException ex) {
-				}
-			}
+ 	}
+ %>
+ <br> <br>
+ <%
+ 	// ! request가 갖고 있는 쿠키들 가져와서 보기
+ 	Cookie[] cks = request.getCookies();
 
-			// ========================================================
-			// 7. db 연결 종료
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException ex) {
-				}
-			}
+ 	if (cks != null) {
+ 		for (Cookie c : cks) {
+ 			out.println("getName() : " + c.getName() + " <br> ");
+ 			out.println("getValue() : " + c.getValue() + " <br> ");
+ 			out.println("getMaxAge() : " + c.getMaxAge() + " <br> ");
+ 			out.println("getDomain() : " + c.getDomain() + " <br> ");
+ 			out.println("getPath() : " + c.getPath() + " <br> ");
+ 			out.println("getComment() : " + c.getComment() + " <br> ");
+ 			out.println("getVersion() : " + c.getVersion() + " <br> ");
+ 			out.println("getSecure() : " + c.getSecure() + " <br> ");
+ 			out.println("--------------------------------- <br> ");
+ 		}
+ 	}
+ %>
 
-		}
-	%>
+			</td>
+		</tr>
+	</table>
 
-	<br>
-	<br>
+	<!-- ;c:import 사용할 경우 -->
+	<c:import url="/inc/menuDown.jsp" charEncoding="utf-8" />
 
-	<%
-		// ! request가 갖고 있는 쿠키들 가져와서 보기
-		Cookie[] cks = request.getCookies();
-
-		if (cks != null) {
-			for (Cookie c : cks) {
-				out.println("getName() : " + c.getName() + " <br> ");
-				out.println("getValue() : " + c.getValue() + " <br> ");
-				out.println("getMaxAge() : " + c.getMaxAge() + " <br> ");
-				out.println("getDomain() : " + c.getDomain() + " <br> ");
-				out.println("getPath() : " + c.getPath() + " <br> ");
-				out.println("getComment() : " + c.getComment() + " <br> ");
-				out.println("getVersion() : " + c.getVersion() + " <br> ");
-				out.println("getSecure() : " + c.getSecure() + " <br> ");
-				out.println("================================= <br> ");
-			}
-		}
-	%>
 </body>
 </html>

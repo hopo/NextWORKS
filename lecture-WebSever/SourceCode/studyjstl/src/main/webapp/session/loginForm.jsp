@@ -26,45 +26,51 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <title>loginForm.jsp</title>
+<c:import url="/inc/headLib.jsp" />
+
 </head>
 <body>
-	<h4>로그인 화면</h4>
-	<div>접속자: ${memberInfo.memId}</div>
-	<c:if test="${memberInfo != null}">
-			 ( <a href="<%=request.getContextPath()%>/session/logOutProc.jsp">LogOut</a> )
-	</c:if>
 
-	<c:if test="${meberInfo == null}">
-		<form action="<%=request.getContextPath()%>/session/loginProc.jsp" method="post">
-			<table border="3px">
-				<tr>
-					<td>ID</td>
-					<td><input type="text" name="id" value="<%=idSave%>"></td>
-				</tr>
-				<tr>
-					<td>PW</td>
-					<td><input type="password" name="pw" value=""></td>
-				</tr>
-				<tr>
-					<td>저장여부</td>
-					<td><input type="checkbox" name="idSave" value="Y" <%=idCheck%>></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input type="submit" value="LogIn"></td>
-				</tr>
-			</table>
-		</form>
+	<!-- ;jsp:include 사용할 경우 -->
+	<jsp:include page="/inc/menuBar.jsp" />
+	<!-- Center Table -->
+	<table class="table" border="3" style="border-color: black; width: 100%">
+		<tr>
+			<td height="250px" width="300px"><c:import url="/inc/menuLeft.jsp" /></td>
+			<td>
+				<!-- ---------- center 테이블 우측(내용) 영역 시작 ------------------------- -->
+				<h3>로그인 화면</h3> <c:if test="${meberInfo == null}">
+					<form action="<%=request.getContextPath()%>/session/loginProc.jsp" method="post">
+						<table border="3px">
+							<tr>
+								<td>ID</td>
+								<td><input type="text" name="id" value="<%=idSave%>"></td>
+							</tr>
+							<tr>
+								<td>PW</td>
+								<td><input type="password" name="pw" value=""></td>
+							</tr>
+							<tr>
+								<td>저장여부</td>
+								<td><input type="checkbox" name="idSave" value="Y" <%=idCheck%>></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="submit" value="LogIn"></td>
+							</tr>
+						</table>
+					</form>
 
-		<!-- !가입은 접속자가 없을 때.  -->
-		<br>
-		<a href="<%=request.getContextPath()%>/member/memberForm.jsp">가입하기</a>
-	</c:if>
-	<br>
-	<br>
-	<a href="<%=request.getContextPath()%>/member/memberList.jsp">멤버리스트보기</a>
-	<br>
-	<a href="<%=request.getContextPath()%>/index.jsp">GoIndex</a>
+					<!-- !가입은 접속자가 없을 때.  -->
+					<br>
+					<a href="<%=request.getContextPath()%>/member/memberForm.jsp">가입하기</a>
+				</c:if> <!-- ---------- center 테이블 우측(내용) 영역 끝 ------------------------- -->
+			</td>
+		</tr>
+	</table>
 
+	<!-- ;c:import 사용할 경우 -->
+	<c:import url="/inc/menuDown.jsp" charEncoding="utf-8" />
 </body>
 </html>

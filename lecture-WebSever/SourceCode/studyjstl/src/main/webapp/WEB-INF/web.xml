@@ -1,13 +1,37 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
 
 	<display-name>studyjstl</display-name>
+	
+<!-- 	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+ -->
 
-	<!-- - Location of the XML file that defines the root application context. 
-		- Applied by ContextLoaderListener. -->
+	<!-- *** filter set ********************* -->
+	<!-- filter 최상단 우선순위 -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>kr.or.nextit.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- ************************************* -->
+	
+	
+	
+	
+
+	<!-- - Location of the XML file that defines the root application context. - Applied by ContextLoaderListener. -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/application-config.xml</param-value>
@@ -18,8 +42,7 @@
 	</listener>
 
 
-	<!-- - Servlet that dispatches request to registered handlers (Controller 
-		implementations). -->
+	<!-- - Servlet that dispatches request to registered handlers (Controller implementations). -->
 	<servlet>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -39,30 +62,11 @@
 
 
 
-
-
+	<!-- *** Global Exception Controller ********** -->
+	<!-- <error-page> <error-code>404</error-code> <location>/error/error404.jsp</location> </error-page> <error-page> <error-code>500</error-code> <location>/error/error500.jsp</location> 
+		</error-page> <error-page> <exception-type>java.lang.RuntimeException</exception-type> <location>/error/errorEx.jsp</location> </error-page> -->
+	<!-- <error-page> <exception-type>java.lang.Exception</exception-type> <location>/error/errorEx.jsp</location> </error-page> -->
 	<!-- ************************************* -->
-	<!-- Global Exception Controller -->
-
-<!-- 	<error-page>
-		<error-code>404</error-code>
-		<location>/error/error404.jsp</location>
-	</error-page>
-
-	<error-page>
-		<error-code>500</error-code>
-		<location>/error/error500.jsp</location>
-	</error-page>
-
-	<error-page>
-		<exception-type>java.lang.RuntimeException</exception-type>
-		<location>/error/errorEx.jsp</location>
-	</error-page>
- -->
-	<!-- <error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/error/errorEx.jsp</location>
-	</error-page> -->
 
 </web-app>
 

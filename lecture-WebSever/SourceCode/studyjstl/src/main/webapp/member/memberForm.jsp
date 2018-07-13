@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -9,49 +12,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>memberForm.jsp</title>
-<!--  
-<style type="text/css">
-.tableForm {
-	position: absolute;
-	border-color: tomato;
-	top: 20%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%)
-}
--->
-</style>
+<c:import url="/inc/headLib.jsp" />
 </head>
-<body>
-	<h4>회원가입 화면</h4>
-	<form action="<%=request.getContextPath()%>/member/memberProc.jsp" method="post">
-		<table class="tableForm" border="3px">
-			<tr>
-				<td>ID</td>
-				<td><input type="text" name="memId" value="testId"></td>
-			</tr>
-			<tr>
-				<td>PASSWORD</td>
-				<td><input type="password" name="memPwd" value="1111"></td>
-			</tr>
-			<tr>
-				<td>NAME</td>
-				<td><input type="text" name="memName" value="testName"></td>
-			</tr>
-			<tr>
-				<td>PHONE</td>
-				<td><input type="text" name="memPhone" value="010-1111-1111"></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td><input type="email" name="memEmail" value="test@email.com"></td>
-			</tr>
-			<tr>
-				<td colspan="2"><button type="submit">회원가입</button></td>
-			</tr>
-		</table>
-	</form>
 
-	<a href="<%=request.getContextPath()%>/session/loginForm.jsp">Cancel</a>
+<body>
+
+	<!-- ;jsp:include 사용할 경우 -->
+	<jsp:include page="/inc/menuBar.jsp" />
+
+	<table class="table" border="3" style="border-color: black; width: 100%">
+		<tr>
+			<td height="250px" width="300px"><c:import url="/inc/menuLeft.jsp" /></td>
+			<td>
+				<!-- ---------- center 테이블 우측(내용) 영역 시작 ------------------------- -->
+
+				<h3>회원가입 화면</h3>
+
+				<form action="<%=request.getContextPath()%>/member/memberProc.jsp" method="post">
+					<table class="tableForm" border="3" style="border-color: pink;">
+						<tr>
+							<td>ID</td>
+							<td><input type="text" name="memId" value="testId"></td>
+						</tr>
+						<tr>
+							<td>PASSWORD</td>
+							<td><input type="password" name="memPwd" value="1111"></td>
+						</tr>
+						<tr>
+							<td>NAME</td>
+							<td><input type="text" name="memName" value="testName"></td>
+						</tr>
+						<tr>
+							<td>PHONE</td>
+							<td><input type="text" name="memPhone" value="010-1111-1111"></td>
+						</tr>
+						<tr>
+							<td>성별</td>
+							<td><c:forEach var="item" items="${codeSex}">
+								${item.codeId} = ${item.codeName}
+							</c:forEach>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><input type="email" name="memEmail" value="test@email.com"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><button type="submit">회원가입</button></td>
+						</tr>
+					</table>
+				</form> <a href="<%=request.getContextPath()%>/session/loginForm.jsp">Cancel</a> <!-- ---------- center 테이블 우측(내용) 영역 끝 ------------------------- -->
+			</td>
+		</tr>
+	</table>
+
+	<!-- ;c:import 사용할 경우 -->
+	<c:import url="/inc/menuDown.jsp" charEncoding="utf-8" />
 </body>
 </html>
