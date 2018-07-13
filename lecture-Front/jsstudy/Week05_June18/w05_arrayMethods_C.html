@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>arrayMethods_C</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    const BR = "<br>";
+
+    var arr1 = ["Apache", "Nginx", "IIS", "Tomcat", "NodeJS-Express"];
+    var arr2 = ["JSP", "PHP", "ASP"];
+    var arr3 = ["Sqlite", "Oracle", "MariaDB", "MongoDB"];
+    var arr4 = [4, 43, 2, 58, 0, 7, 42];
+
+    // ! like shift()
+    function myshift(arg) {
+        return arg.splice(0, 1);
+    }
+    document.write("myshift():" + BR);
+    document.write(arr1 + BR);
+    myshift(arr1);
+    document.write(arr1 + BR);
+    document.write(BR);
+
+
+    // ! like slice()
+    // s1)
+    function myslice(arr, begin, end) {
+        var ret = Array();
+        for (var i = begin; i < end + 1; i++) {
+            ret.push(arr[i]);
+        }
+        return ret;
+    }
+    document.write("myslice():" + BR);
+    document.write(arr2 + BR);
+    document.write(myslice(arr2, 1, 2) + BR);
+    document.write(BR);
+
+    // s2)
+    function myslice02(arr, begin, end) {
+        if (!end) {
+            end = arr.length;
+        }
+        return arr.splice(begin, end - begin)
+    }
+    document.write("myslice():" + BR);
+    document.write(arr3 + BR);
+    document.write(myslice02(arr3, 1) + BR);
+    document.write(BR);
+
+    // ! sort()
+    document.write("sort():" + BR);
+    document.write(arr1 + BR);
+    arr1.sort()
+    document.write(arr1 + BR);
+    document.write(BR);
+
+    // ! sort() 활용
+    document.write("sort() 활용:" + BR);
+    document.write(arr4 + BR);
+    arr4.sort(function(a, b) {
+        return b - a;
+    });
+    document.write(arr4 + BR);
+    document.write(BR);
+
+
+    // ! unshift()
+    var check = arr4.unshift("7777");
+    document.write("unshift():" + BR)
+    document.write(check + BR);
+    document.write(arr4 + BR);
+    document.write(BR);
+
+    // ! like unshift()
+    function myunshift(arr, value) {
+        arr.splice(0, 0, value)
+        return arr.length;
+    }
+    document.write("myunshift():" + BR)
+    document.write(arr2 + BR);
+    document.write(myunshift(arr2, "ZZZ") + BR);
+    document.write(arr2 + BR);
+    </script>
+</body>

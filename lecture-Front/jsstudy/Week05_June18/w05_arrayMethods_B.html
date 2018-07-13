@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>arrayMethods_B</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script>
+    "use strict"
+
+    const BR = "<br>";
+
+    var arr1 = ["Apache", "Nginx", "IIS", "Tomcat", "NodeJS-Express"];
+    var arr2 = ["JSP", "PHP", "ASP"];
+    var arr3 = ["Sqlite", "Oracle", "MariaDB", "MongoDB"];
+
+    // ! reverse()
+    document.write("prt01)" + BR);
+    document.write(arr1 + BR);
+    document.write(arr1.reverse() + BR);
+
+    // like reverse()
+    // _s1)
+    function myReverse(arg) {
+        var ret = [];
+        while (arg.length) {
+            ret.push(arg.pop());
+        }
+        return ret;
+    }
+    document.write("prt02)" + BR);
+    document.write(arr2 + BR);
+    document.write(myReverse(arr2) + BR);
+
+    // _s2)
+    function myReverse02(arg) {
+        var lnth = arg.length;
+        for (var i = 0; i < lnth / 2; i++) {
+            var temp = arg[i];
+            arg[i] = arg[lnth - 1 - i]
+            arg[lnth - 1 - i] = temp;
+        }
+        return arg;
+    }
+    document.write("prt03)" + BR);
+    document.write(arr3 + BR);
+    document.write(myReverse02(arr3) + BR);
+    </script>
+</body>
