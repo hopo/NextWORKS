@@ -7,16 +7,30 @@
     <link rel="stylesheet" type="text/css" href="style/typing_app.css">
 </head>
 
-<body onload="tajaInit()">
+<body onload='tajaInit()'>
+    <header>
+        <div id="title">NEXT TUTORIALS</div>
+        <div id="menubar">
+            <a href="../app.html">메인</a>&nbsp; &nbsp; &nbsp;
+            <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
+            <a href="../documents/app_documents.html">도큐먼츠</a>&nbsp; &nbsp; &nbsp;
+            <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
+            <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
+        </div>
+    </header>
+    <hr>
     <div class="tajaBack" id="tajaBackground"></div>
     <div class="tajaControl">
+        <!-- <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()"> -->
         <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()">
         <input type=button id="tajaStop" value="Stop" onclick="tajaStop()">
         <input type=text id="tajaTyping" onkeydown="wordsCheck()" value="">
     </div>
     <!-- <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영어에 Rule Of Thumb 이란 말이 있디용?</h1> -->
-    <h3>[score]<div id="scoreBoard">0</div></h3>
+    <h3>[score]
+        <div id="scoreBoard">0</div>
+    </h3>
+    <script type="text/javascript" src="script/game.js"></script>
 </body>
-<script type="text/javascript" src="script/game.js"></script>
 
 </html>

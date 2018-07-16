@@ -1,4 +1,22 @@
 "use strict"
+
+/*
+var file = 'data/js_keywords.txt'
+
+function readTextFile(file) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4) {
+            var allText = rawFile.responseText;
+            var words = allText.split(/\W+/);
+        }
+    }
+    rawFile.send();
+}
+*/
+
+
 var movTime = 900; //글자Div 움직이게 부르는 간격
 var makeTime = 1700; //글자Div 화면에 나타나게 추가하는 시간
 var tajaStart = null;
@@ -7,9 +25,9 @@ var tajaTyping = null;
 var score = 1;
 var scoreBoardDiv = document.getElementById("scoreBoard");
 
-// 자바 공부!
+// 자바script 공부!
 var javaStudy = [
-    "abstract", "else", "instanceof", "super", "boolean",
+    "var", "function", "super", "boolean",
     "enum", "int", "switch", "break", "export",
     "interface", "synchronized", "byte", "extends", "let",
     "this", "case", "false", "long", "throw",
@@ -22,6 +40,9 @@ var javaStudy = [
     "default", "if", "public", "void", "import",
     "delete", "implements", "return", "volatile", "do"
 ];
+
+console.log(javaStudy);
+
 
 var onDiv = []; // 현재 화면에서 움직이는 div만 담을 배열
 
