@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <button type="" id="sil_del">ClearStorage</button>
+    <script type="text/javascript">
+    "use strict"
+    jQuery(function() {
+        if (window.localStorage) {
+            var silre = localStorage;
+
+            var silCont = {
+                writer: 'Trump',
+                content: 'WhatIsLove',
+                date: (new Date()).toLocaleDateString()
+            }
+
+            silre.setItem('code1', JSON.stringify(silCont)); // ;;set (key:value)
+
+            console.log(JSON.parse(silre['code1']).date); // ;;read value
+
+            // ;remove sotrage
+            $('#sil_del').on('click', function() {
+                //silre.clear();    // ;;clear storage
+                silre.removeItem('code1'); // ;;remove item
+            })
+        }
+    })
+    </script>
+</body>
+
+</html>

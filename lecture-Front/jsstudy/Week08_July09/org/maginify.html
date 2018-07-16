@@ -1,0 +1,143 @@
+<!-- http://html5around.com/wordpress/tutorials/jquery-magnify-plugin/ -->
+<!--
+튜토리얼게시판코드연습장어바웃
+jquery
+Magnify 돋보기(확대) 플러그인 적용하기
+
+소화자/ editor
+
+chlee@html5around.com
+6 comments2,570 views2017년 12월 3일
+https://github.com/thdoan/magnify 에서 제공하는 MIT 라이센스의
+magnify 돋보기 플러그인 사용법을 익혀 웹페이지에 적용시켜 봅니다.
+
+시작하기 전에
+자바스크립트로 직접 돋보기 기능을 구현해 보려다가 문득 이미 무료로 좋은 게 있지 않을까 생각에,
+검색을 해 보았더니, 역시 상업용도 있지만, 제가 제일 좋아하는 MIT 라이센의 따끈 따근한 업데이트 된지
+얼마 안된 Magnify란 플러그인이 있었습니다.
+
+Magnify 플러그인 다운로드 에서 다운받아 압축을 푸시면 dist 디렉토리의 css , js  폴더 아래
+필요한 css, js 파일이 들어있습니다.
+물론 bowser나 npm을 이용해서 바로 설치도 가능합니다.
+
+MIT 라이센스답게 사용법에 대한 설명이 많이 부족한 것 같아, 제 경험을 공유하고자 합니다.
+
+자 그럼 달려볼까요~~
+
+ 
+
+예제 보고 Feel 받기
+먼저 그림 위에 마우스를 올려 보고, 버튼도 눌러 봅니다.
+
+Html5Around.com on html5around.com
+동작 원리
+돋보기의 동작원리는 그림 자체를 확대해서 보여주는 것이 아니고,
+작은 그림과 큰 그림 2개를 준비해서, 화면에는 작은 그림만 보여주고
+마우스를 올리면 좌표비율로 계산해서 해당되는 부분의 큰 그림을 보여주는 눈속임입니다.
+-->
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+    <title>magnify</title>
+    <link rel="stylesheet" href="https://thdoan.github.io/magnify/css/magnify.css">
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <!--[if lt IE 9]>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<![endif]-->
+    <!--[if IE 9]><!-->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+    <!--<![endif]-->
+    <script src="https://thdoan.github.io/magnify/js/jquery.magnify.js"></script>
+    <style>
+    /* 돋보기 크기 조절용 */
+
+    .magnify.magnify - lens {
+        width: 200 px;
+        height: 200 px;
+    }
+    /* Demo용 CSS */
+
+    html {
+        width: 100 %;
+        height: 100 %;
+        display: table;
+    }
+
+    body {
+        width: 100 %;
+        height: 100 %;
+        display: table - cell;
+        font - family: sans - serif;
+        font - size: 12 px;
+        padding: 1e m;
+        text - align: center;
+        vertical - align: middle;
+    }
+
+    img {
+        border: none;
+    }
+
+    # sample - watch {
+        width: 100 %;
+        max - width: 400 px;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- img 태그 src에 작은 이미지, data-magnify-src에 큰 이미지를 링크 -->
+    <img id="sample-watch" src="http://html5around.com/wordpress/wp-content/uploads/2017/03/html5around_msmall.jpg" alt="Sample image" class="zoom" data-magnify-src="http://html5around.com/wordpress/wp-content/uploads/2017/03/html5around_mbig.jpg">
+    <p>
+        <br>
+        <button id="html5"> 돋보기 기능 끄기 </button> -
+        <button id="around"> 돋보기 기능 켜기 </button>
+        <br />
+        <button id="com"> 1클릭에 돋보기 40px크게 400px 까지만... </button>
+    </p>
+    <script>
+    "use strict"
+    var $zoom;
+    $(document).ready(function() {
+        // 돋보기 기능 생성자
+        $zoom = $('.zoom').magnify({
+            afterLoad: function() {
+                console.log('확대 기동!!!');
+            }
+        });
+    });
+    //기능 끄기 버튼
+    $('#html5').click(function() {
+        $zoom.destroy();
+    });
+    //기능 켜기 버튼
+    $('#around').click(function() {
+        $zoom = $('.zoom').magnify({
+            afterLoad: function() {
+                console.log('확대 기동!!!');
+            }
+        });
+    });
+    //돋보기 사이즈 키우기 버튼
+    $('#com').click(function() {
+        var curSize = parseInt($('.magnify .magnify-lens').css("width"));
+        if (curSize > 400) curSize = 200; // 맥스 400까지만 
+        $('.magnify .magnify-lens').css("width", curSize + 40);
+        $('.magnify .magnify-lens').css("height", curSize + 40);
+    });
+    $('html').on({
+        magnifystart: function() {
+            console.log('\'magnifystart\' 이벤트 발생!');
+        },
+        magnifyend: function() {
+            console.log('\'magnifyend\' 이벤트 발생!');
+        }
+    });
+    </script>
+</body>
+
+</html>

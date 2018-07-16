@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jOnclick</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+</body>
+<div>
+    <span>Bee_HwalSeong</span>
+    <!-- button 사용시 주의할 점: form안에 들어가면 submit으로 바뀐다 -->
+    <button>Bee_HwalSeong</button>
+    <script>
+    "use strict"
+    /*
+    // parent()
+    jQuery(function() {
+        $('button').parent().css('background', 'red');
+    })
+    */
+
+    // on
+    $('button').on('click', function(){	// equal $('#').click(function(){})
+    	$(this).text('BeeHwal');
+    	$(this).parent().css('background', 'orange');
+    	$(this).parent().find('span').text('Hwal');
+    })
+    </script>
+</div>
+
+</html>

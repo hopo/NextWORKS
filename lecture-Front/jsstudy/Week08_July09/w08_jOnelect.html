@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jOnselect</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+</head>
+<!-- REFERENCE -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes -->
+
+<body>
+    <input type="text" id="kss" value='PickMePickMe'>
+    <script>
+    "use strict"
+
+    jQuery('#kss').on('select', function() {
+        //console.log('onselect.....');
+
+        /*
+        // selection range
+        console.log($('#kss')[0].selectionStart);
+        console.log($('#kss')[0].selectionEnd);
+        */
+
+        // selection range exam
+        var txtVal = $('#kss')[0].value;
+        var stIdx =  $('#kss')[0].selectionStart;
+        var enIdx = $('#kss')[0].selectionEnd;
+
+        console.log('You select text: ', txtVal.substring(stIdx, enIdx));
+    })
+    </script>
+</body>
+
+</html>

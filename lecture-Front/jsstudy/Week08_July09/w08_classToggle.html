@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>classToggle</title>
+    <script type="text/javascript" src="jQuery/jquery-3.3.1.min.js"></script>
+    <style type="text/css" media="screen">
+    .item1 {
+        color: magenta;
+        background-color: yellow;
+    }
+
+    .item2 {
+        color: yellow;
+        background-color: magenta;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Header-0</h1>
+        <h1>Header-1</h1>
+        <h1>Header-2</h1>
+    </div>
+    <input id='btn' type="button" value="Toggle">
+    <script>
+    "use strict"
+
+    // sol1
+    var set = 1;
+    jQuery('#btn').on('click', function() {
+        if (set > 0) {
+            $('h1').addClass('item1')
+            $('h1').removeClass('item2')
+            set *= -1
+        } else {
+            $('h1').addClass('item2')
+            $('h1').removeClass('item1')
+            set *= -1
+        }
+    })
+
+    /*
+    // sol2 (ing...)
+    jQuery('#btn').on('click', function() {
+        if ($('h1').is('.item1')) {
+            $('h1').removeClass('item2')
+            $('h1').addClass('item1')
+        } else {
+            $('h1').removeClass('item1')
+            $('h1').addClass('item2')
+        }
+    })
+    */
+
+    /*
+    // sol3 (ing...)
+    jQuery('#btn').on('click'function() {
+        $('h1').toggleClass('item1')
+    })
+    */
+    </script>
+</body>
+
+</html>

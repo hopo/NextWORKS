@@ -1,0 +1,130 @@
+/*
+ * a tag
+ */
+
+a:link {
+    color: #181818;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #1521a5;
+    text-decoration: none;
+}
+
+a:active {
+    color: #181818;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #151515;
+    text-decoration: none;
+}
+
+
+
+
+/*
+ *  classes
+ */
+
+.solDiv {
+    border: 2px solid brown;
+    font-size: 18px;
+    padding: 30px;
+}
+
+.repDiv {
+    left: 7%;
+    border: 1px solid lightblue;
+    padding: 20px;
+    position: relative;
+}
+
+.replCombo {
+    padding: 10px;
+}
+
+.rpltextDiv {
+    padding: 4px;
+}
+
+
+.vl {
+    border-left: 5px solid green;
+    height: 100%;
+    left: 0%;
+    position: absolute;
+    top: 5;
+}
+
+
+
+
+/*
+ *  ids
+ */
+
+#title {
+    align-content: true;
+    background-color: #ccffff;
+    /* color: #2244ff; */
+    font-size: 30px;
+    margin: auto;
+    padding: 30px;
+    text-align: center;
+    width: 100%;
+}
+
+div#menubar {
+    background-color: #3344ff;
+    color: #ccffff;
+    font-size: 15px;
+    padding: 10px;
+    position: -webkit-sticky;
+    position: sticky;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#groundDiv {
+    font-size: 15px;
+    position: absolute;
+    top: 150;
+    width: 100%;
+}
+
+#qSel {
+    top: 150;
+    font-size: 30px;
+}
+
+#opening {
+    background-color: #ebd61a;
+    font-size: 100px;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+#qzTitle {
+    color: red;
+    font-size: 20px;
+    text-decoration: underline overline;
+}
+
+#qzDesc {
+    color: blue;
+    font-size: 15px;
+}
+
+#qzContents {
+    color: black;
+    font-size: 20px;
+    background-color: #eeeeee;
+    width : 600px;
+}
