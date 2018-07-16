@@ -37,5 +37,5 @@ function groundInit() {
 }
 
 function goMain() {
-	location.reload("Pc33App/app.html");
+	location.reload("../../app.html");
 }

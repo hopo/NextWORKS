@@ -1,0 +1,71 @@
+    .tajaBack {
+        position: relative;
+        left: 40px;
+        top: 0;
+        background-color: white;
+        height: 450px;
+        width: 600px;
+        background-color: #eeffee;
+        /*background-image: url("http://www.mbcsportsplus.com/images/img.php?srv=1&type=a&src=/2018/05/20180501161023_rczyzwxs.png");*/
+        background-repeat: no-repeat;
+        background-size: 600px 450px;
+
+        border: 2px solid black;
+        overflow: hidden;
+    }
+
+    .tajaControl {
+        position: absolute;
+        left: 50px;
+        top: 430px;
+        height: 30px;
+        width: 600px;
+        background-color: gold;
+        border: 1px solid black;
+    }
+
+    .txtBox {
+        position: absolute;
+        left: 30px;
+        top: -30px;
+        width: 50px;
+        height: 22px;
+        line-height: 18px;
+        background-color: yellow;
+        display: block;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    #tajaStart {
+        position: absolute;
+        top: 0px;
+        right: 120px;
+        width: 80px;
+        font-size: 1.05em;
+        color: blue;
+    }
+
+    #tajaStop {
+        position: absolute;
+        top: 0px;
+        right: 30px;
+        width: 80px;
+        font-size: 1.05em;
+        color: blue;
+    }
+
+    #tajaTyping {
+        position: absolute;
+        left: 20px;
+        height: 24px;
+        font-size: 1.05em;
+        width: 300px;
+    }
+
+    h1 {
+        width: 700px;
+        background-color: blue;
+        color: gold;
+        border: 1px dotted pink;
+    }

@@ -3,23 +3,23 @@
  */
 
 a:link {
-    color: #181818;
-    text-decoration: none;
+    color: red;
+    /*text-decoration: none;*/
 }
 
 a:visited {
-    color: #1521a5;
-    text-decoration: none;
+    color: red;
+    /*text-decoration: none;*/
 }
 
 a:active {
-    color: #181818;
-    text-decoration: none;
+    color: red;
+    /*text-decoration: none;*/
 }
 
 a:hover {
-    color: #151515;
-    text-decoration: none;
+    color: red;
+    /*text-decoration: none;*/
 }
 
 
@@ -78,8 +78,8 @@ a:hover {
 }
 
 div#menubar {
-    background-color: #3344ff;
-    color: #ccffff;
+    background-color: red;
+    color: red;
     font-size: 15px;
     padding: 10px;
     position: -webkit-sticky;
