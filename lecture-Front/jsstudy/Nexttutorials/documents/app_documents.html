@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>app_document</title>
 </head>
-
 <!-- documents/app+document.html -->
+
 <body>
     <header>
         <div id="title">NEXT TUTORIALS</div>
@@ -19,8 +19,54 @@
         </div>
     </header>
     <hr>
+    <table>
+        <tr>
+            <td rowspan="2" width='25%'>
+                <div id='docuLeft'></div>
+            </td>
+            <td>
+                <div id='docuRight'></div>
+            </td>
+        </tr>
+        <tr>
+            <td height="100%">
+            </td>
+        </tr>
+    </table>
+    <script type="text/javascript" src="data/listWeeks.js"></script>
+    <script>
+    "use strict"
 
-    
+    var docuLeft = document.querySelector('#docuLeft');
+    var docuRight = document.querySelector('#docuRight');
+    var str = '';
+
+
+    for (var i in listWeeks.sort()) {
+        docuLeft.innerHTML += `<div style='font-size:1.5em;'>${listWeeks[i].slice(0,6)}</div>`;
+        for (var e of listAllFiles[i].sort()) {
+            var path = listWeeks[i] + '/' + e;
+            str = `<li><label onclick="readTextFile(\'${path}\')">${e.slice(4).replace('.html', '')}</label></li>`;
+            docuLeft.innerHTML += str;
+        }
+    }
+
+
+    function readTextFile(file) {
+        var rawFile = new XMLHttpRequest();
+        // rawFile.open("GET", '../../' + file, true);
+        rawFile.open("GET", '../../test.py', true);
+        rawFile.onreadystatechange = function() {
+            if (rawFile.readyState === 4) {
+                var allText = rawFile.responseText;
+                var xxx = document.createTextNode(allText);
+                docuRight.appendChild(xxx);
+                console.log(allText);
+            }
+        }
+        rawFile.send();
+    }
+    </script>
 </body>
 
 </html>

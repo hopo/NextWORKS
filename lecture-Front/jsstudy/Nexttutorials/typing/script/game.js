@@ -1,20 +1,8 @@
 "use strict"
 
 /*
-var file = 'data/js_keywords.txt'
-
-function readTextFile(file) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4) {
-            var allText = rawFile.responseText;
-            var words = allText.split(/\W+/);
-        }
-    }
-    rawFile.send();
-}
-*/
+ * Author : 272
+ */
 
 
 var movTime = 900; //글자Div 움직이게 부르는 간격
@@ -26,23 +14,22 @@ var score = 1;
 var scoreBoardDiv = document.getElementById("scoreBoard");
 
 // 자바script 공부!
-var javaStudy = [
-    "var", "function", "super", "boolean",
-    "enum", "int", "switch", "break", "export",
-    "interface", "synchronized", "byte", "extends", "let",
-    "this", "case", "false", "long", "throw",
-    "catch", "final", "native", "throws", "with",
-    "char", "finally", "new", "transient", "static",
-    "class", "float", "null", "true", "in",
-    "const", "for", "package", "try", "double",
-    "continue", "function", "private", "typeof", "while",
-    "debugger", "goto", "protected", "var", "short",
-    "default", "if", "public", "void", "import",
-    "delete", "implements", "return", "volatile", "do"
-];
+var jsWordsStr = `abstract    arguments   await   boolean break   byte    case    catch char    class   const   continue
+debugger    default delete  do double  else    enum    eval export  extends false   final finally float   for function
+goto    if  implements  import in  instanceof  int interface let    long    native  new null  package private protected
+public  return  short   static super  switch  synchronized    this throw   throws  transient   true
+try typeof  var void volatile    while   with    yield Array   Date    eval    function Infinity    isFinite    isNaN
+length  Math    NaN name    Number  Object  prototype String  toString    undefined   valueOf alert   all anchor  anchors
+area    assign  blur    button checkbox    clearInterval close   closed  confirm constructor crypto  decodeURI
+document    element elements    embed embeds  encodeURI   escape event   fileUpload  focus   form
+forms   frame   innerHeight innerWidth layer   layers  link    location mimeTypes   navigate    navigator   frames
+frameRate   hidden  history image images  open    opener option  outerWidth  packages parent  parseFloat
+parseInt    password    pkcs11  plugin prompt  propertyIsEnum  radio   reset screenX screenY scroll  secure
+select  self    setInterval setTimeout status  submit  taint   text textarea    top unescape    untaint
+window onblur  onclick onerror onfocus onkeydown   onkeypress  onkeyup onmouseover onload  onmouseup   onmousedown onsubmit`;
 
+var javaStudy = jsWordsStr.split(/\W+/);
 console.log(javaStudy);
-
 
 var onDiv = []; // 현재 화면에서 움직이는 div만 담을 배열
 
