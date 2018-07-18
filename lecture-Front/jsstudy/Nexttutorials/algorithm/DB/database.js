@@ -21,12 +21,12 @@ q0.q_id = "q0";
 q0.title = "HelloWorld";
 q0.desc = "문자열 'HelloWorld'를 출력하시오";
 q0.contents = `
-    function prt() {<br>
-         // writecode;<br>
-         return "hello world";<br>
-    };<br>
-    prt();<br>
-`;
+function helloworld() {
+
+    // write your code;
+
+    return "";
+}`;
 db_quiz.push(q0);
 
 // q1
@@ -35,11 +35,12 @@ q1.q_id = "q1";
 q1.title = "숫자 더하기";
 q1.desc = "입력 받은 두 수의 합을 구하시오";
 q1.contents = `
-    function mySum(x, y) {<br>
-         // writecode;<br>
-         return 0; };<br>
-    mySum(2, 3);<br>
-`;
+function mySum(x, y) {
+
+    // write your code;
+
+    return 0;
+}`;
 db_quiz.push(q1);
 
 // q2
@@ -48,12 +49,12 @@ q2.q_id = "q2";
 q2.title = "문자열 더하기";
 q2.desc = "문자열 둘을 입력 받아 합쳐서 하나의 문자열로 반환하시오";
 q2.contents = `
-    function myConcat(a, b) {<br>
-        // writecode;<br>
-        return '';<br>
-    };<br>
-    myConcat('Hello', 'World');<br>
-`;
+function myConcat(a, b) {
+
+    // write your code;
+
+    return "";
+}`;
 db_quiz.push(q2);
 
 // q3
@@ -62,11 +63,12 @@ q3.q_id = "q3";
 q3.title = "구구단 만들기";
 q3.desc = "구구단 고고고";
 q3.contents = `
-    function gugudan(a) {<br>
-        // writecode; return '';<br>
-    };<br>
-    gugudan(3);<br>
-`;
+function gugudan() {
+
+    // writecode;
+
+    return 0;
+}`;
 db_quiz.push(q3);
 
 

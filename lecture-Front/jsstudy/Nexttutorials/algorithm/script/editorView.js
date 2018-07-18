@@ -25,7 +25,7 @@ function editorView() {
     nodeTextarea = document.createElement("textarea");
     nodeTextarea.setAttribute("id", "tArea");
     nodeTextarea.setAttribute("rows", "10");
-    nodeTextarea.setAttribute("cols", "50");
+    nodeTextarea.setAttribute("cols", "80");
     nodeTextarea.setAttribute("placeholder", "// write your code..");
 
     nodeDiv.appendChild(nodeTextarea);
@@ -103,7 +103,7 @@ function quizComboDiv() {
     nodeDiv = document.createElement("div");
     nodeDiv.innerHTML = "<div id='qzTitle'>" + db_quiz[g_selQzId].title + "</div>";
     nodeDiv.innerHTML += "<div id='qzDesc'> 설명: " + db_quiz[g_selQzId].desc + "</div>";
-    nodeDiv.innerHTML += "<div id='qzContents'>" + db_quiz[g_selQzId].contents + "</div>";
+    nodeDiv.innerHTML += "<pre id='qzContents'>" + db_quiz[g_selQzId].contents + "</pre>";
 
     return nodeDiv;
 }

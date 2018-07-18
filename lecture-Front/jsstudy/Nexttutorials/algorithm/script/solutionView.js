@@ -55,17 +55,18 @@ function solutionDocu() {
 
         if (idFilter(tar, "00q" + g_selQzId)) {
             var eachSolDiv = document.createElement("div"); // ;; each sol repls Combo
-            nodeDiv = document.createElement("div");
+            // nodeDiv = document.createElement("div");
+            var nodePre = document.createElement("pre");
 
             eachSolDiv.setAttribute("class", "replCombo");
             eachSolDiv.setAttribute("id", tar);
 
-            nodeDiv.setAttribute("class", "solDiv");
-            nodeDiv.setAttribute("id", db_solution[r].s_id);
-            nodeDiv.innerHTML = "[s_id: " + tar + "]<br>";
-            nodeDiv.innerHTML += db_solution[r].code;
+            nodePre.setAttribute("class", "solDiv");
+            nodePre.setAttribute("id", db_solution[r].s_id);
+            nodePre.innerHTML = "[s_id: " + tar + "]<br>";
+            nodePre.innerHTML += db_solution[r].code;
 
-            eachSolDiv.appendChild(nodeDiv);
+            eachSolDiv.appendChild(nodePre);
             eachSolDiv.appendChild(replyTextContent(tar.slice(3)));
 
             var repls = replysDocu(tar);

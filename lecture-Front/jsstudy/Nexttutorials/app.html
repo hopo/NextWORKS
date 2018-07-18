@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>NEXT TUTORIALS</title>
     <link rel="icon" type="image/png" href="static/image/favicon.png">
-    <!-- <link rel="stylesheet" href="static/style/pc33.css"> -->
+    <link rel="stylesheet" href="static/style/pc33.css">
 </head>
 
 <body>
@@ -25,19 +25,28 @@
     <hr>
     <script>
     "use strict"
+
     var openingDiv = document.querySelector('#opening');
+
     var text = 'all work and no play makes jack a dull boy';
     var textArr = text.split(' ');
     var num = 0;
+    var maxNum = 50;
 
     function opening() {
         if (num == textArr.length) {
             num = 0;
+            maxNum--; 
+            if (maxNum < 0) {
+                openingDiv.textContent = '';
+                maxNum = 80;
+            }
+
         }
         var text = document.createTextNode(` ${textArr[num++]}`);
         openingDiv.appendChild(text);
 
-        setTimeout(opening, 100);
+        setTimeout(opening, 80);
     }
 
     opening();

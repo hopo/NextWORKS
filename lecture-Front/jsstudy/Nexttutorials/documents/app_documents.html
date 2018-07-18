@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>app_document</title>
+    <link rel="stylesheet" href="../static/style/pc33.css">
 </head>
 <!-- documents/app+document.html -->
 
@@ -19,52 +20,52 @@
         </div>
     </header>
     <hr>
-    <table>
+    <table border='1'>
         <tr>
-            <td rowspan="2" width='25%'>
+            <td rowspan="2" width='200px'>
                 <div id='docuLeft'></div>
             </td>
             <td>
-                <div id='docuRight'></div>
+                <div id='docuRight'>
+                    <div id='contentTitle'>(title section)</div>
+                    <pre id='contentArticle'>(article section)</pre>
+                    <div id='contentBottom'>(bottom section)</div>
+                </div>
             </td>
         </tr>
         <tr>
-            <td height="100%">
-            </td>
+            <td height='100%'></td>
         </tr>
     </table>
+    <!-- data -->
     <script type="text/javascript" src="data/listWeeks.js"></script>
+    <script type="text/javascript" src="data/sourceCodes.js"></script>
     <script>
     "use strict"
 
     var docuLeft = document.querySelector('#docuLeft');
     var docuRight = document.querySelector('#docuRight');
+    var contentTitle = document.querySelector('#contentTitle');
+    var contentArticle = document.querySelector('#contentArticle');
+
     var str = '';
 
 
     for (var i in listWeeks.sort()) {
         docuLeft.innerHTML += `<div style='font-size:1.5em;'>${listWeeks[i].slice(0,6)}</div>`;
         for (var e of listAllFiles[i].sort()) {
+
             var path = listWeeks[i] + '/' + e;
-            str = `<li><label onclick="readTextFile(\'${path}\')">${e.slice(4).replace('.html', '')}</label></li>`;
+            var fileName = e.slice(4).replace('.html', '');
+
+            str = `<li><label onclick="handleSelect('${path}', ${fileName})">${fileName}</label></li>`;
             docuLeft.innerHTML += str;
         }
     }
 
-
-    function readTextFile(file) {
-        var rawFile = new XMLHttpRequest();
-        // rawFile.open("GET", '../../' + file, true);
-        rawFile.open("GET", '../../test.py', true);
-        rawFile.onreadystatechange = function() {
-            if (rawFile.readyState === 4) {
-                var allText = rawFile.responseText;
-                var xxx = document.createTextNode(allText);
-                docuRight.appendChild(xxx);
-                console.log(allText);
-            }
-        }
-        rawFile.send();
+    function handleSelect(path, fileName) {
+        contentTitle.textContent = path;
+        contentArticle.textContent = fileName;
     }
     </script>
 </body>
