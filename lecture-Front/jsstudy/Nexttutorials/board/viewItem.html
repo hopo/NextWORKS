@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>app_contact</title>
-    <link rel="stylesheet" href="../static/style/pc33.css">
+    <title>app_board</title>
     <!-- style: common -->
-    <link rel="stylesheet" href="style/style_contact.css">
-    <!-- style: contac/style -->
+    <link rel="stylesheet" href="../static/style/pc33.css">
+    <!-- style: board/style/ -->
+    <link rel="stylesheet" href="style/style_board.css">
 </head>
-<!-- contact/app_contact.html-->
+<!-- contact/app_board.html-->
 
 <body>
     <header>
@@ -25,40 +25,44 @@
     </header>
     <hr>
     <div id='container'>
-        <table id='mailbox' border='2px' cellpadding="10px">
+        <table style='border: solid green'>
             <tr>
-                <td class='lbCell'>EMAIL</td>
                 <td>
-                    <input class='inputs' type="email">
+                    Title
+                </td>
+                <td>
+                    블라블라블라
                 </td>
             </tr>
             <tr>
-                <td class='lbCell'>USER_NAME</td>
                 <td>
-                    <input class='inputs' type="text" name="">
+                    RegiUser
+                </td>
+                <td>
+                    오까네
                 </td>
             </tr>
             <tr>
-                <td class='lbCell'>TITLE</td>
-                <td>
-                    <input class='inputs'type="text" name="">
-                </td>
-            </tr>
-            <tr>
-                <td class='lbCell'>CONTENTS</td>
-                <td>
-                    <textarea cols="60" rows="10"></textarea>
-                </td>
-            </tr>
-            <tr>
-                <td id='sendPart' colspan="2">
-                    <input type="button" value="Send">
-                    <input type="button" value="Cancel">
+                <td colspan="2">
+                    <pre id='itemShow'></pre>
                 </td>
             </tr>
         </table>
+        <a href="app_board.html">boardList</a>
     </div>
     <hr>
+    <script type="text/javascript" src="data/boardItems.js"></script>
+    <script>
+    "use strict"
+
+    var itemShow = document.querySelector('#itemShow');
+
+    var thisLocation = location.href
+
+    var idx = thisLocation.split('=')[1];
+
+    itemShow.textContent = datas[98];
+    </script>
 </body>
 
 </html>

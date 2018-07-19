@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>app_board</title>
-    <link rel="stylesheet" href="../static/style/pc33.css">
+
     <!-- style: common -->
-    <link rel="stylesheet" href="style/style_board.css">
+    <link rel="stylesheet" href="../static/style/pc33.css">
     <!-- style: board/style/ -->
+    <link rel="stylesheet" href="style/style_board.css">
 </head>
 <!-- contact/app_board.html-->
 
@@ -32,10 +33,10 @@
                     <button type="">SEARCH</button>
                 </td>
                 <td>
-                    <button type="">LIST</button>
+                    <button onclick='handleList()'>LIST</button>
                 </td>
                 <td>
-                    <button type="">WRITE</button>
+                    <button onclick='handleWrite()'>WRITE</button>
                 </td>
             </tr>
         </table>
@@ -61,7 +62,8 @@
         </div>
     </div>
     <hr>
-    <script src="../documents/data/listWeeks.js"></script>
+    <!-- data -->
+    <script src="data/boardItems.js"></script>
     <script>
     "use strict"
 
@@ -73,31 +75,29 @@
 
     var idx = 99;
 
-    var boItems = w08.concat(w07);
-
-    for (var e of boItems) {
+    for (var i = 0; i < 10; i++) {
         // table row
         nodeTr = document.createElement('tr');
         boardTable.appendChild(nodeTr);
 
         // data in row
         nodeTd = document.createElement('td');
-        nodeTd.textContent = '0' + idx--;
+        nodeTd.textContent = '0' + (--idx);
         nodeTr.appendChild(nodeTd);
 
         nodeTd = document.createElement('td');
 
         nodeA = document.createElement('a');
-        nodeA.setAttribute('href', '?boardTitle=' + e);
+        nodeA.setAttribute('href', 'viewItem.html?idx=' + idx);
         nodeA.setAttribute('class', 'boardHover');
-        nodeA.textContent = e.slice(4);
+        nodeA.textContent = ttt[i];
 
         nodeTd.appendChild(nodeA);
         nodeTr.appendChild(nodeTd);
 
 
         nodeTd = document.createElement('td');
-        nodeTd.textContent = 'Mster';
+        nodeTd.textContent = nnn[i];
         nodeTr.appendChild(nodeTd);
 
         nodeTd = document.createElement('td');
@@ -108,10 +108,14 @@
         nodeTd.textContent = Math.round((Math.random() * 100), 1);
         nodeTr.appendChild(nodeTd);
 
-        if (idx == 79) {
-            // test limit num
-            break;
-        }
+    }
+
+    function handleWrite() {
+        location.href = 'writeForm.html'
+    }
+
+    function handleList() {
+        location.href = 'app_board.html'
     }
     </script>
 </body>
