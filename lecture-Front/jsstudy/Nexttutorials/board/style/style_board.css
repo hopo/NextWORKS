@@ -1,0 +1,49 @@
+/* style: board/style/ */
+
+
+/*
+ * =====================================================
+ * tags
+ * =====================================================
+ */
+
+
+a.boardHover:hover {
+    color: red;
+    text-decoration: none;
+}
+
+
+/*
+ * =====================================================
+ * ids
+ * =====================================================
+ */
+
+#boardTable {
+    border-collapse: collapse;
+    border: 2px solid #ddd;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#boardMenu {
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    align-items: center;
+}
+
+#hdRow th {
+	padding : 10px;
+}
+
+#searchPart {
+	padding-left: 20px;
+}
+
+#listNum a:hover {
+    color: red;
+    text-decoration: none;
+}

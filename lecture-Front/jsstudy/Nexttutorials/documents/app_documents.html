@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>app_document</title>
     <link rel="stylesheet" href="../static/style/pc33.css">
+    <!-- style: common -->
+    <link rel="stylesheet" href="style/style_documents.css">
+    <!-- style: documents/style -->
 </head>
 <!-- documents/app+document.html -->
 
@@ -16,27 +19,30 @@
             <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
             <a href="../documents/app_documents.html">도큐먼츠</a>&nbsp; &nbsp; &nbsp;
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
+            <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
         </div>
     </header>
     <hr>
-    <table border='1'>
-        <tr>
-            <td rowspan="2" width='200px'>
-                <div id='docuLeft'></div>
-            </td>
-            <td>
-                <div id='docuRight'>
-                    <div id='contentTitle'>(title section)</div>
-                    <pre id='contentArticle'>(article section)</pre>
-                    <div id='contentBottom'>(bottom section)</div>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td height='100%'></td>
-        </tr>
-    </table>
+    <div id='container'>
+        <table id='table' width='80%' cellpadding="5" cellspacing="2">
+            <tr>
+                <td id='tableLeftTd' rowspan="2" width='200px'>
+                    <div id='docuLeft'></div>
+                </td>
+                <td>
+                    <div id='docuRight'>
+                        <div id='contentTitle'></div>
+                        <pre id='contentArticle'></pre>
+                        <div id='contentBottom'>(bottom section)</div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td height='100%'></td>
+            </tr>
+        </table>
+    </div>
     <!-- data -->
     <script type="text/javascript" src="data/listWeeks.js"></script>
     <script type="text/javascript" src="data/sourceCodes.js"></script>
@@ -50,9 +56,8 @@
 
     var str = '';
 
-
     for (var i in listWeeks.sort()) {
-        docuLeft.innerHTML += `<div style='font-size:1.5em;'>${listWeeks[i].slice(0,6)}</div>`;
+        docuLeft.innerHTML += `<br><div style='font-size:1.5em;'>${listWeeks[i].slice(0,6)}</div>`;
         for (var e of listAllFiles[i].sort()) {
 
             var path = listWeeks[i] + '/' + e;

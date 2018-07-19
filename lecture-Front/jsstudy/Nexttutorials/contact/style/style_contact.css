@@ -1,0 +1,32 @@
+/* style: common */
+
+textarea {
+	border: none;
+}
+
+.lbCell {
+    background-color: #d9d9d9;
+}
+
+.inputs {
+	width: 100%;
+    border: none;
+}
+
+#mailbox {
+    border-collapse: collapse;
+    /*border: 3px solid white;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#sendPart {
+    /*align-content: center;*/
+    /*margin: auto;*/
+    /*align-content: center;*/
+    text-align: center;
+}
+
+#sendPart input {
+    padding: 10px;
+}

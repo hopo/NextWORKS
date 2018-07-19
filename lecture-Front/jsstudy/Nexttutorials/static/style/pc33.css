@@ -38,8 +38,8 @@
     position: absolute;
     top: 5;
 }
-*/
 
+*/
 
 /*
  * =====================================================
@@ -48,7 +48,7 @@
  */
 
 #title {
-    align-content: true;
+    align-content: center;
     background-color: #ccffff;
     color: #2244ff;
     font-size: 30px;
@@ -80,10 +80,44 @@ div#menubar {
     height: 100%;
 }
 
+#container {
+    align-content: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+}
 
+/*
+ * =====================================================
+ * tags
+ * =====================================================
+ */
+
+
+a:link {
+    color: #181818;
+    text-decoration: none;
+}
+
+a:visited {
+    /*color: #eeffee;*/
+    color: red;
+    text-decoration: none;
+}
+
+a:active {
+    color: #181818;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #181818;
+    text-decoration: none;
+}
 
 
 /*
+
 #groundDiv {
     font-size: 15px;
     position: absolute;
@@ -107,7 +141,6 @@ div#menubar {
     color: blue;
     font-size: 15px;
 }
-*/
 
 
 /*
@@ -120,28 +153,3 @@ div#menubar {
 */
 
 
-/*
- * =====================================================
- * tags
- * =====================================================
- */
-
-a:link {
-    color: #181818;
-    text-decoration: none;
-}
-
-a:visited {
-    color: #eeffee;
-    text-decoration: none;
-}
-
-a:active {
-    color: #181818;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #181818;
-    text-decoration: none;
-}

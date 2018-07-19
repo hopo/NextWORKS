@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>회원관리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.js" 
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <h1>localStorage를 이용한 가상 회원관리!</h1>
+    <div>
+        <table id="listMem" style="width:350px;text-align:center;border-color: magenta" border=1>
+            <tr><th>넘버</th><th>아이디</th><th>암호</th><th>비고</th></tr>
+        </table>
+
+    </div>
+    <hr>
+    아이디&nbsp;&nbsp;&nbsp;<input type=text id="idMem" value=""><input type=button value="조회" onclick="memSearch()"><br>
+    비밀번호<input type=text id="pwMem" value=""><br>
+    비 고&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=text id="etcMem" value=""><br>
+    <hr>
+    <input type=button value="연습데이타추가" onclick="initData()">
+    <input type=button value="리스트" onclick="memList()">
+    <input type=button value="추가" onclick="memAdd()">
+
+    <input type=button value="수정" onclick="memUpdate()">
+    <input type=button value="삭제" onclick="memDel()">
+    <script>
+        var myDB=localStorage;
+
+        //연습데이타 넣기!
+        function initData(){
+            if(myDB.getItem("memTB")) {myDB.removeItem("memTB")};
+            var TBmem = [];
+            var ids = ["syg","cjh","kyb","sig","kms","cjs","lja","lch","ph"];
+            var pws = ["1111","2111","3111","4111","5111","6111","7111","8111","9111"]; 
+            var etc = ["가","나","다","라","마","바","사","아","자"];
+
+            for(var i=0; i< ids.length; i++){
+                var member={};
+                member.id= ids[i];
+                member.pw= pws[i];
+                member.etc= etc[i];
+                TBmem.push(member);
+            }
+            myDB.setItem("memTB",JSON.stringify(TBmem));
+        }
+
+        //회원리스트
+        function memList(){
+            var isData = JSON.parse(myDB.getItem("memTB"));  //memTB를 키값으로 DB TABLE처럼 사용!
+        //    alert(isData);  //디버깅용!
+            var addStr="<tr><th>넘버</th><th>아이디</th><th>암호</th><th>비고</th></tr>";
+            if(!isData){
+                addStr +="<tr><td colspan=4>정보가 없어용!!</td>";
+                $('#listMem').html(addStr)
+                return;
+            }
+            addStr = "<tr><th>넘버</th><th>아이디</th><th>암호</th><th>비고</th></tr>";
+            for(var i=0; i<isData.length; i++){
+                var member = isData[i];
+                addStr +="<tr><td>"+(i+1)+"</td><td>"+
+                        member.id+"</td><td>"+member.pw+"</td><td>"+member.etc+"</td></tr>";
+            }
+            $('#listMem').html(addStr)
+   
+        }
+
+        function memAdd(){
+            var TBmem=[];
+            var member={};
+            member.id = $('#idMem').val();
+            member.pw = $('#pwMem').val();
+            member.etc = $('#etcMem').val();
+            var isData = JSON.parse(myDB.getItem("memTB"));  //memTB를 키값으로 DB TABLE처럼 사용!
+            if(!isData){
+                TBmem.push(member)
+                myDB.setItem("memTB",JSON.stringify(TBmem));
+            }else {
+                isData.push(member);
+                myDB.setItem("memTB",JSON.stringify(isData));
+            }
+            memList()
+        }
+
+        function memSearch(){
+            var schID = $('#idMem').val();
+            var isData = JSON.parse(myDB.getItem("memTB"));  //memTB를 키값으로 DB TABLE처럼 사용!
+            if(!isData){
+                alert("아예 검색할 데이타가 없어용1");
+            }else {
+                for(var i=0; i< isData.length; i++){
+                    if(isData[i].id == schID){
+                       $('#pwMem').val(isData[i].pw);
+                       $('#etcMem').val(isData[i].etc);
+                    }
+                }
+            }
+
+        }
+        function memUpdate(){
+            var isData = JSON.parse(myDB.getItem("memTB"));  //memTB를 키값으로 DB TABLE처럼 사용!
+            if(!isData){
+                alert("아예 검색할 데이타가 없어용1");
+                return;
+            }
+            var schID = $('#idMem').val();
+            var pw = $('#pwMem').val();
+            var etc = $('#etcMem').val();
+
+            for(var i=0; i< isData.length; i++){
+                if(isData[i].id == schID){
+                    isData[i].pw = $('#pwMem').val();
+                    isData[i].etc = $('#etcMem').val();
+                }
+            }
+            myDB.setItem("memTB",JSON.stringify(isData)); 
+        }
+
+        function memDel(){
+            var isData = JSON.parse(myDB.getItem("memTB"));  //memTB를 키값으로 DB TABLE처럼 사용!
+            if(!isData){
+                alert("아예 검색할 데이타가 없어용1");
+                return;
+            }
+            var schID = $('#idMem').val();
+
+            for(var i=0; i< isData.length; i++){
+                if(isData[i].id == schID){
+                    isData.splice(i,1);      //삭제;
+                }
+            }
+            myDB.setItem("memTB",JSON.stringify(isData));
+            memList();
+        }
+
+        //시작!!
+        $(function(){
+            memList();
+                    
+        })
+    </script>
+</body>
+</html>

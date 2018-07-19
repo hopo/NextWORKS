@@ -28,16 +28,25 @@
  *  ids
  */
 
+/*
 #groundDiv {
     font-size: 15px;
     position: absolute;
     top: 150;
     width: 100%;
 }
+*/
+
+#groundDiv {
+    margin-left: 50px;
+}
 
 #qSel {
+    text-align: center;
     top: 150;
     font-size: 30px;
+    border: none;
+    scroll-behavior: none;
 }
 
 #opening {
@@ -65,4 +74,8 @@
     font-size: 20px;
     background-color: #eeeeee;
     width : 600px;
+}
+
+#showList {
+    padding: 20px;
 }

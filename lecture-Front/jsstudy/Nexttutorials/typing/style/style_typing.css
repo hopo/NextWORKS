@@ -9,19 +9,20 @@
         /*background-image: url("http://www.mbcsportsplus.com/images/img.php?srv=1&type=a&src=/2018/05/20180501161023_rczyzwxs.png");*/
         background-repeat: no-repeat;
         background-size: 600px 450px;
-
         border: 2px solid black;
         overflow: hidden;
+        z-index: 800;
     }
 
     .tajaControl {
-        position: absolute;
+        position: relative;
         left: 50px;
-        top: 430px;
+        top: 20px;
         height: 30px;
-        width: 600px;
+        width: 550px;
         background-color: gold;
         border: 1px solid black;
+        z-index: 999;
     }
 
     .txtBox {

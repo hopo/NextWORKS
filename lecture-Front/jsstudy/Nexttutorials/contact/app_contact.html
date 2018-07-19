@@ -5,53 +5,60 @@
     <meta charset="UTF-8">
     <title>app_contact</title>
     <link rel="stylesheet" href="../static/style/pc33.css">
+    <!-- style: common -->
+    <link rel="stylesheet" href="style/style_contact.css">
+    <!-- style: contac/style -->
 </head>
-
 <!-- contact/app_contact.html-->
+
 <body>
     <header>
         <div id="title">NEXT TUTORIALS</div>
-        <div id="menubar">
+        <div id="menubar">#F1F1F1
             <a href="../app.html">메인</a>&nbsp; &nbsp; &nbsp;
             <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
             <a href="../documents/app_documents.html">도큐먼츠</a>&nbsp; &nbsp; &nbsp;
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
+            <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
         </div>
     </header>
     <hr>
-
-    <table border="3px" style="border-color:gray">
-    	<tr>
-    		<td>EMAIL</td>
-    		<td>
-    			<input type="email" name="">	
-    		</td>
-    	</tr>
-    	<tr>
-    		<td>USER_NAME</td>
-    		<td>
-    			<input type="text" name="">	
-    		</td>
-    	</tr>
-    	<tr>
-    		<td>TITLE</td>
-    		<td>
-    			<input type="text" name="">	
-    		</td>
-    	</tr>
-    	<tr>
-    		<td>CONTENTS</td>
-    		<td>
-    			<textarea name="" cols="60" rows="10"></textarea>
-    		</td>
-    	</tr>
-    	<tr>
-    		<td colspan="2">
-    			<input type="submit" value="send">	
-    		</td>
-    	</tr>
-    </table>
+    <div id='container'>
+        <table id='mailbox' border='2px' cellpadding="10px">
+            <tr>
+                <td class='lbCell'>EMAIL</td>
+                <td>
+                    <input class='inputs' type="email">
+                </td>
+            </tr>
+            <tr>
+                <td class='lbCell'>USER_NAME</td>
+                <td>
+                    <input class='inputs' type="text" name="">
+                </td>
+            </tr>
+            <tr>
+                <td class='lbCell'>TITLE</td>
+                <td>
+                    <input class='inputs'type="text" name="">
+                </td>
+            </tr>
+            <tr>
+                <td class='lbCell'>CONTENTS</td>
+                <td>
+                    <textarea cols="60" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td id='sendPart' colspan="2">
+                    <input type="button" value="Send">
+                    <input type="button" value="Cancel">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr>
 </body>
 
 </html>

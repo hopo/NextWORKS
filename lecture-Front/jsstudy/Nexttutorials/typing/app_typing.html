@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <title>app_typing</title>
     <link rel="stylesheet" href="../static/style/pc33.css">
-    <link rel="stylesheet" type="text/css" href="style/typing_app.css">
+    <!-- style: common -->
+    <link rel="stylesheet" type="text/css" href="style/style_typing.css">
+    <!-- style: style_typing -->
 </head>
 
 <body onload='tajaInit()'>
@@ -16,22 +18,22 @@
             <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
             <a href="../documents/app_documents.html">도큐먼츠</a>&nbsp; &nbsp; &nbsp;
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
+            <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
         </div>
     </header>
     <hr>
-    <div class="tajaBack" id="tajaBackground"></div>
-    <div class="tajaControl">
-        <!-- <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()"> -->
-        <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()">
-        <input type=button id="tajaStop" value="Stop" onclick="tajaStop()">
-        <input type=text id="tajaTyping" onkeydown="wordsCheck()" value="">
+    <div id='container'>
+        <h3>[score] <span id="scoreBoard">0</span> </h3>
+        <div class="tajaBack" id="tajaBackground"></div>
+        <div class="tajaControl">
+            <!-- <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()"> -->
+            <input type=button id="tajaStart" value="Start" onclick="tajaGoGo()">
+            <input type=button id="tajaStop" value="Stop" onclick="tajaStop()">
+            <input type=text id="tajaTyping" onkeydown="wordsCheck()" value="">
+        </div>
     </div>
-    <!-- <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;영어에 Rule Of Thumb 이란 말이 있디용?</h1> -->
-    <h3>[score]
-        <div id="scoreBoard">0</div>
-    </h3>
-    <script type="text/javascript" src="script/game.js"></script>
+    <script type="text/javascript" src="script/typing.js"></script>
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 "use strict"
 
 /*
+ * =====================================================
  * Author : 272
+ * =====================================================
  */
 
 
@@ -14,22 +16,22 @@ var score = 1;
 var scoreBoardDiv = document.getElementById("scoreBoard");
 
 // 자바script 공부!
-var jsWordsStr = `abstract    arguments   await   boolean break   byte    case    catch char    class   const   continue
-debugger    default delete  do double  else    enum    eval export  extends false   final finally float   for function
-goto    if  implements  import in  instanceof  int interface let    long    native  new null  package private protected
+var jsWordsStr = `abstract    arguments   boolean break   byte    case    catch char    class   const   continue
+default delete  do double  else    enum    eval export  extends false   final finally float   for function
+goto    if  implements  import in  instanceof  int interface let    long    new null  package private protected
 public  return  short   static super  switch  synchronized    this throw   throws  transient   true
-try typeof  var void volatile    while   with    yield Array   Date    eval    function Infinity    isFinite    isNaN
+try typeof  var void volatile    while   with    yield Array   Date    eval    function Infinity    
 length  Math    NaN name    Number  Object  prototype String  toString    undefined   valueOf alert   all anchor  anchors
-area    assign  blur    button checkbox    clearInterval close   closed  confirm constructor crypto  decodeURI
-document    element elements    embed embeds  encodeURI   escape event   fileUpload  focus   form
-forms   frame   innerHeight innerWidth layer   layers  link    location mimeTypes   navigate    navigator   frames
-frameRate   hidden  history image images  open    opener option  outerWidth  packages parent  parseFloat
-parseInt    password    pkcs11  plugin prompt  propertyIsEnum  radio   reset screenX screenY scroll  secure
-select  self    setInterval setTimeout status  submit  taint   text textarea    top unescape    untaint
-window onblur  onclick onerror onfocus onkeydown   onkeypress  onkeyup onmouseover onload  onmouseup   onmousedown onsubmit`;
+area    assign  blur    button checkbox    clearInterval close   closed  confirm constructor decodeURI
+document    element embed encodeURI   escape event   fileUpload  focus   form
+frame   innerHeight innerWidth layer   link    location navigate    frames
+frameRate   hidden  history image open    option  outerWidth  packages parent  parseFloat
+parseInt    password    plugin prompt  radio   reset screenX screenY scroll  
+select  self    setInterval setTimeout status  submit  text textarea    top 
+window onblur  onclick onerror onfocus onkeydown   onkeypress  onkeyup
+onmouseover onload  onmouseup   onmousedown onsubmit 272`;
 
 var javaStudy = jsWordsStr.split(/\W+/);
-console.log(javaStudy);
 
 var onDiv = []; // 현재 화면에서 움직이는 div만 담을 배열
 
@@ -76,8 +78,10 @@ function wordsMove() {
 
 /** 시작 함수로 글자만드는 함수와 글자 움직임함수 불러줌! **/
 function tajaGoGo() {
-    var bg = document.styleSheets[0].cssRules[0];
-    bg.style.backgroundColor = "#eeffee";
+    // var bg = document.styleSheets[0].cssRules[0];
+
+    tajaBackground.style.backgroundColor = "#eeffee";
+
     wordsManufacture();
     wordsMove();
 }
@@ -122,8 +126,8 @@ function tajaStop() {
     clearTimeout(tout);
     clearTimeout(tout2);
 
-    var bg = document.styleSheets[0].cssRules[0];
-    bg.style.backgroundColor = "gray";
+    // var bg = document.styleSheets[0].cssRules[0];
+    tajaBackground.style.backgroundColor = "gray";
 
     for (var e of onDiv) {
         e.style.top = "-30px";

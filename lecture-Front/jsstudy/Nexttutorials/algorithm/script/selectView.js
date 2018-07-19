@@ -19,8 +19,9 @@ function selectView() {
 
     nodeSelect.setAttribute("name", "quizSelect");
     nodeSelect.setAttribute("id", "qSel");  // select#qSel
-    nodeSelect.setAttribute("onclick", "quizStart()");
+    nodeSelect.setAttribute("onchange", "quizStart()");
     nodeSelect.setAttribute("multiple", "true");
+
 
     nodeDiv.appendChild(nodeSelect);
     groundDiv.appendChild(nodeDiv);

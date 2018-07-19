@@ -1,0 +1,30 @@
+/* style: documents/style */
+
+
+#table {
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+#tableLeftTd {
+    background-color: #ebd61a;
+}
+
+#docuRight {
+	padding: 30px;
+}
+
+#contentTitle {
+	color: red;
+	font-size: 2em;
+}
+
+#contentArticle {
+	font-size: 1em;
+
+} 
+
+#contentBottom {
+	color: blue;
+
+}
