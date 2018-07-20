@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Google Custom Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        
+        #searchDiv{
+            position: relative;
+            left : 0px;
+            width:500px;
+        }
+        /*serarchDiv자식중 input type이 text인 것*/
+        #searchBox[type="text"]{
+            width:500px;
+            height: 30px;
+        }
+        #btnSearch{
+            height: 30px;
+            text-align: center;
+        }
+        #backPage{
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            right: 0px;
+         
+           
+        }
+
+    </style>
+
+</head>
+<body>
+    <input type="button" id="backPage" value="뒤로가기" class="form-control">
+    <div id="searchDiv">
+        <img src="img/gogle.jpg">
+        <br /><br /><br />
+        <table>
+            <tr>
+                <td>
+                    <input type="text" id="searchBox" placeholder="검색하세요." class="form-control">
+                </td>
+                <td>
+                    <input type="button" value="search!" class="form-control" id="btnSearch">
+                </td>
+            </tr>
+        </table>
+    </div>
+        <script>
+            var beforePage;
+            //검색한 결과가 나오는 페이지로 넘김. 현재화면에 get방식으로 텍스트값 보냄
+            function searchFunc(){
+
+                var txtBox = $("#searchBox").val();
+
+                location.href = "googleSearch.html?q="+txtBox+"&id="+beforePage;
+
+            };
+        
+            $(function(){
+                beforePage = $(location).attr("href");
+                beforePage = beforePage.split("id=")[1];
+                //alert(beforePage);
+
+                //전체 화면의 폭/2
+                var halfWidth = $(window).width() / 2;
+                //div태그의 폭/2
+                var divHalfWidth = $("#searchDiv").width() / 2 ;
+
+                //div태그를 중앙에 배치
+                $("#searchDiv").css("left",halfWidth-divHalfWidth);
+                
+
+                //버튼 클릭시 페이지 넘김
+                $("#btnSearch").on("click", function(){
+                    searchFunc();
+                });
+
+                //엔터입력시 페이지 넘김
+                $("#searchBox").on("keydown",function(event){
+
+                 //   keyCode 13이 엔터키임
+                    if(event.keyCode==13){
+                        searchFunc();
+                    }
+
+                });
+
+                $("#backPage").on("click",function(){
+                    $(location).attr("href","middlePage.html?id="+beforePage);
+                });
+
+            });
+                //구글 cse에서 가져온 소스
+                (function() {
+                  var cx = '016703848151412079622:lqh8-rdxeyu';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:searchresults-only></gcse:searchresults-only>
+              <!--여기까지 cse에서 가져온 소스부분-->
+</body>
+</html>

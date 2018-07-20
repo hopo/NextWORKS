@@ -1,0 +1,1 @@
+﻿admin,adminpw,관리자,oracle,oraclepw,DBA,js,jspw,js사용자

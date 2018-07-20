@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>middle page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+       <!-- 합쳐지고 최소화된 최신 CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+       <!-- 부가적인 테마 -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+
+       <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   
+       <style>
+          
+  
+           #toggleDiv{
+               position: absolute;
+               right: 130px;
+               
+              
+           }
+
+           #divFoot{
+               position: relative;
+               height: 50px;
+           }
+
+           #btnWrite{
+               position: absolute;
+               width: 100px;
+               right: 20px;
+               
+           }
+           #divBody{
+            position: relative;
+            width: 1000px;
+
+           }
+           #gogleSearch{
+            position: absolute;
+            right: 200px;
+            font-size: 20px;
+            color: black;
+            width: 30px;
+            height: 30px;
+            background-image: url("img/gButton.PNG");
+            background-size: 100%;
+            background-repeat: no-repeat;
+           }
+           
+           
+        
+
+       </style>
+       
+</head>
+<body>
+    
+        <input type="button" id="gogleSearch">
+        
+        <div class="btn-group" id="toggleDiv">
+                <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                  메뉴 <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="dropMenuUi">
+                        <li><a id="helloUser" >정보 변경</a></li>
+                        <li><a id="btnLogOut">로그아웃</a></li>
+                </ul>
+              </div>
+
+
+    <div class="panel panel-default" id="divBody">
+        <div class="panel-body">
+            <table class="table" id="tab">
+                <tr>
+                    <th>작성자</th>
+                    <th>제목</th>
+                    <th>날짜</th>
+                    <th>비고</th>
+                </tr>
+            </table>
+        </div>
+        <div class="panel-footer" id="divFoot">
+            
+            <input type="button" class="form-control" value="글쓰기" id="btnWrite" />
+        </div>
+    </div>
+    <script>
+
+        
+        var localStore = localStorage;
+        var getKeyUrl;
+        $(function(){
+
+            
+            
+            getKeyUrl = $(location).attr("href");
+            //alert(getKeyUrl);
+            getKeyUrl = getKeyUrl.split("=")[1];
+            var tabStr ="";
+            //로컬스토리지에 들어있는 값만큼 반복
+            var logInUser = JSON.parse(localStore.getItem(getKeyUrl));
+            
+            //url로 값을 넘긴 사용자가 아니면 -> 로그인으로 넘어온 사용자가 아니면 아무것도 할수없게함
+            if(getKeyUrl){
+            
+                //비정상적으로 접근하는 유저를 막기 위한 변수 2개
+                var getOutHere = [];
+                var byebye =true;
+
+                for(var i=0;i<localStore.length;i++){
+                    //code +i의 값이 있다면
+                    if(localStore.getItem("code"+i)){
+                        
+                        var getIt = JSON.parse(localStore.getItem("code"+i));
+                        
+                        
+
+                        
+                        
+                        tabStr += "<tr><td>"+getIt.writer+"</td><td><a href='updAndSelect.html?id="+getKeyUrl+"&code=code"+i+"' >"+getIt.title+"</a></td><td>"+getIt.date+"</td>";
+                            
+                        //로그인한 사용자와 글 작성자가 같거나 로그인한 사용자가 관리자라면
+                        
+                        if(getIt.id==getKeyUrl || getKeyUrl=="admin"){
+                            tabStr += "<td><input type='button' value='삭제' onclick='delfunc(\"code"+i+"\")' class='form-control'></td>" ;
+                        }
+                        //alert(tabStr);
+                    tabStr += "</tr>";
+                    }
+                    //키값을 모두 담음
+                    getOutHere[i] = localStore.key(i);
+                }
+                //해당 유저가 로컬스토리지에 있는지 확인
+                for(var i=0; i<getOutHere.length; i++){
+                    if(getKeyUrl==getOutHere[i]){
+                        byebye=false;
+                        break;
+                    }
+                }
+                //없다면 로그인페이지로 돌려버림
+                if(byebye==true){
+                    $(location).attr("href","mainPage.html");
+                }
+
+                tabStr += "</table>";
+                
+                $("#tab").html( $("#tab").html()+ tabStr);
+
+
+
+                //로그아웃과 사용자변경 a태그 값 세팅
+                $("#btnLogOut").attr("href","mainPage.html");
+                $("#helloUser").attr("href","changeInfo.html?id="+getKeyUrl);
+                
+
+
+                //글쓰기 버튼
+                $("#btnWrite").on("click",function(){
+                    $(location).attr("href","insertTab.html?id="+getKeyUrl);
+                });
+            
+                //화면 중앙으로 맞춤
+                var divW= $("#divBody").width() / 2 ;
+                var divH= $("#divBody").height() / 2;
+                var windowW  = $(window).width() / 2;
+                var windowH = $(window).height() /2;
+
+                $("#divBody").css("left", windowW - divW);
+                $("#divBody").css("top",windowH - divH);
+                
+                //윈도우 리사이즈 시 화면 중앙으로 맞춤
+                $(window).on("resize",function(){
+                    divW= $("#divBody").width() / 2 ;
+                    divH= $("#divBody").height() / 2;
+                    windowW  = $(window).width() / 2;
+                    windowH = $(window).height() /2;
+                    $("#divBody").css("left", windowW - divW);
+                    $("#divBody").css("top",windowH - divH);
+                });
+            
+                //고글 버튼 클릭 시
+            $("#gogleSearch").on("click",function(){
+                $(location).attr("href","googleSearch.html?id="+getKeyUrl);
+            });
+
+            //로그인한 사용자가 관리자라면
+            if(getKeyUrl=="admin"){
+                var beforeHtml = $("#dropMenuUi").html();
+                $("#dropMenuUi").html(beforeHtml+"<li><a href='adminPage.html?id="+getKeyUrl+"'>관리자 페이지<a><li>");
+            }
+           //비정상적으로 접근한 유저는 로그인페이지로
+            }else{
+                $(location).attr("href","mainPage.html");
+            }
+        });
+
+        //글을 삭제하는 함수
+        function delfunc(codeVal){
+
+            localStore.removeItem(codeVal);
+            location.replace("middlePage.html?id="+getKeyUrl);
+            
+        }
+
+    </script>
+
+</body>
+</html>

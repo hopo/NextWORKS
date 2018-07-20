@@ -1,11 +1,6 @@
 /* style: documents/style */
 
 
-#table {
-    table-layout: fixed;
-    word-break: break-all;
-}
-
 #tableLeftTd {
     background-color: #ebd61a;
 }
@@ -28,3 +23,5 @@
 	color: blue;
 
 }
+
+

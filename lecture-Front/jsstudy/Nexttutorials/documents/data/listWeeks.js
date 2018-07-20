@@ -1,5 +1,6 @@
 "use strict"
 
+/*
 var listWeeks = `Week02_May28
 Week05_June18
 Week06_Pc33App
@@ -7,6 +8,12 @@ Week08_July09
 Week04_June11
 Week01_May21
 Week07_July02
+Week03_June04`.split(/\s+/);
+*/
+
+var listWeeks = `Week02_May28
+Week04_June11
+Week01_May21
 Week03_June04`.split(/\s+/);
 
 var w01 = `w01_variable.html

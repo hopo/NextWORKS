@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>app_board</title>
-
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
     <!-- style: common -->
     <link rel="stylesheet" href="../static/style/pc33.css">
     <!-- style: board/style/ -->
@@ -22,21 +22,19 @@
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
             <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
+            <a href="../about/app_about.html">방문</a>
         </div>
     </header>
     <hr>
     <div id='container'>
         <table id='boardMenu' width='800px'>
             <tr>
-                <td id='searchPart' width='100%'>
+                <td id='searchPart' width='90%'>
                     <input type="text" placeholder="search title">
-                    <button type="">SEARCH</button>
+                    <button type="">검색</button>
                 </td>
                 <td>
-                    <button onclick='handleList()'>LIST</button>
-                </td>
-                <td>
-                    <button onclick='handleWrite()'>WRITE</button>
+                    <button onclick='handleWrite()'>글쓰기</button>
                 </td>
             </tr>
         </table>
@@ -49,19 +47,28 @@
                 <th>View</th>
             </tr>
         </table>
-        <div id='listNum'>
-            <a href="#">&#60;&#60;&nbsp;&nbsp;</a>
-            <a href="#">next&nbsp;&nbsp;&nbsp;</a>
-            <a href="#7">&nbsp;7&nbsp;</a>
-            <a href="#">&nbsp;..&nbsp;</a>
-            <a href="#3">&nbsp;3&nbsp;</a>
-            <a href="#2">&nbsp;2&nbsp;</a>
-            <a href="#1">&nbsp;1&nbsp;</a>
-            <a href="#">&nbsp;&nbsp;&nbsp;prev</a>
-            <a href="#">&nbsp;&nbsp;&#62;&#62;</a>
+        <div>
+            <a class='boA' href="#">&#60;&#60;&nbsp;&nbsp;</a>
+            <a class='boA' href="#">next&nbsp;&nbsp;&nbsp;</a>
+            <a class='boA' href="#7">&nbsp;7&nbsp;</a>
+            <a class='boA' href="#">&nbsp;..&nbsp;</a>
+            <a class='boA' href="#3">&nbsp;3&nbsp;</a>
+            <a class='boA' href="#2">&nbsp;2&nbsp;</a>
+            <a class='boA' href="#1">&nbsp;1&nbsp;</a>
+            <a class='boA' href="#">&nbsp;&nbsp;&nbsp;prev</a>
+            <a class='boA' href="#">&nbsp;&nbsp;&#62;&#62;</a>
         </div>
     </div>
     <hr>
+    <footer style='text-align: center;'>
+        <p>
+            this site is blah blah blah
+            <br>nextit all reserved <a href="http://nextit.or.kr" style='color:black;'>NEXTIT</a> by <a href="https://google.com" style='color:black;'>@ggl</a>
+        </p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
     <!-- data -->
     <script src="data/boardItems.js"></script>
     <script>
@@ -89,7 +96,7 @@
 
         nodeA = document.createElement('a');
         nodeA.setAttribute('href', 'viewItem.html?idx=' + idx);
-        nodeA.setAttribute('class', 'boardHover');
+        nodeA.setAttribute('class', 'boA');
         nodeA.textContent = ttt[i];
 
         nodeTd.appendChild(nodeA);

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<style>
+    #allDiv{
+        position: relative;
+        width: 800px;
+    }
+
+</style>
+
+</head>
+<body>
+    <div id="allDiv">
+    <table class="table" id="getOutTab">
+        <tr>
+            <th>이름</th>
+            <th>아이디</th>
+            <th>가입일</th>
+            <th>비고</th>
+        </tr>
+
+    </table>
+    <input type="button" value="뒤로가기" class="form-control" id="backPage">
+    </div>
+    <script>
+        var locs = localStorage;
+        var url;
+        function getOutFunc(keyVal){
+            locs.removeItem(keyVal);
+            alert("추방완료");
+            location.replace("adminPage.html?id="+url);
+        }
+
+        $(function(){
+
+            url = $(location).attr("href");
+            url = url.split("=")[1];
+            //alert(url);
+
+           
+            var tabVar = "";
+            //사용자 목록을 가져오는 부분
+                if(url=="admin"){
+                for(var i=0;i<locs.length;i++){
+                    tabVar += "<tr>";
+                    //키값을 얻어옴
+                    var key = locs.key(i);
+                
+                    //code i, 게시판 글이 아니고, 관리자가 아니면
+                    if(key.indexOf("code") == -1 && key !="admin"){
+                        //alert(key);
+                        
+                        var item = JSON.parse(locs.getItem(key));
+                        tabVar += "<td>"+item.username+"</td><td>"+item.id+"</td><td>"+item.date+"</td><td><input type='button' value='추방' class='form-control' onclick='getOutFunc(\""+key+"\")' > </td>"
+                    }
+                    tabVar += "</tr>";
+                }
+            }
+            //alert(tabVar);
+            $("#getOutTab").html( $("#getOutTab").html()+tabVar);
+            
+            $("#backPage").on("click",function(){
+                $(location).attr("href","middlePage.html?id="+url);
+            });
+
+
+            //화면 중앙으로 맞춤
+            var divW= $("#allDiv").width() / 2 ;
+            var divH= $("#allDiv").height() / 2;
+            var windowW  = $(window).width() / 2;
+            var windowH = $(window).height() /2;
+
+            $("#allDiv").css("left", windowW - divW);
+            $("#allDiv").css("top",windowH - divH);
+            
+            //윈도우 리사이즈 시 화면 중앙으로 맞춤
+            $(window).on("resize",function(){
+                divW= $("#allDiv").width() / 2 ;
+                divH= $("#allDiv").height() / 2;
+                windowW  = $(window).width() / 2;
+                windowH = $(window).height() /2;
+                $("#allDiv").css("left", windowW - divW);
+                $("#allDiv").css("top",windowH - divH);
+            });
+
+        });
+    
+    </script>
+</body>
+</html>

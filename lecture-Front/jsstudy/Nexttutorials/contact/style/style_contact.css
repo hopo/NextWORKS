@@ -1,8 +1,5 @@
 /* style: common */
 
-textarea {
-	border: none;
-}
 
 .lbCell {
     background-color: #d9d9d9;
@@ -13,12 +10,6 @@ textarea {
     border: none;
 }
 
-#mailbox {
-    border-collapse: collapse;
-    /*border: 3px solid white;*/
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
 
 #sendPart {
     /*align-content: center;*/

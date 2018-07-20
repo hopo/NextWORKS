@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>app_algorithm.html</title>
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
     <link rel="stylesheet" href="../static/style/pc33.css">
     <link rel="stylesheet" href="style/style_algorithm.css">
 </head>
@@ -12,7 +13,7 @@
 
 <body>
     <header>
-        <div id="title">NEXT TUTORIALS</div>
+        <div id="title" onclick="goMain()">NEXT TUTORIALS</div>
         <div id="menubar">
             <a href="../app.html">메인</a>&nbsp; &nbsp; &nbsp;
             <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
@@ -20,12 +21,13 @@
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
             <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
+            <a href="../about/app_about.html">방문</a>
         </div>
     </header>
     <hr>
     <div id="groundDiv"></div>
-    <div id='showList'>
-        <a href="../algorithm/app_algorithm.html">AlgorithmList</a>
+    <div id='showList' style='padding-left: 90%'>
+        <button><a href="../algorithm/app_algorithm.html" style='color: black;'>목록</a></button>
     </div>
     <!-- import DB -->
     <script type="text/javascript" src="DB/database.js"></script>

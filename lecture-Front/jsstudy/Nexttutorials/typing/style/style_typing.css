@@ -17,9 +17,9 @@
     .tajaControl {
         position: relative;
         left: 50px;
-        top: 20px;
+        top: 0px;
         height: 30px;
-        width: 550px;
+        width: 570px;
         background-color: gold;
         border: 1px solid black;
         z-index: 999;

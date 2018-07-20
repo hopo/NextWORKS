@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>app_board</title>
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
     <!-- style: common -->
     <link rel="stylesheet" href="../static/style/pc33.css">
     <!-- style: board/style/ -->
@@ -25,9 +26,19 @@
     </header>
     <hr>
     <div id='container'>
-        <table style='border: solid green'>
+        <table id='boardMenu' width='800px'>
             <tr>
+                <td id='searchPart' width='90%'>
+                    <button><a href="app_board.html" style='color: black'>목록</a></button>
+                </td>
                 <td>
+                    <button onclick='handleWrite()'>글쓰기</button>
+                </td>
+            </tr>
+        </table>
+        <table class='mailbox' border="2px" cellpadding='10px' width='60%'>
+            <tr>
+                <td width='100px'>
                     Title
                 </td>
                 <td>
@@ -35,7 +46,7 @@
                 </td>
             </tr>
             <tr>
-                <td>
+                <td width='100px'>
                     RegiUser
                 </td>
                 <td>
@@ -48,9 +59,17 @@
                 </td>
             </tr>
         </table>
-        <a href="app_board.html">boardList</a>
     </div>
     <hr>
+    <footer style='text-align: center;'>
+        <p>
+            this site is blah blah blah
+            <br>nextit all reserved <a href="http://nextit.or.kr" style='color:black;'>NEXTIT</a> by <a href="https://google.com" style='color:black;'>@ggl</a>
+        </p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
     <script type="text/javascript" src="data/boardItems.js"></script>
     <script>
     "use strict"
@@ -62,6 +81,10 @@
     var idx = thisLocation.split('=')[1];
 
     itemShow.textContent = datas[98];
+
+    function handleWrite() {
+        location.href = 'writeForm.html'
+    }
     </script>
 </body>
 

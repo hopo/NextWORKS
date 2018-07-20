@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <h3>글쓰기</h3>
+
+    <table class="table">
+        <tr>
+            <td>
+                제목
+            </td>
+            <td>
+                <input type="text" class="form-control" id="txtTitle">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                작성자
+            </td>
+            <td>
+                <input type="text" class="form-control" readonly id="txtWriter">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                내용
+            </td>
+            <td>
+                <textarea cols="10" rows="10" class="form-control" id="txtContent"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="form-control" value="입력" id="btnInput">
+            </td>
+            <td>
+                <input type="button" class="form-control" value="취소" id="btnCancel">
+            </td>
+        </tr>
+
+    </table>
+
+    <script>
+        
+        $(function(){
+
+            var localStore = localStorage;
+            
+            var getKeyUrl = $(location).attr("href");
+            getKeyUrl = getKeyUrl.split("=")[1];
+
+            var user = localStore.getItem(getKeyUrl);
+            //alert(getKeyUrl);
+            
+            user = JSON.parse(user);
+            //alert(user);
+            //작성자는 로그인한 회원의 이름으로
+            $("#txtWriter").val(user.username);
+            
+            $("#btnInput").on("click",function(){
+                //로컬스토리지에 있는 키값중 code가 포함된 키를 담을 내용
+                var codeList =[];
+                //list로 담을 글쓰기 내용
+                var list = {};
+
+                list.id=getKeyUrl;
+                list.writer=$("#txtWriter").val();
+                list.title=$("#txtTitle").val();
+                list.content=$("#txtContent").val();
+                list.date = new Date().toLocaleDateString();
+
+                for(var i=0;i<localStore.length;i++){
+                    //alert(localStore.key(i));
+                    var tmp = localStore.key(i);
+                    
+                    //alert(tmp.indexOf("code"));
+                    //code가 들어가는 키값이 있다면.
+                    if(tmp.indexOf("code") != -1){
+                        codeList[codeList.length] = tmp;
+                    }
+                }
+                
+                localStore.setItem("code"+codeList.length,JSON.stringify(list));
+
+
+                $(location).attr("href","middlePage.html?id="+getKeyUrl);
+            });
+
+            $("#btnCancel").on("click",function(){
+                $(location).attr("href","middlePage.html?id="+getKeyUrl);
+            });
+
+
+        });
+
+
+    </script>
+    
+</body>
+</html>

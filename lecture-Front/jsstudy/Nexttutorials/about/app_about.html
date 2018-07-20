@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>app_about</title>
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
+    <!-- style: common -->
+    <link rel="stylesheet" href="../static/style/pc33.css">
+</head>
+
+<body onload='tajaInit()'>
+    <header>
+        <div id="title">NEXT TUTORIALS</div>
+        <div id="menubar">
+            <a href="../app.html">메인</a>&nbsp; &nbsp; &nbsp;
+            <a href="../algorithm/app_algorithm.html">알고리즘문제</a>&nbsp; &nbsp; &nbsp;
+            <a href="../documents/app_documents.html">도큐먼츠</a>&nbsp; &nbsp; &nbsp;
+            <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
+            <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
+            <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
+            <a href="../about/app_about.html">방문</a>
+        </div>
+    </header>
+    <hr>
+    <div id='container'>
+        <!--
+    * Daum 지도 - 약도서비스
+    * 한 페이지 내에 약도를 2개 이상 넣을 경우에는
+    * 약도의 수 만큼 소스를 새로 생성, 삽입해야 합니다.
+    -->
+        <!-- 1. 약도 노드 -->
+        <div id="daumRoughmapContainer1527207676344" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+        <!-- 2. 설치 스크립트 -->
+        <script charset="UTF-8" class="daum_roughmap_loader_script" src="http://dmaps.daum.net/map_js_init/roughmapLoader.js"></script>
+        <!-- 3. 실행 스크립트 -->
+        <script charset="UTF-8">
+        new daum.roughmap.Lander({
+            "timestamp": "1527207676344",
+            "key": "oapo",
+            "mapWidth": "800",
+            "mapHeight": "400"
+        }).render();
+        </script>
+    </div>
+</body>
+
+</html>

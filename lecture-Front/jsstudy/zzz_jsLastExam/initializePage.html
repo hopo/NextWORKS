@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+
+
+    <script>
+        
+        //로그인에 사용할 아이디와 패스워드 데이터를 읽어올 영역
+        var request = new XMLHttpRequest();
+            request.open("POST","logindata/login.txt",true);
+            request.send();
+            //아이디와 패스워드 이름을 담을 배열 생성
+            var idData =[];
+            var pwData =[];
+            var nameData = [];
+            var localStore = localStorage;
+
+            request.onreadystatechange = function(event){
+                if(request.readyState == 4){
+                    if(request.status == 200){
+
+                        //일반 텍스트형식으로 데이터를 읽어옴
+                        var textRead = request.responseText;
+                        
+                        textRead = textRead.split(",");
+                        //아이디값과 패스워드값을 배열로 받음
+                        for(var i =0; i<textRead.length; i++){
+                            if(i%3==0){
+                                idData[idData.length] = textRead[i];
+                            }else if(i%3==1){
+                                pwData[pwData.length] = textRead[i];
+                                
+                            }else{
+                                nameData[nameData.length] = textRead[i];
+                                
+                            }
+                            
+                        }
+                        
+                        var jsonData = [];
+                        
+                        //로컬 스토리지에 텍스트에 써놓은 값을 세팅함.
+                        for(var i=0; i<idData.length; i++){
+                            //배열에 오브젝트형식을 넣음
+
+                            jsonData[i] = {};
+                            //아이디와 패스워드값 날짜를 넣음.
+                            jsonData[i].id = idData[i];
+                            jsonData[i].pw = pwData[i];
+                            jsonData[i].username = nameData[i];
+                            //alert(jsonData[i].username);
+                            jsonData[i].date = new Date().toLocaleDateString();
+                            localStore.setItem(idData[i],JSON.stringify(jsonData[i]));
+                        }
+                       
+
+                    }
+                }
+            }
+            location.href="mainPage.html";
+    
+    </script>
+    
+</body>
+</html>

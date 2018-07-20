@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>회원가입 페이지</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <style>
+        #crTab{
+            position: relative;
+        }
+    </style>
+    
+</head>
+<body>
+    <table class="table" style="width: 800px" id="crTab">
+        <tr>
+            <td>이름</td>
+            <td>
+                <input type="text" class="form-control" id="txtName">
+            </td>
+        </tr>
+        <tr>
+            <td>아이디(한글 불가능)</td>
+            <td>
+                <input type="text" class="form-control" id="txtId">
+            </td>
+        </tr>
+        <tr>
+            <td>패스워드</td>
+            <td>
+                <input type="password" class="form-control" id="txtPw">
+            </td>
+        </tr>
+        <tr>
+            <td>패스워드 재입력</td>
+            <td>
+                <input type="password" class="form-control" id="txtPw2">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" class="form-control" value="회원가입" id="btnAccount">
+            </td>
+            <td>
+                <input type="button" class="form-control" value="뒤로가기" id="btnBack">
+            </td>
+        </tr>
+    
+    </table>
+
+<script>
+
+    $(function(){
+
+        //테이블의 폭과 높이 /2 변수
+        var tabW = $("#crTab").width()/2;
+        var tabH = $("#crTab").height()/2;
+        //윈도우의 폭과 높이 /2 변수
+        var winW = $(window).width()/2;
+        var winH = $(window).height()/2;
+        //alert(winH);
+        $("#crTab").css("left",winW - tabW);
+        $("#crTab").css("top", winH- tabH);
+
+        $(window).on("resize",function(){
+            tabW = $("#crTab").width()/2;
+            tabH = $("#crTab").height()/2;
+            winW = $(window).width()/2;
+            winH = $(window).height()/2;
+            $("#crTab").css("left",winW - tabW);
+            $("#crTab").css("top", winH- tabH);
+        });
+
+
+        //회원가입 버튼을 눌렀을 때
+        $("#btnAccount").on("click",function(){
+            
+            //각 텍스트값을 변수로 받음
+            var nameVar = $("#txtName").val();
+            var idVar = $("#txtId").val();
+            var pwVar = $("#txtPw").val();
+            var pwVar2 = $("#txtPw2").val();
+            //가입 성공시 로컬스토리지에 담을 오브젝트
+            var account = {};
+            //빈 항목이 있는지 체크
+           if(!nameVar || !idVar || !pwVar || !pwVar2){
+               alert("기입하지 않은 항목이 있습니다.");
+           }else{
+            //로컬 스토리지 생성
+             var locstg = localStorage;
+              
+              //해당 사용자가 존재하면
+              if(locstg.getItem(idVar)){
+                  alert("중복된 아이디입니다.")
+              }else{
+                  //한글이 들어오면
+                  hanCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+                  if(hanCheck.test(idVar)){
+                    alert("한글은 입력불가합니다.");
+                  //한글이 들어오지 않으면
+                  }else{
+                    //패스워드와 재확인 패스워드가 다르면
+                    if(pwVar != pwVar2){
+                        alert("패스워드와 재확인 패스워드가 다릅니다.");
+                    }else{
+                        
+                        //오브젝트에 값을 담음
+                        account.id = idVar;
+                        account.pw = pwVar;
+                        account.username = nameVar;
+                        account.date = new Date().toLocaleDateString();
+                        //alert(account.username);
+                        //로컬스토리지에 값을 담음
+                        locstg.setItem(idVar,JSON.stringify(account));
+                        alert(nameVar+"님 가입을 환영합니다.");
+                        $(location).attr("href","middlePage.html?id="+idVar);
+                    }
+                  }
+              }
+
+           }
+            
+
+
+        });
+
+        //뒤로가기 버튼을 눌렀을 때
+        $("#btnBack").on("click",function(){
+            $(location).attr("href","mainPage.html");
+        });
+
+    });
+
+</script>
+
+</body>
+</html>

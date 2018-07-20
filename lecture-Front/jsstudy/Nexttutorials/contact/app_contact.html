@@ -4,10 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <title>app_contact</title>
-    <link rel="stylesheet" href="../static/style/pc33.css">
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
     <!-- style: common -->
-    <link rel="stylesheet" href="style/style_contact.css">
+    <link rel="stylesheet" href="../static/style/pc33.css">
     <!-- style: contac/style -->
+    <link rel="stylesheet" href="style/style_contact.css">
+    
 </head>
 <!-- contact/app_contact.html-->
 
@@ -21,13 +23,20 @@
             <a href="../typing/app_typing.html">타자게임</a>&nbsp; &nbsp; &nbsp;
             <a href="../board/app_board.html">게시판</a>&nbsp; &nbsp; &nbsp;
             <a href="../contact/app_contact.html">컨택트</a>&nbsp; &nbsp; &nbsp;
+            <a href="../about/app_about.html">방문</a>
         </div>
     </header>
     <hr>
     <div id='container'>
-        <table id='mailbox' border='2px' cellpadding="10px">
+        <table class='mailbox' border='2px' cellpadding="10px">
             <tr>
-                <td class='lbCell'>EMAIL</td>
+                <td class= 'lbCell'>받는주소</td>
+                <td>
+                    <input class='inputs' type="email" value='eggmoney@nextit.or.kr' disabled="true">
+                </td>
+            </tr>
+            <tr>
+                <td class= 'lbCell'>보내는주소</td>
                 <td>
                     <input class='inputs' type="email">
                 </td>
@@ -53,12 +62,28 @@
             <tr>
                 <td id='sendPart' colspan="2">
                     <input type="button" value="Send">
-                    <input type="button" value="Cancel">
+                    <input type="button" value="Cancel" onclick="handleCancel()">
                 </td>
             </tr>
         </table>
     </div>
     <hr>
+    <footer style='text-align: center;'>
+        <p>
+            this site is blah blah blah
+            <br>nextit all reserved <a href="http://nextit.or.kr" style='color:black;'>NEXTIT</a> by <a href="https://google.com" style='color:black;'>@ggl</a>
+        </p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+
+    <script>
+        "use strict"
+        function handleCancel() {
+            location.href = '../app.html';
+        }
+    </script>
 </body>
 
 </html>

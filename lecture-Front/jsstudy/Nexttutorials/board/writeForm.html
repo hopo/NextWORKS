@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>app_board</title>
+    <link rel="icon" type="image/png" href="../static/image/favicon.png">
     <!-- style: common -->
     <link rel="stylesheet" href="../static/style/pc33.css">
     <!-- style: board/style/ -->
@@ -25,38 +26,49 @@
     </header>
     <hr>
     <div id='container'>
-        <table border="1">
+        <table class='mailbox' border="2px" cellpadding='10px' width='60%'>
             <tr>
                 <td>
                     Title
-                    <input type="text">
+                </td>
+                <td width='100%'>
+                    <input type="text" style="border:none">
                 </td>
             </tr>
             <tr>
-                <td>
+                <td colspan="2">
                     Content
                 </td>
             </tr>
             <tr>
-                <td>
-                    <textarea cols="30" rows="10"></textarea>
+                <td colspan="2">
+                    <textarea cols="90" rows="10"></textarea>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Image
+            <tr style='text-align: right; padding: 5px'>
+                <td colspan='2'>
+                    사진첨부
                     <input type="file">
                 </td>
             </tr>
-            <tr>
-                <td>
-                    <input type="button" value='Register'>
-                    <input type="button" value='Cancel' onclick='handleList()'>
+            <tr style='text-align: right; padding: 5px'>
+                <td colspan="2">
+                    <input type="button" value='등록'>
+                    <input type="button" value='취소' onclick='handleList()'>
                 </td>
             </tr>
         </table>
     </div>
     <hr>
+    <footer style='text-align: center;'>
+        <p>
+            this site is blah blah blah
+            <br>nextit all reserved <a href="http://nextit.or.kr" style='color:black;'>NEXTIT</a> by <a href="https://google.com" style='color:black;'>@ggl</a>
+        </p>
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
     <script>
     "use strict"
 
@@ -64,7 +76,6 @@
         location.href = 'app_board.html'
     }
     </script>
-    <hr>
 </body>
 
 </html>

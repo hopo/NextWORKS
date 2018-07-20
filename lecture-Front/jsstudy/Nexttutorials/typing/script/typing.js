@@ -101,6 +101,9 @@ function wordsCheck() {
                 onDiv[i].style.top = "-30px";
                 onDiv[i] = "";
                 scoreBoard.textContent = score++;
+                if(score == 272) {
+                    alert('****** 272 ******');
+                }
             }
         }
         tajaTyping.value = "";

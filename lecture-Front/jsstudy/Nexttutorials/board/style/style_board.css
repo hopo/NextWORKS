@@ -3,15 +3,32 @@
 
 /*
  * =====================================================
- * tags
+ * class
  * =====================================================
  */
 
-
-a.boardHover:hover {
-    color: red;
+.boA:link {
+    color: black;
     text-decoration: none;
 }
+
+.boA:active {
+    color: black;
+    text-decoration: none;
+}
+
+.boA:visited {
+    color: gray;
+    text-decoration: none;
+}
+
+.boA:hover {
+    color: red;
+    /*font-size: 3em;*/
+    text-decoration: none;
+}
+
+
 
 
 /*
@@ -36,11 +53,11 @@ a.boardHover:hover {
 }
 
 #hdRow th {
-	padding : 10px;
+    padding: 10px;
 }
 
 #searchPart {
-	padding-left: 20px;
+    padding-left: 20px;
 }
 
 #listNum a:hover {

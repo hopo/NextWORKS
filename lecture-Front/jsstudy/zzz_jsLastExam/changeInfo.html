@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>정보 수정</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> 
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style>
+    #tabId{
+        position: relative;
+        width: 800px;
+    }
+
+</style>
+
+</head>
+<body>
+    <table class="table" id="tabId">
+        <tr>
+            <td>이름</td>
+            <td>
+                <input type="text" class="form-control" readonly id="txtName">
+            </td>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td>
+                <input type="text" class="form-control" readonly id="txtId">
+            </td>
+        </tr>
+        <tr>
+            <td>현재 패스워드</td>
+            <td>
+                <input type="password" class="form-control" id="nowPw">
+            </td>
+        </tr>
+        <tr>
+            <td>변경할 패스워드</td>
+            <td>
+                <input type="password" class="form-control" id="nextPw">
+            </td>
+        </tr>
+        <tr>
+            <td>변경할 패스워드 재확인</td>
+            <td>
+                <input type="password" class="form-control" id="nextPw2">
+            </td>
+        </tr>
+        <tr>
+            <td>가입일</td>
+            <td>
+                <input type="text" class="form-control" id="acntDate" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="변경하기" id="btnOK" class="form-control">
+            </td>
+            <td>
+                <input type="button" value="취소하기" id="btnCancel" class="form-control">
+            </td>
+        </tr>
+    </table>
+
+    <script>
+    
+        $(function(){
+           
+           //윈도우 폭과 높이 /2
+           var winH = $(window).height()/2;
+           var winW = $(window).width()/2;
+           //테이블의 폭과 높이 /2
+           var tabW = $("#tabId").width()/2;
+           var tabH = $("#tabId").height()/2;
+           
+           $("#tabId").css("left",winW - tabW);
+           $("#tabId").css("top",winH - tabH);
+           
+            //윈도우 리사이즈시 다시 화면 중앙으로 맞춤
+           $(window).on("resize",function(){
+                winH = $(window).height()/2;
+                winW = $(window).width()/2;
+                tabW = $("#tabId").width()/2;
+                tabH = $("#tabId").height()/2;
+                $("#tabId").css("left",winW - tabW);
+                $("#tabId").css("top",winH - tabH);
+           });
+
+
+           var locS = localStorage;
+            
+           var urlId = $(location).attr("href");
+           urlId = urlId.split("=")[1];
+           
+           var Items = JSON.parse(locS.getItem(urlId));
+            //alert(Items.id);
+           $("#txtId").val(Items.id);
+           $("#txtName").val(Items.username);
+           $("#acntDate").val(Items.date);
+           
+
+            
+            
+           //변경완료 버튼 
+           $("#btnOK").on("click",function(){
+                var nowPWD = $("#nowPw").val();
+                var nextPWD1 = $("#nextPw").val();
+                var nextPWD2 = $("#nextPw2").val();
+                /*
+                alert(nowPWD);
+                alert(nextPWD1);
+                alert(nextPWD2);
+                */
+
+                //누락된 값이 있는지 체크
+                if(nowPWD && nextPWD1 && nextPWD2 ){
+                    
+                    //현재 비밀번호가 맞는지 확인
+                    if(nowPWD == Items.pw){
+
+                        //새로운 비밀번호와 재확인이 같은지 확인
+                        if(nextPWD1==nextPWD2){
+                            Items.pw = nextPWD1;
+                            
+                           locS.setItem(Items.id,JSON.stringify(Items));
+                           alert("정보 수정 완료");
+                            $(location).attr("href","middlePage.html?id="+urlId);
+                        }else{
+                            alert("새로운 비밀번호와 재확인 비밀번호가 다릅니다.");
+                        }
+                        
+                    }else{
+                        alert("현재 패스워드가 잘못됐습니다.");
+                    }
+                        
+                }else{
+                    alert("누락된 값이 있습니다.");
+                }
+
+              
+           });
+
+           //취소 버튼
+           $("#btnCancel").on("click",function(){
+               $(location).attr("href","middlePage.html?id="+urlId);
+           });
+
+        });
+
+    </script>
+
+</body>
+</html>
