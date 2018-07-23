@@ -17,13 +17,8 @@ h1 {
 </style>
 
 <body>
-    <input type=button value="눌러" onclick="">
-    <select id="sel" onchange="handleSel()">
-        <option value="0">HTML</option>
-        <option value="1">CSS</option>
-        <option value="2">JS</option>
-    </select>
-    <div id=js_ajax></div>
+    <input type=button value="눌러" onclick="handleJson()">
+    
     <script>
     "use strict"
 
@@ -38,12 +33,11 @@ h1 {
     request.open('POST', url+'data.json', true);
     request.send();
 
-    function handleSel() {
+    function handleJson() {
         if (request.readyState == 4) {
             if (request.status == 200) {
                 var json = JSON.parse(request.responseText);
-                var cont = json[sel.options.selectedIndex].content.point;
-                document.getElementById("js_ajax").textContent += cont;
+                console.log(json);
             }
         }
     }

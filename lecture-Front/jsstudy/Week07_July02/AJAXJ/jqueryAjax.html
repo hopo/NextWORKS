@@ -4,26 +4,11 @@
 <head>
     <title>AJAX가 뭔가요?</title>
     <meta charset="utf-8" />
+    <script type="text/javascript" src="../../jQuery/jquery-3.3.1.min.js"></script>
 </head>
-<style>
-h1 {
-    color: tomato;
-}
-#js_ajax {
-    width: 50vw;
-    height: 30vh;
-    background-color: #eeffee;
-}
-</style>
 
 <body>
-    <input type=button value="눌러" onclick="">
-    <select id="sel" onchange="handleSel()">
-        <option value="0">HTML</option>
-        <option value="1">CSS</option>
-        <option value="2">JS</option>
-    </select>
-    <div id=js_ajax></div>
+ 
     <script>
     "use strict"
 
@@ -31,22 +16,11 @@ h1 {
 	// %% 오리진: http://web-address.com:8080
 
     // ! Request obj
-    var request = new XMLHttpRequest();
-    var url = 'data/';
-
-    // ;read .json
-    request.open('POST', url+'data.json', true);
-    request.send();
-
-    function handleSel() {
-        if (request.readyState == 4) {
-            if (request.status == 200) {
-                var json = JSON.parse(request.responseText);
-                var cont = json[sel.options.selectedIndex].content.point;
-                document.getElementById("js_ajax").textContent += cont;
-            }
-        }
-    }
+    jQuery(function(){
+        $.getJSON('data/data.json', function(json){
+            console.log(json);
+        })
+    })
 
     /*
     // ! processing...
