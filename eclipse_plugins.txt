@@ -1,0 +1,11 @@
+Eclipse pulgin
+
+sts
+xml editors and tools 3.9
+properties editor
+
+
+svn :subversive (oracle)
+mybatipse 1.*
+
+tern eclipse
