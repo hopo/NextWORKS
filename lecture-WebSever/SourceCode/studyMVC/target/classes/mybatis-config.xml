@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<!-- http://www.mybatis.org/mybatis-3/ko/getting-started.html -->
+<configuration>
+
+	<!-- db 접속 정보 프러퍼티스 -->
+	<properties resource="db.properties" />
+
+	<!-- 마이바티스 기본 세팅스 -->
+	<!-- http://www.mybatis.org/mybatis-3/ko/configuration.html 'settings' 참고 -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+		<setting name="callSettersOnNulls" value="true" />
+		<setting name="mapUnderscoreToCamelCase" value="true" /> <!-- ;;;안낙타법과 낙타법 변경-->
+	</settings>
+
+	<!-- 선택사항 -->
+	<!-- <typeAliases> <typeAlias type="kr.or.nextit.board.service.BoardVo" alias="boardVo" /> </typeAliases> -->
+
+	<environments default="development">
+
+		<environment id="development">
+			<transactionManager type="JDBC" /> <!-- JDBC/MANAGED -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+
+				<!-- pool 관련 설정 -->
+				<property name="poolPingQuery" value="select 1 from dual" />
+				<property name="poolMaximumActiveConnections" value="10" />
+				<property name="poolMaximumIdleConnections" value="4" />
+				<property name="poolMaximumCheckoutTime" value="20000" />
+
+			</dataSource>
+		</environment>
+
+		<environment id="production">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<!-- myBatis Mapper 사용 시 필수 사항 -->
+	<mappers>
+		<mapper resource="mapper/BoardMapper.xml" />
+		<mapper resource="mapper/MemberMapper.xml" />
+	</mappers>
+
+</configuration>
+

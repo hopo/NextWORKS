@@ -13,3 +13,6 @@ cTest.outr
 
 .metadata/
 .recommenders/
+
+.classpath
+.project
