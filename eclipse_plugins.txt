@@ -1,9 +1,9 @@
-Eclipse pulgin
+= Eclipse pulgins =
 
 sts
 xml editors and tools 3.9
 properties editor
-
+mybatipse
 
 svn :subversive (oracle)
 mybatipse 1.*
