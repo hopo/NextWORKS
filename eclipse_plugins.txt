@@ -3,9 +3,8 @@
 sts
 xml editors and tools 3.9
 properties editor
-mybatipse
+mybatipse 1.*
 
 svn :subversive (oracle)
-mybatipse 1.*
 
 tern eclipse
