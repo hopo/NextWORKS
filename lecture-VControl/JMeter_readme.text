@@ -1,0 +1,8 @@
+# -- JMeter testing
+# 0730Mon
+
+ThreadGroup 생성
+    HttpRequestDefault 생성
+    샘플러 HttpRequest 생성 'memberView.do'
+        파라미터 값 설정
+    리스너 : 필요한 리스너 추가
