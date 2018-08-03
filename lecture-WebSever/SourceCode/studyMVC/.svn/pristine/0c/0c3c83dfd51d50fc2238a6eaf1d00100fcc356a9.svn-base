@@ -1,0 +1,38 @@
+package kr.or.nextit.session.service.impl;
+
+import java.util.HashMap;
+
+import org.springframework.stereotype.Service;
+
+import kr.or.nextit.member.service.MemberVo;
+import kr.or.nextit.session.service.SessionService;
+
+@Service("SessionService") // *LoginController @Resource
+public class SessionServiceImpl implements SessionService {
+
+	@Override
+	public MemberVo loginCheck(MemberVo memberVo, HashMap<String, Object> params) throws Exception {
+
+		MemberVo result = new MemberVo();
+
+		result.setMemId("admin");
+		result.setMemPwd("1111");
+
+		if (memberVo.getMemId().equals(result.getMemId())) {
+
+			result.setResult(true);
+			result.setMessage("정상 로그인 되었다");
+
+			return result;
+		} else {
+
+			result.setResult(false);
+			result.setMessage("로그인 실패다");
+
+			return null;
+
+		}
+
+	}
+
+}

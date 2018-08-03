@@ -10,7 +10,7 @@
 
 <footer class="blog-footer">
 	<p>
-		Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="http://192.168.20.14/jsstudy">pc33</a>.
+		Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="http://192.168.20.14/jsstudy" target="_blank">pc33</a>.
 	</p>
 	<p>
 		<a href="#">Back to top</a>

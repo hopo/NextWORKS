@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.notice.service.impl.NoticeMapper">
+
+	<!-- ========== Tag : sql ======================================= -->
+	<sql id="tableColumns">
+		idx,
+		board_type,
+		title,
+		contents,
+		reg_date,
+		up_date,
+		reg_user
+	</sql>
+
+	<sql id="whereQueryTrimIf">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="searchText != null and searchText != ''">
+	    		AND ${searchType} LIKE '%' || #{searchText} || '%'
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="whereQueryChoose">
+		<trim prefix="WHERE" prefixOverrides="AND | OR"> <!-- 'WHERE' 처음에 AND | OR 가 있으면 제거 하겠다 -->
+			<choose>
+    			<when test="searchType == 'title'">
+      				AND title LIKE '%' || #{searchText} || '%'
+    			</when>
+		    	<when test="searchType == 'board_type'">
+		      		AND board_type LIKE '%' || #{searchText} || '%'
+		    	</when>
+		    	<otherwise>
+		     		AND idx LIKE '%' || #{searchText} || '%'
+		    	</otherwise>
+		  	</choose>
+		</trim>
+	</sql>
+	<!-- ========================================================= -->
+
+
+
+
+	<!-- ========== Tag : select ======================================= -->
+	<select id="selectNoticeList" parameterType="kr.or.nextit.notice.service.NoticeSearchVo" resultType="kr.or.nextit.notice.service.NoticeVo">
+		SELECT
+			idx,
+			board_type,
+			title,
+			read_count,
+			contents,
+			reg_date,
+			up_date,
+			reg_user,
+			rnum
+		FROM (
+			SELECT ROWNUM AS rnum , frm.*
+			FROM (
+				SELECT
+					idx,
+					board_type,
+					title,
+					read_count,
+					contents,
+					reg_date,
+					up_date,
+					reg_user
+				FROM tb_board
+				<include refid="whereQueryTrimIf" />
+				ORDER BY reg_date DESC
+			) frm
+	    )
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+
+	<select id="selectNoticeList_bak" parameterType="kr.or.nextit.notice.service.NoticeSearchVo" resultType="kr.or.nextit.notice.service.NoticeVo">
+		SELECT
+			<include refid="tableColumns" />
+		FROM
+			tb_board
+	</select>
+
+	<select id="selectItemView" parameterType="kr.or.nextit.notice.service.NoticeVo" resultType="kr.or.nextit.notice.service.NoticeVo">
+		SELECT
+			<include refid="tableColumns" />
+		FROM
+			tb_board
+		WHERE
+			idx = ${idx}	
+	</select>
+
+
+	<select id="selectTotalCount" parameterType="kr.or.nextit.notice.service.NoticeSearchVo" resultType="int">
+		SELECT
+			count(idx) AS totalCount
+		FROM
+			tb_board
+		<include refid="whereQueryTrimIf" />
+	</select>
+	<!-- ========================================================= -->
+
+
+
+
+	<!-- ========== Tag : insert ======================================= -->
+	<insert id="insertItem" parameterType="kr.or.nextit.notice.service.NoticeVo">
+		INSERT INTO tb_board (
+			<include refid="tableColumns" />
+		) VALUES (
+			seq_ex.NEXTVAL,
+			#{boardType},
+			#{title},
+			#{contents},
+			SYSDATE,
+			SYSDATE,
+			#{regUser}
+		)
+	</insert>
+	<!-- ========================================================= -->
+	
+	
+	
+	
+	<!-- ========== Tag : update ======================================= -->
+	<update id="updateItemViewCount" parameterType="kr.or.nextit.notice.service.NoticeVo">
+		UPDATE tb_board
+		SET
+			read_count = read_count + 1
+		WHERE
+			idx = #{idx}		
+	</update>
+	<!-- ========================================================= -->
+
+</mapper>

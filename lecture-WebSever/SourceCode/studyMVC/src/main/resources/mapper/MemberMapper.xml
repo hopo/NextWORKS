@@ -3,8 +3,47 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
 <mapper namespace="kr.or.nextit.member.service.impl.MemberMapper">
-	<!-- ; clob blob 처리를 위해서는 parameterMap이용 -->
+
+	<!-- ; CLOB BLOB 처리를 위해서는 parameterMap이용 -->
 	<!-- ; ${}내용 그자체. #{}타입으로 변화 - 차이가 크다 -->
+	<!-- ; Dynamic sql 참고:  http://www.mybatis.org/mybatis-3/ko/dynamic-sql.html -->
+	
+	<sql id="whereQueryChoose">
+		<trim prefix="WHERE" prefixOverrides="AND | OR"> <!-- 'WHERE' 처음에 AND | OR 가 있으면 제거 하겠다 -->
+			<choose>
+    			<when test="searchType == 'mem_id'">
+      				AND mem_id LIKE '%' || #{searchText} || '%'
+    			</when>
+		    	<when test="searchType == 'mem_name'">
+		      		AND mem_name LIKE '%' || #{searchText} || '%'
+		    	</when>
+		    	<otherwise>
+		     		AND mem_email LIKE '%' || #{searchText} || '%'
+		    	</otherwise>
+		  	</choose>
+		</trim>
+	</sql>
+
+	<sql id="whereQueryTrimIf">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="searchText != null and searchText != ''">
+	    		AND ${searchType} LIKE '%' || #{searchText} || '%'
+			</if>
+		</trim>
+	</sql>
+
+	<sql id="tableColumns">
+    		mem_id
+		  , mem_pwd
+		  , mem_name
+		  , mem_phone
+		  , mem_email
+		  , reg_date
+		  , mem_ip
+		  , del_at
+		  , view_count
+	</sql>
+
 
 	<insert id="insertItem" parameterType="kr.or.nextit.member.service.MemberVo">
 		INSERT INTO tb_member (
@@ -28,23 +67,24 @@
 		)
 	</insert>
 
-	<select id="selectItems" parameterType="kr.or.nextit.member.service.MemberVo" resultType="kr.or.nextit.member.service.MemberVo">
-		SELECT
-    		mem_id
-		  , mem_pwd
-		  , mem_name
-		  , mem_phone
-		  , mem_email
-		  , reg_date
-		  , mem_ip
-		  , del_at
-		FROM
-		    tb_member
-		ORDER BY
-			del_at DESC
+	<!-- selectItems 00 -->
+	<select id="selectItems" parameterType="kr.or.nextit.member.service.MemberSearchVo" resultType="kr.or.nextit.member.service.MemberVo">
+		SELECT *
+		FROM (
+			SELECT ROWNUM AS rnum , frm.*
+			FROM (
+				SELECT <include refid="tableColumns" />
+				FROM tb_member
+				<include refid="whereQueryTrimIf" />
+				ORDER BY reg_date DESC
+			) frm
+	    )
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
-
-	<select id="selectViewItem" parameterType="kr.or.nextit.member.service.MemberVo" resultType="kr.or.nextit.member.service.MemberVo">
+	
+	<!-- selectItems 01 -->	
+	<!-- 
+	<select id="selectItems" parameterType="kr.or.nextit.member.service.MemberSearchVo" resultType="kr.or.nextit.member.service.MemberVo">
 		SELECT
     		mem_id
 		  , mem_pwd
@@ -57,36 +97,84 @@
 		FROM
 		    tb_member
 		WHERE
-			mem_id = #{memId}
+			1 = 1
+			<if test="searchText != null and searchText != ''">
+	    		AND ${searchType} LIKE '%' || #{searchText} || '%'
+			</if>
+			<if test="searchText != null and searchText != ''">
+	    		AND ${searchType} LIKE '%' || #{searchText} || '%'
+			</if>
+	</select>
+	-->
+
+	<!-- selectItems 02 -->
+	<!--  
+	<select id="selectItems" parameterType="kr.or.nextit.member.service.MemberSearchVo" resultType="kr.or.nextit.member.service.MemberVo">
+		SELECT
+    		mem_id
+		  , mem_pwd
+		  , mem_name
+		  , mem_phone
+		  , mem_email
+		  , reg_date
+		  , mem_ip
+		  , del_at
+		FROM
+		    tb_member
+		<include refid="whereQueryChoose" />
+	</select>
+	-->
+
+
+	<select id="selectViewItem" parameterType="kr.or.nextit.member.service.MemberVo" resultType="kr.or.nextit.member.service.MemberVo">
+		SELECT <include refid="tableColumns" />
+		FROM tb_member
+		WHERE mem_id = #{memId}
 	</select>
 	
 	<update id="updateItem" parameterType="kr.or.nextit.member.service.MemberVo">
 		UPDATE tb_member
-		SET
-		      mem_pwd = #{memPwd}
-		    , mem_name = #{memName}
-		    , mem_phone = #{memPhone}
-		    , mem_email = #{memEmail}
-		    , reg_date = SYSDATE
-		    , mem_ip = #{memIp}
-		    , del_at = #{delAt}
-		WHERE
-		    mem_id = #{memId}
+		<trim prefix="SET" prefixOverrides=",">
+			<if test="memPwd != null and memPwd != ''">
+		    	  mem_pwd = #{memPwd} 
+		    </if>
+			<if test="memName != null and memName != ''">
+  	    		, mem_name = #{memName} 
+		    </if>
+			<if test="memPhone != null and memName != ''">
+				, mem_phone = #{memPhone} 
+		    </if>
+				, mem_email = #{memEmail} 
+			 	, reg_date = SYSDATE 
+			    , mem_ip = #{memIp} 
+			    , del_at = #{delAt} 
+		</trim>
+		WHERE mem_id = #{memId}
 	</update>
+	
+	
+	<select id="selectTotalCount" parameterType="kr.or.nextit.member.service.MemberSearchVo" resultType="int">
+		SELECT count(mem_id) AS totalCount
+		FROM tb_member
+		<include refid="whereQueryTrimIf" />
+	</select>
 
-<!--
-	<delete id="deleteItem" parameterType="kr.or.nextit.member.service.MemberVo">
-		DELETE FROM tb_member
-		WHERE
-		    mem_id = #{memId}
-	</delete>
--->
+
+
+	<!-- deleteItem 00 del_at을 수정 -->
 	<update id="deleteItem" parameterType="kr.or.nextit.member.service.MemberVo">
 		UPDATE tb_member
-		SET
-		    del_at = 'N'
-		WHERE
-		    mem_id = #{memId}
+		SET del_at = 'N'
+		WHERE mem_id = #{memId}
 	</update>
+
+	<!-- deleteItem 01 실제 삭제 쿼리 -->
+	<!--
+	<delete id="deleteItem" parameterType="kr.or.nextit.member.service.MemberVo">
+		DELETE FROM tb_member
+		WHERE mem_id = #{memId}
+	</delete>
+	-->
+
 
 </mapper>

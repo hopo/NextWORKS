@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.board.service.impl.BoardMapper"> <!-- Class name -->
+
+	<select id="selectBoardList" resultType="kr.or.nextit.board.service.BoardVo" parameterType="map"> <!-- Method id:name -->
+		SELECT
+			idx
+			, board_type
+			, title
+			, contents
+			, reg_date
+			, up_date
+			, reg_user
+		FROM
+			tb_board
+	</select>
+
+	<select id="selectBoardView" resultType="kr.or.nextit.board.service.BoardVo" parameterType="kr.or.nextit.board.service.BoardVo">
+		SELECT
+			idx
+			, board_type
+			, title
+			, contents
+			, reg_date
+			, up_date
+			, reg_user
+		FROM
+			tb_board
+		WHERE
+			idx = #{idx}
+		ORDER BY up_date DESC
+	</select>
+</mapper>
