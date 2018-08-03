@@ -7,7 +7,6 @@
 cTest.out
 cTest.outr
 
-*.pyc
 
 *.class
 
@@ -16,3 +15,7 @@ cTest.outr
 
 .classpath
 .project
+
+*.pyc
+__pycache__/
+venv/
