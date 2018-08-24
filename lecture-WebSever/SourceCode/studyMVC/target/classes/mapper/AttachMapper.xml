@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.attach.service.impl.AttachMapper">
+
+	<!-- ========== Tag : sql ======================================= -->
+	<sql id="tableColumns">
+		file_group,
+		file_id,
+		file_type,
+		file_original_file_name,
+		file_size,
+		file_save_path,
+		file_save_file_name,
+		file_flag,
+		file_reg_user,
+		file_reg_date
+	</sql>
+	<!-- ========================================================= -->
+
+
+
+
+	<!-- ========== Tag : SELECT ======================================= -->
+	<select id="selectItems" parameterType="kr.or.nextit.attach.service.AttachVo" resultType="kr.or.nextit.attach.service.AttachVo">
+		SELECT
+			<include refid="tableColumns" />
+		FROM
+			tb_com_attach
+	</select>
+
+	<select id="selectDownloadItem" parameterType="hashMap" resultType="kr.or.nextit.attach.service.AttachVo">
+		SELECT
+			<include refid="tableColumns" />
+		FROM
+			tb_com_attach
+		WHERE
+			file_id = #{fileId}
+	</select>
+
+	<!-- ========================================================= -->
+
+
+
+
+	<!-- ========== Tag : INSERT ======================================= -->
+	<insert id="insertItem" parameterType="kr.or.nextit.attach.service.AttachVo">
+		INSERT INTO
+			tb_com_attach (
+				<include refid="tableColumns" />
+		) VALUES(
+			#{fileGroup},
+			#{fileId},
+			#{fileType},
+			#{fileOriginalFileName},
+			#{fileSize},
+			#{fileSavePath},
+			#{fileSaveFileName},
+			'Y',
+			#{fileRegUser},
+			SYSDATE
+		)
+	</insert>
+	<!-- ========================================================= -->
+	
+	
+
+</mapper>

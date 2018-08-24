@@ -1,0 +1,15 @@
+package kr.or.nextit.attach.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+
+import kr.or.nextit.attach.service.AttachVo;
+
+public interface AttachMapper {
+
+	public void insertItem(AttachVo params) throws Exception;
+
+	public List<AttachVo> selectItems(AttachVo params) throws Exception;
+	
+	public AttachVo selectDownloadItem(HashMap<String, Object> params) throws Exception;
+}

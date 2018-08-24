@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.customer.service.impl.CustomerMapper">
+
+	<sql id="tableColumns">
+		cust_id,
+		cust_name,
+		cust_gender,
+		cust_year_of_birth,
+		cust_marital_status,
+		cust_postal_code,
+		cust_street_address,
+		cust_city,
+		cust_city_id,
+		cust_state_province,
+		cust_state_province_id,
+		cust_main_phone_int,
+		cust_income_level,
+		cust_credit_limit,
+		cust_email
+	</sql>
+
+	<select id="selectCustomerList" resultType="kr.or.nextit.customer.service.CustomerVo">
+		<!-- // TODO : select customer list -->
+	</select>
+
+</mapper>

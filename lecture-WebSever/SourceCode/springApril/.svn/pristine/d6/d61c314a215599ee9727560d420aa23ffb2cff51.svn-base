@@ -1,0 +1,23 @@
+package kr.or.nextit.member.service;
+
+import java.util.List;
+
+public interface MemberService {
+
+	/**
+	 * MemberService: memberList
+	 * 
+	 * @return
+	 * @throws Exception
+	 */
+	public List<MemberVo> selectMemberList() throws Exception;
+
+	/**
+	 * MemberService: memberCreate
+	 * 
+	 * @param memberVo
+	 * @throws Exception
+	 */
+	public void insertMember(MemberVo memberVo) throws Exception;
+
+}

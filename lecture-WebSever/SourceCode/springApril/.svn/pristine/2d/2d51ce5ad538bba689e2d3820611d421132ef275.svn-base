@@ -1,0 +1,28 @@
+package kr.or.nextit.customer.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.or.nextit.customer.service.CustomerSearchVo;
+import kr.or.nextit.customer.service.CustomerService;
+import kr.or.nextit.customer.service.CustomerVo;
+
+@Service("CustomerService")
+public class CustomerServiceImpl implements CustomerService {
+
+	@Autowired
+	private CustomerMapper customerMapper;
+
+	@Override
+	public List<CustomerVo> selectCustomerList(CustomerSearchVo customerSearchVo) throws Exception {
+		return customerMapper.selectCustomerList(customerSearchVo);
+	}
+	
+	@Override
+	public int selectTotalCount(CustomerSearchVo customerSearchVo) throws Exception {
+		return customerMapper.selectTotalCount(customerSearchVo);
+	}
+
+}

@@ -1,0 +1,13 @@
+TITLE=JSP Programming
+ID=ID
+NAME=Name
+GREETING=Hello.
+VISITOR=Your ID is {0} ({1}).
+
+ERROR.MSG_001=Fail to modify.
+ERROR.MSG_002=Fail to delete.
+
+MEMBER.ID=Member ID
+MEMBER.NAME=Member Name
+
+PRODUCT.NAME=Product Name

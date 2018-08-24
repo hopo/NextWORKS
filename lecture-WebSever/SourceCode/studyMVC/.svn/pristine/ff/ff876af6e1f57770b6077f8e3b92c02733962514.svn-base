@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<!-- ================ scheduler-context.xml ======================================================= -->
+	
+	<!-- // ;testJobDetail -->
+	<bean id="testJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="SchedulerNoticeService" />
+		<property name="targetMethod" value="getTitle" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="testTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail"  ref="testJobDetail"/>
+		<!-- // ;;시작하고 1분후에 실행한다 -->
+		<property name="startDelay"  value="60000"/>
+		<!-- // ;;매 5초 마다 실행한다 -->
+		<property name="cronExpression"  value="0/5 * * * * ?"/> <!-- ;;;초 분 시 일 월 년 -->
+	</bean>
+
+	<bean id="testScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="testTrigger" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- // ;countJobDetail -->
+	<bean id="countJobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="SchedulerNoticeService" />
+		<property name="targetMethod" value="setCount" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="countTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail"  ref="countJobDetail"/>
+		<property name="startDelay"  value="60000"/>
+		<property name="cronExpression"  value="0/30 * * * * ?"/>
+	</bean>
+
+
+	<bean id="countScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="countTrigger" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- ================================================================================================== -->
+	
+	
+
+	<!-- // ;cronExpression 참고 -->
+	<!-- 0 0 12 * * ? 매일 12시(정오) -->
+	<!-- 0 15 10 ? * * 매일 오전 10시 15분 -->
+	<!-- 0 15 10 * * ? 매일 오전 10시 15분 -->
+	<!-- 0 15 10 * * ? * 매일 오전 10시 15분 -->
+	<!-- 0 15 10 * * ? 2005 2005년에 매일 아침 10시 15분 -->
+	<!-- 0 * 14 * * ? 매일 오후 2시 0분 ~ 59분 -->
+	<!-- 0 0/5 14 * * ? 매일 오후 2시부터 2시 55분까지 5분마다 -->
+	<!-- 0 0/5 14,18 * * ? 매일 오후 2시부터 2시 55분까지 5분마다, 6시부터 6시 55분까지 5분마다 -->
+	<!-- 0 0-5 14 * * ? 매일 오후 2시부터 2시 5분까지 매분 -->
+	<!-- 0 10,44 14 ? 3 WED 매년 3월의 수요일마다 오후 2시 10분과 2시 44분 -->
+	<!-- 0 15 10 ? * MON-FRI 월요일부터 금요일까지 오전 10시 15분 -->
+	<!-- 0 15 10 15 * ? 매달 15일 오전 10시 15분 -->
+	<!-- 0 15 10 L * ? 매달 마지막 날 오전 10시 15분 -->
+	<!-- 0 15 10 ? * 6L 매달 마지막 금요일 오전 10시 15분 -->
+	<!-- 0 15 10 ? * 6L 2002-2005 2002년부터 2005년까지 매달 마지막 금요일 오전 10시 15분 -->
+	<!-- 0 15 10 ? * 6#3 매달 3번째 금요일 오전 10시 15분 -->
+	<!-- 0 0 12 1/5 * ? 매달 첫날부터 5일마다 12시(정오) -->
+	<!-- 0 11 11 11 11 ? 매년 11월 11일 오전 11시 11분 -->
+
+	
+</beans>

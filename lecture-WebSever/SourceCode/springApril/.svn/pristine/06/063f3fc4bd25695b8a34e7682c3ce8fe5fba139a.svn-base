@@ -1,0 +1,35 @@
+package kr.or.nextit.member.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.or.nextit.member.service.MemberService;
+import kr.or.nextit.member.service.MemberVo;
+
+@Service("MemberService")
+public class MemberServiceImpl implements MemberService {
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	private MemberMapper memberMapper;
+	
+	@Override
+	public List<MemberVo> selectMemberList() throws Exception {
+		List<MemberVo> result = memberMapper.selectMemberList();
+		log.debug(">>> MemberService selectMemberList() result : {} ", result);
+
+		return result;
+	}
+	
+	@Override
+	public void insertMember(MemberVo memberVo) throws Exception {
+		memberMapper.insertMember(memberVo);
+		log.debug(">>> MemberService insertMembert() memberVo : {} ", memberVo);
+	}
+
+}

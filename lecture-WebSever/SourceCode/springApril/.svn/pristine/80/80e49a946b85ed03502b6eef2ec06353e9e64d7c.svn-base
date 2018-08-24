@@ -1,0 +1,29 @@
+package kr.or.nextit.customer.service;
+
+import java.io.Serializable;
+
+import kr.or.nextit.comm.util.PagingVo;
+
+@SuppressWarnings("serial")
+public class CustomerSearchVo extends PagingVo implements Serializable {
+
+	private String serachType;
+	private String serachText;
+
+	public String getSerachType() {
+		return serachType;
+	}
+
+	public void setSerachType(String serachType) {
+		this.serachType = serachType;
+	}
+
+	public String getSerachText() {
+		return serachText;
+	}
+
+	public void setSerachText(String serachText) {
+		this.serachText = serachText;
+	}
+
+}

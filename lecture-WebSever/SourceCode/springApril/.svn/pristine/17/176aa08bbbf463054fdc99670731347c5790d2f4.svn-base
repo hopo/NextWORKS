@@ -1,0 +1,337 @@
+-- ===========================================================================
+ -- Script_0807 데이터 만들기 
+ -- ===========================================================================
+
+-- 기존(CUSTOMERS)에서 등록되 도시 수 
+ SELECT
+	COUNT( cust_city )
+FROM
+	CUSTOMERS;
+
+-- 중복 제거
+ SELECT
+	COUNT( DISTINCT cust_city )
+FROM
+	CUSTOMERS;
+
+-- 커스토머스의 컬럼들을 보고 싶으나...
+ DESCRIBE ` CUSTOMERS `;
+ show tables;
+show TB_BOARD;
+
+-- 커스토머스 조회
+ SELECT
+	CUST_ID,
+	CUST_NAME,
+	CUST_GENDER,
+	CUST_YEAR_OF_BIRTH,
+	CUST_MARITAL_STATUS,
+	CUST_STREET_ADDRESS,
+	CUST_POSTAL_CODE,
+	CUST_CITY,
+	CUST_CITY_ID,
+	CUST_STATE_PROVINCE,
+	CUST_STATE_PROVINCE_ID,
+	COUNTRY_ID,
+	CUST_MAIN_PHONE_NUMBER,
+	CUST_INCOME_LEVEL,
+	CUST_CREDIT_LIMIT,
+	CUST_EMAIL,
+	CUST_VALID
+FROM
+	CUSTOMERS;
+
+-- 프라이머리키로 이메일이 좋지 않을까..
+ SELECT
+	DISTINCT cust_email
+FROM
+	CUSTOMERS;
+
+-- 기존 커스토머스 테이블을 사용할 테이블(tb_customer)로 새로 복사
+ CREATE
+	TABLE
+		tb_customer AS(
+			SELECT
+				CUST_ID,
+				CUST_NAME,
+				CUST_GENDER,
+				CUST_YEAR_OF_BIRTH,
+				CUST_MARITAL_STATUS,
+				CUST_STREET_ADDRESS,
+				CUST_POSTAL_CODE,
+				CUST_CITY,
+				CUST_CITY_ID,
+				CUST_STATE_PROVINCE,
+				CUST_STATE_PROVINCE_ID,
+				COUNTRY_ID,
+				CUST_MAIN_PHONE_NUMBER,
+				CUST_INCOME_LEVEL,
+				CUST_CREDIT_LIMIT,
+				CUST_EMAIL,
+				CUST_VALID
+			FROM
+				CUSTOMERS
+		);
+
+-- 티비커스토머 조회
+ SELECT
+	CUST_ID,
+	CUST_NAME,
+	CUST_GENDER,
+	CUST_YEAR_OF_BIRTH,
+	CUST_MARITAL_STATUS,
+	CUST_STREET_ADDRESS,
+	CUST_POSTAL_CODE,
+	CUST_CITY,
+	CUST_CITY_ID,
+	CUST_STATE_PROVINCE,
+	CUST_STATE_PROVINCE_ID,
+	COUNTRY_ID,
+	CUST_MAIN_PHONE_NUMBER,
+	CUST_INCOME_LEVEL,
+	CUST_CREDIT_LIMIT,
+	CUST_EMAIL,
+	CUST_VALID
+FROM
+	TB_CUSTOMER;
+
+-- 각각의 중복 제거한 데이터 갯수 조회
+ SELECT
+	COUNT( DISTINCT CUST_ID ),
+	COUNT( DISTINCT CUST_NAME ),
+	COUNT( DISTINCT CUST_CITY_ID ),
+	COUNT( DISTINCT CUST_EMAIL ),
+	COUNT( DISTINCT CUST_MAIN_PHONE_NUMBER )
+FROM
+	tb_customer;
+
+-- 이름 중복이 너무 많아서 어떻게 할까 고민
+ SELECT
+	cust_name,
+	COUNT(*) AS total_count,
+	COUNT( cust_city_id ) city_count
+FROM
+	tB_customer
+WHERE
+	cust_name LIKE 'Antony' || '%';
+
+-- 연습용이 데이터이다 보니 데이터가 중복이나 마구 만들어진 듯 보임
+ SELECT
+	COUNT(*) AS total_count,
+	COUNT( cust_city_id ) city_count
+FROM
+	tB_customer
+WHERE
+	cust_name LIKE 'Bee' || '%';
+
+-- 이것저것 조합해서 이메일을 프라이머키로 만드는 게 좋을 듯
+ SELECT
+	cust_name,
+	cust_city,
+	CUST_CITY || CUST_NAME AS email_maker
+FROM
+	TB_CUSTOMER;
+
+-- 갯수 조회
+ SELECT
+	COUNT(*),
+	COUNT( DISTINCT cust_name ),
+	COUNT( DISTINCT cust_city ),
+	COUNT( DISTINCT CUST_CITY || CUST_NAME )
+FROM
+	TB_CUSTOMER;
+
+-- 갯수 조회
+ SELECT
+	COUNT(*),
+	COUNT( CUST_NAME ),
+	COUNT( CUST_city )
+FROM
+	TB_CUSTOMER;
+
+-- 커스트네임 값을 조작
+ SELECT
+	REPLACE( cust_name, ' ', '' ) AS aaa
+FROM
+	TB_CUSTOMER;
+
+-- 문자열 조작 테스트
+ SELECT
+	INSTR( 'Abc mart', ' ' )
+FROM
+	dual;
+
+-- 문자열 조작 테스트
+ SELECT
+	SUBSTR( 'Abc Mart', INSTR( 'Abc mart', ' ' )+ 1 ) AS TRIM
+FROM
+	dual;
+
+-- 문자열 조작 테스트, 새로운 프라이머리 키를 만들기 위해..
+ SELECT
+	SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+	SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+	SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 2 ) AS t_phone
+FROM
+	TB_CUSTOMER;
+
+-- 조작해본 데이터 갯수 조회
+ SELECT
+	COUNT( DISTINCT t_city ) AS combined,
+	COUNT( DISTINCT t_name ) AS combined2,
+	COUNT( DISTINCT t_phone ) AS combined3
+FROM
+	(
+		SELECT
+			SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+			SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+			SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 3 ) AS t_phone
+		FROM
+			TB_CUSTOMER
+	);
+
+-- 가상의 이메일 주소를 만들어 봄
+ SELECT
+	cust_id,
+	t_city || t_name || t_phone || '@nextit.com' AS NEW_email
+FROM
+	(
+		SELECT
+			cust_id,
+			SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+			SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+			SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 3 ) AS t_phone
+		FROM
+			TB_CUSTOMER
+	);
+
+-- 가상의 이메일 주소를 만들어 봄, 인라인 뷰
+ SELECT
+	cid,
+	t_city || t_name || t_phone || '@nextit.com' AS new_email
+FROM
+	(
+		SELECT
+			cust_id AS cid,
+			SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+			SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+			SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 3 ) AS t_phone
+		FROM
+			TB_CUSTOMER
+	);
+
+-- 만들어진 데이터를 어떻게 티비커스토머 테이블에 넣을까
+ SELECT
+	*
+FROM
+	(
+		SELECT
+			*
+		FROM
+			tb_customer
+	) aa,
+	(
+		SELECT
+			cid,
+			t_city || t_name || t_phone || '@nextit.com' AS new_email
+		FROM
+			(
+				SELECT
+					cust_id AS cid,
+					SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+					SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+					SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 3 ) AS t_phone
+				FROM
+					TB_CUSTOMER
+			)
+	) bb
+WHERE
+	aa.cust_id = bb.cid;
+
+-- 그냥 새롭게 만들어 버림, 조인을 이용
+ CREATE
+	TABLE
+		tb_customer02 AS(
+			SELECT
+				aa.CUST_ID,
+				aa.CUST_NAME,
+				aa.CUST_GENDER,
+				aa.CUST_YEAR_OF_BIRTH,
+				aa.CUST_MARITAL_STATUS,
+				aa.CUST_STREET_ADDRESS,
+				aa.CUST_POSTAL_CODE,
+				aa.CUST_CITY,
+				aa.CUST_CITY_ID,
+				aa.CUST_STATE_PROVINCE,
+				aa.CUST_STATE_PROVINCE_ID,
+				aa.COUNTRY_ID,
+				aa.CUST_MAIN_PHONE_NUMBER,
+				aa.CUST_INCOME_LEVEL,
+				aa.CUST_CREDIT_LIMIT,
+				aa.CUST_VALID,
+				bb.new_email
+			FROM
+				(
+					SELECT
+						*
+					FROM
+						tb_customer
+				) aa,
+				(
+					SELECT
+						cid,
+						t_city || t_name || t_phone || '@nextit.com' AS new_email
+					FROM
+						(
+							SELECT
+								cust_id AS cid,
+								SUBSTR( cust_city, INSTR( cust_city, ' ' )+ 1 ) AS t_city,
+								SUBSTR( cust_name, INSTR( cust_name, ' ' )+ 1 ) AS t_name,
+								SUBSTR( CUST_MAIN_PHONE_NUMBER, 1, 3 ) AS t_phone
+							FROM
+								TB_CUSTOMER
+						)
+				) bb
+			WHERE
+				aa.cust_id = bb.cid
+		);
+
+-- 새로만들어진 테이블 확인
+ SELECT
+	COUNT( 1 ),
+	COUNT( DISTINCT cust_id ),
+	COUNT( DISTINCT NEW_EMAIL )
+FROM
+	TB_CUSTOMER02;
+
+-- 새로만들어진 테이블 확인
+ SELECT
+	COUNT( 1 ),
+	COUNT( DISTINCT cust_id ),
+	COUNT( DISTINCT NEW_EMAIL )
+FROM
+	TB_CUSTOMER02;
+
+-- 사용할 테이블 이름으로 변경
+
+-- 티비커스토머 테이블 확인
+ SELECT
+	CUST_ID,
+	CUST_NAME,
+	CUST_GENDER,
+	CUST_YEAR_OF_BIRTH,
+	CUST_MARITAL_STATUS,
+	CUST_STREET_ADDRESS,
+	CUST_POSTAL_CODE,
+	CUST_CITY,
+	CUST_CITY_ID,
+	CUST_STATE_PROVINCE,
+	CUST_STATE_PROVINCE_ID,
+	COUNTRY_ID,
+	CUST_MAIN_PHONE_NUMBER,
+	CUST_INCOME_LEVEL,
+	CUST_CREDIT_LIMIT,
+	CUST_VALID,
+	CUST_EMAIL
+FROM
+	TB_CUSTOMER;

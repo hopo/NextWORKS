@@ -13,6 +13,7 @@
 			, reg_date
 			, up_date
 			, reg_user
+			, read_count
 		FROM
 			tb_board
 	</select>
@@ -26,6 +27,7 @@
 			, reg_date
 			, up_date
 			, reg_user
+			, read_count
 		FROM
 			tb_board
 		WHERE

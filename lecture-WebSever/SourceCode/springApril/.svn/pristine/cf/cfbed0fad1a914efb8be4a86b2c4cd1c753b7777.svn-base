@@ -1,0 +1,25 @@
+package kr.or.nextit.service.impl;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import kr.or.nextit.service.MemberService;
+import kr.or.nextit.service.MemberVo;
+
+@Service("NoticeService")
+public class MemberServiceImpl implements MemberService {
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	
+	private MemberMapper memberMapper;
+	
+	@Override
+	public List<MemberVo> selectMemberList() throws Exception {
+		log.debug(">>> NoticeService selectMemberList()");
+		return memberMapper.selectMemberList();
+	}
+
+}

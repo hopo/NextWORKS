@@ -1,0 +1,16 @@
+package kr.or.nextit.mber.service.impl;
+
+import kr.or.nextit.member.service.MemberVo;
+
+public interface MberMapper {
+
+	/**
+	 * id체크를 위한 인터페이스 Mber매퍼
+	 * 
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public MemberVo selectIdCheck(MemberVo params) throws Exception;
+
+}

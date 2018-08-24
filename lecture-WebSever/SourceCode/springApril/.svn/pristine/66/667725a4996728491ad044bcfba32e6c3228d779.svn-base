@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.customer.service.impl.CustomerMapper">
+
+	<sql id="tableColumns">
+		cust_id,
+		cust_name,
+		cust_gender,
+		cust_year_of_birth,
+		cust_marital_status,
+		cust_postal_code,
+		cust_street_address,
+		cust_city,
+		cust_city_id,
+		cust_state_province,
+		cust_state_province_id,
+		cust_main_phone_int,
+		cust_income_level,
+		cust_credit_limit,
+		cust_email
+	</sql>
+	
+	<sql id="whereQueryTrimIf">
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<if test="searchText != null and serchText != ''">
+				AND cust_name LIKE CONCAT('%', 'anne', '%') <!-- ;;;will edit -->
+			</if>
+		</trim>
+	</sql>
+
+	<select id="selectCustomerList" parameterType="kr.or.nextit.customer.service.CustomerSearchVo" resultType="kr.or.nextit.customer.service.CustomerVo">
+		SELECT
+			<include refid="tableColumns" />
+		FROM
+			tab_customer
+		ORDER BY
+			cust_id
+		LIMIT 30 <!-- ;;;will edit -->
+	</select>
+
+	<select id="selectTotalCount" parameterType="kr.or.nextit.customer.service.CustomerSearchVo" resultType="int">
+		SELECT
+			COUNT(cust_id) AS totalCount
+		FROM
+			tab_customer
+		<include refid="whereQueryTrimIf" />
+	</select>
+
+</mapper>

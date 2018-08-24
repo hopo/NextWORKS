@@ -1,0 +1,46 @@
+package kr.or.nextit.member.web;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.nextit.service.MemberService;
+import kr.or.nextit.service.MemberVo;
+
+@Controller
+public class MemberController {
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	private MemberService memberService;
+
+	@RequestMapping(value = "/member/memberList")
+	public String memberList(Model model) {
+
+		log.debug(">>> '/member/memberList'");
+
+		try {
+
+			List<MemberVo> result = memberService.selectMemberList();
+			model.addAttribute("result", result);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "member/memberList";
+	}
+
+	@RequestMapping(value = "/member/memberInsert")
+	public String memberInser() {
+
+		log.debug(">>> '/member/memberInsert'");
+
+		return "member/memberInsert";
+	}
+
+}

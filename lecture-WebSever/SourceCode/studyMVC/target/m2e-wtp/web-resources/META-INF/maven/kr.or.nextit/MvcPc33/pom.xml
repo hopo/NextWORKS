@@ -12,7 +12,6 @@
 
 
 
-
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.18.RELEASE</org.springframework-version>
@@ -131,12 +130,35 @@
 
 
 		<!-- Servlet -->
+
+		<!-- ;서블릿 초기 기본 세팅 version2.5 -->
+		<!--
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 			<scope>provided</scope>
 		</dependency>
+		 -->
+
+		<!-- ;서블릿 버전업 version3.1.0 (Attach 할 때) -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- ;JSON 관련 (0809thu) -->
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.6</version>
+		</dependency>
+		
+				
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
@@ -197,6 +219,23 @@
 		    <artifactId>spring-websocket</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
+		
+		<!-- ;;;0816wed -->
+		<!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
+		<dependency>
+		    <groupId>org.springframework.batch</groupId>
+		    <artifactId>spring-batch-core</artifactId>
+		    <version>4.0.1.RELEASE</version>
+		</dependency>
+		
+		<!-- ;;;0816wed -->
+		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>2.3.0</version>
+		</dependency>
+		
 
 
 		<!-- AspectJ -->
@@ -256,7 +295,7 @@
 			<version>1.9.3</version>
 		</dependency>
 
-		<!-- *********** END LINE ******************* -->
+		<!-- **************************************** -->
 
 
 
@@ -301,7 +340,14 @@
 			<version>2.4.3</version>
 		</dependency>
 
-		<!-- ======== END LINE ======== -->
+
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.3.3</version>
+		</dependency>
+		<!-- ======================================== -->
 
 
 

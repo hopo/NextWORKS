@@ -1,0 +1,46 @@
+package kr.or.nextit.mber.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.or.nextit.mber.service.MberService;
+import kr.or.nextit.member.service.MemberVo;
+
+@Service("MberService")
+public class MberServiceImpl implements MberService {
+
+	@Autowired
+	private MberMapper mberMapper;
+
+	@Override
+	public MemberVo joinIdCheck(MemberVo params) throws Exception {
+
+		MemberVo result = null;
+
+		// ; 에러처리는 서비스임플에서 컨트롤은 전달 데이터 수준으로만.
+		try {
+			result = mberMapper.selectIdCheck(params);
+
+			if (result != null && params.getMemId().equals(result.getMemId())) {
+				result.setResult(false);
+				result.setMessage("*** 사용 불가능한 아이디");
+			} else {
+				result = new MemberVo();
+				result.setResult(true);
+				result.setMessage("***사용 가능한 아이디");
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			result = new MemberVo();
+			result.setResult(false);
+			result.setMessage(e.getMessage());
+
+		}
+
+		return result;
+	}
+
+}

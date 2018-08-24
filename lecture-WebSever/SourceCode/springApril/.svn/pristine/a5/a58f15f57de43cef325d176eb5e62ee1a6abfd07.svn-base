@@ -1,0 +1,110 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>customerChart</title>
+
+<script type="text/javascript" defer="defer">
+	$(document).ready(function() {
+
+		$("#showChart").on("click", function(evt) {
+			evt.preventDefault();
+			alert("@@@ testBtn Click!!!");
+			$("#chartDiv").empty();
+
+			$.ajax({
+				url				: '/customer/customerChartProc',
+				method			: "POST",
+				dataType		: 'json',
+				data			: $('#customerVo').serialize(),
+				success			: function(data, status, xhr) {
+					//alert("@@@ ajax success: " + JSON.stringify(data));
+					//$("#chartDiv").append(JSON.stringify(data));
+
+					$.each(data, function(key, value){
+						var rs = '';
+						rs += '<tr>';
+						rs += '<th>' + key + '</th>';
+						rs += '<td>' + value + '</td>';
+						rs += '</tr>';
+							
+						$('#chartDiv').append(rs);
+					});
+				},
+				error			: function(jqXhr, textStatus, errorMessage) {
+					alert("@@@ ajax error");
+					console.log(jqXhr);
+					console.log(textStatus);
+					console.log(errorMessage);
+				}
+			});
+		});
+	});
+</script>
+
+</head>
+
+<body>
+	<input id="showChart" value="showChart" class="btn btn-primary" />
+	<div id="chartDiv">@</div>	
+	
+	
+	<!-- ===== chart ===== -->
+	
+    <canvas id="myChart" style="max-width: 500px;"></canvas>
+	
+    <script type="text/javascript" src="/MDB/js/popper.min.js"></script>
+    <script type="text/javascript" src="/MDB/js/mdb.min.js"></script>
+	
+    <script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+    </script>
+	<!-- ================== -->
+	
+</body>
+</html>

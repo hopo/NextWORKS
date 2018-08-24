@@ -1,0 +1,11 @@
+package kr.or.nextit.service.impl;
+
+import java.util.List;
+
+import kr.or.nextit.service.MemberVo;
+
+public interface MemberMapper {
+
+	public List<MemberVo> selectMemberList() throws Exception;
+
+}

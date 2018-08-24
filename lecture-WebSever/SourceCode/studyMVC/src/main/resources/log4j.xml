@@ -19,17 +19,17 @@
 	<!--  INFO < ERROR < DEBUG  -->
 	<!-- Application Loggers -->
 	<logger name="kr.or.nextit">
-		<level value="DEBUG" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Application Loggers -->
 	<logger name="java.sql">
-		<level value="DEBUG" />
+		<level value="debug" />
 	</logger>
 
 	<!-- Application Loggers -->
 	<logger name="java.sqltiming">
-		<level value="DEBUG" />
+		<level value="debug" />
 	</logger>
 	<!-- =========================================== -->
 	

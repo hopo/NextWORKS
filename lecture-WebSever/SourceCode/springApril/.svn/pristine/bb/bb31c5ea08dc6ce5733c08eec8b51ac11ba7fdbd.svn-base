@@ -1,0 +1,14 @@
+package kr.or.nextit.customer.service.impl;
+
+import java.util.List;
+
+import kr.or.nextit.customer.service.CustomerVo;
+
+public interface CustomerMapper {
+
+	/**
+	 * @return
+	 * @throws Exception
+	 */
+	public List<CustomerVo> selectCustomerList() throws Exception;
+}

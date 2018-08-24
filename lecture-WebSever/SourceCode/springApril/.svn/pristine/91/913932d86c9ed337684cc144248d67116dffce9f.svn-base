@@ -1,0 +1,51 @@
+package kr.or.nextit.customer.web;
+
+import java.util.HashMap;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.nextit.customer.service.CustomerSearchVo;
+import kr.or.nextit.customer.service.CustomerService;
+import kr.or.nextit.customer.service.CustomerVo;
+
+@Controller
+public class CustomerController {
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@Resource(name = "CustomerService")
+	private CustomerService customerService;
+
+	@RequestMapping(value = "/customer/customerList")
+	public String custommerList(
+			HashMap<String, Object> hmap,
+			@ModelAttribute(name = "customerSearchVo") CustomerSearchVo customerSearchVo
+		) {
+
+		log.debug(">>> '/customer/customerList'");
+		log.debug(">>> HashMap hmap: {}");
+
+		try {
+
+			// TODO : paging set
+			customerSearchVo.setTotalCount(customerSearchVo.getTotalCount());
+			customerSearchVo.setPageBlockSize(3);
+			customerSearchVo.pageSetting();
+
+			List<CustomerVo> items = customerService.selectCustomerList(customerSearchVo);
+			hmap.put("items", items);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return "customer/customerList";
+	}
+}

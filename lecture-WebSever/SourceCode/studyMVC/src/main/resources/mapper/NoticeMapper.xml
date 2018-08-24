@@ -12,7 +12,8 @@
 		contents,
 		reg_date,
 		up_date,
-		reg_user
+		reg_user,
+		file_group
 	</sql>
 
 	<sql id="whereQueryTrimIf">
@@ -24,7 +25,7 @@
 	</sql>
 
 	<sql id="whereQueryChoose">
-		<trim prefix="WHERE" prefixOverrides="AND | OR"> <!-- 'WHERE' 처음에 AND | OR 가 있으면 제거 하겠다 -->
+		<trim prefix="WHERE" prefixOverrides="AND | OR"> <!-- // ;;;'WHERE' 처음에 AND | OR 가 있으면 제거 하겠다 -->
 			<choose>
     			<when test="searchType == 'title'">
       				AND title LIKE '%' || #{searchText} || '%'
@@ -75,12 +76,14 @@
 	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
 	</select>
 
+	<!--
 	<select id="selectNoticeList_bak" parameterType="kr.or.nextit.notice.service.NoticeSearchVo" resultType="kr.or.nextit.notice.service.NoticeVo">
 		SELECT
 			<include refid="tableColumns" />
 		FROM
 			tb_board
 	</select>
+  	-->
 
 	<select id="selectItemView" parameterType="kr.or.nextit.notice.service.NoticeVo" resultType="kr.or.nextit.notice.service.NoticeVo">
 		SELECT
@@ -103,7 +106,6 @@
 
 
 
-
 	<!-- ========== Tag : insert ======================================= -->
 	<insert id="insertItem" parameterType="kr.or.nextit.notice.service.NoticeVo">
 		INSERT INTO tb_board (
@@ -115,11 +117,11 @@
 			#{contents},
 			SYSDATE,
 			SYSDATE,
-			#{regUser}
+			#{regUser},
+			#{fileGroup}
 		)
 	</insert>
 	<!-- ========================================================= -->
-	
 	
 	
 	
@@ -130,6 +132,11 @@
 			read_count = read_count + 1
 		WHERE
 			idx = #{idx}		
+	</update>
+
+	<update id="updateCountTotal">
+		UPDATE tb_board
+		SET read_count = read_count + 1
 	</update>
 	<!-- ========================================================= -->
 

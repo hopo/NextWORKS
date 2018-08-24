@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.member.service.impl.MemberMapper">
+
+	<select id="selectMemberList" resultType="kr.or.nextit.member.service.MemberVo">
+		SELECT
+			mem_id,
+			mem_pwd,
+			mem_name,
+			mem_phone,
+			login_date,
+			privil_code,
+			del_at
+		FROM
+			tab_member
+	</select>
+
+	<insert id="insertMember" parameterType="kr.or.nextit.member.service.MemberVo">
+		INSERT INTO tab_member
+		SET (
+			mem_id,
+			mem_pwd,
+			mem_name,
+			mem_phone,
+		) VALUE (
+			#{memId},
+			#{memPwd},
+			#{memName},
+			#{memPhon}
+		)
+	</insert>
+
+</mapper>

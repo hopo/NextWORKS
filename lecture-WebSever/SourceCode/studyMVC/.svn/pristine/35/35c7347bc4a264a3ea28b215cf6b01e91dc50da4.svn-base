@@ -1,0 +1,16 @@
+package kr.or.nextit.mber.service;
+
+import kr.or.nextit.member.service.MemberVo;
+
+public interface MberService {
+	
+	/**
+	 * 아이디 체크
+	 * 
+	 * @param params
+	 * @return
+	 * @throws Exception
+	 */
+	public MemberVo joinIdCheck(MemberVo params) throws Exception;
+
+}
