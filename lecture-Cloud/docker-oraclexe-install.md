@@ -1,7 +1,7 @@
 # Docker Oracle-xe Install
 ***
 
-## 01
+## 01 도커 설치
 
 ### docker install
 
@@ -14,6 +14,10 @@ $ curl -fsSL https://get.docker.com/ | sudo sh
 
 ```
 $ sudo usermod -aG docker $USER # 현재 접속중인 사용자에게 권한주기
+```
+
+or
+```
 $ sudo usermod -aG docker your-user # your-user 사용자에게 권한주기
 ```
 
@@ -23,7 +27,8 @@ $ sudo usermod -aG docker your-user # your-user 사용자에게 권한주기
 $ docker version
 ```
 
-## 02
+
+## 02 도커 이미지 설치 및 실행
 
 ### search oracl-xe
 ```
@@ -58,7 +63,8 @@ $ docker run -d --shm-size=2g -p 51521:1521 -p 58080:8080 \
 $ docker ps
 ```
 
-## 03
+
+## 03 오라클에 유저 만들기
 
 ### into docker-oracle-xe container
 ```
