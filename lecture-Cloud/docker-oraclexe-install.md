@@ -66,6 +66,7 @@ $ docker exec -it docker-oracle-xe /bin/bash
 ```
 
 ### create oracle user
+on docker-oracle-xe container shell
 ```
 # sqlplus system/oracle
 ```
