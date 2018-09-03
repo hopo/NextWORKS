@@ -3,6 +3,7 @@
 #03. request 기본 객체에 대한 기능을 간략히 설명하시오.
 #04. HTTP 전송 방식 중 GET 방식과 POST 방식의 차이점을 기술하시오.
 #05. 웹 어플리케이션의 4가지 영역(scope)인 PAGE, REQUEST, SESSION, APPLICATION 영역에 대해 기술하시오.
+
 #06. 쿠키(Cookie)와 세션(session)에 대해 설명하시오.
 #07. MVC 패턴의 구성 요소인 모델, 뷰, 컨트롤러에 대해 설명하시오.
 #08. DI(Dependency Injection)에 대해서 설명하시오. 
@@ -14,6 +15,7 @@
 #13. Assert 클래스의 assert 메서드 중 assertEquals(), assertNotNull() 메서드에 대해 설명하시오.
 #14. 애플리케이션의 형상관리에 대해 설명하시오.
 #15. 애플리케이션 빌드 도구 중 Maven에 대해 설명하시오.
+
 #16. 지속적 통합(Continuous Integration)이란 무엇인지 설명하시오.
 #17. 단위테스트와 통합테스트의 차이점에 대해 설명하시오.
 #18. 서브버전에서 import, checkout, commit, update 명령어를 간략히 설명하시오.
