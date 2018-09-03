@@ -52,7 +52,8 @@ $ mkdir -p /myDocker/usr/lib/oracle/xe/oradata/XE
 ```
 
 ```
-$ docker run -d --shm-size=2g -p 51521:1521 -p 58080:8080 \
+$ docker run -dit --restart unless-stopped \
+> --shm-size=2g -p 51521:1521 -p 58080:8080 \
 > -v /myDocker/usr/lib/oracle/xe/oradata/XE:/usr/lib/oracle/xe/oradata/XE \
 > --name docker-oracle-xe \
 > alexeiled/docker-oracle-xe-11g
@@ -79,7 +80,7 @@ on docker-oracle-xe container shell
 
 on sqlplus shell
 ```
-SQL> CREATE USER java INDENTIFIED BY oracle;
+SQL> CREATE USER java IDENTIFIED BY oracle;
 SQL> GRANT connect, resource TO java;
 SQL> exit;
 ```
