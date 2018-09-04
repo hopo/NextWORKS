@@ -42,6 +42,12 @@ $ docker search oracle-xe
 <https://hub.docker.com/r/alexeiled/docker-oracle-xe-11g/>
 
 
+### pull image
+
+```
+$ docker pull alexeiled/docker-oracle-xe-11g
+```
+
 ### run
 
 ```
@@ -51,7 +57,7 @@ $ docker run -d --shm-size=2g -p 1521:1521 -p 8080:8080 alexeiled/docker-oracle-
 또는..
 
 ```
-$ mkdir -p /myDocker/usr/lib/oracle/xe/oradata/XE # 연결시킬 볼륨 만들기
+$ sudo mkdir -p /myDocker/usr/lib/oracle/xe/oradata/XE # 연결시킬 볼륨 만들기
 ```
 
 ```
