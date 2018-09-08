@@ -9,9 +9,10 @@
 ```
 $ docker run -it --name was2 -p 8082:8080 \
 > -v ~/webroot/:/usr/local/tomcat/webapps/ \
-> --link oracle-xe:oracle-xe \
-> tomcat:8 /bin/bash
+> --link oracle-xe:oracle-xe tomcat:8 /bin/bash
 ```
+ex) --link name:alias
+description) make hosts name'oracle-xe' in the container 'was2'
 
 ### Make db dump file
 ```
