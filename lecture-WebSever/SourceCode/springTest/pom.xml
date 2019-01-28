@@ -110,11 +110,14 @@
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
 		<!-- ;;스프링 배치는 스프링 프레임워크 버젼솨 다름 현 버젼이 최신임 -->
+		<!-- :::secure issue -->
+		<!--
 		<dependency>
 		    <groupId>org.springframework.batch</groupId>
 		    <artifactId>spring-batch-core</artifactId>
 		    <version>4.0.1.RELEASE</version>
 		</dependency>
+		-->
 		
 		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
 		<!-- ;;위 스프링 배치와 한쌍 -->
