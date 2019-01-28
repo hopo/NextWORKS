@@ -224,11 +224,14 @@
 		
 		<!-- ;;;0816wed -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-core -->
+		<!-- :::secure issue -->
+		<!--
 		<dependency>
 		    <groupId>org.springframework.batch</groupId>
 		    <artifactId>spring-batch-core</artifactId>
 		    <version>4.0.1.RELEASE</version>
 		</dependency>
+		-->
 		
 		<!-- ;;;0816wed -->
 		<!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
